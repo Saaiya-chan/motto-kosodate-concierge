@@ -21,3 +21,7 @@ evaluation/docsgpt/results/
 *.sql.gz
 *.pem
 *.key
+
+__pycache__/
+*.pyc
+.railway/

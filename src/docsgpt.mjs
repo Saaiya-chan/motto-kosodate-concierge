@@ -15,7 +15,7 @@ export function retrievalQuestion(messages){
  const programmes=context?names(context.content).map(p=>p.name).join('・'):'';
  return [programmes,latest,prior[0]?.content].filter(Boolean).join('\n').slice(0,6000);
 }
-export function createDocsGPT({pipeline=process.env.DOCSGPT_PIPELINE||'search',base='http://127.0.0.1:7093',fetcher=fetch,loadAgent=async()=>JSON.parse(await readFile(process.env.MOTTO_GEMINI_PRIVATE_DIR?join(process.env.MOTTO_GEMINI_PRIVATE_DIR,'docsgpt-agent.json'):new URL('../.private/docsgpt-agent.json',import.meta.url),'utf8')),library=manifest.sources,reviewer=createCitationReviewer()}={}){
+export function createDocsGPT({pipeline=process.env.DOCSGPT_PIPELINE||'search',base=process.env.DOCSGPT_URL||'http://127.0.0.1:7093',fetcher=fetch,loadAgent=async()=>process.env.DOCSGPT_API_KEY?{key:process.env.DOCSGPT_API_KEY}:JSON.parse(await readFile(process.env.MOTTO_GEMINI_PRIVATE_DIR?join(process.env.MOTTO_GEMINI_PRIVATE_DIR,'docsgpt-agent.json'):new URL('../.private/docsgpt-agent.json',import.meta.url),'utf8')),library=manifest.sources,reviewer=createCitationReviewer()}={}){
  const sessions=new Map();
  async function request(path,body,timeout=40000){const r=await fetcher(base+path,{...(body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{}),signal:AbortSignal.timeout(timeout)});if(!r.ok)throw Error('upstream');return r.json();}
  return {

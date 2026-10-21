@@ -1,0 +1,10 @@
+*
+!package.json
+!src/
+!src/**
+!public/
+!public/**
+!data/
+!data/**
+!deployment/
+!deployment/**

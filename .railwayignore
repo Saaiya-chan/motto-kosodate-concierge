@@ -1,0 +1,9 @@
+.private/
+.cache/
+.venv-ruri/
+.git/
+node_modules/
+test/
+evaluation/
+*.log
+*.txt

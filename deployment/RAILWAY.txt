@@ -1,0 +1,47 @@
+Railway配備手順・準備状況（2026-10-21）
+
+対象
+新規プロジェクト motto-kosodate-concierge を使う。mottoの既存プロジェクトには変更しない。
+サービスは concierge-web / concierge-docsgpt / Postgres / Redis の4つ。
+DocsGPTはAPIとCelery workerを同じサービスで起動し、共有データを/dataの一つのVolumeに置く。
+現時点ではRailway CLIがUnauthorized。再ログインを依頼中で、クラウド上のプロジェクト作成・配備は未実施。
+
+準備済み
+・ルートDockerfileとrailway.toml: Node 24、PORTに対応、/api/healthで起動確認。
+・APP_PUBLIC_ORIGIN（HTTPS）またはRAILWAY_PUBLIC_DOMAINだけを公開Host/Originに許可。
+・公開環境の管理セッションCookieはSecure。管理者以外の設定変更は拒否。
+・DOCSGPT_URLとDOCSGPT_API_KEYを環境変数から設定可能。
+・deployment/docsgpt/Dockerfile: arc53/docsgpt:1.0.0、APIとworkerの統合起動、共有Volume。
+・deployment/docsgpt/seed.py: 登録済みと同じ公式資料のハッシュを検証して初期投入。秘密のagent keyは/data/concierge-agent.jsonへ保存して標準出力に出さない。
+・deployment/prepare-contexts.mjs: ソースと公式資料だけを一時フォルダーにコピーする。APIキー、ローカル会話ログ、検証記録を含めない。
+
+再ログイン後の作業
+1. railway whoamiで認証確認。新規プロジェクトを作成し、IDを.private内の配備記録へ保存。
+2. PostgreSQLとRedisを新規作成。既存mottoのDB/Redisを使わない。
+3. concierge-docsgptに/data Volumeを作成。
+   POSTGRES_URI、CELERY_BROKER_URL、CELERY_RESULT_BACKEND、CACHE_REDIS_URLは新規サービスの内部接続へ設定する。
+   API_URLはhttp://localhost:7091。LLM_PROVIDER=google、LLM_NAME=gemini-3.5-flash-lite。
+   検索専用構成としてTRACES_ENABLED=false/TRACES_CAPTURE_CONTENT=falseを維持。
+   暗号化用と内部用のキーは新規に生成し、Railway環境変数に登録。キーはソースや標準出力に出さない。
+4. prepare-contexts.mjsのdocsgptフォルダーを明示的に指定して配備。
+   railway up <context> --path-as-root --project <id> --service concierge-docsgpt --detach
+   DocsGPTには公開ドメインを作らない。
+5. Railway SSH経由でpython /opt/concierge/seed.pyを実行し、資料の索引完了まで確認。
+   agent keyの取得が必要ならSSH出力を.private内のファイルへ直接リダイレクトし、チャットやログに出さない。
+6. concierge-webに/data Volumeを作成。
+   GEMINI_API_KEY / GEMINI_MODEL / DOCSGPT_API_KEYを設定。
+   DOCSGPT_URLはhttp://concierge-docsgpt.railway.internal:7091。
+   MOTTO_GEMINI_PRIVATE_DIR=/data/private。会話ログ・管理キー・暗号化キーを同じVolumeで永続化する。
+   既存のローカル会話ログは移行しない。公開用管理キーは新規に作る。
+7. web用contextを配備して公開ドメインを作成。
+   RAILWAY_PUBLIC_DOMAINの自動注入またはAPP_PUBLIC_ORIGINが正しいことを確認して再起動。
+8. 公開URLで複数往復の相談・本文出典リンク・未同意の非保存・同意後保存・管理画面認証・再起動後永続化を確認する。
+9. 課金使用量とRAM/CPUを観測。予算上限による停止と、通知のみの設定を混同しない。
+   保存期限30日とバックアップ保持期間の扱いも、バックアップ有効化前に確認する。
+
+確認済みの範囲
+・自動テスト145件成功。
+・web、docsgptのDockerイメージをローカルビルド済み。
+・webのコンテナ実HTTPでヘルスチェック200、正しい公開Host200、別Host403、管理データの未認証401を確認。
+・クラウド上の動作、DocsGPT統合起動と資料投入の本番確認、公開URLでの会話は未確認。
+・GitHubへのpushは以前の公開範囲の承認待ちを維持。CLI配備は公開GitHubリポジトリへソースを公開せず実施できる。
