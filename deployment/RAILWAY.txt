@@ -45,3 +45,10 @@ DocsGPTはAPIとCelery workerを同じサービスで起動し、共有データ
 ・webのコンテナ実HTTPでヘルスチェック200、正しい公開Host200、別Host403、管理データの未認証401を確認。
 ・クラウド上の動作、DocsGPT統合起動と資料投入の本番確認、公開URLでの会話は未確認。
 ・GitHubへのpushは以前の公開範囲の承認待ちを維持。CLI配備は公開GitHubリポジトリへソースを公開せず実施できる。
+
+再ログイン後の結果（2026-10-21）
+・whoamiで既存アカウントへのCLI認証成功。
+・新規プロジェクト作成を実行したが、RailwayからDeploys have been paused temporarilyで拒否。
+・プロジェクト一覧に新規プロジェクトは存在せず、部分作成も確認されなかった。
+・公式ステータスにDashboard and API unavailable, builds pausedが表示され、全リージョンの新規ビルド停止が案内されている。
+・プラン変更・既存mottoの変更・公開は行っていない。復旧後に作成から再試行する。

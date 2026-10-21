@@ -1,10 +1,21 @@
 """Keep API and one ingestion worker on the same persistent data volume."""
 import os
+import pwd
 from pathlib import Path
 import signal
 import subprocess
 import sys
 import time
+
+# Railway mounts a new volume as root. Hand ownership to the image's app user
+# before dropping privileges for both API and worker.
+if os.geteuid()==0:
+    app=pwd.getpwnam('appuser')
+    Path('/data').mkdir(parents=True,exist_ok=True)
+    os.chown('/data',app.pw_uid,app.pw_gid)
+    os.setgroups([])
+    os.setgid(app.pw_gid)
+    os.setuid(app.pw_uid)
 
 children=[]
 def stop(*_):
