@@ -1,0 +1,74 @@
+{
+  "checkedAt": "2026-10-20T23:03:00.450Z",
+  "automatedTests": {
+    "passed": 58,
+    "failed": 0,
+    "geminiTransport": "mock API; HTTP tests use an isolated temporary credential directory"
+  },
+  "liveGemini": {
+    "verified": true,
+    "model": "gemini-3.6-flash",
+    "syntheticOnly": true,
+    "cases": [
+      {
+        "question": null,
+        "ok": true,
+        "mode": "gemini-file-search",
+        "elapsedMs": 8649,
+        "sourceIds": [
+          "sickcare",
+          "daredemo-handbook"
+        ]
+      },
+      {
+        "question": null,
+        "ok": true,
+        "mode": "gemini-file-search",
+        "elapsedMs": 8240,
+        "sourceIds": [
+          "home-help",
+          "postpartum"
+        ]
+      },
+      {
+        "question": null,
+        "ok": true,
+        "mode": "gemini-file-search",
+        "elapsedMs": 6701,
+        "sourceIds": [
+          "home-help"
+        ]
+      },
+      {
+        "question": null,
+        "ok": true,
+        "mode": "source-limited",
+        "elapsedMs": 1,
+        "sourceIds": []
+      }
+    ],
+    "notes": [
+      "Gemini 3.8 Flash produced one grounded answer, then generation requests timed out and a tiny control request returned HTTP 503 UNAVAILABLE.",
+      "Switched the saved configuration to gemini-3.6-flash; reused all uploaded documents.",
+      "Initial fee answer added unsupported municipal examples; tightened grounding instructions. Final browser follow-up correctly states municipal fee-setting and income-based reductions without adding examples."
+    ]
+  },
+  "uploadedDocuments": 11,
+  "credentialFilePermissions": "600",
+  "providerComparison": "Gemini live conversation tested; Ollama comparison not rerun",
+  "claude": "not connected",
+  "browser": {
+    "verified": true,
+    "model": "gemini-3.6-flash",
+    "questions": [
+      "子育て世帯訪問支援事業ってどんな事業？",
+      "それはいくら？"
+    ],
+    "sourceIds": [
+      "home-help"
+    ],
+    "feeResponseSeconds": 7,
+    "proof": "test/gemini-browser-proof.jpg",
+    "feeReply": "子育て世帯訪問支援事業の利用料は、事業を実施する市町村が定めます。国のガイドラインでは、利用者の所得状況に応じて料金を減免するなど配慮することが望ましいとされています。具体的な料金額や減免の条件は自治体ごとに異なります。"
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "checkedAt": "2026-10-20",
+  "cases": [
+    {
+      "scenario": "2歳の子がいます。保育園には通っていません。昼間に少し休みたいです。",
+      "expected": "temporary",
+      "actual": [
+        "temporary",
+        "daredemo",
+        "famisapo"
+      ],
+      "facts": {
+        "needs": [
+          "rest",
+          "day"
+        ],
+        "agesMonths": [
+          24
+        ],
+        "enrolled": "no",
+        "singleparent": "unknown",
+        "postpartumMonths": -1,
+        "time": "day",
+        "urgent": false
+      },
+      "question": null,
+      "elapsedMs": 3641,
+      "mode": "local-llm",
+      "model": "qwen3:4b"
+    },
+    {
+      "scenario": "子は4歳です。園の送り迎えができず、誰かに頼みたいです。",
+      "expected": "famisapo",
+      "actual": [
+        "famisapo"
+      ],
+      "facts": {
+        "needs": [
+          "pickup"
+        ],
+        "agesMonths": [
+          48
+        ],
+        "enrolled": "unknown",
+        "singleparent": "unknown",
+        "postpartumMonths": -1,
+        "time": "unknown",
+        "urgent": false
+      },
+      "question": null,
+      "elapsedMs": 2761,
+      "mode": "local-llm",
+      "model": "qwen3:4b"
+    },
+    {
+      "scenario": "家事が追いつきません。自宅で食事の準備や掃除を手伝ってほしいです。",
+      "expected": "home-help",
+      "actual": [
+        "home-help"
+      ],
+      "facts": {
+        "needs": [
+          "housework"
+        ],
+        "agesMonths": [],
+        "enrolled": "unknown",
+        "singleparent": "unknown",
+        "postpartumMonths": -1,
+        "time": "home",
+        "urgent": false
+      },
+      "question": null,
+      "elapsedMs": 3077,
+      "mode": "local-llm",
+      "model": "qwen3:4b"
+    },
+    {
+      "scenario": "生後2か月です。産後の授乳が不安で、助産師さんに相談したいです。",
+      "expected": "postpartum",
+      "actual": [
+        "postpartum",
+        "visit-advice",
+        "hiroba"
+      ],
+      "facts": {
+        "needs": [
+          "postpartum",
+          "breastfeeding",
+          "advice"
+        ],
+        "agesMonths": [
+          2
+        ],
+        "enrolled": "unknown",
+        "singleparent": "unknown",
+        "postpartumMonths": -1,
+        "time": "unknown",
+        "urgent": false
+      },
+      "question": null,
+      "elapsedMs": 3106,
+      "mode": "local-llm",
+      "model": "qwen3:4b"
+    },
+    {
+      "scenario": "子どもは2歳、発熱しています。日中預かってほしいです。",
+      "expected": "sickcare",
+      "actual": [
+        "sickcare",
+        "home-help"
+      ],
+      "facts": {
+        "needs": [
+          "day",
+          "sick",
+          "rest"
+        ],
+        "agesMonths": [
+          24
+        ],
+        "enrolled": "unknown",
+        "singleparent": "unknown",
+        "postpartumMonths": -1,
+        "time": "day",
+        "urgent": false
+      },
+      "question": null,
+      "elapsedMs": 2690,
+      "mode": "local-llm",
+      "model": "qwen3:4b"
+    }
+  ]
+}

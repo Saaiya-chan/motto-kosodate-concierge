@@ -1,0 +1,12 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {parseRuriAnswer} from '../src/ruri-answer.mjs';
+const docs=[{id:'known',title:'公式資料',url:'https://www.cfa.go.jp/',text:'利用料は市町村が定める。',programIds:['home-help'],page:4,pageEnd:5},{id:'supplement',title:'公式資料',url:'https://www.cfa.go.jp/',text:'世帯の所得状況等を勘案して設定する。',programIds:['home-help'],page:5}];
+const claim=(text='利用料は市町村が定めます。',chunkId='known',quote=docs[0].text)=>({text,evidence:[{chunkId,quote}]});
+const response=(statements=[claim()],status='answered')=>({candidates:[{finishReason:'STOP',content:{parts:[{text:JSON.stringify({status,statements})}]}}]});
+test('each supplemental statement preserves its own source and exact evidence',()=>{const r=parseRuriAnswer(response([claim(),claim('世帯の所得状況も考慮されます。','supplement',docs[1].text)]),docs);assert.equal(r.sources[0].url,docs[0].url+'#page=4');assert.equal(r.sources[1].id,'supplement');assert.equal(r.statements[1].evidence[0].quote,docs[1].text);});
+test('uncited supplements and quotes from a different source are rejected',()=>{assert.throws(()=>parseRuriAnswer(response([claim(),{text:'無料です。',evidence:[]}]),docs));assert.throws(()=>parseRuriAnswer(response([claim('所得状況を考慮します。','known',docs[1].text)]),docs));assert.throws(()=>parseRuriAnswer(response([claim('市町村が定めます。無料です。')]),docs));});
+test('unknown IDs, fabricated quotes, contact URLs and empty answered responses are rejected',()=>{for(const statements of [[claim('無料です。','invented')],[claim('「必ず無料」です。')],[claim('https://evil.example')],[]])assert.throws(()=>parseRuriAnswer(response(statements),docs));});
+test('missing evidence returns controlled text and cannot carry generic supplemental facts',()=>{assert.deepEqual(parseRuriAnswer(response([],'not_found'),docs).sources,[]);assert.equal(parseRuriAnswer(response([],'not_found'),docs).reply,'登録資料では確認できません。');assert.throws(()=>parseRuriAnswer(response([claim()],'not_found'),docs));});
+test('PDF whitespace differences are allowed in exact evidence',()=>{const r=parseRuriAnswer(response([claim('利用料は市町村が定めます。','known','利用料は市町村が\n定める。')]),docs);assert.equal(r.statements.length,1);});
+
+test('plain language paraphrases keep citations without requiring a dictionary definition',()=>{const doc={...docs[0],text:'乳幼児を一時的に預かり、必要な保護を行う。'};const r=parseRuriAnswer(response([claim('子どもをしばらく預かって、世話をすることです。','known',doc.text)]),[doc]);assert.match(r.reply,/世話/);assert.equal(r.statements[0].evidence[0].chunkId,'known');});

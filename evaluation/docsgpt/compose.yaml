@@ -1,0 +1,52 @@
+name: motto-docsgpt-eval
+x-app: &app
+  image: arc53/docsgpt:1.0.0
+  env_file: ../../.private/docsgpt-eval.env
+  environment:
+    CELERY_BROKER_URL: redis://redis:6379/0
+    CELERY_RESULT_BACKEND: redis://redis:6379/1
+    CACHE_REDIS_URL: redis://redis:6379/2
+    POSTGRES_URI: postgresql://docsgpt:${POSTGRES_PASSWORD}@postgres:5432/docsgpt
+    API_URL: http://backend:7091
+    TRACES_ENABLED: "false"
+    TRACES_CAPTURE_CONTENT: "false"
+  volumes:
+    - indexes:/app/indexes
+    - inputs:/app/inputs
+    - vectors:/app/vectors
+    - models:/app/models
+    - ./models:/app/evaluation-models:ro
+  depends_on:
+    postgres:
+      condition: service_healthy
+    redis:
+      condition: service_started
+services:
+  backend:
+    <<: *app
+    ports:
+      - '127.0.0.1:7093:7091'
+  worker:
+    <<: *app
+    command: celery -A docsgpt.app.celery worker -l INFO -B --concurrency=1 -Q docsgpt,parsing,embeddings
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: docsgpt
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: docsgpt
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U docsgpt -d docsgpt']
+      interval: 5s
+      timeout: 5s
+      retries: 15
+  redis:
+    image: redis:7-alpine
+volumes:
+  indexes:
+  inputs:
+  vectors:
+  models:
+  postgres:

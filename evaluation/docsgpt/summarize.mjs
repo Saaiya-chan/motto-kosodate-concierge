@@ -1,0 +1,12 @@
+import fs from 'node:fs';import crypto from 'node:crypto';
+const dir='evaluation/docsgpt/results';const d=JSON.parse(fs.readFileSync(dir+'/comparison.json'));const rows=d.scenarios.flatMap(s=>s.turns.map(t=>({scenario:s.id,...t})));const median=a=>{a=[...a].sort((x,y)=>x-y);return a.length%2?a[(a.length-1)/2]:(a[a.length/2-1]+a[a.length/2])/2};
+const measures={};for(const p of ['docsgpt','ruri']){const a=rows.map(t=>t[p].elapsedMs);measures[p]={n:a.length,medianMs:median(a),meanMs:a.reduce((a,b)=>a+b,0)/a.length,minMs:Math.min(...a),maxMs:Math.max(...a),medianReplyChars:median(rows.map(t=>(t[p].data.answer??t[p].data.reply).length))};}
+const modelRows=rows.filter(t=>t.ruri.data.timings.googleMs>0);measures.matchedModelRows={n:modelRows.length,ruriMedianMs:median(modelRows.map(t=>t.ruri.elapsedMs)),docsgptMedianMs:median(modelRows.map(t=>t.docsgpt.elapsedMs))};
+const corpus=JSON.parse(fs.readFileSync(dir+'/corpus.json'));const chunks=JSON.parse(fs.readFileSync(dir+'/chunks.json'));const files=[...new Set(chunks.chunks.map(c=>c.metadata.filename))].sort();if(files.length!==12||corpus.length!==12)throw Error('corpus mismatch');
+const originalChunks=JSON.parse(fs.readFileSync('data/source-chunks.json'));
+const quoteAudit=[];for(const t of rows)for(const st of t.ruri.data.replyStatements??[])for(const e of st.evidence??[]){const c=originalChunks.find(c=>c.id===e.chunkId);const norm=s=>s.replace(/\s/g,'');quoteAudit.push({scenario:t.scenario,turn:t.turn,statement:st.text,chunkId:e.chunkId,quote:e.quote,present:!!c&&norm(c.text).includes(norm(e.quote))});}
+if(quoteAudit.some(q=>!q.present))throw Error('quote not found');
+fs.writeFileSync(dir+'/ruri-quote-audit.json',JSON.stringify(quoteAudit,null,2));
+fs.writeFileSync(dir+'/metrics.json',JSON.stringify(measures,null,2));
+const hashes={};for(const f of ['data/source-manifest.json','data/source-chunks.json','src/gemini.mjs','src/dialogue.mjs','src/conversation-support.mjs','src/fee-intent.mjs','evaluation/docsgpt/compose.yaml','evaluation/docsgpt/domain-prompt.txt'])hashes[f]=crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');fs.writeFileSync(dir+'/provenance.json',JSON.stringify({createdAt:new Date().toISOString(),docsgptVersion:'1.0.0',docsgptCommit:'71ff06cb93baf34a1499e26a2875ee1d76bd0520',model:d.model,uploadedFiles:files,hashes},null,2));
+console.log(JSON.stringify(measures,null,2));console.log('12 files indexed; chunks',chunks.total);

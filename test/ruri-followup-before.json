@@ -1,0 +1,71 @@
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": "一時預かりってどんな制度？"
+    },
+    {
+      "role": "assistant",
+      "content": "一時預かり事業は、家庭において保育を受けることが一時的に困難となった場合や、保護者の育児負担の軽減が必要な場合に利用できる仕組みです。主として昼間に、乳幼児を一時的に預かり、必要な保護を行うものとされています。"
+    },
+    {
+      "role": "user",
+      "content": "保育を受けることってなに？"
+    }
+  ],
+  "status": 200,
+  "data": {
+    "facts": {
+      "needs": [],
+      "agesMonths": [],
+      "enrolled": "unknown",
+      "singleparent": "unknown",
+      "postpartumMonths": -1,
+      "time": "unknown",
+      "urgent": false
+    },
+    "question": null,
+    "results": [],
+    "consultation": "利用できそうな支援と、条件・料金・申込方法を教えてください。",
+    "scope": "national",
+    "checkedAt": "2026-10-20",
+    "urgent": false,
+    "summary": "登録資料では確認できません。",
+    "reply": "登録資料では確認できません。",
+    "replySources": [],
+    "replyStatements": [],
+    "replyFollowup": null,
+    "showRecommendations": false,
+    "mode": "ruri-gemini",
+    "model": "gemini-3.5-flash-lite",
+    "warning": null,
+    "elapsedMs": 2146.3883749999804,
+    "usage": {
+      "promptTokenCount": 3965,
+      "candidatesTokenCount": 13,
+      "totalTokenCount": 4180,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 3965
+        }
+      ],
+      "thoughtsTokenCount": 202,
+      "serviceTier": "standard"
+    },
+    "retrievedChunkIds": [
+      "temporary-002",
+      "temporary-001",
+      "temporary-003",
+      "temporary-004",
+      "temporary-005"
+    ],
+    "timings": {
+      "retrievalMs": 15.760375000012573,
+      "queryEmbeddingMs": 15.22,
+      "readyWaitMs": 0.0012080000014975667,
+      "googleMs": 2129.3847499999974
+    },
+    "retrievalModel": "cl-nagoya/ruri-v3-70m"
+  }
+}

@@ -1,0 +1,334 @@
+{
+  "version": 1,
+  "checkedAt": "2026-10-20",
+  "scope": "national",
+  "programs": [
+    {
+      "id": "temporary",
+      "name": "一時預かり",
+      "tagline": "日中、数時間から子どもを預かってほしい",
+      "needs": {
+        "day": 5,
+        "rest": 3,
+        "errand": 5,
+        "parent_ill": 2
+      },
+      "summary": "主に乳幼児を保育所などで日中、一時的に預かる仕組み。用事や仕事のほか、育児疲れを軽くするための利用もあります。",
+      "difference": "保護者の一時的な預かりの必要に応える支援です。誰でも通園とは、目的や対象条件、申込枠が異なります。",
+      "checks": [
+        "対象年齢と利用理由",
+        "希望する時間と空き",
+        "利用料金と事前登録"
+      ],
+      "eligibility": {},
+      "sources": [
+        {
+          "id": "temporary-official",
+          "title": "子ども・子育て支援新制度",
+          "url": "https://www.cfa.go.jp/policies/kokoseido/sukusuku",
+          "checkedAt": "2026-10-20"
+        }
+      ],
+      "jurisdiction": "national",
+      "localAvailability": "unknown",
+      "fees": "地域・施設で確認"
+    },
+    {
+      "id": "daredemo",
+      "name": "こども誰でも通園制度",
+      "tagline": "子どもの通園経験をつくり、親も少し休みたい",
+      "needs": {
+        "day": 3,
+        "rest": 2,
+        "social": 6
+      },
+      "summary": "保育所等に通っていない生後6か月から3歳未満の子が、家族以外の人と関わり、育つ機会をつくる制度。親の就労は問わず、月10時間が基本です。",
+      "difference": "子どもの育ちと家庭への支援が目的。一時預かりと利用場面は重なりますが、対象年齢や月の利用枠に条件があります。",
+      "checks": [
+        "保育所等に通っていないかを含む対象要件",
+        "実際に利用できる月の時間枠",
+        "事前面談・予約・料金"
+      ],
+      "eligibility": {
+        "minMonths": 6,
+        "maxMonthsExclusive": 36,
+        "unenrolled": true
+      },
+      "sources": [
+        {
+          "id": "daredemo-official",
+          "title": "こども誰でも通園制度・公式利用案内",
+          "url": "https://www.daretsu.cfa.go.jp/",
+          "checkedAt": "2026-10-20"
+        }
+      ],
+      "jurisdiction": "national",
+      "localAvailability": "unknown",
+      "fees": "地域・施設で確認"
+    },
+    {
+      "id": "famisapo",
+      "name": "ファミリー・サポート・センター",
+      "tagline": "送迎や短い時間の預かりをお願いしたい",
+      "needs": {
+        "pickup": 8,
+        "day": 2,
+        "errand": 3,
+        "afterschool": 2
+      },
+      "summary": "子育ての援助を頼みたい会員と、援助する会員を地域でつなぐ相互援助の仕組み。園や学童への送迎、短時間の預かりなどを調整します。",
+      "difference": "施設の利用枠を予約する仕組みとは異なり、援助する会員との調整が必要です。依頼すれば必ず引き受け手が見つかるわけではありません。",
+      "checks": [
+        "会員登録と顔合わせ",
+        "送迎経路・預かり場所・援助内容",
+        "対象年齢・謝礼・引き受け手の有無"
+      ],
+      "eligibility": {},
+      "sources": [
+        {
+          "id": "famisapo-official",
+          "title": "ファミリー・サポート・センター",
+          "url": "https://www.cfa.go.jp/policies/kosodateshien/family-support",
+          "checkedAt": "2026-10-20"
+        }
+      ],
+      "jurisdiction": "national",
+      "localAvailability": "unknown",
+      "fees": "地域・施設で確認"
+    },
+    {
+      "id": "shortstay",
+      "name": "子育てショートステイ",
+      "tagline": "泊まりも含め、子どもの世話を支えてほしい",
+      "needs": {
+        "overnight": 9,
+        "rest": 2,
+        "parent_ill": 4
+      },
+      "summary": "育児疲れ、育児不安、入院などで子どもの養育が一時的に難しいとき、施設や里親家庭等で短期間支える事業。親子で利用する支援もあります。",
+      "difference": "主に宿泊を伴う養育の支援。産後ケアの「ショートステイ型」とは別制度です。利用期間は自治体が家庭の状況等から判断します。",
+      "checks": [
+        "対象年齢・利用理由・日数",
+        "子どもの過ごし方と事前面談",
+        "料金・送迎・緊急時の相談方法"
+      ],
+      "eligibility": {},
+      "sources": [
+        {
+          "id": "shortstay-official",
+          "title": "子育て短期支援事業",
+          "url": "https://www.cfa.go.jp/policies/kosodateshien/jido-short",
+          "checkedAt": "2026-10-20"
+        }
+      ],
+      "jurisdiction": "national",
+      "localAvailability": "unknown",
+      "fees": "地域・施設で確認"
+    },
+    {
+      "id": "twilight",
+      "name": "トワイライトステイ",
+      "tagline": "夜間や休日の預かりを相談したい",
+      "needs": {
+        "evening": 8,
+        "weekend": 7
+      },
+      "summary": "仕事などで夜間や休日に子どもの養育が難しい場合等に、食事や生活の世話などを支える、子育て短期支援事業の一つです。",
+      "difference": "同じ短期支援のショートステイと、利用理由や時間帯が異なります。実施していない地域もあります。",
+      "checks": [
+        "実施の有無と時間帯",
+        "利用理由と年齢",
+        "回数・料金・申込先"
+      ],
+      "eligibility": {},
+      "sources": [
+        {
+          "id": "twilight-official",
+          "title": "子育て短期支援事業",
+          "url": "https://www.cfa.go.jp/policies/kosodateshien/jido-short",
+          "checkedAt": "2026-10-20"
+        }
+      ],
+      "jurisdiction": "national",
+      "localAvailability": "unknown",
+      "fees": "地域・施設で確認"
+    },
+    {
+      "id": "home-help",
+      "name": "子育て世帯訪問支援事業",
+      "tagline": "家事や育児を、自宅で手伝ってほしい",
+      "needs": {
+        "housework": 9,
+        "care": 6,
+        "rest": 1
+      },
+      "summary": "家事や育児に不安や負担を抱える家庭などに支援員が訪問し、話を聞きながら食事の準備、掃除、育児等を支えます。",
+      "difference": "自治体が家庭の状況や支援の必要性を確認して調整する事業。自由な家事代行や、外出中の託児を無条件に頼める制度ではありません。",
+      "checks": [
+        "自治体による利用の必要性の確認",
+        "手伝ってもらいたい作業と支援の範囲",
+        "回数・時間・料金"
+      ],
+      "eligibility": {},
+      "sources": [
+        {
+          "id": "home-help-official",
+          "title": "子育て世帯訪問支援事業",
+          "url": "https://www.cfa.go.jp/policies/kosodateshien/jido-homon",
+          "checkedAt": "2026-10-20"
+        }
+      ],
+      "jurisdiction": "national",
+      "localAvailability": "unknown",
+      "fees": "地域・施設で確認"
+    },
+    {
+      "id": "postpartum",
+      "name": "産後ケア事業",
+      "tagline": "産後の体を休め、授乳や育児を相談したい",
+      "needs": {
+        "postpartum": 9,
+        "breastfeeding": 9,
+        "rest": 1,
+        "overnight": 1
+      },
+      "summary": "基本の対象は、産後1年以内でケアを必要とする母親と赤ちゃん。助産師などが心身のケアや授乳・育児の相談を行い、宿泊・日帰り・訪問の方法があります。",
+      "difference": "子どもの預かりだけでなく、産後の母親のケアを行います。宿泊型を「ショートステイ型」と呼ぶことがあります。",
+      "checks": [
+        "利用できる月齢と方法",
+        "母親と赤ちゃんの状態に合う支援",
+        "料金・日数・予約"
+      ],
+      "eligibility": {
+        "postpartum": true
+      },
+      "sources": [
+        {
+          "id": "postpartum-official",
+          "title": "産後ケア事業ガイドライン（令和8年3月）・本文8〜11頁",
+          "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/ff38becb-bbd1-41f3-a95e-3a22ddac09d8/317bd576/20260331_policies_boshihoken_173.pdf",
+          "checkedAt": "2026-10-20"
+        }
+      ],
+      "jurisdiction": "national",
+      "localAvailability": "unknown",
+      "fees": "地域・施設で確認"
+    },
+    {
+      "id": "sickcare",
+      "name": "病児保育・病後児保育",
+      "tagline": "病気の子・回復途中の子を預かってほしい",
+      "needs": {
+        "sick": 12
+      },
+      "summary": "子どもが病気、または回復途中で、家庭での保育が難しいときの一時的な保育。対応できる症状や年齢、必要な診察・書類等は施設に確認します。",
+      "difference": "一般の一時預かりや誰でも通園は、発熱や感染症では利用できない場合があります。病児保育でも受け入れ可能とは限りません。",
+      "checks": [
+        "症状・年齢と受け入れの可否",
+        "事前登録・診察・必要書類",
+        "当日の空きと利用料金"
+      ],
+      "eligibility": {},
+      "sources": [
+        {
+          "id": "sickcare-official",
+          "title": "病児保育等の基礎資料（令和8年4月）・PDF3頁",
+          "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/e4b817c9-5282-4ccc-b0d5-ce15d7b5018c/07b4e1a1/20260401_policies_hoiku_209.pdf",
+          "checkedAt": "2026-10-20"
+        }
+      ],
+      "jurisdiction": "national",
+      "localAvailability": "unknown",
+      "fees": "地域・施設で確認"
+    },
+    {
+      "id": "singleparent",
+      "name": "ひとり親家庭等日常生活支援事業",
+      "tagline": "ひとり親家庭等で、家事や子どもの世話を頼みたい",
+      "needs": {
+        "housework": 5,
+        "care": 5,
+        "parent_ill": 5,
+        "singleparent": 6
+      },
+      "summary": "ひとり親家庭等が、病気や修学などを理由に生活援助や保育を必要とする場合の支援。家庭生活支援員による保育、食事の世話、掃除等があります。",
+      "difference": "ひとり親家庭等を対象にした事業。離婚調停中など支援が必要な人を含む場合があります。実施状況と利用理由を確認します。",
+      "checks": [
+        "対象となる家庭・利用理由",
+        "地域で実施しているか",
+        "支援内容・料金・申込手順"
+      ],
+      "eligibility": {
+        "singleparent": true
+      },
+      "sources": [
+        {
+          "id": "singleparent-official",
+          "title": "ひとり親家庭等日常生活支援事業",
+          "url": "https://www.cfa.go.jp/policies/hitori-oya/hitorioya-seikatsu-shien",
+          "checkedAt": "2026-10-20"
+        }
+      ],
+      "jurisdiction": "national",
+      "localAvailability": "unknown",
+      "fees": "地域・施設で確認"
+    },
+    {
+      "id": "visit-advice",
+      "name": "養育支援訪問事業",
+      "tagline": "育児の不安を、家庭で専門職に相談したい",
+      "needs": {
+        "advice": 8,
+        "isolation": 3
+      },
+      "summary": "育児の不安や孤立感があるなど、養育支援が必要な家庭を保健師等が訪問し、育児に関する具体的な助言や相談支援を行います。",
+      "difference": "家事を実際に手伝う訪問支援とは役割が異なります。家庭の状況を聞いたうえで、必要な支援を相談します。",
+      "checks": [
+        "現在の育児の困りごと",
+        "訪問で相談したい内容",
+        "利用や訪問調整の流れ"
+      ],
+      "eligibility": {},
+      "sources": [
+        {
+          "id": "visit-advice-official",
+          "title": "家庭支援事業・養育支援訪問",
+          "url": "https://www.cfa.go.jp/policies/katei_shien",
+          "checkedAt": "2026-10-20"
+        }
+      ],
+      "jurisdiction": "national",
+      "localAvailability": "unknown",
+      "fees": "地域・施設で確認"
+    },
+    {
+      "id": "hiroba",
+      "name": "地域子育て支援拠点（子育てひろば等）",
+      "tagline": "親子で出かけ、誰かと話したい",
+      "needs": {
+        "social": 5,
+        "isolation": 8,
+        "advice": 3
+      },
+      "summary": "乳幼児と保護者が交流し、育児の相談や情報提供を受けられる身近な場。親子で遊びに行き、職員やほかの家庭と話せます。",
+      "difference": "通常は親子で利用する場。子どもだけを預けて親が外出するサービスとは異なります。",
+      "checks": [
+        "対象年齢と開所時間",
+        "予約の要否・相談できる内容",
+        "親子で参加する活動"
+      ],
+      "eligibility": {},
+      "sources": [
+        {
+          "id": "hiroba-official",
+          "title": "地域子育て支援拠点事業",
+          "url": "https://www.cfa.go.jp/policies/kosodateshien/shien-kyoten",
+          "checkedAt": "2026-10-20"
+        }
+      ],
+      "jurisdiction": "national",
+      "localAvailability": "unknown",
+      "fees": "地域・施設で確認"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "motto-support-finder",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.mjs",
+    "start:ruri": "RURI_PRELOAD=1 node src/server.mjs",
+    "test": "node --test test/*.test.mjs",
+    "test:llm": "node scripts/check-llm.mjs",
+    "test:conversation": "node scripts/check-conversation.mjs",
+    "compare:providers": "node scripts/compare-providers.mjs",
+    "compare:ruri": "node scripts/compare-ruri.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

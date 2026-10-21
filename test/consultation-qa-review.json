@@ -1,0 +1,53 @@
+{
+  "checkedAt": "2026-10-21T02:12:33.736Z",
+  "provider": "ruri",
+  "model": [
+    "gemini-3.5-flash-lite"
+  ],
+  "scenarioCount": 2,
+  "turnCount": 14,
+  "httpFailures": 0,
+  "notFound": 4,
+  "sourceLimited": 2,
+  "issues": [
+    {
+      "scenario": "rest",
+      "turns": [
+        4,
+        5,
+        6
+      ],
+      "severity": "high",
+      "finding": "料金、申し込み、次の行動に3回続けて確認不可のみ。temporary.txt は概要で、具体的な料金・申込手順を収録していない。未収録の情報と案内できる確認行動を分けられていない。"
+    },
+    {
+      "scenario": "home",
+      "turns": [
+        5
+      ],
+      "severity": "high",
+      "finding": "一般的な市町村という語を具体的な自治体名と誤認し、直前に出典付きで説明した料金の決め方への聞き返しを遮断。"
+    },
+    {
+      "scenario": "home",
+      "turns": [
+        8
+      ],
+      "severity": "high",
+      "finding": "ありがとう。まず相談してみます。をお礼と判定できず確認不可、さらに既に聞いた相談内容を最初から質問。"
+    },
+    {
+      "scenario": "both",
+      "severity": "medium",
+      "finding": "疲れ・費用の心配への応答が制度説明に偏り、共感や次の一歩の確認が弱い。"
+    }
+  ],
+  "acceptableLimits": [
+    {
+      "scenario": "home",
+      "turn": 7,
+      "finding": "新宿区の当日の空き・個別料金は未収録として断定を回避。"
+    }
+  ],
+  "changes": "確認用スクリプトと検証記録のみ追加。回答処理はこの検証では変更していない。"
+}

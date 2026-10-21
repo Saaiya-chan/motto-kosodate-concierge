@@ -1,0 +1,81 @@
+{
+  "checkedAt": "2026-10-20T23:56:33.861Z",
+  "reviewMethod": "Manually compared generated claims against the retrieved official excerpts and matching original local source chunks. This is not an independent expert evaluation.",
+  "model": "gemini-3.5-flash-lite",
+  "cases": [
+    {
+      "id": "home-description",
+      "factualReview": {
+        "gemini": "major claims supported",
+        "ruri": "major claims supported"
+      },
+      "evidence": [
+        "home-help-006"
+      ]
+    },
+    {
+      "id": "fee-followup",
+      "factualReview": {
+        "gemini": "municipal fee-setting and income-based reductions supported; no invented fee",
+        "ruri": "municipal fee-setting and income-based reductions supported; no invented fee"
+      },
+      "evidence": [
+        "home-help-007",
+        "home-help-008"
+      ]
+    },
+    {
+      "id": "scope-not-guaranteed",
+      "factualReview": {
+        "gemini": "correctly distinguishes exceptional examples from guaranteed services",
+        "ruri": "correctly distinguishes exceptional examples from guaranteed services"
+      },
+      "evidence": [
+        "home-help-008"
+      ]
+    },
+    {
+      "id": "postpartum-period",
+      "factualReview": {
+        "gemini": "one year inclusive matches source",
+        "ruri": "one year inclusive and municipal considerations match source"
+      },
+      "citationCaveat": "Ruri cites postpartum-025 for a reply that also uses municipal considerations from retrieved postpartum-026. The latter ID should also have been cited.",
+      "evidence": [
+        "postpartum-025",
+        "postpartum-026"
+      ]
+    },
+    {
+      "id": "schemes-comparison",
+      "factualReview": {
+        "gemini": "main distinction supported, but opening says it cannot confirm before providing the distinction",
+        "ruri": "main distinction supported"
+      },
+      "evidence": [
+        "daredemo-handbook-113"
+      ]
+    },
+    {
+      "id": "missing-future-budget",
+      "factualReview": {
+        "gemini": "no invented future budget, but generic rejection instead of a direct answer",
+        "ruri": "explicitly states that requested future budget is missing"
+      },
+      "citationCaveat": "Ruri adds a brief general description of the scheme but returns no cited IDs. The budget itself is correctly not invented."
+    },
+    {
+      "id": "missing-municipal-data",
+      "factualReview": {
+        "gemini": "correctly declines unavailable municipal information",
+        "ruri": "correctly declines unavailable municipal information"
+      },
+      "note": "Both use the same local deterministic guard; not evidence of model quality."
+    }
+  ],
+  "remainingIssues": [
+    "Ruri generation can omit some needed citation IDs for supplementary statements.",
+    "Prompt instructions and current validators do not guarantee complete factual or citation correctness."
+  ],
+  "recommendation": "Ruri with keyword recall support is the faster candidate for this small corpus. Retain File Search for comparison and continue testing more diverse questions."
+}

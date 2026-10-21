@@ -1,0 +1,79 @@
+{
+  "checkedAt": "2026-10-21T02:35:37.301Z",
+  "scenario": "shortstay-fees",
+  "provider": "ruri",
+  "turns": [
+    {
+      "user": "ショートステイのお金はどのくらいかかりますか？",
+      "status": 200,
+      "elapsedMs": 1478.3106249999998,
+      "data": {
+        "facts": {
+          "needs": [],
+          "agesMonths": [],
+          "enrolled": "unknown",
+          "singleparent": "unknown",
+          "postpartumMonths": -1,
+          "time": "unknown",
+          "urgent": false
+        },
+        "question": null,
+        "results": [],
+        "consultation": "利用できそうな支援と、条件・料金・申込方法を教えてください。",
+        "scope": "national",
+        "checkedAt": "2026-10-20",
+        "urgent": false,
+        "summary": "トワイライトステイの具体的な料金や無料になるかどうかは、今回参照した資料だけでは分かりません。\n\nまず、お住まいの市区町村の公式サイトで「トワイライトステイ」を探し、問い合わせ先が載っていれば、そこに尋ねてみてください。見つからないときは、市区町村の子育て相談窓口に「トワイライトステイについて相談したい」と伝えてみてください。\n\n確認したいのは、利用時間ごとの料金、減免や追加費用です。\n\nそのまま使うなら、「トワイライトステイの利用を考えています。対象になるか、利用料金と減免、申し込み方を教えてください。」と伝えてみてください。",
+        "reply": "トワイライトステイの具体的な料金や無料になるかどうかは、今回参照した資料だけでは分かりません。\n\nまず、お住まいの市区町村の公式サイトで「トワイライトステイ」を探し、問い合わせ先が載っていれば、そこに尋ねてみてください。見つからないときは、市区町村の子育て相談窓口に「トワイライトステイについて相談したい」と伝えてみてください。\n\n確認したいのは、利用時間ごとの料金、減免や追加費用です。\n\nそのまま使うなら、「トワイライトステイの利用を考えています。対象になるか、利用料金と減免、申し込み方を教えてください。」と伝えてみてください。",
+        "replyBody": "トワイライトステイの具体的な料金や無料になるかどうかは、今回参照した資料だけでは分かりません。",
+        "replyOpening": "",
+        "replyGuidance": [
+          "まず、お住まいの市区町村の公式サイトで「トワイライトステイ」を探し、問い合わせ先が載っていれば、そこに尋ねてみてください。見つからないときは、市区町村の子育て相談窓口に「トワイライトステイについて相談したい」と伝えてみてください。",
+          "確認したいのは、利用時間ごとの料金、減免や追加費用です。",
+          "そのまま使うなら、「トワイライトステイの利用を考えています。対象になるか、利用料金と減免、申し込み方を教えてください。」と伝えてみてください。"
+        ],
+        "replyStatements": [],
+        "replySources": [],
+        "replyFollowup": null,
+        "showRecommendations": false,
+        "mode": "ruri-gemini",
+        "groundingRejected": false,
+        "citationRepairAttempted": false,
+        "model": "gemini-3.5-flash-lite",
+        "warning": null,
+        "elapsedMs": 1453.1310420000227,
+        "usage": {
+          "promptTokenCount": 4299,
+          "candidatesTokenCount": 19,
+          "totalTokenCount": 4318,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 4299
+            }
+          ],
+          "serviceTier": "standard"
+        },
+        "retrievedChunkIds": [
+          "shortstay-002",
+          "postpartum-027",
+          "shortstay-004",
+          "temporary-001",
+          "shortstay-005",
+          "postpartum-028"
+        ],
+        "timings": {
+          "retrievalMs": 21.15887499996461,
+          "queryEmbeddingMs": 20.24,
+          "readyWaitMs": 0.00120900000911206,
+          "googleMs": 1430.806166000024
+        },
+        "retrievalModel": "cl-nagoya/ruri-v3-70m",
+        "replyOptions": [
+          "相談するときの文を作って",
+          "料金の確認項目を整理して"
+        ]
+      }
+    }
+  ]
+}

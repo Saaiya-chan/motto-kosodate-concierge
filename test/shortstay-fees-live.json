@@ -1,0 +1,374 @@
+{
+  "checkedAt": "2026-10-21T02:44:54.213Z",
+  "turns": [
+    {
+      "user": "ショートステイのお金はどのくらいかかりますか？",
+      "status": 200,
+      "pass": true,
+      "data": {
+        "facts": {
+          "needs": [],
+          "agesMonths": [],
+          "enrolled": "unknown",
+          "singleparent": "unknown",
+          "postpartumMonths": -1,
+          "time": "unknown",
+          "urgent": false
+        },
+        "question": null,
+        "results": [],
+        "consultation": "利用できそうな支援と、条件・料金・申込方法を教えてください。",
+        "scope": "national",
+        "checkedAt": "2026-10-20",
+        "urgent": false,
+        "summary": "利用料って地域の実情等を踏まえて市町村で設定します。\n\n利用する地域での具体的な金額は、この資料集ではまだ確認できません。\n\nまず、お住まいの市区町村の公式サイトで「子育てショートステイ」を探し、問い合わせ先が載っていれば、そこに尋ねてみてください。見つからないときは、市区町村の子育て相談窓口に「子育てショートステイについて相談したい」と伝えてみてください。\n\n確認したいのは、1泊・1日ごとの料金と、1泊2日で請求される総額、食費・送迎費などの追加費用、減免の有無と条件です。\n\nそのまま使うなら、「子育てショートステイの利用を考えています。対象になるか、1泊2日での総額と食費などの追加費用、減免の条件、申し込み方を教えてください。」と伝えてみてください。",
+        "reply": "利用料って地域の実情等を踏まえて市町村で設定します。\n\n利用する地域での具体的な金額は、この資料集ではまだ確認できません。\n\nまず、お住まいの市区町村の公式サイトで「子育てショートステイ」を探し、問い合わせ先が載っていれば、そこに尋ねてみてください。見つからないときは、市区町村の子育て相談窓口に「子育てショートステイについて相談したい」と伝えてみてください。\n\n確認したいのは、1泊・1日ごとの料金と、1泊2日で請求される総額、食費・送迎費などの追加費用、減免の有無と条件です。\n\nそのまま使うなら、「子育てショートステイの利用を考えています。対象になるか、1泊2日での総額と食費などの追加費用、減免の条件、申し込み方を教えてください。」と伝えてみてください。",
+        "replyBody": "利用料って地域の実情等を踏まえて市町村で設定します。",
+        "replyOpening": "",
+        "replyLimit": "利用する地域での具体的な金額は、この資料集ではまだ確認できません。",
+        "replyGuidance": [
+          "まず、お住まいの市区町村の公式サイトで「子育てショートステイ」を探し、問い合わせ先が載っていれば、そこに尋ねてみてください。見つからないときは、市区町村の子育て相談窓口に「子育てショートステイについて相談したい」と伝えてみてください。",
+          "確認したいのは、1泊・1日ごとの料金と、1泊2日で請求される総額、食費・送迎費などの追加費用、減免の有無と条件です。",
+          "そのまま使うなら、「子育てショートステイの利用を考えています。対象になるか、1泊2日での総額と食費などの追加費用、減免の条件、申し込み方を教えてください。」と伝えてみてください。"
+        ],
+        "replyStatements": [
+          {
+            "text": "利用料って地域の実情等を踏まえて市町村で設定します。",
+            "evidence": [
+              {
+                "chunkId": "shortstay-faq-006",
+                "quote": "利用料については、市町村において、地域の実情等を踏まえて設定してください。"
+              }
+            ]
+          }
+        ],
+        "replySources": [
+          {
+            "id": "shortstay-faq-006",
+            "programId": "shortstay",
+            "title": "子育て短期支援事業FAQ（第3版・令和7年9月更新）（PDF 3〜4ページ）",
+            "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/8a43806e-f35e-4d12-b712-d3f9f6344c9f/a71715ca/20250911_policies_kosodateshien_jido-short_17.pdf#page=3",
+            "checkedAt": "2026-10-21",
+            "excerpt": "本事業の利用料については誰がどのように定めるのか 利用料については、市町村において、地域の実情等を踏まえて設定してください。"
+          }
+        ],
+        "replyFollowup": null,
+        "showRecommendations": false,
+        "mode": "ruri-gemini",
+        "groundingRejected": false,
+        "citationRepairAttempted": false,
+        "model": "gemini-3.5-flash-lite",
+        "warning": null,
+        "elapsedMs": 3062.9876249999998,
+        "usage": {
+          "promptTokenCount": 790,
+          "candidatesTokenCount": 209,
+          "totalTokenCount": 999,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 790
+            }
+          ],
+          "serviceTier": "standard"
+        },
+        "retrievedChunkIds": [
+          "shortstay-faq-006"
+        ],
+        "timings": {
+          "retrievalMs": 1126.0343330000005,
+          "queryEmbeddingMs": 16.92,
+          "readyWaitMs": 1107.6149580000006,
+          "googleMs": 1934.200417
+        },
+        "retrievalModel": "cl-nagoya/ruri-v3-70m",
+        "replyOptions": [
+          "相談するときの文を作って",
+          "料金の確認項目を整理して"
+        ]
+      }
+    },
+    {
+      "user": "子育てショートステイのことです。市町村が料金を決めるってこと？",
+      "status": 200,
+      "pass": true,
+      "data": {
+        "facts": {
+          "needs": [],
+          "agesMonths": [],
+          "enrolled": "unknown",
+          "singleparent": "unknown",
+          "postpartumMonths": -1,
+          "time": "unknown",
+          "urgent": false
+        },
+        "question": null,
+        "results": [],
+        "consultation": "利用できそうな支援と、条件・料金・申込方法を教えてください。",
+        "scope": "national",
+        "checkedAt": "2026-10-20",
+        "urgent": false,
+        "summary": "はい、利用にかかる料金は、それぞれの市町村が地域の実情に合わせて設定することになっています。\n\n利用する地域での具体的な金額は、この資料集ではまだ確認できません。\n\n子育てショートステイについて、先ほどの確認に加えて、料金と申し込み方をまとめて尋ねてみてください。\n\n確認したいのは、1泊・1日ごとの料金と、1泊2日で請求される総額、食費・送迎費などの追加費用、減免の有無と条件です。",
+        "reply": "はい、利用にかかる料金は、それぞれの市町村が地域の実情に合わせて設定することになっています。\n\n利用する地域での具体的な金額は、この資料集ではまだ確認できません。\n\n子育てショートステイについて、先ほどの確認に加えて、料金と申し込み方をまとめて尋ねてみてください。\n\n確認したいのは、1泊・1日ごとの料金と、1泊2日で請求される総額、食費・送迎費などの追加費用、減免の有無と条件です。",
+        "replyBody": "はい、利用にかかる料金は、それぞれの市町村が地域の実情に合わせて設定することになっています。",
+        "replyOpening": "",
+        "replyLimit": "利用する地域での具体的な金額は、この資料集ではまだ確認できません。",
+        "replyGuidance": [
+          "子育てショートステイについて、先ほどの確認に加えて、料金と申し込み方をまとめて尋ねてみてください。",
+          "確認したいのは、1泊・1日ごとの料金と、1泊2日で請求される総額、食費・送迎費などの追加費用、減免の有無と条件です。"
+        ],
+        "replyStatements": [
+          {
+            "text": "はい、利用にかかる料金は、それぞれの市町村が地域の実情に合わせて設定することになっています。",
+            "evidence": [
+              {
+                "chunkId": "shortstay-faq-006",
+                "quote": "利用料については、市町村において、地域の実情等を踏まえて設定してください。"
+              }
+            ]
+          }
+        ],
+        "replySources": [
+          {
+            "id": "shortstay-faq-006",
+            "programId": "shortstay",
+            "title": "子育て短期支援事業FAQ（第3版・令和7年9月更新）（PDF 3〜4ページ）",
+            "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/8a43806e-f35e-4d12-b712-d3f9f6344c9f/a71715ca/20250911_policies_kosodateshien_jido-short_17.pdf#page=3",
+            "checkedAt": "2026-10-21",
+            "excerpt": "本事業の利用料については誰がどのように定めるのか 利用料については、市町村において、地域の実情等を踏まえて設定してください。"
+          }
+        ],
+        "replyFollowup": null,
+        "showRecommendations": false,
+        "mode": "ruri-gemini",
+        "groundingRejected": false,
+        "citationRepairAttempted": false,
+        "model": "gemini-3.5-flash-lite",
+        "warning": null,
+        "elapsedMs": 1911.3744159999997,
+        "usage": {
+          "promptTokenCount": 999,
+          "candidatesTokenCount": 107,
+          "totalTokenCount": 1422,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 999
+            }
+          ],
+          "thoughtsTokenCount": 316,
+          "serviceTier": "standard"
+        },
+        "retrievedChunkIds": [
+          "shortstay-faq-006"
+        ],
+        "timings": {
+          "retrievalMs": 19.85558299999957,
+          "queryEmbeddingMs": 18.66,
+          "readyWaitMs": 0.002583000000413449,
+          "googleMs": 1889.8539579999997
+        },
+        "retrievalModel": "cl-nagoya/ruri-v3-70m",
+        "replyOptions": [
+          "相談するときの文を作って",
+          "料金の確認項目を整理して"
+        ]
+      }
+    },
+    {
+      "user": "1泊2日で使うとき、何のお金を確認すればいい？",
+      "status": 200,
+      "pass": true,
+      "data": {
+        "facts": {
+          "needs": [],
+          "agesMonths": [],
+          "enrolled": "unknown",
+          "singleparent": "unknown",
+          "postpartumMonths": -1,
+          "time": "unknown",
+          "urgent": false
+        },
+        "question": null,
+        "results": [],
+        "consultation": "利用できそうな支援と、条件・料金・申込方法を教えてください。",
+        "scope": "national",
+        "checkedAt": "2026-10-20",
+        "urgent": false,
+        "summary": "問い合わせるときは、次の項目を確認してみてください。\n\n利用する地域での具体的な金額は、この資料集ではまだ確認できません。\n\n子育てショートステイについて、先ほどの確認に加えて、料金と申し込み方をまとめて尋ねてみてください。\n\n確認したいのは、1泊・1日ごとの料金と、1泊2日で請求される総額、食費・送迎費などの追加費用、減免の有無と条件、対象条件、申込方法、予約に必要なものです。\n\nそのまま使うなら、「子育てショートステイの利用を考えています。対象になるか、1泊2日での総額と食費などの追加費用、減免の条件、申し込み方を教えてください。」と伝えてみてください。",
+        "reply": "問い合わせるときは、次の項目を確認してみてください。\n\n利用する地域での具体的な金額は、この資料集ではまだ確認できません。\n\n子育てショートステイについて、先ほどの確認に加えて、料金と申し込み方をまとめて尋ねてみてください。\n\n確認したいのは、1泊・1日ごとの料金と、1泊2日で請求される総額、食費・送迎費などの追加費用、減免の有無と条件、対象条件、申込方法、予約に必要なものです。\n\nそのまま使うなら、「子育てショートステイの利用を考えています。対象になるか、1泊2日での総額と食費などの追加費用、減免の条件、申し込み方を教えてください。」と伝えてみてください。",
+        "replyBody": "問い合わせるときは、次の項目を確認してみてください。",
+        "replyOpening": "",
+        "replyLimit": "利用する地域での具体的な金額は、この資料集ではまだ確認できません。",
+        "replyGuidance": [
+          "子育てショートステイについて、先ほどの確認に加えて、料金と申し込み方をまとめて尋ねてみてください。",
+          "確認したいのは、1泊・1日ごとの料金と、1泊2日で請求される総額、食費・送迎費などの追加費用、減免の有無と条件、対象条件、申込方法、予約に必要なものです。",
+          "そのまま使うなら、「子育てショートステイの利用を考えています。対象になるか、1泊2日での総額と食費などの追加費用、減免の条件、申し込み方を教えてください。」と伝えてみてください。"
+        ],
+        "replyStatements": [],
+        "replySources": [],
+        "replyFollowup": null,
+        "showRecommendations": false,
+        "mode": "conversation",
+        "model": null,
+        "elapsedMs": 0.5845420000005106,
+        "timings": {
+          "retrievalMs": 0,
+          "googleMs": 0
+        },
+        "replyOptions": [
+          "相談するときの文を作って",
+          "料金の確認項目を整理して"
+        ]
+      }
+    },
+    {
+      "user": "相談するときの文を作って",
+      "status": 200,
+      "pass": true,
+      "data": {
+        "facts": {
+          "needs": [],
+          "agesMonths": [],
+          "enrolled": "unknown",
+          "singleparent": "unknown",
+          "postpartumMonths": -1,
+          "time": "unknown",
+          "urgent": false
+        },
+        "question": null,
+        "results": [],
+        "consultation": "利用できそうな支援と、条件・料金・申込方法を教えてください。",
+        "scope": "national",
+        "checkedAt": "2026-10-20",
+        "urgent": false,
+        "summary": "相談するときの言い方を、一緒に整理しましょう。\n\nそのまま使うなら、「子育てショートステイの利用を考えています。対象になるか、1泊2日での総額と食費などの追加費用、減免の条件、申し込み方を教えてください。」と伝えてみてください。",
+        "reply": "相談するときの言い方を、一緒に整理しましょう。\n\nそのまま使うなら、「子育てショートステイの利用を考えています。対象になるか、1泊2日での総額と食費などの追加費用、減免の条件、申し込み方を教えてください。」と伝えてみてください。",
+        "replyBody": "相談するときの言い方を、一緒に整理しましょう。",
+        "replyOpening": "",
+        "replyGuidance": [
+          "そのまま使うなら、「子育てショートステイの利用を考えています。対象になるか、1泊2日での総額と食費などの追加費用、減免の条件、申し込み方を教えてください。」と伝えてみてください。"
+        ],
+        "replyStatements": [],
+        "replySources": [],
+        "replyFollowup": null,
+        "showRecommendations": false,
+        "mode": "conversation",
+        "model": null,
+        "elapsedMs": 0.8804999999993015,
+        "timings": {
+          "retrievalMs": 0,
+          "googleMs": 0
+        },
+        "replyOptions": [
+          "相談するときの文を作って",
+          "料金の確認項目を整理して"
+        ]
+      }
+    },
+    {
+      "user": "ありがとう。まず相談してみます。",
+      "status": 200,
+      "pass": true,
+      "data": {
+        "facts": {
+          "needs": [
+            "advice"
+          ],
+          "agesMonths": [],
+          "enrolled": "unknown",
+          "singleparent": "unknown",
+          "postpartumMonths": -1,
+          "time": "unknown",
+          "urgent": false
+        },
+        "question": null,
+        "results": [
+          {
+            "id": "visit-advice",
+            "name": "養育支援訪問事業",
+            "tagline": "育児の不安を、家庭で専門職に相談したい",
+            "needs": {
+              "advice": 8,
+              "isolation": 3
+            },
+            "summary": "育児の不安や孤立感があるなど、養育支援が必要な家庭を保健師等が訪問し、育児に関する具体的な助言や相談支援を行います。",
+            "difference": "家事を実際に手伝う訪問支援とは役割が異なります。家庭の状況を聞いたうえで、必要な支援を相談します。",
+            "checks": [
+              "現在の育児の困りごと",
+              "訪問で相談したい内容",
+              "利用や訪問調整の流れ"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "visit-advice-official",
+                "title": "家庭支援事業・養育支援訪問",
+                "url": "https://www.cfa.go.jp/policies/katei_shien",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 8.5,
+            "why": [
+              "育児の相談"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "hiroba",
+            "name": "地域子育て支援拠点（子育てひろば等）",
+            "tagline": "親子で出かけ、誰かと話したい",
+            "needs": {
+              "social": 5,
+              "isolation": 8,
+              "advice": 3
+            },
+            "summary": "乳幼児と保護者が交流し、育児の相談や情報提供を受けられる身近な場。親子で遊びに行き、職員やほかの家庭と話せます。",
+            "difference": "通常は親子で利用する場。子どもだけを預けて親が外出するサービスとは異なります。",
+            "checks": [
+              "対象年齢と開所時間",
+              "予約の要否・相談できる内容",
+              "親子で参加する活動"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "hiroba-official",
+                "title": "地域子育て支援拠点事業",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/shien-kyoten",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 3.58,
+            "why": [
+              "育児の相談"
+            ],
+            "warnings": []
+          }
+        ],
+        "consultation": "育児の相談ということで困っています。利用できそうな支援と、条件・料金・申込方法を教えてください。",
+        "scope": "national",
+        "checkedAt": "2026-10-20",
+        "urgent": false,
+        "summary": "どういたしまして。相談の準備で迷うことがあれば、また一緒に整理しましょう。",
+        "reply": "どういたしまして。相談の準備で迷うことがあれば、また一緒に整理しましょう。",
+        "replySources": [],
+        "showRecommendations": false,
+        "mode": "conversation",
+        "model": null,
+        "elapsedMs": 1.3647079999991547,
+        "timings": {
+          "retrievalMs": 0,
+          "googleMs": 0
+        },
+        "replyOptions": []
+      }
+    }
+  ]
+}

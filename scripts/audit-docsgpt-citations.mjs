@@ -1,0 +1,6 @@
+import fs from 'node:fs';
+const input='evaluation/docsgpt/results/citations-fixed.json';const d=JSON.parse(fs.readFileSync(input));const lines=[];const table=[];
+for(const s of d.scenarios)for(const t of s.turns){lines.push(`\n${s.id} / ${t.turn}\n質問: ${t.question}\n回答: ${t.data.reply}\nHTTP ${t.status}; ${t.elapsedMs}ms; partial=${!!t.data.citationReview?.partial}\n`);for(const st of t.data.citationReview?.statements||[]){lines.push(`${st.kind}: ${st.text}`);for(const e of st.evidence){const doc=t.data.replySources.find(p=>p.id===e.sourceId);lines.push(`資料: ${doc?.title}\n公式URL: ${doc?.url}\n引用原文: ${e.quote}\n`);}}table.push({scenario:s.id,turn:t.turn,status:t.status,elapsedMs:t.elapsedMs,sourceTitles:t.data.replySources?.map(s=>s.title),partial:!!t.data.citationReview?.partial,reviewed:t.data.citationReview?.checked,...t.literalChecks});}
+fs.writeFileSync('evaluation/docsgpt/results/citations-audit.txt',lines.join('\n'));
+fs.writeFileSync('evaluation/docsgpt/results/citations-checks.json',JSON.stringify(table,null,2));
+console.log(table.map(t=>`${t.scenario} #${t.turn}: ${t.status}, ${t.elapsedMs}ms, partial=${t.partial}, ${t.sourceTitles?.join(' / ')||'制度の事実説明なし'}`).join('\n'));

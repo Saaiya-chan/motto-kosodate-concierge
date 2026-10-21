@@ -1,0 +1,1487 @@
+{
+  "checkedAt": "2026-10-21T02:26:14.135Z",
+  "scenario": "rest",
+  "provider": "ruri",
+  "turns": [
+    {
+      "user": "2歳の子がいます。最近ずっと一人で世話していて疲れました。昼間に少し休みたいです。",
+      "status": 200,
+      "elapsedMs": 2999.901292,
+      "pass": true,
+      "data": {
+        "facts": {
+          "needs": [
+            "rest",
+            "day"
+          ],
+          "agesMonths": [
+            24
+          ],
+          "enrolled": "unknown",
+          "singleparent": "unknown",
+          "postpartumMonths": -1,
+          "time": "day",
+          "urgent": false
+        },
+        "question": null,
+        "results": [
+          {
+            "id": "temporary",
+            "name": "一時預かり",
+            "tagline": "日中、数時間から子どもを預かってほしい",
+            "needs": {
+              "day": 5,
+              "rest": 3,
+              "errand": 5,
+              "parent_ill": 2
+            },
+            "summary": "主に乳幼児を保育所などで日中、一時的に預かる仕組み。用事や仕事のほか、育児疲れを軽くするための利用もあります。",
+            "difference": "保護者の一時的な預かりの必要に応える支援です。誰でも通園とは、目的や対象条件、申込枠が異なります。",
+            "checks": [
+              "対象年齢と利用理由",
+              "希望する時間と空き",
+              "利用料金と事前登録"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "temporary-official",
+                "title": "子ども・子育て支援新制度",
+                "url": "https://www.cfa.go.jp/policies/kokoseido/sukusuku",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 8.29,
+            "why": [
+              "少し休みたい",
+              "日中の預かり"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "daredemo",
+            "name": "こども誰でも通園制度",
+            "tagline": "子どもの通園経験をつくり、親も少し休みたい",
+            "needs": {
+              "day": 3,
+              "rest": 2,
+              "social": 6
+            },
+            "summary": "保育所等に通っていない生後6か月から3歳未満の子が、家族以外の人と関わり、育つ機会をつくる制度。親の就労は問わず、月10時間が基本です。",
+            "difference": "子どもの育ちと家庭への支援が目的。一時預かりと利用場面は重なりますが、対象年齢や月の利用枠に条件があります。",
+            "checks": [
+              "保育所等に通っていないかを含む対象要件",
+              "実際に利用できる月の時間枠",
+              "事前面談・予約・料金"
+            ],
+            "eligibility": {
+              "minMonths": 6,
+              "maxMonthsExclusive": 36,
+              "unenrolled": true
+            },
+            "sources": [
+              {
+                "id": "daredemo-official",
+                "title": "こども誰でも通園制度・公式利用案内",
+                "url": "https://www.daretsu.cfa.go.jp/",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 5.87,
+            "why": [
+              "少し休みたい",
+              "日中の預かり"
+            ],
+            "warnings": [
+              "保育所等への通園状況がまだ分かりません。"
+            ]
+          },
+          {
+            "id": "famisapo",
+            "name": "ファミリー・サポート・センター",
+            "tagline": "送迎や短い時間の預かりをお願いしたい",
+            "needs": {
+              "pickup": 8,
+              "day": 2,
+              "errand": 3,
+              "afterschool": 2
+            },
+            "summary": "子育ての援助を頼みたい会員と、援助する会員を地域でつなぐ相互援助の仕組み。園や学童への送迎、短時間の預かりなどを調整します。",
+            "difference": "施設の利用枠を予約する仕組みとは異なり、援助する会員との調整が必要です。依頼すれば必ず引き受け手が見つかるわけではありません。",
+            "checks": [
+              "会員登録と顔合わせ",
+              "送迎経路・預かり場所・援助内容",
+              "対象年齢・謝礼・引き受け手の有無"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "famisapo-official",
+                "title": "ファミリー・サポート・センター",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/family-support",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 2.44,
+            "why": [
+              "日中の預かり"
+            ],
+            "warnings": []
+          }
+        ],
+        "consultation": "子どもは2歳です。少し休みたい、日中の預かりということで困っています。利用できそうな支援と、条件・料金・申込方法を教えてください。",
+        "scope": "national",
+        "checkedAt": "2026-10-20",
+        "urgent": false,
+        "summary": "少し休める時間がほしいのですね。\n\n今回は資料の内容に沿った確かな回答をまとめられませんでした。\n\nまず、お住まいの市区町村の公式サイトで「こども誰でも通園制度」を探し、問い合わせ先が載っていれば、そこに尋ねてみてください。見つからないときは、市区町村の子育て相談窓口に「こども誰でも通園制度について相談したい」と伝えてみてください。\n\n確認したいのは、対象条件、申込方法、予約に必要なものです。\n\nそのまま使うなら、「2歳の子どもがいます。少し休める時間を作りたいです。こども誰でも通園制度の利用を考えています。対象になるか、利用料金と減免、申し込み方を教えてください。」と伝えてみてください。",
+        "reply": "少し休める時間がほしいのですね。\n\n今回は資料の内容に沿った確かな回答をまとめられませんでした。\n\nまず、お住まいの市区町村の公式サイトで「こども誰でも通園制度」を探し、問い合わせ先が載っていれば、そこに尋ねてみてください。見つからないときは、市区町村の子育て相談窓口に「こども誰でも通園制度について相談したい」と伝えてみてください。\n\n確認したいのは、対象条件、申込方法、予約に必要なものです。\n\nそのまま使うなら、「2歳の子どもがいます。少し休める時間を作りたいです。こども誰でも通園制度の利用を考えています。対象になるか、利用料金と減免、申し込み方を教えてください。」と伝えてみてください。",
+        "replyBody": "今回は資料の内容に沿った確かな回答をまとめられませんでした。",
+        "replyOpening": "少し休める時間がほしいのですね。",
+        "replyGuidance": [
+          "まず、お住まいの市区町村の公式サイトで「こども誰でも通園制度」を探し、問い合わせ先が載っていれば、そこに尋ねてみてください。見つからないときは、市区町村の子育て相談窓口に「こども誰でも通園制度について相談したい」と伝えてみてください。",
+          "確認したいのは、対象条件、申込方法、予約に必要なものです。",
+          "そのまま使うなら、「2歳の子どもがいます。少し休める時間を作りたいです。こども誰でも通園制度の利用を考えています。対象になるか、利用料金と減免、申し込み方を教えてください。」と伝えてみてください。"
+        ],
+        "replyStatements": [],
+        "replySources": [],
+        "replyFollowup": null,
+        "showRecommendations": false,
+        "mode": "source-limited",
+        "groundingRejected": true,
+        "model": "gemini-3.5-flash-lite",
+        "warning": null,
+        "elapsedMs": 2970.6234590000004,
+        "usage": {
+          "promptTokenCount": 3458,
+          "candidatesTokenCount": 103,
+          "totalTokenCount": 4081,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 3458
+            }
+          ],
+          "thoughtsTokenCount": 520,
+          "serviceTier": "standard"
+        },
+        "retrievedChunkIds": [
+          "daredemo-handbook-074",
+          "daredemo-handbook-071",
+          "daredemo-handbook-032",
+          "postpartum-029",
+          "temporary-005",
+          "daredemo-handbook-028"
+        ],
+        "timings": {
+          "retrievalMs": 274.7461250000006,
+          "queryEmbeddingMs": 16.61,
+          "readyWaitMs": 255.3733340000008,
+          "googleMs": 2692.209833
+        },
+        "retrievalModel": "cl-nagoya/ruri-v3-70m",
+        "replyOptions": [
+          "相談するときの文を作って",
+          "料金の確認項目を整理して"
+        ]
+      }
+    },
+    {
+      "user": "まだ保育園には通っていません。仕事をしていなくても、休むために預けていいんでしょうか？",
+      "status": 200,
+      "elapsedMs": 3604.989666,
+      "pass": true,
+      "data": {
+        "facts": {
+          "needs": [
+            "rest",
+            "day"
+          ],
+          "agesMonths": [
+            24
+          ],
+          "enrolled": "unknown",
+          "singleparent": "unknown",
+          "postpartumMonths": -1,
+          "time": "day",
+          "urgent": false
+        },
+        "question": null,
+        "results": [
+          {
+            "id": "temporary",
+            "name": "一時預かり",
+            "tagline": "日中、数時間から子どもを預かってほしい",
+            "needs": {
+              "day": 5,
+              "rest": 3,
+              "errand": 5,
+              "parent_ill": 2
+            },
+            "summary": "主に乳幼児を保育所などで日中、一時的に預かる仕組み。用事や仕事のほか、育児疲れを軽くするための利用もあります。",
+            "difference": "保護者の一時的な預かりの必要に応える支援です。誰でも通園とは、目的や対象条件、申込枠が異なります。",
+            "checks": [
+              "対象年齢と利用理由",
+              "希望する時間と空き",
+              "利用料金と事前登録"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "temporary-official",
+                "title": "子ども・子育て支援新制度",
+                "url": "https://www.cfa.go.jp/policies/kokoseido/sukusuku",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 8.29,
+            "why": [
+              "少し休みたい",
+              "日中の預かり"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "daredemo",
+            "name": "こども誰でも通園制度",
+            "tagline": "子どもの通園経験をつくり、親も少し休みたい",
+            "needs": {
+              "day": 3,
+              "rest": 2,
+              "social": 6
+            },
+            "summary": "保育所等に通っていない生後6か月から3歳未満の子が、家族以外の人と関わり、育つ機会をつくる制度。親の就労は問わず、月10時間が基本です。",
+            "difference": "子どもの育ちと家庭への支援が目的。一時預かりと利用場面は重なりますが、対象年齢や月の利用枠に条件があります。",
+            "checks": [
+              "保育所等に通っていないかを含む対象要件",
+              "実際に利用できる月の時間枠",
+              "事前面談・予約・料金"
+            ],
+            "eligibility": {
+              "minMonths": 6,
+              "maxMonthsExclusive": 36,
+              "unenrolled": true
+            },
+            "sources": [
+              {
+                "id": "daredemo-official",
+                "title": "こども誰でも通園制度・公式利用案内",
+                "url": "https://www.daretsu.cfa.go.jp/",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 5.87,
+            "why": [
+              "少し休みたい",
+              "日中の預かり"
+            ],
+            "warnings": [
+              "保育所等への通園状況がまだ分かりません。"
+            ]
+          },
+          {
+            "id": "famisapo",
+            "name": "ファミリー・サポート・センター",
+            "tagline": "送迎や短い時間の預かりをお願いしたい",
+            "needs": {
+              "pickup": 8,
+              "day": 2,
+              "errand": 3,
+              "afterschool": 2
+            },
+            "summary": "子育ての援助を頼みたい会員と、援助する会員を地域でつなぐ相互援助の仕組み。園や学童への送迎、短時間の預かりなどを調整します。",
+            "difference": "施設の利用枠を予約する仕組みとは異なり、援助する会員との調整が必要です。依頼すれば必ず引き受け手が見つかるわけではありません。",
+            "checks": [
+              "会員登録と顔合わせ",
+              "送迎経路・預かり場所・援助内容",
+              "対象年齢・謝礼・引き受け手の有無"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "famisapo-official",
+                "title": "ファミリー・サポート・センター",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/family-support",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 2.44,
+            "why": [
+              "日中の預かり"
+            ],
+            "warnings": []
+          }
+        ],
+        "consultation": "子どもは2歳です。少し休みたい、日中の預かりということで困っています。利用できそうな支援と、条件・料金・申込方法を教えてください。",
+        "scope": "national",
+        "checkedAt": "2026-10-20",
+        "urgent": false,
+        "summary": "保育所等に通っていない0歳6か月から満3歳未満のお子さまであれば、仕事をしていない場合でもこども誰でも通園制度の対象となります。\nただし保護者の都合のみで預ける場合は制度本来の趣旨に沿わないため、一時預かり事業の利用が考えられます。",
+        "reply": "保育所等に通っていない0歳6か月から満3歳未満のお子さまであれば、仕事をしていない場合でもこども誰でも通園制度の対象となります。\nただし保護者の都合のみで預ける場合は制度本来の趣旨に沿わないため、一時預かり事業の利用が考えられます。",
+        "replyBody": "保育所等に通っていない0歳6か月から満3歳未満のお子さまであれば、仕事をしていない場合でもこども誰でも通園制度の対象となります。\nただし保護者の都合のみで預ける場合は制度本来の趣旨に沿わないため、一時預かり事業の利用が考えられます。",
+        "replyOpening": "",
+        "replyGuidance": [],
+        "replyStatements": [
+          {
+            "text": "保育所等に通っていない0歳6か月から満3歳未満のお子さまであれば、仕事をしていない場合でもこども誰でも通園制度の対象となります。",
+            "evidence": [
+              {
+                "chunkId": "daredemo-handbook-020",
+                "quote": "０歳６か月から満３歳未満（3 歳の誕生日の前々日までのことを指す。以下同じ。）で保育所等に通っていないこども"
+              }
+            ]
+          },
+          {
+            "text": "ただし保護者の都合のみで預ける場合は制度本来の趣旨に沿わないため、一時預かり事業の利用が考えられます。",
+            "evidence": [
+              {
+                "chunkId": "daredemo-handbook-032",
+                "quote": "保護者の都合のみで一時的に用事先近辺の事業所に預ける等の利用は、制度本来の趣旨である「こどもの育ち」に沿った利用方法とは言えません。このような場合には、まずは、一時預かり事業を利用することが考えられます。"
+              }
+            ]
+          }
+        ],
+        "replySources": [
+          {
+            "id": "daredemo-handbook-020",
+            "programId": "daredemo",
+            "title": "こども誰でも通園制度の実施に関する手引（PDF 8〜9ページ）",
+            "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0afde15f-8760-4477-806a-ed72b6916696/60fe9485/20260330_policies_hoiku_daredemo-tsuen_67.pdf#page=8",
+            "checkedAt": "2026-10-20",
+            "excerpt": "たな通園給付として、子ども・子育て支援法上に新たに「乳児等のため\n の支援給付」が創設されることとなりました。\n\n\n 【利用対象】\n ○ ０歳６か月から満３歳未満（3 歳の誕生日の前々日までのことを指す。以下同じ。\n ）で保育所等\n に通っていないこども（※１）を対象とし、保護者の居住地の市町村が支給認定を行います。な\nお、特別な配慮が必要なこどもを受け入れる場合の加算を行う仕組み（※２）があります。\n○ 月一定時間（10 時間（※３）\n ）までの利用可能枠の中で利用が可能となります。\n ※１ 認可外保育施設に通っている０歳６か月から満３歳未満のこどもは対象となり、企業主導\n 型保育施設に通っている０歳６か月から満３歳未満のこどもは対象外となります。\n ※２ 障害のあるこども、医療的ケアを必要とするこども、若しくは要支援家庭のこども（要支\n 援家庭のこどもとは、例えば、こども家庭センターによるサポートプランが作成されている、\n 若しくは作成の対象となっているなど、関係機関が連携して支援を行う必要があると市町村\n が認めた家庭のこどもをいう。\n ）を受け入れる場合には、別に定める加算が適用されます。な\n お、障害のあるこどもとは、市町村が認める障害児とし、身体障害者手帳等の交付の有無は\n 問いません。医師による診断書や巡回支援専門員等の障害に関する専門的知見を有する者に\n よる意見提出など、障害の事実が把握可能な資料をもって確認しても差し支えありません。\n また、要支援家庭のこどもがこども誰でも通園制度を利用する際に事業所が利用料の負担\n 軽減を行った場合、事業所に対し、給付費が加算されます。\n ※３ 利用可能時間については、子ども・子育て支援法に基づく給付の上限として定められてい\n ます。ただし、各市町村の判断において、給付の対象となる「月 10 時間」を超えてこども誰\n でも通園制度を実施する場合があります。\n なお、令和８・９年度については、経過措置として、月 10 時間での実施が難しい市町村\n は、条例で利用可能時間を３時間～10 時間未満の範囲内で設定することができます。\n\n\n【事業者】\n○ こども誰でも通園制度を行おうとする事業者については、市町村が認可・確認を行います。\n○ 事業を実施する主な場所としては、以下の施設が想定されます。\n 保育所、認定こども園、小規模保育事業所、事業所内保育事業所、家庭的保育事業所、幼稚園、\n 地域子育て支援拠点、企業主導型保育施設、認可外保育施設（「認可外保育施設指導監督基準」\n を満たさない施設を除く。\n ）、児童発達支援センター等\n○ 多様な主体の参画を認める観点から対象施設は上記に限定をせず、乳児等通園支援事業の設備\n 及び運営に関する基準（令和７年内"
+          },
+          {
+            "id": "daredemo-handbook-032",
+            "programId": "daredemo",
+            "title": "こども誰でも通園制度の実施に関する手引（PDF 15〜16ページ）",
+            "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0afde15f-8760-4477-806a-ed72b6916696/60fe9485/20260330_policies_hoiku_daredemo-tsuen_67.pdf#page=15",
+            "checkedAt": "2026-10-20",
+            "excerpt": "ズに合わせた柔軟な利用が可能となります。\n○ 例えば、遊びの環境の特徴が違う複数の事業所を利用することを通じ、こどものお気に入りの\n 場所が増えていくことにつながったり、多くの保育者やこどもと触れ合うことや、色々な遊びを\n 楽しむ機会となったりすることが考えられます。\n○ こどもに合う事業所を見つけるまでの利用や、里帰り出産におけるきょうだい児の利用等につ\n いて、柔軟利用を活用することが考えられます。\n○ 一方で、保護者の都合のみで一時的に用事先近辺の事業所に預ける等の利用は、制度本来の趣\n 旨である「こどもの育ち」に沿った利用方法とは言えません。このような場合には、まずは、一\n時預かり事業を利用することが考えられます。\n\n\n（利用パターンの組み合わせ）\n○ こども誰でも通園制度の利用に当たって、こどもの育ちの観点から、特定の事業所と関係性を\n 構築しながら継続的な利用を図りつつ、その際に利用パターンを組み合わせて運用していくこと\n も考えられます。\n ・ こどもが慣れたり、こどもに合う事業所"
+          }
+        ],
+        "replyFollowup": null,
+        "showRecommendations": false,
+        "mode": "ruri-gemini",
+        "groundingRejected": false,
+        "model": "gemini-3.5-flash-lite",
+        "warning": null,
+        "elapsedMs": 3601.036209,
+        "usage": {
+          "promptTokenCount": 4851,
+          "candidatesTokenCount": 278,
+          "totalTokenCount": 5933,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 4851
+            }
+          ],
+          "thoughtsTokenCount": 804,
+          "serviceTier": "standard"
+        },
+        "retrievedChunkIds": [
+          "daredemo-handbook-032",
+          "daredemo-handbook-071",
+          "daredemo-002",
+          "daredemo-handbook-020",
+          "daredemo-handbook-033",
+          "daredemo-001"
+        ],
+        "timings": {
+          "retrievalMs": 22.04504199999974,
+          "queryEmbeddingMs": 20.37,
+          "readyWaitMs": 0.0025829999995039543,
+          "googleMs": 3576.077792
+        },
+        "retrievalModel": "cl-nagoya/ruri-v3-70m"
+      }
+    },
+    {
+      "user": "その「必要な保護」って、簡単にいうと何をしてもらうことですか？",
+      "status": 200,
+      "elapsedMs": 2279.232749999999,
+      "pass": true,
+      "data": {
+        "facts": {
+          "needs": [
+            "rest",
+            "day"
+          ],
+          "agesMonths": [
+            24
+          ],
+          "enrolled": "no",
+          "singleparent": "unknown",
+          "postpartumMonths": -1,
+          "time": "day",
+          "urgent": false
+        },
+        "question": null,
+        "results": [
+          {
+            "id": "temporary",
+            "name": "一時預かり",
+            "tagline": "日中、数時間から子どもを預かってほしい",
+            "needs": {
+              "day": 5,
+              "rest": 3,
+              "errand": 5,
+              "parent_ill": 2
+            },
+            "summary": "主に乳幼児を保育所などで日中、一時的に預かる仕組み。用事や仕事のほか、育児疲れを軽くするための利用もあります。",
+            "difference": "保護者の一時的な預かりの必要に応える支援です。誰でも通園とは、目的や対象条件、申込枠が異なります。",
+            "checks": [
+              "対象年齢と利用理由",
+              "希望する時間と空き",
+              "利用料金と事前登録"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "temporary-official",
+                "title": "子ども・子育て支援新制度",
+                "url": "https://www.cfa.go.jp/policies/kokoseido/sukusuku",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 8.77,
+            "why": [
+              "少し休みたい",
+              "日中の預かり"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "daredemo",
+            "name": "こども誰でも通園制度",
+            "tagline": "子どもの通園経験をつくり、親も少し休みたい",
+            "needs": {
+              "day": 3,
+              "rest": 2,
+              "social": 6
+            },
+            "summary": "保育所等に通っていない生後6か月から3歳未満の子が、家族以外の人と関わり、育つ機会をつくる制度。親の就労は問わず、月10時間が基本です。",
+            "difference": "子どもの育ちと家庭への支援が目的。一時預かりと利用場面は重なりますが、対象年齢や月の利用枠に条件があります。",
+            "checks": [
+              "保育所等に通っていないかを含む対象要件",
+              "実際に利用できる月の時間枠",
+              "事前面談・予約・料金"
+            ],
+            "eligibility": {
+              "minMonths": 6,
+              "maxMonthsExclusive": 36,
+              "unenrolled": true
+            },
+            "sources": [
+              {
+                "id": "daredemo-official",
+                "title": "こども誰でも通園制度・公式利用案内",
+                "url": "https://www.daretsu.cfa.go.jp/",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 6,
+            "why": [
+              "少し休みたい",
+              "日中の預かり"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "famisapo",
+            "name": "ファミリー・サポート・センター",
+            "tagline": "送迎や短い時間の預かりをお願いしたい",
+            "needs": {
+              "pickup": 8,
+              "day": 2,
+              "errand": 3,
+              "afterschool": 2
+            },
+            "summary": "子育ての援助を頼みたい会員と、援助する会員を地域でつなぐ相互援助の仕組み。園や学童への送迎、短時間の預かりなどを調整します。",
+            "difference": "施設の利用枠を予約する仕組みとは異なり、援助する会員との調整が必要です。依頼すれば必ず引き受け手が見つかるわけではありません。",
+            "checks": [
+              "会員登録と顔合わせ",
+              "送迎経路・預かり場所・援助内容",
+              "対象年齢・謝礼・引き受け手の有無"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "famisapo-official",
+                "title": "ファミリー・サポート・センター",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/family-support",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 2.62,
+            "why": [
+              "日中の預かり"
+            ],
+            "warnings": []
+          }
+        ],
+        "consultation": "子どもは2歳です。少し休みたい、日中の預かりということで困っています。利用できそうな支援と、条件・料金・申込方法を教えてください。",
+        "scope": "national",
+        "checkedAt": "2026-10-20",
+        "urgent": false,
+        "summary": "必要な保護とは、子どもを預かって世話をしてもらうことです。",
+        "reply": "必要な保護とは、子どもを預かって世話をしてもらうことです。",
+        "replyBody": "必要な保護とは、子どもを預かって世話をしてもらうことです。",
+        "replyOpening": "",
+        "replyGuidance": [],
+        "replyStatements": [
+          {
+            "text": "必要な保護とは、子どもを預かって世話をしてもらうことです。",
+            "evidence": [
+              {
+                "chunkId": "temporary-002",
+                "quote": "乳幼児を一時的に預かり、必要な保護を行う事業"
+              }
+            ]
+          }
+        ],
+        "replySources": [
+          {
+            "id": "temporary-002",
+            "programId": "temporary",
+            "title": "一時預かり・国の制度説明",
+            "url": "https://kokasen.cfa.go.jp/support-programs",
+            "checkedAt": "2026-10-20",
+            "excerpt": "等や里親等への委託により、レスパイトケア等、必要な支援を行う事業\n\n事業内容・実施要綱・FAQ・自治体実施事例 など\n\n事例集（令和７年３月、株式会社日本総合研究所）\n\n実施要綱（令和８年４月８日）\n\n交付要綱（令和８年４月８日）\n\n令和８年度予算\n\n子育てに不安や孤立感等を抱える家庭や養育支援が必要となっている家庭に対して、具体的な養育に関する指導助言等を訪問により実施する事業\n\n事業の概要\n\n実施要綱（令和６年３月28日）\n\nガイドライン\n\n交付要綱（令和８年４月８日）\n\n令和８年度予算（p31）\n\n家庭において保育を受けることが一時的に困難となった場合や保護者の育児負担の軽減が必要な場合に、主として昼間に、認定こども園、幼稚園、保育所、地域子育て支援拠点その他の場所において、乳幼児を一時的に預かり、必要な保護を行う事業\n\n実施要綱（令和７年３月31日）\n\n交付要綱（令和８年４月８日）\n\n家事・育児等に対して不安を抱えた子育て家庭等を訪問し、家庭が抱える不安や悩みを傾聴するとともに、家事・育児等の支援を行う事業\n\n事業内容・実施要綱・ガイドライン・FAQ・自治体実施事例 など\n\n市町村向け取組のポイント集（令和７年３月、株式会社日本総合研究所）\n\n研修教材（令和７年４月、株式会社日本総合研究所）\n\n児童育成支援拠点・子育て世帯訪問支援事業　類似事業事例集（令和６年３月、株式会社日本総合研究所）\n\n交付要綱（令和８年４月８日）\n\n令和８年度予算\n\n虐待や不登校などにより、家や学校に居場所のない学齢期以降のこどもに居場所の提供や相談等を行う事業\n\n事業内容・実施要綱・ガイドライン・FAQ・自治体実施事例 など\n\n児童育成支援拠点・子育て世帯訪問支援事業　類似事業事例集（令和６年３月、株式会社日本総合研究所）\n\n交付要綱（令和８年４月８日）\n\n令和８年度予算\n\nこどもとの関わり方に悩みや不安を抱える子育て家庭に対して、こどもとの関わり方を学ぶためのペアレントトレーニング等を行う事業\n\n事業内容・実施要綱・FAQ・自治体実施事例 など\n\n交付要綱（令和８年４月８日）\n\n令和８年度予算\n\nアウトリーチ\n\n生後４か月までの乳児のいる全ての家庭を訪問し、子育てに関する情報の提供、乳児と保護者の心身の状況や養育環境の把握、養育についての相談や助言その他の援助を行う事業\n\n実施要綱\n\n交付要綱（令和８年４月８日）\n\n令和８年度予算（p30）\n\n食事提供を伴う訪問支援（こども宅食）等を行う民間団体等を含む地域ネットワークを総動員し、支援ニーズの高いこども等について食事や消耗品の提供、生活習慣習得の支援などを行いながら状況を把握し、必要な支援につなげるための体制を強化する事業\n※市区町村が未実施のエリアで都道府県が実"
+          }
+        ],
+        "replyFollowup": null,
+        "showRecommendations": false,
+        "mode": "ruri-gemini",
+        "groundingRejected": false,
+        "model": "gemini-3.5-flash-lite",
+        "warning": null,
+        "elapsedMs": 2275.7289579999997,
+        "usage": {
+          "promptTokenCount": 4889,
+          "candidatesTokenCount": 93,
+          "totalTokenCount": 5331,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 4889
+            }
+          ],
+          "thoughtsTokenCount": 349,
+          "serviceTier": "standard"
+        },
+        "retrievedChunkIds": [
+          "temporary-002",
+          "daredemo-handbook-076",
+          "daredemo-handbook-114",
+          "daredemo-handbook-019",
+          "daredemo-handbook-112",
+          "daredemo-handbook-086"
+        ],
+        "timings": {
+          "retrievalMs": 34.39729199999965,
+          "queryEmbeddingMs": 31.57,
+          "readyWaitMs": 0.008125000000291038,
+          "googleMs": 2238.366750000001
+        },
+        "retrievalModel": "cl-nagoya/ruri-v3-70m"
+      }
+    },
+    {
+      "user": "それはいくらかかりますか？無料で使えるんでしょうか？",
+      "status": 200,
+      "elapsedMs": 2616.5883329999997,
+      "pass": true,
+      "data": {
+        "facts": {
+          "needs": [
+            "rest",
+            "day"
+          ],
+          "agesMonths": [
+            24
+          ],
+          "enrolled": "no",
+          "singleparent": "unknown",
+          "postpartumMonths": -1,
+          "time": "day",
+          "urgent": false
+        },
+        "question": null,
+        "results": [
+          {
+            "id": "temporary",
+            "name": "一時預かり",
+            "tagline": "日中、数時間から子どもを預かってほしい",
+            "needs": {
+              "day": 5,
+              "rest": 3,
+              "errand": 5,
+              "parent_ill": 2
+            },
+            "summary": "主に乳幼児を保育所などで日中、一時的に預かる仕組み。用事や仕事のほか、育児疲れを軽くするための利用もあります。",
+            "difference": "保護者の一時的な預かりの必要に応える支援です。誰でも通園とは、目的や対象条件、申込枠が異なります。",
+            "checks": [
+              "対象年齢と利用理由",
+              "希望する時間と空き",
+              "利用料金と事前登録"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "temporary-official",
+                "title": "子ども・子育て支援新制度",
+                "url": "https://www.cfa.go.jp/policies/kokoseido/sukusuku",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 9,
+            "why": [
+              "少し休みたい",
+              "日中の預かり"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "daredemo",
+            "name": "こども誰でも通園制度",
+            "tagline": "子どもの通園経験をつくり、親も少し休みたい",
+            "needs": {
+              "day": 3,
+              "rest": 2,
+              "social": 6
+            },
+            "summary": "保育所等に通っていない生後6か月から3歳未満の子が、家族以外の人と関わり、育つ機会をつくる制度。親の就労は問わず、月10時間が基本です。",
+            "difference": "子どもの育ちと家庭への支援が目的。一時預かりと利用場面は重なりますが、対象年齢や月の利用枠に条件があります。",
+            "checks": [
+              "保育所等に通っていないかを含む対象要件",
+              "実際に利用できる月の時間枠",
+              "事前面談・予約・料金"
+            ],
+            "eligibility": {
+              "minMonths": 6,
+              "maxMonthsExclusive": 36,
+              "unenrolled": true
+            },
+            "sources": [
+              {
+                "id": "daredemo-official",
+                "title": "こども誰でも通園制度・公式利用案内",
+                "url": "https://www.daretsu.cfa.go.jp/",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 6,
+            "why": [
+              "少し休みたい",
+              "日中の預かり"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "famisapo",
+            "name": "ファミリー・サポート・センター",
+            "tagline": "送迎や短い時間の預かりをお願いしたい",
+            "needs": {
+              "pickup": 8,
+              "day": 2,
+              "errand": 3,
+              "afterschool": 2
+            },
+            "summary": "子育ての援助を頼みたい会員と、援助する会員を地域でつなぐ相互援助の仕組み。園や学童への送迎、短時間の預かりなどを調整します。",
+            "difference": "施設の利用枠を予約する仕組みとは異なり、援助する会員との調整が必要です。依頼すれば必ず引き受け手が見つかるわけではありません。",
+            "checks": [
+              "会員登録と顔合わせ",
+              "送迎経路・預かり場所・援助内容",
+              "対象年齢・謝礼・引き受け手の有無"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "famisapo-official",
+                "title": "ファミリー・サポート・センター",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/family-support",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 2.71,
+            "why": [
+              "日中の預かり"
+            ],
+            "warnings": []
+          }
+        ],
+        "consultation": "子どもは2歳です。少し休みたい、日中の預かりということで困っています。利用できそうな支援と、条件・料金・申込方法を教えてください。",
+        "scope": "national",
+        "checkedAt": "2026-10-20",
+        "urgent": false,
+        "summary": "一時預かりの具体的な料金や無料になるかどうかは、今回参照した資料だけでは分かりません。\n\nまず、お住まいの市区町村の公式サイトで「一時預かり」を探し、問い合わせ先が載っていれば、そこに尋ねてみてください。見つからないときは、市区町村の子育て相談窓口に「一時預かりについて相談したい」と伝えてみてください。\n\n確認したいのは、利用時間ごとの料金、減免や追加費用です。\n\nそのまま使うなら、「2歳の子どもがいます。少し休める時間を作りたいです。一時預かりの利用を考えています。対象になるか、利用料金と減免、申し込み方を教えてください。」と伝えてみてください。",
+        "reply": "一時預かりの具体的な料金や無料になるかどうかは、今回参照した資料だけでは分かりません。\n\nまず、お住まいの市区町村の公式サイトで「一時預かり」を探し、問い合わせ先が載っていれば、そこに尋ねてみてください。見つからないときは、市区町村の子育て相談窓口に「一時預かりについて相談したい」と伝えてみてください。\n\n確認したいのは、利用時間ごとの料金、減免や追加費用です。\n\nそのまま使うなら、「2歳の子どもがいます。少し休める時間を作りたいです。一時預かりの利用を考えています。対象になるか、利用料金と減免、申し込み方を教えてください。」と伝えてみてください。",
+        "replyBody": "一時預かりの具体的な料金や無料になるかどうかは、今回参照した資料だけでは分かりません。",
+        "replyOpening": "",
+        "replyGuidance": [
+          "まず、お住まいの市区町村の公式サイトで「一時預かり」を探し、問い合わせ先が載っていれば、そこに尋ねてみてください。見つからないときは、市区町村の子育て相談窓口に「一時預かりについて相談したい」と伝えてみてください。",
+          "確認したいのは、利用時間ごとの料金、減免や追加費用です。",
+          "そのまま使うなら、「2歳の子どもがいます。少し休める時間を作りたいです。一時預かりの利用を考えています。対象になるか、利用料金と減免、申し込み方を教えてください。」と伝えてみてください。"
+        ],
+        "replyStatements": [],
+        "replySources": [],
+        "replyFollowup": null,
+        "showRecommendations": false,
+        "mode": "ruri-gemini",
+        "groundingRejected": false,
+        "model": "gemini-3.5-flash-lite",
+        "warning": null,
+        "elapsedMs": 2613.8157499999998,
+        "usage": {
+          "promptTokenCount": 4750,
+          "candidatesTokenCount": 19,
+          "totalTokenCount": 5244,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 4750
+            }
+          ],
+          "thoughtsTokenCount": 475,
+          "serviceTier": "standard"
+        },
+        "retrievedChunkIds": [
+          "temporary-001",
+          "daredemo-handbook-046",
+          "daredemo-handbook-113",
+          "daredemo-002",
+          "daredemo-handbook-021",
+          "daredemo-handbook-112"
+        ],
+        "timings": {
+          "retrievalMs": 32.66137499999968,
+          "queryEmbeddingMs": 30.03,
+          "readyWaitMs": 0.002500000000509317,
+          "googleMs": 2579.583999999999
+        },
+        "retrievalModel": "cl-nagoya/ruri-v3-70m",
+        "replyOptions": [
+          "相談するときの文を作って",
+          "料金の確認項目を整理して"
+        ]
+      }
+    },
+    {
+      "user": "じゃあ、どこに申し込めばいいですか？",
+      "status": 200,
+      "elapsedMs": 2693.068666000001,
+      "pass": true,
+      "data": {
+        "facts": {
+          "needs": [
+            "rest",
+            "day"
+          ],
+          "agesMonths": [
+            24
+          ],
+          "enrolled": "no",
+          "singleparent": "unknown",
+          "postpartumMonths": -1,
+          "time": "day",
+          "urgent": false
+        },
+        "question": null,
+        "results": [
+          {
+            "id": "temporary",
+            "name": "一時預かり",
+            "tagline": "日中、数時間から子どもを預かってほしい",
+            "needs": {
+              "day": 5,
+              "rest": 3,
+              "errand": 5,
+              "parent_ill": 2
+            },
+            "summary": "主に乳幼児を保育所などで日中、一時的に預かる仕組み。用事や仕事のほか、育児疲れを軽くするための利用もあります。",
+            "difference": "保護者の一時的な預かりの必要に応える支援です。誰でも通園とは、目的や対象条件、申込枠が異なります。",
+            "checks": [
+              "対象年齢と利用理由",
+              "希望する時間と空き",
+              "利用料金と事前登録"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "temporary-official",
+                "title": "子ども・子育て支援新制度",
+                "url": "https://www.cfa.go.jp/policies/kokoseido/sukusuku",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 9,
+            "why": [
+              "少し休みたい",
+              "日中の預かり"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "daredemo",
+            "name": "こども誰でも通園制度",
+            "tagline": "子どもの通園経験をつくり、親も少し休みたい",
+            "needs": {
+              "day": 3,
+              "rest": 2,
+              "social": 6
+            },
+            "summary": "保育所等に通っていない生後6か月から3歳未満の子が、家族以外の人と関わり、育つ機会をつくる制度。親の就労は問わず、月10時間が基本です。",
+            "difference": "子どもの育ちと家庭への支援が目的。一時預かりと利用場面は重なりますが、対象年齢や月の利用枠に条件があります。",
+            "checks": [
+              "保育所等に通っていないかを含む対象要件",
+              "実際に利用できる月の時間枠",
+              "事前面談・予約・料金"
+            ],
+            "eligibility": {
+              "minMonths": 6,
+              "maxMonthsExclusive": 36,
+              "unenrolled": true
+            },
+            "sources": [
+              {
+                "id": "daredemo-official",
+                "title": "こども誰でも通園制度・公式利用案内",
+                "url": "https://www.daretsu.cfa.go.jp/",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 6,
+            "why": [
+              "少し休みたい",
+              "日中の預かり"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "famisapo",
+            "name": "ファミリー・サポート・センター",
+            "tagline": "送迎や短い時間の預かりをお願いしたい",
+            "needs": {
+              "pickup": 8,
+              "day": 2,
+              "errand": 3,
+              "afterschool": 2
+            },
+            "summary": "子育ての援助を頼みたい会員と、援助する会員を地域でつなぐ相互援助の仕組み。園や学童への送迎、短時間の預かりなどを調整します。",
+            "difference": "施設の利用枠を予約する仕組みとは異なり、援助する会員との調整が必要です。依頼すれば必ず引き受け手が見つかるわけではありません。",
+            "checks": [
+              "会員登録と顔合わせ",
+              "送迎経路・預かり場所・援助内容",
+              "対象年齢・謝礼・引き受け手の有無"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "famisapo-official",
+                "title": "ファミリー・サポート・センター",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/family-support",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 2.88,
+            "why": [
+              "日中の預かり"
+            ],
+            "warnings": []
+          }
+        ],
+        "consultation": "子どもは2歳です。少し休みたい、日中の預かりということで困っています。利用できそうな支援と、条件・料金・申込方法を教えてください。",
+        "scope": "national",
+        "checkedAt": "2026-10-20",
+        "urgent": false,
+        "summary": "お住まいの地域での一時預かりの申込先や予約方法は、今回参照した資料だけでは確認できません。\n\n一時預かりについて、先ほどの確認に加えて、申込先や予約方法を尋ねてみてください。\n\n確認したいのは、対象条件、申込方法、予約に必要なものです。",
+        "reply": "お住まいの地域での一時預かりの申込先や予約方法は、今回参照した資料だけでは確認できません。\n\n一時預かりについて、先ほどの確認に加えて、申込先や予約方法を尋ねてみてください。\n\n確認したいのは、対象条件、申込方法、予約に必要なものです。",
+        "replyBody": "お住まいの地域での一時預かりの申込先や予約方法は、今回参照した資料だけでは確認できません。",
+        "replyOpening": "",
+        "replyGuidance": [
+          "一時預かりについて、先ほどの確認に加えて、申込先や予約方法を尋ねてみてください。",
+          "確認したいのは、対象条件、申込方法、予約に必要なものです。"
+        ],
+        "replyStatements": [],
+        "replySources": [],
+        "replyFollowup": null,
+        "showRecommendations": false,
+        "mode": "ruri-gemini",
+        "groundingRejected": false,
+        "model": "gemini-3.5-flash-lite",
+        "warning": null,
+        "elapsedMs": 2689.5197080000016,
+        "usage": {
+          "promptTokenCount": 4670,
+          "candidatesTokenCount": 19,
+          "totalTokenCount": 5198,
+          "cachedContentTokenCount": 1887,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 4670
+            }
+          ],
+          "cacheTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 1887
+            }
+          ],
+          "thoughtsTokenCount": 509,
+          "serviceTier": "standard"
+        },
+        "retrievedChunkIds": [
+          "temporary-003",
+          "temporary-004",
+          "temporary-001",
+          "temporary-005",
+          "temporary-002"
+        ],
+        "timings": {
+          "retrievalMs": 19.334624999999505,
+          "queryEmbeddingMs": 18.8,
+          "readyWaitMs": 0.0035410000000410946,
+          "googleMs": 2668.862583
+        },
+        "retrievalModel": "cl-nagoya/ruri-v3-70m",
+        "replyOptions": [
+          "相談するときの文を作って",
+          "料金の確認項目を整理して"
+        ]
+      }
+    },
+    {
+      "user": "わからないのは、申込先も料金も両方ということ？今の私が次にできることはある？",
+      "status": 200,
+      "elapsedMs": 35.08249999999862,
+      "pass": true,
+      "data": {
+        "facts": {
+          "needs": [
+            "rest",
+            "day"
+          ],
+          "agesMonths": [
+            24
+          ],
+          "enrolled": "no",
+          "singleparent": "unknown",
+          "postpartumMonths": -1,
+          "time": "day",
+          "urgent": false
+        },
+        "question": null,
+        "results": [
+          {
+            "id": "temporary",
+            "name": "一時預かり",
+            "tagline": "日中、数時間から子どもを預かってほしい",
+            "needs": {
+              "day": 5,
+              "rest": 3,
+              "errand": 5,
+              "parent_ill": 2
+            },
+            "summary": "主に乳幼児を保育所などで日中、一時的に預かる仕組み。用事や仕事のほか、育児疲れを軽くするための利用もあります。",
+            "difference": "保護者の一時的な預かりの必要に応える支援です。誰でも通園とは、目的や対象条件、申込枠が異なります。",
+            "checks": [
+              "対象年齢と利用理由",
+              "希望する時間と空き",
+              "利用料金と事前登録"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "temporary-official",
+                "title": "子ども・子育て支援新制度",
+                "url": "https://www.cfa.go.jp/policies/kokoseido/sukusuku",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 9,
+            "why": [
+              "少し休みたい",
+              "日中の預かり"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "daredemo",
+            "name": "こども誰でも通園制度",
+            "tagline": "子どもの通園経験をつくり、親も少し休みたい",
+            "needs": {
+              "day": 3,
+              "rest": 2,
+              "social": 6
+            },
+            "summary": "保育所等に通っていない生後6か月から3歳未満の子が、家族以外の人と関わり、育つ機会をつくる制度。親の就労は問わず、月10時間が基本です。",
+            "difference": "子どもの育ちと家庭への支援が目的。一時預かりと利用場面は重なりますが、対象年齢や月の利用枠に条件があります。",
+            "checks": [
+              "保育所等に通っていないかを含む対象要件",
+              "実際に利用できる月の時間枠",
+              "事前面談・予約・料金"
+            ],
+            "eligibility": {
+              "minMonths": 6,
+              "maxMonthsExclusive": 36,
+              "unenrolled": true
+            },
+            "sources": [
+              {
+                "id": "daredemo-official",
+                "title": "こども誰でも通園制度・公式利用案内",
+                "url": "https://www.daretsu.cfa.go.jp/",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 6,
+            "why": [
+              "少し休みたい",
+              "日中の預かり"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "famisapo",
+            "name": "ファミリー・サポート・センター",
+            "tagline": "送迎や短い時間の預かりをお願いしたい",
+            "needs": {
+              "pickup": 8,
+              "day": 2,
+              "errand": 3,
+              "afterschool": 2
+            },
+            "summary": "子育ての援助を頼みたい会員と、援助する会員を地域でつなぐ相互援助の仕組み。園や学童への送迎、短時間の預かりなどを調整します。",
+            "difference": "施設の利用枠を予約する仕組みとは異なり、援助する会員との調整が必要です。依頼すれば必ず引き受け手が見つかるわけではありません。",
+            "checks": [
+              "会員登録と顔合わせ",
+              "送迎経路・預かり場所・援助内容",
+              "対象年齢・謝礼・引き受け手の有無"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "famisapo-official",
+                "title": "ファミリー・サポート・センター",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/family-support",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 2.88,
+            "why": [
+              "日中の預かり"
+            ],
+            "warnings": []
+          }
+        ],
+        "consultation": "子どもは2歳です。少し休みたい、日中の預かりということで困っています。利用できそうな支援と、条件・料金・申込方法を教えてください。",
+        "scope": "national",
+        "checkedAt": "2026-10-20",
+        "urgent": false,
+        "summary": "一時預かりの具体的な料金と、お住まいの地域での申込先は、今回参照した資料だけでは分かりません。\n\n一時預かりについて、先ほどの確認に加えて、申込先や予約方法を尋ねてみてください。\n\n確認したいのは、利用時間ごとの料金、減免や追加費用、対象条件、申込方法、予約に必要なものです。\n\nそのまま使うなら、「2歳の子どもがいます。少し休める時間を作りたいです。一時預かりの利用を考えています。対象になるか、利用料金と減免、申し込み方を教えてください。」と伝えてみてください。",
+        "reply": "一時預かりの具体的な料金と、お住まいの地域での申込先は、今回参照した資料だけでは分かりません。\n\n一時預かりについて、先ほどの確認に加えて、申込先や予約方法を尋ねてみてください。\n\n確認したいのは、利用時間ごとの料金、減免や追加費用、対象条件、申込方法、予約に必要なものです。\n\nそのまま使うなら、「2歳の子どもがいます。少し休める時間を作りたいです。一時預かりの利用を考えています。対象になるか、利用料金と減免、申し込み方を教えてください。」と伝えてみてください。",
+        "replyBody": "一時預かりの具体的な料金と、お住まいの地域での申込先は、今回参照した資料だけでは分かりません。",
+        "replyOpening": "",
+        "replyGuidance": [
+          "一時預かりについて、先ほどの確認に加えて、申込先や予約方法を尋ねてみてください。",
+          "確認したいのは、利用時間ごとの料金、減免や追加費用、対象条件、申込方法、予約に必要なものです。",
+          "そのまま使うなら、「2歳の子どもがいます。少し休める時間を作りたいです。一時預かりの利用を考えています。対象になるか、利用料金と減免、申し込み方を教えてください。」と伝えてみてください。"
+        ],
+        "replyStatements": [],
+        "replySources": [],
+        "replyFollowup": null,
+        "showRecommendations": false,
+        "mode": "source-limited",
+        "groundingRejected": false,
+        "model": "gemini-3.5-flash-lite",
+        "warning": null,
+        "elapsedMs": 33.37266699999964,
+        "usage": null,
+        "retrievedChunkIds": [
+          "temporary-004",
+          "temporary-001",
+          "temporary-005",
+          "temporary-003",
+          "temporary-002"
+        ],
+        "timings": {
+          "retrievalMs": 32.438874999999825,
+          "queryEmbeddingMs": 31.7,
+          "readyWaitMs": 0.0016660000001138542,
+          "googleMs": 0
+        },
+        "retrievalModel": "cl-nagoya/ruri-v3-70m",
+        "replyOptions": [
+          "相談するときの文を作って",
+          "料金の確認項目を整理して"
+        ]
+      }
+    },
+    {
+      "user": "相談するときの文を作って",
+      "status": 200,
+      "elapsedMs": 2.338999999999942,
+      "pass": true,
+      "data": {
+        "facts": {
+          "needs": [
+            "rest",
+            "day"
+          ],
+          "agesMonths": [
+            24
+          ],
+          "enrolled": "no",
+          "singleparent": "unknown",
+          "postpartumMonths": -1,
+          "time": "day",
+          "urgent": false
+        },
+        "question": null,
+        "results": [
+          {
+            "id": "temporary",
+            "name": "一時預かり",
+            "tagline": "日中、数時間から子どもを預かってほしい",
+            "needs": {
+              "day": 5,
+              "rest": 3,
+              "errand": 5,
+              "parent_ill": 2
+            },
+            "summary": "主に乳幼児を保育所などで日中、一時的に預かる仕組み。用事や仕事のほか、育児疲れを軽くするための利用もあります。",
+            "difference": "保護者の一時的な預かりの必要に応える支援です。誰でも通園とは、目的や対象条件、申込枠が異なります。",
+            "checks": [
+              "対象年齢と利用理由",
+              "希望する時間と空き",
+              "利用料金と事前登録"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "temporary-official",
+                "title": "子ども・子育て支援新制度",
+                "url": "https://www.cfa.go.jp/policies/kokoseido/sukusuku",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 9,
+            "why": [
+              "少し休みたい",
+              "日中の預かり"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "daredemo",
+            "name": "こども誰でも通園制度",
+            "tagline": "子どもの通園経験をつくり、親も少し休みたい",
+            "needs": {
+              "day": 3,
+              "rest": 2,
+              "social": 6
+            },
+            "summary": "保育所等に通っていない生後6か月から3歳未満の子が、家族以外の人と関わり、育つ機会をつくる制度。親の就労は問わず、月10時間が基本です。",
+            "difference": "子どもの育ちと家庭への支援が目的。一時預かりと利用場面は重なりますが、対象年齢や月の利用枠に条件があります。",
+            "checks": [
+              "保育所等に通っていないかを含む対象要件",
+              "実際に利用できる月の時間枠",
+              "事前面談・予約・料金"
+            ],
+            "eligibility": {
+              "minMonths": 6,
+              "maxMonthsExclusive": 36,
+              "unenrolled": true
+            },
+            "sources": [
+              {
+                "id": "daredemo-official",
+                "title": "こども誰でも通園制度・公式利用案内",
+                "url": "https://www.daretsu.cfa.go.jp/",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 6,
+            "why": [
+              "少し休みたい",
+              "日中の預かり"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "famisapo",
+            "name": "ファミリー・サポート・センター",
+            "tagline": "送迎や短い時間の預かりをお願いしたい",
+            "needs": {
+              "pickup": 8,
+              "day": 2,
+              "errand": 3,
+              "afterschool": 2
+            },
+            "summary": "子育ての援助を頼みたい会員と、援助する会員を地域でつなぐ相互援助の仕組み。園や学童への送迎、短時間の預かりなどを調整します。",
+            "difference": "施設の利用枠を予約する仕組みとは異なり、援助する会員との調整が必要です。依頼すれば必ず引き受け手が見つかるわけではありません。",
+            "checks": [
+              "会員登録と顔合わせ",
+              "送迎経路・預かり場所・援助内容",
+              "対象年齢・謝礼・引き受け手の有無"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "famisapo-official",
+                "title": "ファミリー・サポート・センター",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/family-support",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 3,
+            "why": [
+              "日中の預かり"
+            ],
+            "warnings": []
+          }
+        ],
+        "consultation": "子どもは2歳です。少し休みたい、日中の預かりということで困っています。利用できそうな支援と、条件・料金・申込方法を教えてください。",
+        "scope": "national",
+        "checkedAt": "2026-10-20",
+        "urgent": false,
+        "summary": "相談するときの言い方を、一緒に整理しましょう。\n\nそのまま使うなら、「2歳の子どもがいます。少し休める時間を作りたいです。一時預かりの利用を考えています。対象になるか、利用料金と減免、申し込み方を教えてください。」と伝えてみてください。",
+        "reply": "相談するときの言い方を、一緒に整理しましょう。\n\nそのまま使うなら、「2歳の子どもがいます。少し休める時間を作りたいです。一時預かりの利用を考えています。対象になるか、利用料金と減免、申し込み方を教えてください。」と伝えてみてください。",
+        "replyBody": "相談するときの言い方を、一緒に整理しましょう。",
+        "replyOpening": "",
+        "replyGuidance": [
+          "そのまま使うなら、「2歳の子どもがいます。少し休める時間を作りたいです。一時預かりの利用を考えています。対象になるか、利用料金と減免、申し込み方を教えてください。」と伝えてみてください。"
+        ],
+        "replyStatements": [],
+        "replySources": [],
+        "replyFollowup": null,
+        "showRecommendations": false,
+        "mode": "conversation",
+        "model": null,
+        "elapsedMs": 0.8517920000012964,
+        "timings": {
+          "retrievalMs": 0,
+          "googleMs": 0
+        },
+        "replyOptions": [
+          "相談するときの文を作って",
+          "料金の確認項目を整理して"
+        ]
+      }
+    },
+    {
+      "user": "ありがとう。まず相談してみます。",
+      "status": 200,
+      "elapsedMs": 2.4755000000004657,
+      "pass": true,
+      "data": {
+        "facts": {
+          "needs": [
+            "rest",
+            "day",
+            "advice"
+          ],
+          "agesMonths": [
+            24
+          ],
+          "enrolled": "no",
+          "singleparent": "unknown",
+          "postpartumMonths": -1,
+          "time": "day",
+          "urgent": false
+        },
+        "question": null,
+        "results": [
+          {
+            "id": "temporary",
+            "name": "一時預かり",
+            "tagline": "日中、数時間から子どもを預かってほしい",
+            "needs": {
+              "day": 5,
+              "rest": 3,
+              "errand": 5,
+              "parent_ill": 2
+            },
+            "summary": "主に乳幼児を保育所などで日中、一時的に預かる仕組み。用事や仕事のほか、育児疲れを軽くするための利用もあります。",
+            "difference": "保護者の一時的な預かりの必要に応える支援です。誰でも通園とは、目的や対象条件、申込枠が異なります。",
+            "checks": [
+              "対象年齢と利用理由",
+              "希望する時間と空き",
+              "利用料金と事前登録"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "temporary-official",
+                "title": "子ども・子育て支援新制度",
+                "url": "https://www.cfa.go.jp/policies/kokoseido/sukusuku",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 9,
+            "why": [
+              "少し休みたい",
+              "日中の預かり"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "visit-advice",
+            "name": "養育支援訪問事業",
+            "tagline": "育児の不安を、家庭で専門職に相談したい",
+            "needs": {
+              "advice": 8,
+              "isolation": 3
+            },
+            "summary": "育児の不安や孤立感があるなど、養育支援が必要な家庭を保健師等が訪問し、育児に関する具体的な助言や相談支援を行います。",
+            "difference": "家事を実際に手伝う訪問支援とは役割が異なります。家庭の状況を聞いたうえで、必要な支援を相談します。",
+            "checks": [
+              "現在の育児の困りごと",
+              "訪問で相談したい内容",
+              "利用や訪問調整の流れ"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "visit-advice-official",
+                "title": "家庭支援事業・養育支援訪問",
+                "url": "https://www.cfa.go.jp/policies/katei_shien",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 9,
+            "why": [
+              "育児の相談"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "daredemo",
+            "name": "こども誰でも通園制度",
+            "tagline": "子どもの通園経験をつくり、親も少し休みたい",
+            "needs": {
+              "day": 3,
+              "rest": 2,
+              "social": 6
+            },
+            "summary": "保育所等に通っていない生後6か月から3歳未満の子が、家族以外の人と関わり、育つ機会をつくる制度。親の就労は問わず、月10時間が基本です。",
+            "difference": "子どもの育ちと家庭への支援が目的。一時預かりと利用場面は重なりますが、対象年齢や月の利用枠に条件があります。",
+            "checks": [
+              "保育所等に通っていないかを含む対象要件",
+              "実際に利用できる月の時間枠",
+              "事前面談・予約・料金"
+            ],
+            "eligibility": {
+              "minMonths": 6,
+              "maxMonthsExclusive": 36,
+              "unenrolled": true
+            },
+            "sources": [
+              {
+                "id": "daredemo-official",
+                "title": "こども誰でも通園制度・公式利用案内",
+                "url": "https://www.daretsu.cfa.go.jp/",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 6,
+            "why": [
+              "少し休みたい",
+              "日中の預かり"
+            ],
+            "warnings": []
+          }
+        ],
+        "consultation": "子どもは2歳です。少し休みたい、日中の預かり、育児の相談ということで困っています。利用できそうな支援と、条件・料金・申込方法を教えてください。",
+        "scope": "national",
+        "checkedAt": "2026-10-20",
+        "urgent": false,
+        "summary": "どういたしまして。相談の準備で迷うことがあれば、また一緒に整理しましょう。",
+        "reply": "どういたしまして。相談の準備で迷うことがあれば、また一緒に整理しましょう。",
+        "replySources": [],
+        "showRecommendations": false,
+        "mode": "conversation",
+        "model": null,
+        "elapsedMs": 1.2704579999990528,
+        "timings": {
+          "retrievalMs": 0,
+          "googleMs": 0
+        },
+        "replyOptions": []
+      }
+    }
+  ]
+}

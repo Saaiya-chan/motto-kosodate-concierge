@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-10-20T23:52:18.825Z",
+  "model": "gemini-3.5-flash-lite",
+  "generatedCasesPerProvider": 6,
+  "providers": {
+    "gemini": {
+      "attempts": 7,
+      "successful": 7,
+      "generationResponses": 6,
+      "medianMs": 5303.877603999994,
+      "minMs": 4868.9934159999975,
+      "maxMs": 5665.332374999998,
+      "preliminaryContentPassed": 7,
+      "preliminarySourcePassed": 7,
+      "medianRetrievalMs": null,
+      "medianGoogleMs": 5296.640229500001,
+      "medianInputTokens": 9189
+    },
+    "ruri": {
+      "attempts": 7,
+      "successful": 7,
+      "generationResponses": 6,
+      "medianMs": 1323.27335399999,
+      "minMs": 1261.4620829999985,
+      "maxMs": 2830.947624999997,
+      "preliminaryContentPassed": 7,
+      "preliminarySourcePassed": 7,
+      "medianRetrievalMs": 20.684083500003908,
+      "medianGoogleMs": 1296.627416999996,
+      "medianInputTokens": 3748
+    }
+  },
+  "speedup": 4.00814962983078,
+  "limitations": [
+    "Small synthetic evaluation; not a general accuracy or latency guarantee.",
+    "Generation responses include an explicit missing-evidence question. Municipal availability uses the identical deterministic guard and is excluded from timing medians.",
+    "Ruri uses six local chunks, two keyword recall slots and context-based program filtering; File Search uses managed chunks and default retrieval.",
+    "Ruri requires local model loading (about 3.7 seconds with cached index); this occurs before warm measurements.",
+    "Gemini 3.6 Flash reached its free-tier daily limit (20 requests); main comparison uses Gemini 3.5 Flash-Lite for both paths."
+  ],
+  "manualReview": "test/ruri-review.json",
+  "automatedTests": {
+    "passed": 63,
+    "failed": 0
+  },
+  "retrievalChecks": {
+    "passed": 5,
+    "total": 5
+  },
+  "browser": {
+    "verified": true,
+    "provider": "ruri",
+    "question": "子育て世帯訪問支援事業の利用料はどう決まりますか？",
+    "displayedRetrievalMs": 23,
+    "displayedGoogleSeconds": 1.7,
+    "sourcePages": [
+      "4-5",
+      "5-6"
+    ],
+    "screenshot": "test/ruri-browser-proof.jpg"
+  }
+}

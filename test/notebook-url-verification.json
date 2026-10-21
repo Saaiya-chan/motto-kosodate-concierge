@@ -1,0 +1,37 @@
+[
+  {
+    "id": "famisapo",
+    "sameSha256": true,
+    "bytes": 452298
+  },
+  {
+    "id": "shortstay",
+    "sameSha256": true,
+    "bytes": 234142
+  },
+  {
+    "id": "home-help",
+    "sameSha256": true,
+    "bytes": 1398291
+  },
+  {
+    "id": "postpartum",
+    "sameSha256": true,
+    "bytes": 1039217
+  },
+  {
+    "id": "sickcare",
+    "sameSha256": true,
+    "bytes": 1796720
+  },
+  {
+    "id": "hiroba",
+    "sameSha256": true,
+    "bytes": 579942
+  },
+  {
+    "id": "daredemo-handbook",
+    "sameSha256": true,
+    "bytes": 1855614
+  }
+]

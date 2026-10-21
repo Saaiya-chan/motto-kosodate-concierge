@@ -1,0 +1,4 @@
+import fs from 'node:fs';
+const {key}=JSON.parse(fs.readFileSync('.private/docsgpt-agent.json'));
+const outputs={};
+for(const p of ['docsgpt','ruri']){const q='子育て世帯訪問支援事業はどんな支援ですか？';const st=performance.now();const r=await fetch(p==='docsgpt'?'http://127.0.0.1:7093/api/answer':'http://127.0.0.1:4317/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p==='docsgpt'?{question:q,api_key:key,model_id:'gemini-3.5-flash-lite'}:{provider:'ruri',guided:false,messages:[{role:'user',content:q}]}),signal:AbortSignal.timeout(180000)});outputs[p]={status:r.status,elapsedMs:Math.round(performance.now()-st),data:await r.json()};fs.writeFileSync('evaluation/docsgpt/results/warmup.json',JSON.stringify(outputs,null,2));console.log(p,r.status,outputs[p].elapsedMs,JSON.stringify(outputs[p].data).slice(0,2000));}

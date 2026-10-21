@@ -1,0 +1,6 @@
+import {writeFile} from 'node:fs/promises';
+const base='http://127.0.0.1:4317';const status=await fetch(base+'/api/gemini/status').then(r=>r.json());
+if(!status.ready){console.error('比較は未実施です。画面の「Geminiの設定」でAPIキーと公式資料11件の準備を完了してください。');process.exit(1);}
+const questions=['2歳の子がいます。保育園には通っていません。昼間に少し休みたいです。','子育て世帯訪問支援事業ってどんな事業？','それはいくら？','新宿区の今日の空きと私の正確な利用料金を教えて'];
+const histories={local:[],gemini:[]};const report={checkedAt:new Date().toISOString(),syntheticOnly:true,cases:[]};
+for(const question of questions){const entry={question};for(const provider of ['local','gemini']){const messages=[...histories[provider],{role:'user',content:question}];const r=await fetch(base+'/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({provider,messages}),signal:AbortSignal.timeout(100000)});const j=await r.json();if(!r.ok)throw Error(provider+': '+j.error);histories[provider]=[...messages,{role:'assistant',content:j.reply||j.summary}];entry[provider]={mode:j.mode,model:j.model,elapsedMs:j.elapsedMs,reply:j.reply,sourceIds:j.replySources?.map(s=>s.id),usage:j.usage||null};console.log(provider,j.mode,j.elapsedMs+'ms',entry[provider].sourceIds?.length||0,'sources');}report.cases.push(entry);await writeFile(new URL('../test/provider-comparison.json',import.meta.url),JSON.stringify(report,null,2)+'\n');}

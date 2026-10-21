@@ -1,0 +1,7 @@
+# Tested on macOS arm64 / Python 3.14. Model revision is fixed in ruri-worker.py.
+sentence-transformers==3.4.1
+transformers==4.57.6
+torch==2.14.1
+numpy==2.5.4
+sentencepiece==0.2.2
+protobuf==7.36.2

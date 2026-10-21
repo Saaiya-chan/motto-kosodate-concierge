@@ -1,0 +1,23 @@
+.env
+*.log
+.DS_Store
+
+.private/
+.env*
+
+.venv-ruri/
+.cache/
+
+# Third-party checkout used only for the local DocsGPT evaluation.
+evaluation/docsgpt/source/
+
+# Local dependencies, generated evaluation evidence and database exports.
+node_modules/
+evaluation/docsgpt/results/
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+*.sql.gz
+*.pem
+*.key

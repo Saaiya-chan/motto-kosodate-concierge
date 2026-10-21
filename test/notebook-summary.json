@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-21",
+  "notebookUrl": "https://notebook.google.com/notebook/8f599083-ef86-4a66-b5b6-fb46d30e1e67",
+  "documents": 11,
+  "upload": {
+    "pdfs": 7,
+    "texts": 4,
+    "pdfMethod": "official URLs; all seven files SHA-256 matched local originals",
+    "textMethod": "exact saved text pasted into source creation UI",
+    "fileUploadAttempt": "Chrome extension file-URL access disabled; URL/text ingestion used instead"
+  },
+  "matchedTimingCases": [
+    {
+      "caseId": "fee-followup",
+      "notebookMs": 18971.54937499948,
+      "ruriPriorMs": 1261.4620829999985
+    },
+    {
+      "caseId": "scope-not-guaranteed",
+      "notebookMs": 24129.422207999974,
+      "ruriPriorMs": 1311.6384160000016
+    },
+    {
+      "caseId": "postpartum-period",
+      "notebookMs": 17968.359624998644,
+      "ruriPriorMs": 1307.5893329999963
+    },
+    {
+      "caseId": "schemes-comparison",
+      "notebookMs": 25402.576208001003,
+      "ruriPriorMs": 1334.9082919999782
+    },
+    {
+      "caseId": "missing-future-budget",
+      "notebookMs": 20417.383166000247,
+      "ruriPriorMs": 2482.6897089999984
+    }
+  ],
+  "matchedTimingCount": 5,
+  "notebookMedianMs": 20417.383166000247,
+  "ruriPriorMedianMs": 1311.6384160000016,
+  "notebookRangeMs": [
+    17968.359624998644,
+    25402.576208001003
+  ],
+  "ruriCurrentChecks": [
+    {
+      "question": "子育て世帯訪問支援事業ってどんな事業？",
+      "ok": true,
+      "httpMs": 3140.901833,
+      "model": "gemini-3.5-flash-lite",
+      "searchMs": 33.092416000552475
+    },
+    {
+      "question": "それはいくら？",
+      "ok": true,
+      "httpMs": 2869.290583,
+      "model": "gemini-3.5-flash-lite",
+      "searchMs": 18.251125000417233
+    }
+  ],
+  "accuracyReview": {
+    "method": "Developer spot-check against original official excerpts and Notebook displayed citations, not an independent expert evaluation",
+    "majorAnswers": "All seven answered the main question consistently with the available documents, including declining unknown future budget and municipal availability",
+    "notebookStrength": "Sentence-level citation markers and source excerpts are easy to inspect; fee quotation was opened and checked",
+    "notebookIssues": [
+      "The cleaning exception was presented inside quotation marks as a reorganized paraphrase rather than a verbatim contiguous quote.",
+      "The municipal-availability answer generalizes the guideline into saying that vacancy is predetermined by municipalities. The guideline supports defining service scope/rules/fees, not that claim about live vacancy."
+    ],
+    "ruriIssues": [
+      "Earlier comparison found omitted citation IDs for supplementary details, despite those details being in retrieved text."
+    ]
+  },
+  "limitations": [
+    "Notebook internal model was not shown or pinned; this compares product configurations, not the same LLM or retrieval algorithm.",
+    "Notebook timing measures UI submission to completed copy control; Ruri timing measures HTTP completion. No first-token comparison was made.",
+    "First Notebook question has only a 35.5-second upper bound from exploratory inspection and is excluded from timing medians.",
+    "Municipal availability uses an immediate deterministic local guard in the app and is excluded from both matched timing sets.",
+    "Notebook used a continuous seven-turn conversation; the app resets history between unrelated topics in the saved benchmark.",
+    "Ruri full seven-question results are from the earlier run; two current repeated requests are separately reported.",
+    "Small sample; no statistical latency or universal accuracy guarantee."
+  ]
+}

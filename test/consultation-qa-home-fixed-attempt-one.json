@@ -1,0 +1,1525 @@
+{
+  "checkedAt": "2026-10-21T02:21:14.091Z",
+  "scenario": "home",
+  "provider": "ruri",
+  "turns": [
+    {
+      "user": "生後2か月の子を育てています。寝不足で、料理も洗濯も追いつきません。子どもを連れて外に出るのもしんどいです。家に来て手伝ってもらえる支援はありますか？",
+      "status": 200,
+      "elapsedMs": 2837.2879170000015,
+      "pass": true,
+      "data": {
+        "facts": {
+          "needs": [
+            "rest",
+            "housework"
+          ],
+          "agesMonths": [
+            2
+          ],
+          "enrolled": "unknown",
+          "singleparent": "unknown",
+          "postpartumMonths": -1,
+          "time": "unknown",
+          "urgent": false
+        },
+        "question": null,
+        "results": [
+          {
+            "id": "home-help",
+            "name": "子育て世帯訪問支援事業",
+            "tagline": "家事や育児を、自宅で手伝ってほしい",
+            "needs": {
+              "housework": 9,
+              "care": 6,
+              "rest": 1
+            },
+            "summary": "家事や育児に不安や負担を抱える家庭などに支援員が訪問し、話を聞きながら食事の準備、掃除、育児等を支えます。",
+            "difference": "自治体が家庭の状況や支援の必要性を確認して調整する事業。自由な家事代行や、外出中の託児を無条件に頼める制度ではありません。",
+            "checks": [
+              "自治体による利用の必要性の確認",
+              "手伝ってもらいたい作業と支援の範囲",
+              "回数・時間・料金"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "home-help-official",
+                "title": "子育て世帯訪問支援事業",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/jido-homon",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 11,
+            "why": [
+              "少し休みたい",
+              "家事の手助け"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "temporary",
+            "name": "一時預かり",
+            "tagline": "日中、数時間から子どもを預かってほしい",
+            "needs": {
+              "day": 5,
+              "rest": 3,
+              "errand": 5,
+              "parent_ill": 2
+            },
+            "summary": "主に乳幼児を保育所などで日中、一時的に預かる仕組み。用事や仕事のほか、育児疲れを軽くするための利用もあります。",
+            "difference": "保護者の一時的な預かりの必要に応える支援です。誰でも通園とは、目的や対象条件、申込枠が異なります。",
+            "checks": [
+              "対象年齢と利用理由",
+              "希望する時間と空き",
+              "利用料金と事前登録"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "temporary-official",
+                "title": "子ども・子育て支援新制度",
+                "url": "https://www.cfa.go.jp/policies/kokoseido/sukusuku",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 4,
+            "why": [
+              "少し休みたい"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "shortstay",
+            "name": "子育てショートステイ",
+            "tagline": "泊まりも含め、子どもの世話を支えてほしい",
+            "needs": {
+              "overnight": 9,
+              "rest": 2,
+              "parent_ill": 4
+            },
+            "summary": "育児疲れ、育児不安、入院などで子どもの養育が一時的に難しいとき、施設や里親家庭等で短期間支える事業。親子で利用する支援もあります。",
+            "difference": "主に宿泊を伴う養育の支援。産後ケアの「ショートステイ型」とは別制度です。利用期間は自治体が家庭の状況等から判断します。",
+            "checks": [
+              "対象年齢・利用理由・日数",
+              "子どもの過ごし方と事前面談",
+              "料金・送迎・緊急時の相談方法"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "shortstay-official",
+                "title": "子育て短期支援事業",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/jido-short",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 2.9,
+            "why": [
+              "少し休みたい"
+            ],
+            "warnings": []
+          }
+        ],
+        "consultation": "子どもは2か月です。少し休みたい、家事の手助けということで困っています。利用できそうな支援と、条件・料金・申込方法を教えてください。",
+        "scope": "national",
+        "checkedAt": "2026-10-20",
+        "urgent": false,
+        "summary": "寝不足の中で、家事や育児を続けるのは大変ですよね。\n\n家に来て家事や育児の支援を行う子育て世帯訪問支援事業があります。\n食事の準備や片付けを手伝ってもらえます。\n洗濯機を使った洗濯や、干す、たたむなどの作業をサポートしてもらえます。",
+        "reply": "寝不足の中で、家事や育児を続けるのは大変ですよね。\n\n家に来て家事や育児の支援を行う子育て世帯訪問支援事業があります。\n食事の準備や片付けを手伝ってもらえます。\n洗濯機を使った洗濯や、干す、たたむなどの作業をサポートしてもらえます。",
+        "replyBody": "家に来て家事や育児の支援を行う子育て世帯訪問支援事業があります。\n食事の準備や片付けを手伝ってもらえます。\n洗濯機を使った洗濯や、干す、たたむなどの作業をサポートしてもらえます。",
+        "replyOpening": "寝不足の中で、家事や育児を続けるのは大変ですよね。",
+        "replyGuidance": [],
+        "replyStatements": [
+          {
+            "text": "家に来て家事や育児の支援を行う子育て世帯訪問支援事業があります。",
+            "evidence": [
+              {
+                "chunkId": "temporary-001",
+                "quote": "家事・育児等に対して不安を抱えた子育て家庭等を訪問し、家庭が抱える不安や悩みを傾聴するとともに、家事・育児等の支援を行う事業"
+              }
+            ]
+          },
+          {
+            "text": "食事の準備や片付けを手伝ってもらえます。",
+            "evidence": [
+              {
+                "chunkId": "home-help-008",
+                "quote": "食事の準備（一般的な家庭料理・片付け等）"
+              }
+            ]
+          },
+          {
+            "text": "洗濯機を使った洗濯や、干す、たたむなどの作業をサポートしてもらえます。",
+            "evidence": [
+              {
+                "chunkId": "home-help-008",
+                "quote": "洗濯（洗濯機を使った一般的な洗濯、洗濯物干し、とり込み、たたみ、アイロンがけ）"
+              }
+            ]
+          }
+        ],
+        "replySources": [
+          {
+            "id": "temporary-001",
+            "programId": "temporary",
+            "title": "一時預かり・国の制度説明",
+            "url": "https://kokasen.cfa.go.jp/support-programs",
+            "checkedAt": "2026-10-20",
+            "excerpt": "支援事業（サービス）と財政支援 - こども家庭センターポータルサイト\n\n支援タイプ別「使える補助金」\n\n家庭支援事業\n\nアウトリーチ\n\nその他の事業\n\n参考情報\n\n支援タイプ別「使える補助金」\n\n相談体制／訪問／居場所／預かり／通所･宿泊の親子支援／経済的支援／ネットワーク強化など、自治体として実施･拡充したい支援等の種類ごとに、その歳入として活用できる補助金を整理しています。\n\n支援タイプ別「使える補助金」サイトマップ\n\n家庭支援事業\n\n家庭支援事業とは、児童福祉法第21条の18に規定された6つの事業（子育て短期支援事業、養育支援訪問事業、一時預かり事業、子育て世帯訪問支援事業、児童育成支援拠点事業、親子関係形成支援事業）を指します。これらの事業を必要とする家庭に対し、市町村は、事業の利用を勧奨・支援しなければなりません。\n\n家庭支援事業についてはこちら\n\n『「家庭支援事業」等の構築ガイドブック』　 はこちら（令和８年３月、株式会社HITOTOWA）\n\n保護者の疾病や育児疲れ等の理由により家庭において養育を受けることが一時的に困難となった児童について、児童養護施設等や里親等への委託により、レスパイトケア等、必要な支援を行う事業\n\n事業内容・実施要綱・FAQ・自治体実施事例 など\n\n事例集（令和７年３月、株式会社日本総合研究所）\n\n実施要綱（令和８年４月８日）\n\n交付要綱（令和８年４月８日）\n\n令和８年度予算\n\n子育てに不安や孤立感等を抱える家庭や養育支援が必要となっている家庭に対して、具体的な養育に関する指導助言等を訪問により実施する事業\n\n事業の概要\n\n実施要綱（令和６年３月28日）\n\nガイドライン\n\n交付要綱（令和８年４月８日）\n\n令和８年度予算（p31）\n\n家庭において保育を受けることが一時的に困難となった場合や保護者の育児負担の軽減が必要な場合に、主として昼間に、認定こども園、幼稚園、保育所、地域子育て支援拠点その他の場所において、乳幼児を一時的に預かり、必要な保護を行う事業\n\n実施要綱（令和７年３月31日）\n\n交付要綱（令和８年４月８日）\n\n家事・育児等に対して不安を抱えた子育て家庭等を訪問し、家庭が抱える不安や悩みを傾聴するとともに、家事・育児等の支援を行う事業\n\n事業内容・実施要綱・ガイドライン・FAQ・自治体実施事例 など\n\n市町村向け取組のポイント集（令和７年３月、"
+          },
+          {
+            "id": "home-help-008",
+            "programId": "home-help",
+            "title": "子育て世帯訪問支援事業ガイドライン（PDF 5〜7ページ）",
+            "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/91f57176-a420-4d1d-8973-1828437e0aa8/d9bc9e4f/20240904_policies_kosodateshien_jido-homon_03.pdf#page=5",
+            "checkedAt": "2026-10-20",
+            "excerpt": "は妊婦（以下「保護者等」とい\nう。）の価値観の否定をするのではなく、保護者等の立場に寄り添い、保護者等の状況や心\n情を理解し、支援を行うよう努めること。\n 市町村は、本事業の目的や地域の実情を踏まえ、家事、育児・養育支援の具体的な内容や\n範囲、ルール、利用料等をあらかじめ定めること。利用料の設定に当たっては、利用者の所\n得状況に応じて減免するなど考慮することが望ましい。また、複数の事業者に委託等する場\n合には、以下の項目を参考に、各事業者と具体的な支援の内容や範囲、ルール等を検討し、\n定めることが望ましい。\n\n\n【家事、育児・養育支援の内容や範囲、ルール等を定める項目の参考例】\n <家事、育児・養育支援共通>\n➢ 家族（保護者）が不在時の支援内容の可否\n➢ 児童が複数いる場合や家事・育児等を同時に行う場合の訪問支援員の人数\n➢ 家族が不在時に支援を行う場合の鍵や貴重品等の管理のルール\n➢ 緊急時（専門的な支援が必要だと感じられた場合を含む）・事故発生時の対応\n\n\n <家事支援>\n➢ 支援の内容\n ①日常的な家事の例\n ・食事の準備（一般的な家庭料理・片付け等）\n ・洗濯（洗濯機を使った一般的な洗濯、洗濯物干し、とり込み、たたみ、アイロンが\n け）\n ・掃除（リビング、お風呂、お手洗い、玄関等の掃除機がけ、雑巾がけ等）\n ・買い物の代行やサポート 等\n ②特例的な内容例（通常は想定していないが、特に支援が必要な家庭には検討が必要な\n 内容）\n ・大掃除、網戸・エアコン・照明器具等の掃除、草むしり 等\n\n\n➢ 食事を準備する際に使用する食材の調達方法について\n➢ 買い物の代行を行う際の費用（交通費含む）について\n➢ 家事支援を行う際に使用する道具について\n\n\n<育児・養育支援>\n➢ 児童が発熱している場合や体調不良の場合、障がい等があり合理的配慮を超える対応\n が求められる場合の支援の可否\n➢ 支援の内容\n ・育児のサポート（授乳や食事、おむつ交換・着替え、沐浴・入浴 等）\n ・保育所等の送迎（保育所、幼稚園、放課後児童クラブ等の送迎 等）\n ・児童の見守り、宿題の見守り、遊び相手 等\n ・外出時の補助 （通院、行政サービスの手続きの際の同行・児童の見守り 等）\n 等\n※本事業は、保育を主たる目的としたものではなく、保護者等の仮眠・静養、家事、通\n 院等をするための時間の確保や育児の方法に悩んだときにサポートするような支援\n を想定している。\n➢ 保育所等の送迎や外出時の補助を実施する際の、移動手段やそれに伴う交通費等につ\n いて"
+          }
+        ],
+        "replyFollowup": null,
+        "showRecommendations": false,
+        "mode": "ruri-gemini",
+        "model": "gemini-3.5-flash-lite",
+        "warning": null,
+        "elapsedMs": 2833.7428749999963,
+        "usage": {
+          "promptTokenCount": 3839,
+          "candidatesTokenCount": 290,
+          "totalTokenCount": 4478,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 3839
+            }
+          ],
+          "thoughtsTokenCount": 349,
+          "serviceTier": "standard"
+        },
+        "retrievedChunkIds": [
+          "daredemo-handbook-009",
+          "home-help-008",
+          "home-help-009",
+          "temporary-001",
+          "shortstay-004",
+          "home-help-010"
+        ],
+        "timings": {
+          "retrievalMs": 40.461999999999534,
+          "queryEmbeddingMs": 36.73,
+          "readyWaitMs": 0.0029580000045825727,
+          "googleMs": 2790.3315409999996
+        },
+        "retrievalModel": "cl-nagoya/ruri-v3-70m"
+      }
+    },
+    {
+      "user": "それなら助かりそう。子どもを見ていてもらう間に、私は少し寝ていてもいいの？",
+      "status": 200,
+      "elapsedMs": 1508.1287499999999,
+      "pass": true,
+      "data": {
+        "facts": {
+          "needs": [
+            "rest",
+            "housework"
+          ],
+          "agesMonths": [
+            2
+          ],
+          "enrolled": "unknown",
+          "singleparent": "unknown",
+          "postpartumMonths": -1,
+          "time": "unknown",
+          "urgent": false
+        },
+        "question": null,
+        "results": [
+          {
+            "id": "home-help",
+            "name": "子育て世帯訪問支援事業",
+            "tagline": "家事や育児を、自宅で手伝ってほしい",
+            "needs": {
+              "housework": 9,
+              "care": 6,
+              "rest": 1
+            },
+            "summary": "家事や育児に不安や負担を抱える家庭などに支援員が訪問し、話を聞きながら食事の準備、掃除、育児等を支えます。",
+            "difference": "自治体が家庭の状況や支援の必要性を確認して調整する事業。自由な家事代行や、外出中の託児を無条件に頼める制度ではありません。",
+            "checks": [
+              "自治体による利用の必要性の確認",
+              "手伝ってもらいたい作業と支援の範囲",
+              "回数・時間・料金"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "home-help-official",
+                "title": "子育て世帯訪問支援事業",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/jido-homon",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 11,
+            "why": [
+              "少し休みたい",
+              "家事の手助け"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "temporary",
+            "name": "一時預かり",
+            "tagline": "日中、数時間から子どもを預かってほしい",
+            "needs": {
+              "day": 5,
+              "rest": 3,
+              "errand": 5,
+              "parent_ill": 2
+            },
+            "summary": "主に乳幼児を保育所などで日中、一時的に預かる仕組み。用事や仕事のほか、育児疲れを軽くするための利用もあります。",
+            "difference": "保護者の一時的な預かりの必要に応える支援です。誰でも通園とは、目的や対象条件、申込枠が異なります。",
+            "checks": [
+              "対象年齢と利用理由",
+              "希望する時間と空き",
+              "利用料金と事前登録"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "temporary-official",
+                "title": "子ども・子育て支援新制度",
+                "url": "https://www.cfa.go.jp/policies/kokoseido/sukusuku",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 4,
+            "why": [
+              "少し休みたい"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "shortstay",
+            "name": "子育てショートステイ",
+            "tagline": "泊まりも含め、子どもの世話を支えてほしい",
+            "needs": {
+              "overnight": 9,
+              "rest": 2,
+              "parent_ill": 4
+            },
+            "summary": "育児疲れ、育児不安、入院などで子どもの養育が一時的に難しいとき、施設や里親家庭等で短期間支える事業。親子で利用する支援もあります。",
+            "difference": "主に宿泊を伴う養育の支援。産後ケアの「ショートステイ型」とは別制度です。利用期間は自治体が家庭の状況等から判断します。",
+            "checks": [
+              "対象年齢・利用理由・日数",
+              "子どもの過ごし方と事前面談",
+              "料金・送迎・緊急時の相談方法"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "shortstay-official",
+                "title": "子育て短期支援事業",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/jido-short",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 2.9,
+            "why": [
+              "少し休みたい"
+            ],
+            "warnings": []
+          }
+        ],
+        "consultation": "子どもは2か月です。少し休みたい、家事の手助けということで困っています。利用できそうな支援と、条件・料金・申込方法を教えてください。",
+        "scope": "national",
+        "checkedAt": "2026-10-20",
+        "urgent": false,
+        "summary": "本事業は、保護者等の仮眠・静養のための時間の確保などを想定しています。",
+        "reply": "本事業は、保護者等の仮眠・静養のための時間の確保などを想定しています。",
+        "replyBody": "本事業は、保護者等の仮眠・静養のための時間の確保などを想定しています。",
+        "replyOpening": "",
+        "replyGuidance": [],
+        "replyStatements": [
+          {
+            "text": "本事業は、保護者等の仮眠・静養のための時間の確保などを想定しています。",
+            "evidence": [
+              {
+                "chunkId": "home-help-010",
+                "quote": "保護者等の仮眠・静養、家事、通"
+              }
+            ]
+          }
+        ],
+        "replySources": [
+          {
+            "id": "home-help-010",
+            "programId": "home-help",
+            "title": "子育て世帯訪問支援事業ガイドライン（PDF 6〜8ページ）",
+            "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/91f57176-a420-4d1d-8973-1828437e0aa8/d9bc9e4f/20240904_policies_kosodateshien_jido-homon_03.pdf#page=6",
+            "checkedAt": "2026-10-20",
+            "excerpt": "対応\n が求められる場合の支援の可否\n➢ 支援の内容\n ・育児のサポート（授乳や食事、おむつ交換・着替え、沐浴・入浴 等）\n ・保育所等の送迎（保育所、幼稚園、放課後児童クラブ等の送迎 等）\n ・児童の見守り、宿題の見守り、遊び相手 等\n ・外出時の補助 （通院、行政サービスの手続きの際の同行・児童の見守り 等）\n 等\n※本事業は、保育を主たる目的としたものではなく、保護者等の仮眠・静養、家事、通\n 院等をするための時間の確保や育児の方法に悩んだときにサポートするような支援\n を想定している。\n➢ 保育所等の送迎や外出時の補助を実施する際の、移動手段やそれに伴う交通費等につ\n いて\n３．支援対象者\n\n 本事業の支援対象は、児童や保護者又は妊婦からの相談や、庁内の関係部署及び関係機\n関からの情報提供・相談等により把握され、本事業による支援が必要であると市町村が認\nめた、次に掲げるような状態にある者を対象とする。\n\n\n ① 保護者に監護させることが不適当であると認められる児童の保護者及びそれに\n 該当"
+          }
+        ],
+        "replyFollowup": null,
+        "showRecommendations": false,
+        "mode": "ruri-gemini",
+        "model": "gemini-3.5-flash-lite",
+        "warning": null,
+        "elapsedMs": 1506.189667000006,
+        "usage": {
+          "promptTokenCount": 3531,
+          "candidatesTokenCount": 60,
+          "totalTokenCount": 3591,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 3531
+            }
+          ],
+          "serviceTier": "standard"
+        },
+        "retrievedChunkIds": [
+          "home-help-012",
+          "home-help-003",
+          "home-help-010",
+          "home-help-009",
+          "home-help-011",
+          "home-help-008"
+        ],
+        "timings": {
+          "retrievalMs": 21.41558300000179,
+          "queryEmbeddingMs": 20.62,
+          "readyWaitMs": 0.002417000003333669,
+          "googleMs": 1483.7552920000016
+        },
+        "retrievalModel": "cl-nagoya/ruri-v3-70m"
+      }
+    },
+    {
+      "user": "仮眠や静養って、つまり昼寝して休んでいいってこと？",
+      "status": 200,
+      "elapsedMs": 2103.5416250000017,
+      "pass": true,
+      "data": {
+        "facts": {
+          "needs": [
+            "rest",
+            "housework"
+          ],
+          "agesMonths": [
+            2
+          ],
+          "enrolled": "unknown",
+          "singleparent": "unknown",
+          "postpartumMonths": -1,
+          "time": "unknown",
+          "urgent": false
+        },
+        "question": null,
+        "results": [
+          {
+            "id": "home-help",
+            "name": "子育て世帯訪問支援事業",
+            "tagline": "家事や育児を、自宅で手伝ってほしい",
+            "needs": {
+              "housework": 9,
+              "care": 6,
+              "rest": 1
+            },
+            "summary": "家事や育児に不安や負担を抱える家庭などに支援員が訪問し、話を聞きながら食事の準備、掃除、育児等を支えます。",
+            "difference": "自治体が家庭の状況や支援の必要性を確認して調整する事業。自由な家事代行や、外出中の託児を無条件に頼める制度ではありません。",
+            "checks": [
+              "自治体による利用の必要性の確認",
+              "手伝ってもらいたい作業と支援の範囲",
+              "回数・時間・料金"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "home-help-official",
+                "title": "子育て世帯訪問支援事業",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/jido-homon",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 11,
+            "why": [
+              "少し休みたい",
+              "家事の手助け"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "temporary",
+            "name": "一時預かり",
+            "tagline": "日中、数時間から子どもを預かってほしい",
+            "needs": {
+              "day": 5,
+              "rest": 3,
+              "errand": 5,
+              "parent_ill": 2
+            },
+            "summary": "主に乳幼児を保育所などで日中、一時的に預かる仕組み。用事や仕事のほか、育児疲れを軽くするための利用もあります。",
+            "difference": "保護者の一時的な預かりの必要に応える支援です。誰でも通園とは、目的や対象条件、申込枠が異なります。",
+            "checks": [
+              "対象年齢と利用理由",
+              "希望する時間と空き",
+              "利用料金と事前登録"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "temporary-official",
+                "title": "子ども・子育て支援新制度",
+                "url": "https://www.cfa.go.jp/policies/kokoseido/sukusuku",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 4,
+            "why": [
+              "少し休みたい"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "shortstay",
+            "name": "子育てショートステイ",
+            "tagline": "泊まりも含め、子どもの世話を支えてほしい",
+            "needs": {
+              "overnight": 9,
+              "rest": 2,
+              "parent_ill": 4
+            },
+            "summary": "育児疲れ、育児不安、入院などで子どもの養育が一時的に難しいとき、施設や里親家庭等で短期間支える事業。親子で利用する支援もあります。",
+            "difference": "主に宿泊を伴う養育の支援。産後ケアの「ショートステイ型」とは別制度です。利用期間は自治体が家庭の状況等から判断します。",
+            "checks": [
+              "対象年齢・利用理由・日数",
+              "子どもの過ごし方と事前面談",
+              "料金・送迎・緊急時の相談方法"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "shortstay-official",
+                "title": "子育て短期支援事業",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/jido-short",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 2.9,
+            "why": [
+              "少し休みたい"
+            ],
+            "warnings": []
+          }
+        ],
+        "consultation": "子どもは2か月です。少し休みたい、家事の手助けということで困っています。利用できそうな支援と、条件・料金・申込方法を教えてください。",
+        "scope": "national",
+        "checkedAt": "2026-10-20",
+        "urgent": false,
+        "summary": "仮眠をとったり、体を休めたりすることです。",
+        "reply": "仮眠をとったり、体を休めたりすることです。",
+        "replyBody": "仮眠をとったり、体を休めたりすることです。",
+        "replyOpening": "",
+        "replyGuidance": [],
+        "replyStatements": [
+          {
+            "text": "仮眠をとったり、体を休めたりすることです。",
+            "evidence": [
+              {
+                "chunkId": "home-help-008",
+                "quote": "保護者等の仮眠・静養"
+              }
+            ]
+          }
+        ],
+        "replySources": [
+          {
+            "id": "home-help-008",
+            "programId": "home-help",
+            "title": "子育て世帯訪問支援事業ガイドライン（PDF 5〜7ページ）",
+            "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/91f57176-a420-4d1d-8973-1828437e0aa8/d9bc9e4f/20240904_policies_kosodateshien_jido-homon_03.pdf#page=5",
+            "checkedAt": "2026-10-20",
+            "excerpt": "は妊婦（以下「保護者等」とい\nう。）の価値観の否定をするのではなく、保護者等の立場に寄り添い、保護者等の状況や心\n情を理解し、支援を行うよう努めること。\n 市町村は、本事業の目的や地域の実情を踏まえ、家事、育児・養育支援の具体的な内容や\n範囲、ルール、利用料等をあらかじめ定めること。利用料の設定に当たっては、利用者の所\n得状況に応じて減免するなど考慮することが望ましい。また、複数の事業者に委託等する場\n合には、以下の項目を参考に、各事業者と具体的な支援の内容や範囲、ルール等を検討し、\n定めることが望ましい。\n\n\n【家事、育児・養育支援の内容や範囲、ルール等を定める項目の参考例】\n <家事、育児・養育支援共通>\n➢ 家族（保護者）が不在時の支援内容の可否\n➢ 児童が複数いる場合や家事・育児等を同時に行う場合の訪問支援員の人数\n➢ 家族が不在時に支援を行う場合の鍵や貴重品等の管理のルール\n➢ 緊急時（専門的な支援が必要だと感じられた場合を含む）・事故発生時の対応\n\n\n <家事支援>\n➢ 支援の内容\n ①日常的な家事の例\n ・食事の準備（一般的な家庭料理・片付け等）\n ・洗濯（洗濯機を使った一般的な洗濯、洗濯物干し、とり込み、たたみ、アイロンが\n け）\n ・掃除（リビング、お風呂、お手洗い、玄関等の掃除機がけ、雑巾がけ等）\n ・買い物の代行やサポート 等\n ②特例的な内容例（通常は想定していないが、特に支援が必要な家庭には検討が必要な\n 内容）\n ・大掃除、網戸・エアコン・照明器具等の掃除、草むしり 等\n\n\n➢ 食事を準備する際に使用する食材の調達方法について\n➢ 買い物の代行を行う際の費用（交通費含む）について\n➢ 家事支援を行う際に使用する道具について\n\n\n<育児・養育支援>\n➢ 児童が発熱している場合や体調不良の場合、障がい等があり合理的配慮を超える対応\n が求められる場合の支援の可否\n➢ 支援の内容\n ・育児のサポート（授乳や食事、おむつ交換・着替え、沐浴・入浴 等）\n ・保育所等の送迎（保育所、幼稚園、放課後児童クラブ等の送迎 等）\n ・児童の見守り、宿題の見守り、遊び相手 等\n ・外出時の補助 （通院、行政サービスの手続きの際の同行・児童の見守り 等）\n 等\n※本事業は、保育を主たる目的としたものではなく、保護者等の仮眠・静養、家事、通\n 院等をするための時間の確保や育児の方法に悩んだときにサポートするような支援\n を想定している。\n➢ 保育所等の送迎や外出時の補助を実施する際の、移動手段やそれに伴う交通費等につ\n いて"
+          }
+        ],
+        "replyFollowup": null,
+        "showRecommendations": false,
+        "mode": "ruri-gemini",
+        "model": "gemini-3.5-flash-lite",
+        "warning": null,
+        "elapsedMs": 2102.2090409999946,
+        "usage": {
+          "promptTokenCount": 4093,
+          "candidatesTokenCount": 89,
+          "totalTokenCount": 4535,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 4093
+            }
+          ],
+          "thoughtsTokenCount": 353,
+          "serviceTier": "standard"
+        },
+        "retrievedChunkIds": [
+          "home-help-009",
+          "home-help-010",
+          "home-help-011",
+          "home-help-008",
+          "home-help-006",
+          "home-help-039"
+        ],
+        "timings": {
+          "retrievalMs": 24.420124999996915,
+          "queryEmbeddingMs": 23.56,
+          "readyWaitMs": 0.0011660000018309802,
+          "googleMs": 2076.9839589999974
+        },
+        "retrievalModel": "cl-nagoya/ruri-v3-70m"
+      }
+    },
+    {
+      "user": "費用はどんなふうに決まるの？お金に余裕がないので心配です。",
+      "status": 200,
+      "elapsedMs": 2465.5509170000005,
+      "pass": true,
+      "data": {
+        "facts": {
+          "needs": [
+            "rest",
+            "housework"
+          ],
+          "agesMonths": [
+            2
+          ],
+          "enrolled": "unknown",
+          "singleparent": "unknown",
+          "postpartumMonths": -1,
+          "time": "unknown",
+          "urgent": false
+        },
+        "question": null,
+        "results": [
+          {
+            "id": "home-help",
+            "name": "子育て世帯訪問支援事業",
+            "tagline": "家事や育児を、自宅で手伝ってほしい",
+            "needs": {
+              "housework": 9,
+              "care": 6,
+              "rest": 1
+            },
+            "summary": "家事や育児に不安や負担を抱える家庭などに支援員が訪問し、話を聞きながら食事の準備、掃除、育児等を支えます。",
+            "difference": "自治体が家庭の状況や支援の必要性を確認して調整する事業。自由な家事代行や、外出中の託児を無条件に頼める制度ではありません。",
+            "checks": [
+              "自治体による利用の必要性の確認",
+              "手伝ってもらいたい作業と支援の範囲",
+              "回数・時間・料金"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "home-help-official",
+                "title": "子育て世帯訪問支援事業",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/jido-homon",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 11,
+            "why": [
+              "少し休みたい",
+              "家事の手助け"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "temporary",
+            "name": "一時預かり",
+            "tagline": "日中、数時間から子どもを預かってほしい",
+            "needs": {
+              "day": 5,
+              "rest": 3,
+              "errand": 5,
+              "parent_ill": 2
+            },
+            "summary": "主に乳幼児を保育所などで日中、一時的に預かる仕組み。用事や仕事のほか、育児疲れを軽くするための利用もあります。",
+            "difference": "保護者の一時的な預かりの必要に応える支援です。誰でも通園とは、目的や対象条件、申込枠が異なります。",
+            "checks": [
+              "対象年齢と利用理由",
+              "希望する時間と空き",
+              "利用料金と事前登録"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "temporary-official",
+                "title": "子ども・子育て支援新制度",
+                "url": "https://www.cfa.go.jp/policies/kokoseido/sukusuku",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 4,
+            "why": [
+              "少し休みたい"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "shortstay",
+            "name": "子育てショートステイ",
+            "tagline": "泊まりも含め、子どもの世話を支えてほしい",
+            "needs": {
+              "overnight": 9,
+              "rest": 2,
+              "parent_ill": 4
+            },
+            "summary": "育児疲れ、育児不安、入院などで子どもの養育が一時的に難しいとき、施設や里親家庭等で短期間支える事業。親子で利用する支援もあります。",
+            "difference": "主に宿泊を伴う養育の支援。産後ケアの「ショートステイ型」とは別制度です。利用期間は自治体が家庭の状況等から判断します。",
+            "checks": [
+              "対象年齢・利用理由・日数",
+              "子どもの過ごし方と事前面談",
+              "料金・送迎・緊急時の相談方法"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "shortstay-official",
+                "title": "子育て短期支援事業",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/jido-short",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 2.99,
+            "why": [
+              "少し休みたい"
+            ],
+            "warnings": []
+          }
+        ],
+        "consultation": "子どもは2か月です。少し休みたい、家事の手助けということで困っています。利用できそうな支援と、条件・料金・申込方法を教えてください。",
+        "scope": "national",
+        "checkedAt": "2026-10-20",
+        "urgent": false,
+        "summary": "費用が心配なのですね。\n\n市町村が利用料をあらかじめ定めます。\n利用料の設定では、利用者の所得状況に応じて減免することが望ましいとされています。",
+        "reply": "費用が心配なのですね。\n\n市町村が利用料をあらかじめ定めます。\n利用料の設定では、利用者の所得状況に応じて減免することが望ましいとされています。",
+        "replyBody": "市町村が利用料をあらかじめ定めます。\n利用料の設定では、利用者の所得状況に応じて減免することが望ましいとされています。",
+        "replyOpening": "費用が心配なのですね。",
+        "replyGuidance": [],
+        "replyStatements": [
+          {
+            "text": "市町村が利用料をあらかじめ定めます。",
+            "evidence": [
+              {
+                "chunkId": "home-help-006",
+                "quote": "市町村は、本事業の目的や地域の実情を踏まえ、家事、育児・養育支援の具体的な内容や範囲、ルール、利用料等をあらかじめ定めること。"
+              }
+            ]
+          },
+          {
+            "text": "利用料の設定では、利用者の所得状況に応じて減免することが望ましいとされています。",
+            "evidence": [
+              {
+                "chunkId": "home-help-007",
+                "quote": "利用料の設定に当たっては、利用者の所得状況に応じて減免するなど考慮することが望ましい。"
+              }
+            ]
+          }
+        ],
+        "replySources": [
+          {
+            "id": "home-help-006",
+            "programId": "home-help",
+            "title": "子育て世帯訪問支援事業ガイドライン（PDF 4〜5ページ）",
+            "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/91f57176-a420-4d1d-8973-1828437e0aa8/d9bc9e4f/20240904_policies_kosodateshien_jido-homon_03.pdf#page=4",
+            "checkedAt": "2026-10-20",
+            "excerpt": "の取組 ....................................................... 20\n\n７．届出等 ....................................................................................... 20\n１．事業の目的\n\n 家事・子育て等に対して不安や負担を抱える子育て家庭、妊産婦、ヤングケアラー等が\nいる家庭の居宅を、訪問支援員が訪問し、家庭が抱える不安や悩みを傾聴するとともに、\n家事・子育て等の支援を実施することにより、家庭や養育環境を整え、虐待リスク等の高\nまりを未然に防ぐことを目的とする。\n\n\n\n２．支援内容\n\n 支援の内容については、対象家庭を訪問し、①若しくは②又は①②を同時に行うことを\n基本に、家庭の状況に合わせ以下の内容を包括的に実施する。\n\n\n ① 家事支援（食事準備、洗濯、掃除、買い物の代行やサポート等）\n ② 育児・養育支援（育児のサポート、保育所等の送迎、宿題の見守り、外出時の補助\n 等）\n ③ 子育て等に関する不安や悩みの傾聴、相談・助言（※）\n ※保護者に寄り添い、エンパワメントするための助言等。なお、保健師等の専門職に\n よる対応が必要な専門的な内容は除く。\n ④ 地域の母子保健施策・子育て支援施策等に関する情報提供\n ⑤ 支援対象者や児童の状況・養育環境の把握、市町村への報告\n\n\n\n\n 本事業は、単なる家事・育児の手伝いによる一時的な負担解消だけではなく、家事・子育\nて支援を通して、支援対象の家庭が自立して生活できるように支援対象者の環境を整えて\nいくことが最終的な目標像である。児童の権利を守るため、児童の最善の利益を優先して考\n慮し、保護者に寄り添う支援が必要となる。事業の実施に当たっては、市町村と事業者や訪\n問支援員が、事業の目的や理念、支援対象者に対する支援の全体像の中で担っている本事業\nによる支援の役割を明確化し、共通認識を図ることが必要である。\n 訪問支援を実施する上で、家事・子育て等に対して不安や悩みを抱えた家庭が信頼して相\n談・支援を依頼できるために、訪問支援員は家庭が抱える不安や悩みを傾聴できる必要があ\nる。親子等に寄り添いサポートをする支援であることを踏まえ、家事・子育ての一方的な指\n導や、訪問支援員自身の価値観のおしつけ、児童や保護者又は妊婦（以下「保護者等」とい\nう。）の価値観の否定をするのではなく、保護者等の立場に寄り添い、保護者等の状況や心\n情を理解し、支援を行うよう努めること。\n 市町村は、本事業の目的や地域の実情を踏まえ、家事、育児・養育支援の具体的な内容や\n範囲、ルール、利用料等をあらかじめ定めること。利用料の設定に当たっ"
+          },
+          {
+            "id": "home-help-007",
+            "programId": "home-help",
+            "title": "子育て世帯訪問支援事業ガイドライン（PDF 5〜6ページ）",
+            "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/91f57176-a420-4d1d-8973-1828437e0aa8/d9bc9e4f/20240904_policies_kosodateshien_jido-homon_03.pdf#page=5",
+            "checkedAt": "2026-10-20",
+            "excerpt": "負担解消だけではなく、家事・子育\nて支援を通して、支援対象の家庭が自立して生活できるように支援対象者の環境を整えて\nいくことが最終的な目標像である。児童の権利を守るため、児童の最善の利益を優先して考\n慮し、保護者に寄り添う支援が必要となる。事業の実施に当たっては、市町村と事業者や訪\n問支援員が、事業の目的や理念、支援対象者に対する支援の全体像の中で担っている本事業\nによる支援の役割を明確化し、共通認識を図ることが必要である。\n 訪問支援を実施する上で、家事・子育て等に対して不安や悩みを抱えた家庭が信頼して相\n談・支援を依頼できるために、訪問支援員は家庭が抱える不安や悩みを傾聴できる必要があ\nる。親子等に寄り添いサポートをする支援であることを踏まえ、家事・子育ての一方的な指\n導や、訪問支援員自身の価値観のおしつけ、児童や保護者又は妊婦（以下「保護者等」とい\nう。）の価値観の否定をするのではなく、保護者等の立場に寄り添い、保護者等の状況や心\n情を理解し、支援を行うよう努めること。\n 市町村は、本事業の目的や地域の実情を踏まえ、家事、育児・養育支援の具体的な内容や\n範囲、ルール、利用料等をあらかじめ定めること。利用料の設定に当たっては、利用者の所\n得状況に応じて減免するなど考慮することが望ましい。また、複数の事業者に委託等する場\n合には、以下の項目を参考に、各事業者と具体的な支援の内容や範囲、ルール等を検討し、\n定めることが望ましい。\n\n\n【家事、育児・養育支援の内容や範囲、ルール等を定める項目の参考例】\n <家事、育児・養育支援共通>\n➢ 家族（保護者）が不在"
+          }
+        ],
+        "replyFollowup": null,
+        "showRecommendations": false,
+        "mode": "ruri-gemini",
+        "model": "gemini-3.5-flash-lite",
+        "warning": null,
+        "elapsedMs": 2464.2811250000013,
+        "usage": {
+          "promptTokenCount": 4269,
+          "candidatesTokenCount": 205,
+          "totalTokenCount": 4852,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 4269
+            }
+          ],
+          "thoughtsTokenCount": 378,
+          "serviceTier": "standard"
+        },
+        "retrievedChunkIds": [
+          "home-help-006",
+          "home-help-007",
+          "home-help-011",
+          "home-help-021",
+          "home-help-009",
+          "home-help-027"
+        ],
+        "timings": {
+          "retrievalMs": 24.16895800000202,
+          "queryEmbeddingMs": 22.93,
+          "readyWaitMs": 0.0010000000038417056,
+          "googleMs": 2439.268124999995
+        },
+        "retrievalModel": "cl-nagoya/ruri-v3-70m"
+      }
+    },
+    {
+      "user": "市町村が料金を決めるってこと？全国一律ではないんだね。",
+      "status": 200,
+      "elapsedMs": 1648.0511250000018,
+      "pass": true,
+      "data": {
+        "facts": {
+          "needs": [
+            "rest",
+            "housework"
+          ],
+          "agesMonths": [
+            2
+          ],
+          "enrolled": "unknown",
+          "singleparent": "unknown",
+          "postpartumMonths": -1,
+          "time": "unknown",
+          "urgent": false
+        },
+        "question": null,
+        "results": [
+          {
+            "id": "home-help",
+            "name": "子育て世帯訪問支援事業",
+            "tagline": "家事や育児を、自宅で手伝ってほしい",
+            "needs": {
+              "housework": 9,
+              "care": 6,
+              "rest": 1
+            },
+            "summary": "家事や育児に不安や負担を抱える家庭などに支援員が訪問し、話を聞きながら食事の準備、掃除、育児等を支えます。",
+            "difference": "自治体が家庭の状況や支援の必要性を確認して調整する事業。自由な家事代行や、外出中の託児を無条件に頼める制度ではありません。",
+            "checks": [
+              "自治体による利用の必要性の確認",
+              "手伝ってもらいたい作業と支援の範囲",
+              "回数・時間・料金"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "home-help-official",
+                "title": "子育て世帯訪問支援事業",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/jido-homon",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 11,
+            "why": [
+              "少し休みたい",
+              "家事の手助け"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "temporary",
+            "name": "一時預かり",
+            "tagline": "日中、数時間から子どもを預かってほしい",
+            "needs": {
+              "day": 5,
+              "rest": 3,
+              "errand": 5,
+              "parent_ill": 2
+            },
+            "summary": "主に乳幼児を保育所などで日中、一時的に預かる仕組み。用事や仕事のほか、育児疲れを軽くするための利用もあります。",
+            "difference": "保護者の一時的な預かりの必要に応える支援です。誰でも通園とは、目的や対象条件、申込枠が異なります。",
+            "checks": [
+              "対象年齢と利用理由",
+              "希望する時間と空き",
+              "利用料金と事前登録"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "temporary-official",
+                "title": "子ども・子育て支援新制度",
+                "url": "https://www.cfa.go.jp/policies/kokoseido/sukusuku",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 4,
+            "why": [
+              "少し休みたい"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "shortstay",
+            "name": "子育てショートステイ",
+            "tagline": "泊まりも含め、子どもの世話を支えてほしい",
+            "needs": {
+              "overnight": 9,
+              "rest": 2,
+              "parent_ill": 4
+            },
+            "summary": "育児疲れ、育児不安、入院などで子どもの養育が一時的に難しいとき、施設や里親家庭等で短期間支える事業。親子で利用する支援もあります。",
+            "difference": "主に宿泊を伴う養育の支援。産後ケアの「ショートステイ型」とは別制度です。利用期間は自治体が家庭の状況等から判断します。",
+            "checks": [
+              "対象年齢・利用理由・日数",
+              "子どもの過ごし方と事前面談",
+              "料金・送迎・緊急時の相談方法"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "shortstay-official",
+                "title": "子育て短期支援事業",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/jido-short",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 2.99,
+            "why": [
+              "少し休みたい"
+            ],
+            "warnings": []
+          }
+        ],
+        "consultation": "子どもは2か月です。少し休みたい、家事の手助けということで困っています。利用できそうな支援と、条件・料金・申込方法を教えてください。",
+        "scope": "national",
+        "checkedAt": "2026-10-20",
+        "urgent": false,
+        "summary": "市町村が、本事業の目的や地域の実情を踏まえ、家事、育児・養育支援の具体的な内容や範囲、ルール、利用料等をあらかじめ定めること。",
+        "reply": "市町村が、本事業の目的や地域の実情を踏まえ、家事、育児・養育支援の具体的な内容や範囲、ルール、利用料等をあらかじめ定めること。",
+        "replyBody": "市町村が、本事業の目的や地域の実情を踏まえ、家事、育児・養育支援の具体的な内容や範囲、ルール、利用料等をあらかじめ定めること。",
+        "replyOpening": "",
+        "replyGuidance": [],
+        "replyStatements": [
+          {
+            "text": "市町村が、本事業の目的や地域の実情を踏まえ、家事、育児・養育支援の具体的な内容や範囲、ルール、利用料等をあらかじめ定めること。",
+            "evidence": [
+              {
+                "chunkId": "home-help-007",
+                "quote": "市町村は、本事業の目的や地域の実情を踏まえ、家事、育児・養育支援の具体的な内容や範囲、ルール、利用料等をあらかじめ定めること。"
+              }
+            ]
+          }
+        ],
+        "replySources": [
+          {
+            "id": "home-help-007",
+            "programId": "home-help",
+            "title": "子育て世帯訪問支援事業ガイドライン（PDF 5〜6ページ）",
+            "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/91f57176-a420-4d1d-8973-1828437e0aa8/d9bc9e4f/20240904_policies_kosodateshien_jido-homon_03.pdf#page=5",
+            "checkedAt": "2026-10-20",
+            "excerpt": "負担解消だけではなく、家事・子育\nて支援を通して、支援対象の家庭が自立して生活できるように支援対象者の環境を整えて\nいくことが最終的な目標像である。児童の権利を守るため、児童の最善の利益を優先して考\n慮し、保護者に寄り添う支援が必要となる。事業の実施に当たっては、市町村と事業者や訪\n問支援員が、事業の目的や理念、支援対象者に対する支援の全体像の中で担っている本事業\nによる支援の役割を明確化し、共通認識を図ることが必要である。\n 訪問支援を実施する上で、家事・子育て等に対して不安や悩みを抱えた家庭が信頼して相\n談・支援を依頼できるために、訪問支援員は家庭が抱える不安や悩みを傾聴できる必要があ\nる。親子等に寄り添いサポートをする支援であることを踏まえ、家事・子育ての一方的な指\n導や、訪問支援員自身の価値観のおしつけ、児童や保護者又は妊婦（以下「保護者等」とい\nう。）の価値観の否定をするのではなく、保護者等の立場に寄り添い、保護者等の状況や心\n情を理解し、支援を行うよう努めること。\n 市町村は、本事業の目的や地域の実情を踏まえ、家事、育児・養育支援の具体的な内容や\n範囲、ルール、利用料等をあらかじめ定めること。利用料の設定に当たっては、利用者の所\n得状況に応じて減免するなど考慮することが望ましい。また、複数の事業者に委託等する場\n合には、以下の項目を参考に、各事業者と具体的な支援の内容や範囲、ルール等を検討し、\n定めることが望ましい。\n\n\n【家事、育児・養育支援の内容や範囲、ルール等を定める項目の参考例】\n <家事、育児・養育支援共通>\n➢ 家族（保護者）が不在"
+          }
+        ],
+        "replyFollowup": null,
+        "showRecommendations": false,
+        "mode": "ruri-gemini",
+        "model": "gemini-3.5-flash-lite",
+        "warning": null,
+        "elapsedMs": 1646.8579170000012,
+        "usage": {
+          "promptTokenCount": 4130,
+          "candidatesTokenCount": 107,
+          "totalTokenCount": 4237,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 4130
+            }
+          ],
+          "serviceTier": "standard"
+        },
+        "retrievedChunkIds": [
+          "home-help-007",
+          "home-help-008",
+          "home-help-003",
+          "home-help-038",
+          "home-help-022",
+          "home-help-001"
+        ],
+        "timings": {
+          "retrievalMs": 24.601834000000963,
+          "queryEmbeddingMs": 23.77,
+          "readyWaitMs": 0.002749999999650754,
+          "googleMs": 1620.7201249999998
+        },
+        "retrievalModel": "cl-nagoya/ruri-v3-70m"
+      }
+    },
+    {
+      "user": "申し込みたい場合は、まず何をすればいい？",
+      "status": 200,
+      "elapsedMs": 3073.3229589999974,
+      "pass": true,
+      "data": {
+        "facts": {
+          "needs": [
+            "rest",
+            "housework"
+          ],
+          "agesMonths": [
+            2
+          ],
+          "enrolled": "unknown",
+          "singleparent": "unknown",
+          "postpartumMonths": -1,
+          "time": "unknown",
+          "urgent": false
+        },
+        "question": null,
+        "results": [
+          {
+            "id": "home-help",
+            "name": "子育て世帯訪問支援事業",
+            "tagline": "家事や育児を、自宅で手伝ってほしい",
+            "needs": {
+              "housework": 9,
+              "care": 6,
+              "rest": 1
+            },
+            "summary": "家事や育児に不安や負担を抱える家庭などに支援員が訪問し、話を聞きながら食事の準備、掃除、育児等を支えます。",
+            "difference": "自治体が家庭の状況や支援の必要性を確認して調整する事業。自由な家事代行や、外出中の託児を無条件に頼める制度ではありません。",
+            "checks": [
+              "自治体による利用の必要性の確認",
+              "手伝ってもらいたい作業と支援の範囲",
+              "回数・時間・料金"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "home-help-official",
+                "title": "子育て世帯訪問支援事業",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/jido-homon",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 11,
+            "why": [
+              "少し休みたい",
+              "家事の手助け"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "temporary",
+            "name": "一時預かり",
+            "tagline": "日中、数時間から子どもを預かってほしい",
+            "needs": {
+              "day": 5,
+              "rest": 3,
+              "errand": 5,
+              "parent_ill": 2
+            },
+            "summary": "主に乳幼児を保育所などで日中、一時的に預かる仕組み。用事や仕事のほか、育児疲れを軽くするための利用もあります。",
+            "difference": "保護者の一時的な預かりの必要に応える支援です。誰でも通園とは、目的や対象条件、申込枠が異なります。",
+            "checks": [
+              "対象年齢と利用理由",
+              "希望する時間と空き",
+              "利用料金と事前登録"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "temporary-official",
+                "title": "子ども・子育て支援新制度",
+                "url": "https://www.cfa.go.jp/policies/kokoseido/sukusuku",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 4,
+            "why": [
+              "少し休みたい"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "shortstay",
+            "name": "子育てショートステイ",
+            "tagline": "泊まりも含め、子どもの世話を支えてほしい",
+            "needs": {
+              "overnight": 9,
+              "rest": 2,
+              "parent_ill": 4
+            },
+            "summary": "育児疲れ、育児不安、入院などで子どもの養育が一時的に難しいとき、施設や里親家庭等で短期間支える事業。親子で利用する支援もあります。",
+            "difference": "主に宿泊を伴う養育の支援。産後ケアの「ショートステイ型」とは別制度です。利用期間は自治体が家庭の状況等から判断します。",
+            "checks": [
+              "対象年齢・利用理由・日数",
+              "子どもの過ごし方と事前面談",
+              "料金・送迎・緊急時の相談方法"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "shortstay-official",
+                "title": "子育て短期支援事業",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/jido-short",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 2.99,
+            "why": [
+              "少し休みたい"
+            ],
+            "warnings": []
+          }
+        ],
+        "consultation": "子どもは2か月です。少し休みたい、家事の手助けということで困っています。利用できそうな支援と、条件・料金・申込方法を教えてください。",
+        "scope": "national",
+        "checkedAt": "2026-10-20",
+        "urgent": false,
+        "summary": "市町村に利用の申請をします。\n児童、保護者及び妊婦からの相談等により、市町村が申請を受け付けます。\n\nまず、お住まいの市区町村の公式サイトで「子育て世帯訪問支援事業」を探し、問い合わせ先が載っていれば、そこに尋ねてみてください。見つからないときは、市区町村の子育て相談窓口に「子育て世帯訪問支援事業について相談したい」と伝えてみてください。\n\n確認したいのは、利用時間ごとの料金、減免や追加費用、対象条件、申込方法、予約に必要なものです。\n\nそのまま使うなら、「子育て世帯訪問支援事業を利用したいです。対象になるかと、申し込み方を教えてください」と伝えてみてください。",
+        "reply": "市町村に利用の申請をします。\n児童、保護者及び妊婦からの相談等により、市町村が申請を受け付けます。\n\nまず、お住まいの市区町村の公式サイトで「子育て世帯訪問支援事業」を探し、問い合わせ先が載っていれば、そこに尋ねてみてください。見つからないときは、市区町村の子育て相談窓口に「子育て世帯訪問支援事業について相談したい」と伝えてみてください。\n\n確認したいのは、利用時間ごとの料金、減免や追加費用、対象条件、申込方法、予約に必要なものです。\n\nそのまま使うなら、「子育て世帯訪問支援事業を利用したいです。対象になるかと、申し込み方を教えてください」と伝えてみてください。",
+        "replyBody": "市町村に利用の申請をします。\n児童、保護者及び妊婦からの相談等により、市町村が申請を受け付けます。",
+        "replyOpening": "",
+        "replyGuidance": [
+          "まず、お住まいの市区町村の公式サイトで「子育て世帯訪問支援事業」を探し、問い合わせ先が載っていれば、そこに尋ねてみてください。見つからないときは、市区町村の子育て相談窓口に「子育て世帯訪問支援事業について相談したい」と伝えてみてください。",
+          "確認したいのは、利用時間ごとの料金、減免や追加費用、対象条件、申込方法、予約に必要なものです。",
+          "そのまま使うなら、「子育て世帯訪問支援事業を利用したいです。対象になるかと、申し込み方を教えてください」と伝えてみてください。"
+        ],
+        "replyStatements": [
+          {
+            "text": "市町村に利用の申請をします。",
+            "evidence": [
+              {
+                "chunkId": "home-help-021",
+                "quote": "利用対象者からの申請を受付け、利用を決定する"
+              }
+            ]
+          },
+          {
+            "text": "児童、保護者及び妊婦からの相談等により、市町村が申請を受け付けます。",
+            "evidence": [
+              {
+                "chunkId": "home-help-021",
+                "quote": "児童、保護者及び妊婦からの相談等やこども家庭センターをはじめとした関係部署や関係機関からの相談・情報提供等により、本事業の支援が必要と認められる場合には、利用対象者からの申請を受付け、利用を決定する。"
+              }
+            ]
+          }
+        ],
+        "replySources": [
+          {
+            "id": "home-help-021",
+            "programId": "home-help",
+            "title": "子育て世帯訪問支援事業ガイドライン（PDF 14〜15ページ）",
+            "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/91f57176-a420-4d1d-8973-1828437e0aa8/d9bc9e4f/20240904_policies_kosodateshien_jido-homon_03.pdf#page=14",
+            "checkedAt": "2026-10-20",
+            "excerpt": "図表２ 支援の流れ（一例）\nア 保護者・関係機関等からの相談受付、利用申請・利用決定\n 市町村は、児童、保護者及び妊婦からの相談等やこども家庭センターをはじめとした関係\n部署や関係機関からの相談・情報提供等により、本事業の支援が必要と認められる場合には、\n利用対象者からの申請を受付け、利用を決定する。\n\n\n 市町村における家庭や地域の状況の把握や相談への対応等については、こども家庭セン\nターガイドラインを参照し、保護者等の個々のニーズ、家庭状況等の情報に基づき、必要な\n支援策（本事業における支援の目標、内容、頻度及び期間等を含む）を検討する。必要に応\nじて、こども家庭センターや要保護児童対策地域協議会の個別ケース検討会議等を活用し、\nアセスメント等を行い、必要な支援策、保護者等や児童との関係性を構築するための方策、\n支援策の提案方法（誰がどこでどのように）などを検討することが考えられる。なお、特に\n緊急を要する場合にあっては、必要な支援策等の検討を事後としまずは本事業による支援\nを提供するなど、利用対象者の利便を考慮し、弾力的な運営に努めること。\n\n\n また、もし事業者において支援が必要と思われる家庭等を把握した場合には、適切に市町\n村へ報告するなど、市町村と連携の上、市町村において利用対象者からの申請受理・利用決\n定をすること。\n\n\n さらに、円滑な利用につなげるため、利用対象者への働きかけを行う際に利用対象者と関\n係性のある関係機関や、支援予定の事業者が同席して働きかけを行うことも考えられる。そ\nの際は、あらかじめ保護者等へ同席することを伝え、意向を確認すること。また、働きかけ\nを行う場所については、訪問や来所など、利用対象者の意向や状況に配慮すること。\n なお、未成年のヤングケアラーを対象とする場合、事業の提供には保護者からの利用申請\nが必要であることに留意すること。市町村は、申請や利用につながらない場合など必要に応\nじてこども家庭センターや関係機関等と連携し、利用勧奨を繰り返し行ったり、他の支援策\nを検討したりするなど、適切な支援につながるよう努めること。"
+          }
+        ],
+        "replyFollowup": null,
+        "showRecommendations": false,
+        "mode": "ruri-gemini",
+        "model": "gemini-3.5-flash-lite",
+        "warning": null,
+        "elapsedMs": 3071.936207999999,
+        "usage": {
+          "promptTokenCount": 4489,
+          "candidatesTokenCount": 211,
+          "totalTokenCount": 5003,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 4489
+            }
+          ],
+          "thoughtsTokenCount": 303,
+          "serviceTier": "standard"
+        },
+        "retrievedChunkIds": [
+          "home-help-008",
+          "home-help-021",
+          "home-help-040",
+          "home-help-039",
+          "home-help-038",
+          "home-help-011"
+        ],
+        "timings": {
+          "retrievalMs": 28.978291999999783,
+          "queryEmbeddingMs": 28.3,
+          "readyWaitMs": 0.0014169999994919635,
+          "googleMs": 3042.0194580000025
+        },
+        "retrievalModel": "cl-nagoya/ruri-v3-70m",
+        "replyOptions": [
+          "相談するときの文を作って",
+          "料金の確認項目を整理して"
+        ]
+      }
+    },
+    {
+      "user": "新宿区で今日来てもらえる空きはある？私の場合の利用料金も教えて。",
+      "status": 200,
+      "elapsedMs": 2.3485840000030294,
+      "pass": true,
+      "data": {
+        "facts": {
+          "needs": [
+            "rest",
+            "housework"
+          ],
+          "agesMonths": [
+            2
+          ],
+          "enrolled": "unknown",
+          "singleparent": "unknown",
+          "postpartumMonths": -1,
+          "time": "unknown",
+          "urgent": false
+        },
+        "question": null,
+        "results": [
+          {
+            "id": "home-help",
+            "name": "子育て世帯訪問支援事業",
+            "tagline": "家事や育児を、自宅で手伝ってほしい",
+            "needs": {
+              "housework": 9,
+              "care": 6,
+              "rest": 1
+            },
+            "summary": "家事や育児に不安や負担を抱える家庭などに支援員が訪問し、話を聞きながら食事の準備、掃除、育児等を支えます。",
+            "difference": "自治体が家庭の状況や支援の必要性を確認して調整する事業。自由な家事代行や、外出中の託児を無条件に頼める制度ではありません。",
+            "checks": [
+              "自治体による利用の必要性の確認",
+              "手伝ってもらいたい作業と支援の範囲",
+              "回数・時間・料金"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "home-help-official",
+                "title": "子育て世帯訪問支援事業",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/jido-homon",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 11,
+            "why": [
+              "少し休みたい",
+              "家事の手助け"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "temporary",
+            "name": "一時預かり",
+            "tagline": "日中、数時間から子どもを預かってほしい",
+            "needs": {
+              "day": 5,
+              "rest": 3,
+              "errand": 5,
+              "parent_ill": 2
+            },
+            "summary": "主に乳幼児を保育所などで日中、一時的に預かる仕組み。用事や仕事のほか、育児疲れを軽くするための利用もあります。",
+            "difference": "保護者の一時的な預かりの必要に応える支援です。誰でも通園とは、目的や対象条件、申込枠が異なります。",
+            "checks": [
+              "対象年齢と利用理由",
+              "希望する時間と空き",
+              "利用料金と事前登録"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "temporary-official",
+                "title": "子ども・子育て支援新制度",
+                "url": "https://www.cfa.go.jp/policies/kokoseido/sukusuku",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 4,
+            "why": [
+              "少し休みたい"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "shortstay",
+            "name": "子育てショートステイ",
+            "tagline": "泊まりも含め、子どもの世話を支えてほしい",
+            "needs": {
+              "overnight": 9,
+              "rest": 2,
+              "parent_ill": 4
+            },
+            "summary": "育児疲れ、育児不安、入院などで子どもの養育が一時的に難しいとき、施設や里親家庭等で短期間支える事業。親子で利用する支援もあります。",
+            "difference": "主に宿泊を伴う養育の支援。産後ケアの「ショートステイ型」とは別制度です。利用期間は自治体が家庭の状況等から判断します。",
+            "checks": [
+              "対象年齢・利用理由・日数",
+              "子どもの過ごし方と事前面談",
+              "料金・送迎・緊急時の相談方法"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "shortstay-official",
+                "title": "子育て短期支援事業",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/jido-short",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 2.99,
+            "why": [
+              "少し休みたい"
+            ],
+            "warnings": []
+          }
+        ],
+        "consultation": "子どもは2か月です。少し休みたい、家事の手助けということで困っています。利用できそうな支援と、条件・料金・申込方法を教えてください。",
+        "scope": "national",
+        "checkedAt": "2026-10-20",
+        "urgent": false,
+        "summary": "当日の空きや予約の可否、あなたの場合の利用料金は、この資料集では確認できません。\n\nまず、お住まいの市区町村の公式サイトで「子育て世帯訪問支援事業」を探し、問い合わせ先が載っていれば、そこに尋ねてみてください。見つからないときは、市区町村の子育て相談窓口に「子育て世帯訪問支援事業について相談したい」と伝えてみてください。\n\n確認したいのは、利用時間ごとの料金、減免や追加費用、希望日に利用できるか、空きがない場合の別の日や支援です。\n\nそのまま使うなら、「子育て世帯訪問支援事業を利用したいです。料金や減免について知りたいです。希望日に利用できるか確認したいです。対象になるかと、申し込み方を教えてください」と伝えてみてください。",
+        "reply": "当日の空きや予約の可否、あなたの場合の利用料金は、この資料集では確認できません。\n\nまず、お住まいの市区町村の公式サイトで「子育て世帯訪問支援事業」を探し、問い合わせ先が載っていれば、そこに尋ねてみてください。見つからないときは、市区町村の子育て相談窓口に「子育て世帯訪問支援事業について相談したい」と伝えてみてください。\n\n確認したいのは、利用時間ごとの料金、減免や追加費用、希望日に利用できるか、空きがない場合の別の日や支援です。\n\nそのまま使うなら、「子育て世帯訪問支援事業を利用したいです。料金や減免について知りたいです。希望日に利用できるか確認したいです。対象になるかと、申し込み方を教えてください」と伝えてみてください。",
+        "replyBody": "当日の空きや予約の可否、あなたの場合の利用料金は、この資料集では確認できません。",
+        "replyOpening": "",
+        "replyGuidance": [
+          "まず、お住まいの市区町村の公式サイトで「子育て世帯訪問支援事業」を探し、問い合わせ先が載っていれば、そこに尋ねてみてください。見つからないときは、市区町村の子育て相談窓口に「子育て世帯訪問支援事業について相談したい」と伝えてみてください。",
+          "確認したいのは、利用時間ごとの料金、減免や追加費用、希望日に利用できるか、空きがない場合の別の日や支援です。",
+          "そのまま使うなら、「子育て世帯訪問支援事業を利用したいです。料金や減免について知りたいです。希望日に利用できるか確認したいです。対象になるかと、申し込み方を教えてください」と伝えてみてください。"
+        ],
+        "replyStatements": [],
+        "replySources": [],
+        "replyFollowup": null,
+        "showRecommendations": false,
+        "mode": "source-limited",
+        "model": null,
+        "elapsedMs": 0.880791000003228,
+        "timings": {
+          "retrievalMs": 0,
+          "googleMs": 0
+        },
+        "replyOptions": [
+          "相談するときの文を作って",
+          "料金の確認項目を整理して"
+        ]
+      }
+    },
+    {
+      "user": "ありがとう。まず相談してみます。",
+      "status": 200,
+      "elapsedMs": 2.436375000001135,
+      "pass": true,
+      "data": {
+        "facts": {
+          "needs": [
+            "rest",
+            "housework",
+            "advice"
+          ],
+          "agesMonths": [
+            2
+          ],
+          "enrolled": "unknown",
+          "singleparent": "unknown",
+          "postpartumMonths": -1,
+          "time": "unknown",
+          "urgent": true
+        },
+        "question": null,
+        "results": [
+          {
+            "id": "home-help",
+            "name": "子育て世帯訪問支援事業",
+            "tagline": "家事や育児を、自宅で手伝ってほしい",
+            "needs": {
+              "housework": 9,
+              "care": 6,
+              "rest": 1
+            },
+            "summary": "家事や育児に不安や負担を抱える家庭などに支援員が訪問し、話を聞きながら食事の準備、掃除、育児等を支えます。",
+            "difference": "自治体が家庭の状況や支援の必要性を確認して調整する事業。自由な家事代行や、外出中の託児を無条件に頼める制度ではありません。",
+            "checks": [
+              "自治体による利用の必要性の確認",
+              "手伝ってもらいたい作業と支援の範囲",
+              "回数・時間・料金"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "home-help-official",
+                "title": "子育て世帯訪問支援事業",
+                "url": "https://www.cfa.go.jp/policies/kosodateshien/jido-homon",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 11,
+            "why": [
+              "少し休みたい",
+              "家事の手助け"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "visit-advice",
+            "name": "養育支援訪問事業",
+            "tagline": "育児の不安を、家庭で専門職に相談したい",
+            "needs": {
+              "advice": 8,
+              "isolation": 3
+            },
+            "summary": "育児の不安や孤立感があるなど、養育支援が必要な家庭を保健師等が訪問し、育児に関する具体的な助言や相談支援を行います。",
+            "difference": "家事を実際に手伝う訪問支援とは役割が異なります。家庭の状況を聞いたうえで、必要な支援を相談します。",
+            "checks": [
+              "現在の育児の困りごと",
+              "訪問で相談したい内容",
+              "利用や訪問調整の流れ"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "visit-advice-official",
+                "title": "家庭支援事業・養育支援訪問",
+                "url": "https://www.cfa.go.jp/policies/katei_shien",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 8.99,
+            "why": [
+              "育児の相談"
+            ],
+            "warnings": []
+          },
+          {
+            "id": "temporary",
+            "name": "一時預かり",
+            "tagline": "日中、数時間から子どもを預かってほしい",
+            "needs": {
+              "day": 5,
+              "rest": 3,
+              "errand": 5,
+              "parent_ill": 2
+            },
+            "summary": "主に乳幼児を保育所などで日中、一時的に預かる仕組み。用事や仕事のほか、育児疲れを軽くするための利用もあります。",
+            "difference": "保護者の一時的な預かりの必要に応える支援です。誰でも通園とは、目的や対象条件、申込枠が異なります。",
+            "checks": [
+              "対象年齢と利用理由",
+              "希望する時間と空き",
+              "利用料金と事前登録"
+            ],
+            "eligibility": {},
+            "sources": [
+              {
+                "id": "temporary-official",
+                "title": "子ども・子育て支援新制度",
+                "url": "https://www.cfa.go.jp/policies/kokoseido/sukusuku",
+                "checkedAt": "2026-10-20"
+              }
+            ],
+            "jurisdiction": "national",
+            "localAvailability": "unknown",
+            "fees": "地域・施設で確認",
+            "score": 4,
+            "why": [
+              "少し休みたい"
+            ],
+            "warnings": []
+          }
+        ],
+        "consultation": "子どもは2か月です。少し休みたい、家事の手助け、育児の相談ということで困っています。利用できそうな支援と、条件・料金・申込方法を教えてください。今日からの支援が必要です。",
+        "scope": "national",
+        "checkedAt": "2026-10-20",
+        "urgent": true,
+        "summary": "どういたしまして。相談の準備で迷うことがあれば、また一緒に整理しましょう。",
+        "reply": "どういたしまして。相談の準備で迷うことがあれば、また一緒に整理しましょう。",
+        "replySources": [],
+        "showRecommendations": false,
+        "mode": "conversation",
+        "model": null,
+        "elapsedMs": 1.3823340000017197,
+        "timings": {
+          "retrievalMs": 0,
+          "googleMs": 0
+        },
+        "replyOptions": []
+      }
+    }
+  ]
+}

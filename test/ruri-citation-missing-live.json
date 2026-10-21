@@ -1,0 +1,59 @@
+{
+  "input": "子育て世帯訪問支援事業の令和9年度の予算額を教えて",
+  "httpStatus": 200,
+  "data": {
+    "facts": {
+      "needs": [],
+      "agesMonths": [],
+      "enrolled": "unknown",
+      "singleparent": "unknown",
+      "postpartumMonths": -1,
+      "time": "unknown",
+      "urgent": false
+    },
+    "question": null,
+    "results": [],
+    "consultation": "利用できそうな支援と、条件・料金・申込方法を教えてください。",
+    "scope": "national",
+    "checkedAt": "2026-10-20",
+    "urgent": false,
+    "summary": "登録資料では確認できません。",
+    "reply": "登録資料では確認できません。",
+    "replySources": [],
+    "replyStatements": [],
+    "replyFollowup": null,
+    "showRecommendations": false,
+    "mode": "ruri-gemini",
+    "model": "gemini-3.5-flash-lite",
+    "warning": null,
+    "elapsedMs": 1290.0460419999945,
+    "usage": {
+      "promptTokenCount": 3216,
+      "candidatesTokenCount": 19,
+      "totalTokenCount": 3321,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 3216
+        }
+      ],
+      "thoughtsTokenCount": 86,
+      "serviceTier": "standard"
+    },
+    "retrievedChunkIds": [
+      "home-help-003",
+      "home-help-001",
+      "home-help-006",
+      "home-help-004",
+      "home-help-002",
+      "home-help-011"
+    ],
+    "timings": {
+      "retrievalMs": 16.475624999999127,
+      "queryEmbeddingMs": 15.25,
+      "readyWaitMs": 0.0012500000011641532,
+      "googleMs": 1272.4308329999985
+    },
+    "retrievalModel": "cl-nagoya/ruri-v3-70m"
+  }
+}

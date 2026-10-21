@@ -1,0 +1,90 @@
+[
+  {
+    "id": "temporary",
+    "title": "一時預かり・国の制度説明",
+    "url": "https://kokasen.cfa.go.jp/support-programs",
+    "path": "/Users/kunimitsu/Projects/AIニュース/motto_子育て/support-finder/.cache/notebook-upload/temporary__一時預かり・国の制度説明.txt",
+    "sha256": "02c37da8f6bf27b113e97c623b9b5cdddf44e30fec2f03e89404a92b37892e5a",
+    "sameBytesAsFileSearchInput": true
+  },
+  {
+    "id": "daredemo",
+    "title": "こども誰でも通園・公式利用案内",
+    "url": "https://www.daretsu.cfa.go.jp/",
+    "path": "/Users/kunimitsu/Projects/AIニュース/motto_子育て/support-finder/.cache/notebook-upload/daredemo__こども誰でも通園・公式利用案内.txt",
+    "sha256": "37b3f34ff1e7b88887298f1b06761bf2c142651b5cb588626f3827331af4b172",
+    "sameBytesAsFileSearchInput": true
+  },
+  {
+    "id": "famisapo",
+    "title": "ファミリー・サポート・センター概要（令和8年度）",
+    "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/e18b0699-53bd-4d02-bd42-f7ebb30c362b/68cb826c/20260612_policies_kosodateshien_family-support_12.pdf",
+    "path": "/Users/kunimitsu/Projects/AIニュース/motto_子育て/support-finder/.cache/notebook-upload/famisapo__ファミリー・サポート・センター概要（令和8年度）.pdf",
+    "sha256": "0e2ea514a63199f3294296f06f3be2dc7284ecd8817f5d8cdfa16a729f736f5c",
+    "sameBytesAsFileSearchInput": true
+  },
+  {
+    "id": "shortstay",
+    "title": "子育て短期支援事業実施要綱（令和8年4月）",
+    "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/8a43806e-f35e-4d12-b712-d3f9f6344c9f/5a002224/20260423_policies_kosodateshien_jido-short_29.pdf",
+    "path": "/Users/kunimitsu/Projects/AIニュース/motto_子育て/support-finder/.cache/notebook-upload/shortstay__子育て短期支援事業実施要綱（令和8年4月）.pdf",
+    "sha256": "bcdf5d906a28fb227c976558a1fa1e377540cdf2c5243816d331bcf866b3dcb3",
+    "sameBytesAsFileSearchInput": true
+  },
+  {
+    "id": "home-help",
+    "title": "子育て世帯訪問支援事業ガイドライン",
+    "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/91f57176-a420-4d1d-8973-1828437e0aa8/d9bc9e4f/20240904_policies_kosodateshien_jido-homon_03.pdf",
+    "path": "/Users/kunimitsu/Projects/AIニュース/motto_子育て/support-finder/.cache/notebook-upload/home-help__子育て世帯訪問支援事業ガイドライン.pdf",
+    "sha256": "116cce67a0d166c89f727f1913fc3069119fc8cc5406fc42a597faa51239f415",
+    "sameBytesAsFileSearchInput": true
+  },
+  {
+    "id": "postpartum",
+    "title": "産後ケア事業ガイドライン（令和8年3月）",
+    "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/ff38becb-bbd1-41f3-a95e-3a22ddac09d8/317bd576/20260331_policies_boshihoken_173.pdf",
+    "path": "/Users/kunimitsu/Projects/AIニュース/motto_子育て/support-finder/.cache/notebook-upload/postpartum__産後ケア事業ガイドライン（令和8年3月）.pdf",
+    "sha256": "2f12634a145a6a65af9ea1db149268f95ea654cd1b860920837e1e4f50f630f7",
+    "sameBytesAsFileSearchInput": true
+  },
+  {
+    "id": "sickcare",
+    "title": "病児保育等の基礎資料（令和8年4月）",
+    "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/e4b817c9-5282-4ccc-b0d5-ce15d7b5018c/07b4e1a1/20260401_policies_hoiku_209.pdf",
+    "path": "/Users/kunimitsu/Projects/AIニュース/motto_子育て/support-finder/.cache/notebook-upload/sickcare__病児保育等の基礎資料（令和8年4月）.pdf",
+    "sha256": "09f9fe1d35a771a4b37b1557a034249d754887fd4be47bfb18ebf3d74e3e05f3",
+    "sameBytesAsFileSearchInput": true
+  },
+  {
+    "id": "singleparent",
+    "title": "ひとり親家庭等日常生活支援事業",
+    "url": "https://www.cfa.go.jp/policies/hitori-oya/hitorioya-seikatsu-shien",
+    "path": "/Users/kunimitsu/Projects/AIニュース/motto_子育て/support-finder/.cache/notebook-upload/singleparent__ひとり親家庭等日常生活支援事業.txt",
+    "sha256": "87c6c578d4334347566f037631c85c6beb69742cabbb2e8e3fa5d2d0a8416895",
+    "sameBytesAsFileSearchInput": true
+  },
+  {
+    "id": "visit-advice",
+    "title": "家庭支援事業・養育支援訪問",
+    "url": "https://www.cfa.go.jp/policies/katei_shien",
+    "path": "/Users/kunimitsu/Projects/AIニュース/motto_子育て/support-finder/.cache/notebook-upload/visit-advice__家庭支援事業・養育支援訪問.txt",
+    "sha256": "60617bacce73c7d059ce930eca76baa3ff07383c57888d535682d7eec8d31bab",
+    "sameBytesAsFileSearchInput": true
+  },
+  {
+    "id": "hiroba",
+    "title": "地域子育て支援拠点事業概要",
+    "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/321a8144-83b8-4467-b70e-89aa4a5e6735/d36734ea/20250714_policies_kosodateshien_shien-kyoten_36.pdf",
+    "path": "/Users/kunimitsu/Projects/AIニュース/motto_子育て/support-finder/.cache/notebook-upload/hiroba__地域子育て支援拠点事業概要.pdf",
+    "sha256": "fad0a878e0c94caf54657488b40b228e88470e3352f69eb635f73300869e9d09",
+    "sameBytesAsFileSearchInput": true
+  },
+  {
+    "id": "daredemo-handbook",
+    "title": "こども誰でも通園制度の実施に関する手引",
+    "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0afde15f-8760-4477-806a-ed72b6916696/60fe9485/20260330_policies_hoiku_daredemo-tsuen_67.pdf",
+    "path": "/Users/kunimitsu/Projects/AIニュース/motto_子育て/support-finder/.cache/notebook-upload/daredemo-handbook__こども誰でも通園制度の実施に関する手引.pdf",
+    "sha256": "9f270e57302a6d3eb9d79637a687c761c438ded88da53a509f2cd0a63d02abf4",
+    "sameBytesAsFileSearchInput": true
+  }
+]
