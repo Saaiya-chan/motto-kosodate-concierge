@@ -60,7 +60,7 @@ export function validateCitationReview(value,docs,messages=[]){
  const reply=parts.join('\n\n');if(reply.length>2000)throw Error('回答が長すぎます。');
  return {reply,replySources:[...used.values()],citationReview:{checked:true,repaired:value.corrections.length>0,corrections:value.corrections,statements}};
 }
-export function createCitationReviewer({fetcher=fetch,onRejected=()=>{},loadConfig=async()=>JSON.parse(await readFile(process.env.MOTTO_GEMINI_PRIVATE_DIR?join(process.env.MOTTO_GEMINI_PRIVATE_DIR,'gemini-config.json'):new URL('../.private/gemini-config.json',import.meta.url),'utf8'))}={}){
+export function createCitationReviewer({fetcher=fetch,onRejected=()=>{},loadConfig=async()=>{if(process.env.GEMINI_API_KEY||process.env.GOOGLE_API_KEY)return {};return JSON.parse(await readFile(process.env.MOTTO_GEMINI_PRIVATE_DIR?join(process.env.MOTTO_GEMINI_PRIVATE_DIR,'gemini-config.json'):new URL('../.private/gemini-config.json',import.meta.url),'utf8'));}}={}){
  return async({messages,draft,docs,candidatePrograms=[]})=>{
   let config;try{config=await loadConfig();}catch{throw Error('出典確認用のGemini設定を読み込めません。');}
   const key=process.env.GEMINI_API_KEY||process.env.GOOGLE_API_KEY||config.apiKey;if(!key)throw Error('出典確認用のGemini APIキーを設定してください。');

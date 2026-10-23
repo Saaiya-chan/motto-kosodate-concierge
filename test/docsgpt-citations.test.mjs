@@ -58,3 +58,15 @@ test('bullet layout preserves each fact citation and can be replayed without cha
 test('paragraph layout keeps a phone script intact and unknown layout values are rejected',()=>{
  const v={segments:[{kind:'advice',layout:'paragraph',text:'「明日から1泊2日で利用したいです。料金と申し込み方法を教えてください。」',evidence:[]}],corrections:[]};assert.ok(!validateCitationReview(v,docs).reply.startsWith('- '));v.segments[0].layout='html';assert.throws(()=>validateCitationReview(v,docs),/表示形式/);
 });
+
+test('cloud citation review uses environment API key without requiring a local config file',async()=>{
+ const saved={key:process.env.GEMINI_API_KEY,dir:process.env.MOTTO_GEMINI_PRIVATE_DIR};
+ process.env.GEMINI_API_KEY='cloud-regression-key';process.env.MOTTO_GEMINI_PRIVATE_DIR='/nonexistent-motto-cloud-config';
+ try{
+  let calls=0;
+  const reviewer=createCitationReviewer({fetcher:async(_url,options)=>{calls++;assert.equal(options.headers['x-goog-api-key'],'cloud-regression-key');return{ok:true,json:async()=>({candidates:[{finishReason:'STOP',content:{parts:[{text:JSON.stringify(value)}]}}]})};}});
+  const answer=await reviewer({messages:[],draft:'',docs});assert.equal(calls,1);assert.equal(answer.citationReview.checked,true);
+ }finally{
+  for(const [name,old]of [['GEMINI_API_KEY',saved.key],['MOTTO_GEMINI_PRIVATE_DIR',saved.dir]])if(old===undefined)delete process.env[name];else process.env[name]=old;
+ }
+});

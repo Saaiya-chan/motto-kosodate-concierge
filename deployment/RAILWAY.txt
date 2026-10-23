@@ -1,54 +1,69 @@
-Railway配備手順・準備状況（2026-10-21）
+Railway配備手順・運用記録（2026-10-23）
 
 対象
-新規プロジェクト motto-kosodate-concierge を使う。mottoの既存プロジェクトには変更しない。
-サービスは concierge-web / concierge-docsgpt / Postgres / Redis の4つ。
-DocsGPTはAPIとCelery workerを同じサービスで起動し、共有データを/dataの一つのVolumeに置く。
-現時点ではRailway CLIがUnauthorized。再ログインを依頼中で、クラウド上のプロジェクト作成・配備は未実施。
+専用プロジェクト motto-kosodate-concierge。
+公開URL: https://concierge-web-production-c372.up.railway.app
+既存mottoのプロジェクト・DB・Redisには変更しない。
 
-準備済み
-・ルートDockerfileとrailway.toml: Node 24、PORTに対応、/api/healthで起動確認。
-・APP_PUBLIC_ORIGIN（HTTPS）またはRAILWAY_PUBLIC_DOMAINだけを公開Host/Originに許可。
-・公開環境の管理セッションCookieはSecure。管理者以外の設定変更は拒否。
-・DOCSGPT_URLとDOCSGPT_API_KEYを環境変数から設定可能。
-・deployment/docsgpt/Dockerfile: arc53/docsgpt:1.0.0、APIとworkerの統合起動、共有Volume。
-・deployment/docsgpt/seed.py: 登録済みと同じ公式資料のハッシュを検証して初期投入。秘密のagent keyは/data/concierge-agent.jsonへ保存して標準出力に出さない。
-・deployment/prepare-contexts.mjs: ソースと公式資料だけを一時フォルダーにコピーする。APIキー、ローカル会話ログ、検証記録を含めない。
+構成
+・concierge-web: Node 24、日本語相談画面。公開HTTPSはこのサービスのみ。
+・concierge-docsgpt: arc53/docsgpt:1.0.0、APIとCelery workerを同じサービスで起動。非公開。
+・Postgres / Redis: このプロジェクトで新規作成。既存mottoとは分離。
+・両アプリに/data Volume。webの設定・管理キー・暗号化ログは/data/private内。
+・検索モデルはIBM Granite multilingual r2。Ruriではない。
+・公式資料12件をハッシュ照合後に新規投入。ローカルの相談ログやDBは移行しない。
 
-再ログイン後の作業
-1. railway whoamiで認証確認。新規プロジェクトを作成し、IDを.private内の配備記録へ保存。
-2. PostgreSQLとRedisを新規作成。既存mottoのDB/Redisを使わない。
-3. concierge-docsgptに/data Volumeを作成。
-   POSTGRES_URI、CELERY_BROKER_URL、CELERY_RESULT_BACKEND、CACHE_REDIS_URLは新規サービスの内部接続へ設定する。
-   API_URLはhttp://localhost:7091。LLM_PROVIDER=google、LLM_NAME=gemini-3.5-flash-lite。
-   検索専用構成としてTRACES_ENABLED=false/TRACES_CAPTURE_CONTENT=falseを維持。
-   暗号化用と内部用のキーは新規に生成し、Railway環境変数に登録。キーはソースや標準出力に出さない。
-4. prepare-contexts.mjsのdocsgptフォルダーを明示的に指定して配備。
-   railway up <context> --path-as-root --project <id> --service concierge-docsgpt --detach
-   DocsGPTには公開ドメインを作らない。
-5. Railway SSH経由でpython /opt/concierge/seed.pyを実行し、資料の索引完了まで確認。
-   agent keyの取得が必要ならSSH出力を.private内のファイルへ直接リダイレクトし、チャットやログに出さない。
-6. concierge-webに/data Volumeを作成。
-   GEMINI_API_KEY / GEMINI_MODEL / DOCSGPT_API_KEYを設定。
-   DOCSGPT_URLはhttp://concierge-docsgpt.railway.internal:7091。
-   MOTTO_GEMINI_PRIVATE_DIR=/data/private。会話ログ・管理キー・暗号化キーを同じVolumeで永続化する。
-   既存のローカル会話ログは移行しない。公開用管理キーは新規に作る。
-7. web用contextを配備して公開ドメインを作成。
-   RAILWAY_PUBLIC_DOMAINの自動注入またはAPP_PUBLIC_ORIGINが正しいことを確認して再起動。
-8. 公開URLで複数往復の相談・本文出典リンク・未同意の非保存・同意後保存・管理画面認証・再起動後永続化を確認する。
-9. 課金使用量とRAM/CPUを観測。予算上限による停止と、通知のみの設定を混同しない。
-   保存期限30日とバックアップ保持期間の扱いも、バックアップ有効化前に確認する。
+配備
+1. railway whoamiで認証を確認。新規プロジェクトを作り、環境・サービスを明示的にlinkする。
+2. PostgresとRedisを新規作成。アプリに/data Volumeを作成する。
+   CLI volume addはservice指定だけではpanicした。project/environment/serviceをrailway linkした後にvolume addすると成功した。
+3. 環境変数を設定。秘密値はvariable set --stdinで送り、表示しない。
+   DocsGPT: POSTGRES_URI、CELERY_BROKER_URL、CELERY_RESULT_BACKEND、CACHE_REDIS_URLを専用DB/Redisへ接続。
+   API_URL/WORKER_API_URL=http://localhost:7091、PORT=7091、LLM_PROVIDER=google。
+   PORTを省くとRailwayの起動チェックが別ポートへ向かうため、必ず7091を指定する。
+   JWT_SECRET_KEY/ENCRYPTION_SECRET_KEY/INTERNAL_KEYは新規生成。
+   TRACES_ENABLED=false/TRACES_CAPTURE_CONTENT=false。DocsGPTに公開ドメインを付けない。
+   HOME=/home/appuser、HF_HOME=/data/models/huggingface、XDG_CACHE_HOME=/data/.cache。
+   web: DOCSGPT_URL=http://concierge-docsgpt.railway.internal:7091、DOCSGPT_API_KEY、GEMINI_API_KEY、GEMINI_MODEL。
+   APP_PUBLIC_ORIGINは公開HTTPSオリジンだけを指定。PORT=8080、HOST=0.0.0.0。
+4. node deployment/prepare-contexts.mjsで許可リストに含まれるファイルだけを一時フォルダーへコピーする。
+   APIキー、会話ログ、ローカル検証データは含めない。
+   railway up <context> --path-as-root --project <id> --environment <id> --service <id> --detach
+5. DocsGPT起動後、railway ssh経由でpython /opt/concierge/seed.pyを実行。
+   /data/concierge-seed.jsonで再開可能。長時間SSHが切れてもアップロードを繰り返さない。
+   索引完了後、キーは/data/concierge-agent.jsonへ保存。値をログに出さない。
+6. エージェントキーをwebのDOCSGPT_API_KEYへ標準入力で設定。管理キーはcloudのVolumeで新規生成される。
+7. ヘルスチェックをweb=/api/health（120秒）、DocsGPT=/api/health（300秒）に設定する。
+   今回のCLIアップロードではrailway.tomlの起動判定設定が反映されなかった。
+   environment editもNo changes to applyを返したため、公式API serviceInstanceUpdateで設定し読み返した。
+   新規サービスでは旧Config as Codeを指定できないため、deployment/railway/railway.tsに現行IaCを保存。
+   最新CLIのconfig pull→planでは変更なしを確認。変数はunmanagedで秘密値を記載しない。
+   設定反映後、配備ログのStarting Healthcheckと成功を確認する。設定の読み返しだけで成功扱いにしない。
+   公式API: https://backboard.railway.com/graphql/v2
+   Python HTTPクライアントではUser-Agentを設定する。認証トークンを出力しない。
+8. 最後に公開URLで会話、本文出典、同意なし非保存、同意あり保存、管理認証、再起動後永続化、取り消しを確認する。
 
-確認済みの範囲
-・自動テスト145件成功。
-・web、docsgptのDockerイメージをローカルビルド済み。
-・webのコンテナ実HTTPでヘルスチェック200、正しい公開Host200、別Host403、管理データの未認証401を確認。
-・クラウド上の動作、DocsGPT統合起動と資料投入の本番確認、公開URLでの会話は未確認。
-・GitHubへのpushは以前の公開範囲の承認待ちを維持。CLI配備は公開GitHubリポジトリへソースを公開せず実施できる。
+クラウド固有の修正
+・出典レビューが環境変数のAPIキーを使う前にローカルgemini-config.jsonを要求していた。
+  GEMINI_API_KEY/GOOGLE_API_KEYがある場合はファイルを必須にしない。回帰テストを追加。
+・非rootで動くDocsGPTにrootのHOMEを残さず、モデル・トークナイザーのキャッシュをVolumeへ向ける。
 
-再ログイン後の結果（2026-10-21）
-・whoamiで既存アカウントへのCLI認証成功。
-・新規プロジェクト作成を実行したが、RailwayからDeploys have been paused temporarilyで拒否。
-・プロジェクト一覧に新規プロジェクトは存在せず、部分作成も確認されなかった。
-・公式ステータスにDashboard and API unavailable, builds pausedが表示され、全リージョンの新規ビルド停止が案内されている。
-・プラン変更・既存mottoの変更・公開は行っていない。復旧後に作成から再試行する。
+秘密情報・検証記録
+プロジェクト/サービスID、配備状態、管理キー、接続キー、検証用同意トークンは.gitignore対象の.privateへ保存。
+GitHub、配備用コンテキスト、公開報告には秘密情報や実在の会話ログを含めない。
+管理画面は/admin。管理キーはチャットやURLに貼らない。
+
+履歴
+2026-10-21: Railway障害で新規プロジェクト作成を拒否。部分作成なし。
+2026-10-23: 公式案内で既存アカウントのビルド・配備再開を確認。新規4サービスとVolumeを作成し配備。
+
+公開環境の確認結果（2026-10-23）
+・全4サービスがSUCCESS、起動中。webとDocsGPTの起動ヘルスチェック成功。
+・公式資料12件の索引とエージェントを作成し、再配備後も検索できる状態を確認。
+・公開ブラウザーでショートステイの料金→料金・減免の確認点→明日から1泊2日の電話相談文まで3往復。
+・本文の出典がショートステイ実施要綱・FAQに対応することを確認。
+・同意なしの相談は保存されない。同意した架空相談1件は保存・分類・集計される。
+・web再配備後も管理キーと同意済み記録が保持されることを確認。
+・検証用の同意だけを取り消し、その記録だけが削除されることを確認。実在の会話ログは移行・削除していない。
+・管理データの未認証401、Secure/HttpOnly/SameSite Cookie、別Originの拒否を確認。
+・ローカル自動テスト146件成功。負荷試験・長期運用・月額実測は未実施。

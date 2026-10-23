@@ -1,0 +1,13 @@
+{
+  "name": "motto-concierge-railway-config",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "railway": "3.16.0",
+    "@railway/cli": "5.71.0"
+  },
+  "scripts": {
+    "plan": "railway config plan --file railway.ts",
+    "apply": "railway config apply --file railway.ts"
+  }
+}
