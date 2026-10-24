@@ -3,6 +3,7 @@ Railway配備手順・運用記録（2026-10-23）
 対象
 専用プロジェクト motto-kosodate-concierge。
 公開URL: https://concierge-web-production-c372.up.railway.app
+独自ドメイン予定: https://concierge.yasashii-sek.ai（DNS検証済み、証明書発行待ち）
 既存mottoのプロジェクト・DB・Redisには変更しない。
 
 構成
@@ -67,3 +68,13 @@ GitHub、配備用コンテキスト、公開報告には秘密情報や実在�
 ・検証用の同意だけを取り消し、その記録だけが削除されることを確認。実在の会話ログは移行・削除していない。
 ・管理データの未認証401、Secure/HttpOnly/SameSite Cookie、別Originの拒否を確認。
 ・ローカル自動テスト146件成功。負荷試験・長期運用・月額実測は未実施。
+
+独自ドメイン（2026-10-24）
+・DNS管理はCloudflare。登録・更新の管理はお名前.comのまま。
+・concierge CNAME ej00lkts.up.railway.app、DNS only。
+・Railway指定の_railway-verify.concierge TXTで所有確認。
+・独自ドメインのDNS所有確認は成功。Railwayの証明書発行がLet's Encrypt rate limit reachedで失敗、retryable=false。
+・証明書発行まではAPP_PUBLIC_ORIGINを旧Railway URLに戻してサービスを維持。
+・再開時はdomain statusで状態を確認し、retryable=trueまたは再試行可能になってから証明書発行を再試行。
+・HTTPS証明書が有効になってからAPP_PUBLIC_ORIGINをhttps://concierge.yasashii-sek.aiへ変更して会話と出典を検証する。
+・他のmottoやメールのDNSレコードは変更しない。
