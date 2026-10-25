@@ -78,3 +78,11 @@ GitHub、配備用コンテキスト、公開報告には秘密情報や実在�
 ・再開時はdomain statusで状態を確認し、retryable=trueまたは再試行可能になってから証明書発行を再試行。
 ・HTTPS証明書が有効になってからAPP_PUBLIC_ORIGINをhttps://concierge.yasashii-sek.aiへ変更して会話と出典を検証する。
 ・他のmottoやメールのDNSレコードは変更しない。
+
+一時停止（2026-10-25）
+・ユーザーの指示で専用プロジェクトのweb、DocsGPT、Postgres、RedisをdeploymentStopで停止。
+・全4サービスでdeploymentStopped=true、running=0を確認。
+・証明書の定期確認automationを削除。自動再開は行わない。
+・再開用にDeployment、Volume、環境変数、DNSを保持。Volume保管料は残る可能性がある。
+・既存mottoは変更せず、https://motto.yasashii-sek.ai/ のHTTP 200を確認。
+・再開時はDB/Redis、DocsGPT、webの順に起動し、証明書と公開Origin、相談・出典を再検証する。
