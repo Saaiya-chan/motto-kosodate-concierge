@@ -1,0 +1,56 @@
+Cloud Run検索のユーザー試用（2026-10-27）
+
+構成
+ブラウザー http://127.0.0.1:4318/
+  → このMacで動く相談画面・会話処理
+  → Google IAMで保護したCloud Run検索（東京）
+  → Geminiの既存回答生成・出典検証
+
+相談画面自体を外部公開していない。別の端末からはこのURLに接続できない。
+Cloud Runは検索専用、公式12資料 / 79チャンク。元のローカルDocsGPT検索は使用しない。
+元の4317番ポートのアプリ・Railway・DNSは変更しない。
+
+Cloud Run
+project: motto-concierge-eval-1027
+service: motto-concierge-search-eval
+region: asia-northeast1
+1 vCPU / 2GiB / 最小0・最大1 / 同時実行1 / リクエスト単位課金。
+IAM必須。検索キー、Geminiキーはブラウザーへ渡さない。
+既存のCloud Run月500円Spend capを維持。Gemini・イメージ保管料は対象外。
+試用のためサービスと保管庫を再作成し、今回は利用者が試せるように残す。
+最小0はイメージ保管料金まで0になる設定ではない。保管料は今回容量で月約9円の試算。
+
+起動
+作業場所：/Users/kunimitsu/Projects/AIニュース/motto_子育て/support-finder
+  python3 evaluation/cloud-run/deploy.py --project motto-concierge-eval-1027 --deploy
+  node evaluation/cloud-run/preview.mjs
+既に配備されていればNode起動だけでよい。起動時にCloud Run healthを確認する。
+Google CLIの認証を既存の.private/gcloud-configから使用し、ID tokenをメモリ内で更新。
+MOTTO_GEMINI_PRIVATE_DIRは .private/cloud-run-preview に分離。
+保存に同意した相談ログと管理用データはこのMacのそのディレクトリ内に置く。
+元のアプリの保存ログをコピーしたり、Cloud Runへアップロードしたりしない。
+試用用の保存同意も任意。テストでは同意を外して実在しない相談だけを使う。
+Mac側のNodeを終了すると試用画面には接続できなくなる。
+
+停止・片付け
+preview.mjsのNodeプロセスを終了する。元の4317のサーバーは終了しない。
+Cloud Runの継続利用を止める場合は、対象を確認して次を実行する。
+  CLOUDSDK_CONFIG="$PWD/.private/gcloud-config" .private/google-cloud-sdk/bin/gcloud run services delete motto-concierge-search-eval --region=asia-northeast1 --project=motto-concierge-eval-1027 --quiet
+  CLOUDSDK_CONFIG="$PWD/.private/gcloud-config" .private/google-cloud-sdk/bin/gcloud artifacts repositories delete concierge-search-eval --location=asia-northeast1 --project=motto-concierge-eval-1027 --quiet
+ユーザーが試用中なので、今回の作業終了時には自動で削除しない。
+保存ログはクラウド資源の片付けと別。ユーザーの保存データを無断で削除しない。
+
+元の比較実験と現在の試用を区別する
+RESULTS-20261027.txtの「削除済み」は比較実験完了時点の記録。
+今回の再配備・試用状態はこのファイルを参照する。
+
+試用開始前の実確認
+- /api/health はok=true、/api/docsgpt/status はready=true（資料12件）。
+- ブラウザーで保存同意を外し、架空の相談を3往復。
+  ショートステイ料金→明日1泊2日→電話文。日程と制度の会話継続を確認。
+- 料金の本文に公式ショートステイFAQへの出典リンクが表示された。
+- 電話文には直前の日程が残ったが、以前の料金確認までは含まれなかった。
+  既知の会話品質の課題をこの試用で修正したわけではない。
+- 試験後の同意ログファイルは0件。
+- 別Originからの/api/chatはHTTP403。
+- 起動コードのNode構文チェック成功。アプリ本体の回答・出典コードは変更していない。

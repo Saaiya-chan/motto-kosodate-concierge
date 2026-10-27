@@ -1,6 +1,8 @@
 Cloud Run 検索専用コンテナ検証（実機検証完了・試験資源削除済み）
 
 結果はRESULTS-20261027.txtを参照。
+比較実験後にユーザー試用用として再配備。現在の試用手順と状態は
+deployment/CLOUD-RUN-PREVIEW.txtを参照。ローカル画面はpreview.mjsで起動する。
 
 対象は既存の公式12資料 / 79チャンク、Granite + FAISSの読み取り専用検索。
 Geminiと出典検証は既存アプリ側のまま。Redis/Postgresは配備しない。
