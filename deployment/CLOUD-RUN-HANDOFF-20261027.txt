@@ -1,0 +1,151 @@
+別セッションへの引き継ぎ：Google Cloud / Cloud Run
+確認日：2026-10-27（JST）
+
+目的
+子育てコンシェルジュの検索専用コンテナをCloud Runで試験済み。
+ユーザーは別のアプリにもCloud Runを利用したい。
+このファイルは現在の環境と実績の引き継ぎで、別アプリの対象や公開方式はまだ未指定。
+
+1. 現在のGoogle Cloud環境
+プロジェクト名：motto Concierge Evaluation
+プロジェクトID：motto-concierge-eval-1027
+プロジェクト番号：84762847191
+利用リージョン：asia-northeast1（東京）
+請求先：ユーザーが作成したJPYの請求先に関連付け済み。支払情報はGoogleで管理。
+認証：このMacのGoogle公式gcloud CLIでユーザーOAuth認証済み。
+CLIはグローバルインストールではなく、このリポジトリの.privateに配置。
+
+作業リポジトリ：
+/Users/kunimitsu/Projects/AIニュース/motto_子育て/support-finder
+GitHub：
+https://github.com/Saaiya-chan/motto-kosodate-concierge
+Cloud Run検証のcommit：c48a9f2（mainへpush済み）
+
+CLI本体：
+/Users/kunimitsu/Projects/AIニュース/motto_子育て/support-finder/.private/google-cloud-sdk/bin/gcloud
+認証・設定ディレクトリ：
+/Users/kunimitsu/Projects/AIニュース/motto_子育て/support-finder/.private/gcloud-config
+
+別セッションで同じMacから使う例：
+  cd '/Users/kunimitsu/Projects/AIニュース/motto_子育て/support-finder'
+  export CLOUDSDK_CONFIG="$PWD/.private/gcloud-config"
+  GCLOUD="$PWD/.private/google-cloud-sdk/bin/gcloud"
+  "$GCLOUD" run services list --project=motto-concierge-eval-1027 --region=asia-northeast1
+
+認証状態は再確認する。必要ならGoogle公式のブラウザー認可で更新する。
+認証トークン・refresh token・APIキー・支払情報を表示、Git登録、セッション間貼り付けしない。
+このMac以外では.privateは引き継がれないため、その環境で認証が必要。
+CLI操作はプロジェクトとリージョンを明示し、別プロジェクトへ誤配備しない。
+
+2. 現在の稼働状態（当日APIで再確認）
+上記プロジェクトの東京Cloud Runサービス：0件。
+上記プロジェクトの東京Artifact Registryリポジトリ：0件。
+検索の実機検証が終わったため、検証サービスと専用イメージ保管庫を削除した。
+Cloud Runで公開運用している状態ではない。
+プロジェクト・認証・請求先関連付け・予算は残している。
+削除済みのrun.app URLは利用しない。再配備時に実際のURLを取得する。
+
+有効化済みAPI：
+- run.googleapis.com
+- artifactregistry.googleapis.com
+- billingbudgets.googleapis.com
+- cloudbilling.googleapis.com
+プロジェクト作成時のcloudapis等の基盤APIも有効。
+
+3. ユーザーが承認した費用制限
+Cloud Run月500円のSpend capを設定済み。
+API読み戻し：outputState=CONFIGURED、通貨JPY、金額500。
+対象は「このプロジェクトのCloud Run全体」。検索コンテナ1個だけの上限ではない。
+同じプロジェクトへ別アプリを置くと、それらも合算して月500円の停止基準を共有する。
+別プロジェクトを作っても、この停止基準は自動では引き継がれない。
+50% / 80% / 100%で通知。既存の月100円の通知専用予算も変更せず残している。
+
+重要：
+- Spend capは即時停止ではなく、超過分が請求される可能性がある。
+- 計算は推定グロス費用基準で、無料クレジット等適用後の請求額とは一致しない。
+- 翌月に自動リセットされる。
+- Gemini API、Artifact Registry、DBなどはこのCloud Run上限の対象外。
+- 通知だけのBudgetと、使用を止めるSpend capを混同しない。
+- 金額や対象を無断で拡大しない。
+
+4. 実機検証した構成（現在は削除済み）
+アプリ側の会話処理
+  → IAMで保護したCloud Run検索API
+    → Graniteで質問を埋め込み、FAISSで公式資料を検索
+  → アプリ側からGeminiを呼び、本文と出典を生成・検証
+
+Cloud RunがGeminiの回答生成まで担当していたわけではない。
+検索中だけ使う読み取り専用コンテナ。Redis/Postgres/Celeryは不要だった。
+公式12資料 / 79チャンクとモデルをイメージに同梱。外部DBや起動時のモデル取得は不要。
+Geminiキーと保存同意ログは検索コンテナに渡していない。
+
+サービス名：motto-concierge-search-eval（削除済み）
+Artifact Registry：concierge-search-eval（削除済み）
+1 vCPU / 2GiB / 最小0・最大1 / 同時実行1。
+リクエスト単位課金 / CPU boost無効 / gen2 / コンテナポート8080。
+今回のビルドはlinux/amd64。Docker Engine 29.8.2を使用。
+IAM必須。アプリ用検索キーも必要。
+認証なしはHTTP403、IAMあり・検索キーなしはHTTP401を確認。
+外部からの認証試験はX-Serverless-AuthorizationにGoogle ID tokenを付けた。
+公開UI、独自ドメイン、外部アプリへの恒久接続は設定していない。
+
+5. 実測結果
+制御された停止→自動起動の復帰3回：
+- 最初の成功HTTP要求：5.67〜6.40秒。
+- 手動停止解除の反映待ちを含めると最大12.76秒。
+- 自然なアイドル停止からの復帰や長期p95は未測定。
+- プロセスpeak RSS：約0.77GiB。2GiB構成で検証。コンテナ全体のピークとは区別する。
+
+同じ12資料・gemini-3.5-flash-lite・出典検証コードで、各6往復×2シナリオを比較：
+                              ローカルDocsGPT   Cloud Run検索
+回答中央値                      2.93秒           4.37秒
+検索フェーズ中央値               0.059秒          0.230秒
+Cloud Runの回答待ちの大部分は、検索ではなくGemini＋出典検証だった。
+引用27件（比較元11 / Cloud Run16）は原文に存在、公式URL5種類はHTTP200。
+Cloud Run側の今回の回答に別制度リンクの取り違えは見つからなかった。
+一方「ありがとう」に説明を繰り返す、硬い行政文体、過去の希望の一部を落とす問題が残る。
+検索順位の完全一致は9/12、上位6本文の集合一致は11/12。精度が完全同一とは主張しない。
+引用文字の一致・validator成功だけでは、意味の過剰一般化を防げない。
+ホスト移行で会話品質まで解決したとは扱わない。
+
+月1000質問を今回の長さ・再試行率で有料単価換算した目安：
+- Cloud Run検索実行：無料枠が空いていれば0円見込み。
+- イメージ保管：継続保管するなら約9円/月（約1.038GiB、無料枠0.5GiBが空いている場合）。
+- Gemini：約$10.06/1000質問。
+- 合計：約1600円/月＋通信・税・Web/API本体等。
+Google Cloudカタログの1ドル157.195円換算による概算。実際の請求確定額ではない。
+他アプリのCPU/RAM・起動頻度・DB・通信量には、そのまま適用しない。
+
+6. 再利用できるファイル
+evaluation/cloud-run/README.txt：実行手順
+evaluation/cloud-run/RESULTS-20261027.txt：詳細な測定・品質・費用・限界
+evaluation/cloud-run/STATUS-20261027.txt：経緯と到達状態
+evaluation/cloud-run/budget.py：月500円Spend capの作成・読み戻し確認
+evaluation/cloud-run/deploy.py：検索検証専用の配備（配備前に500円Spend capを確認）
+evaluation/cloud-run/cold.py：停止・復帰3回の測定
+evaluation/cloud-run/compare.mjs：既存Gemini/出典処理での会話比較
+evaluation/cloud-run/retrieval-audit.mjs：検索差分
+evaluation/cloud-run/summarize.mjs / cost.mjs：集計・仮定付き月額試算
+evaluation/search-container/Dockerfile / search.py：検索専用コンテナ
+src/docsgpt.mjs / src/docsgpt-citations.mjs：会話の検索・生成・出典検証
+data/source-manifest.json：公式12資料の対応表
+
+元索引・モデル、検証結果の詳細は.private内にローカル保持。
+.privateはGit除外。実在の相談ログは今回の検証に使用していない。
+検証だけに使ったID token・環境変数ファイルのコピー・Docker認証コピーは片付け済み。
+
+7. 別アプリを進めるセッションへ
+まず対象アプリのリポジトリ・起動方法・永続データ・外部接続・公開/非公開の要件を確認する。
+このプロジェクトを共用するか専用プロジェクトを作るかを決め、月500円制限の範囲を確認する。
+検索検証用deploy.pyは汎用デプロイヤーではない。別アプリ用に設定を用意する。
+永続データが必要なアプリを、今回の読み取り専用検索と同じ扱いにしない。
+同じMacで既存CLI認証を利用できるが、別アプリ用の環境変数や秘密値は分離する。
+既存のmotto、停止したRailway、メール、Cloudflare DNSには、このCloud Run試験で変更していない。
+それらの現在の稼働状態が必要なら、対象を明示して別途確認する。
+
+公式ドキュメント
+https://docs.cloud.google.com/run/docs/deploying
+https://docs.cloud.google.com/run/docs/authenticating/developers
+https://docs.cloud.google.com/billing/docs/how-to/budgets-spend-caps
+https://cloud.google.com/run/pricing
+https://cloud.google.com/artifact-registry/pricing
