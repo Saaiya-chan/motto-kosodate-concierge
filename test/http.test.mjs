@@ -1,6 +1,6 @@
 import {mkdtemp,rm} from 'node:fs/promises';import {tmpdir} from 'node:os';import {join} from 'node:path';
 import {spawn} from 'node:child_process';import test from 'node:test';import assert from 'node:assert/strict';
-const port=4318;let proc,privateDir;
+const port=Number(process.env.HTTP_TEST_PORT||4318);let proc,privateDir;
 test.before(async()=>{privateDir=await mkdtemp(join(tmpdir(),'motto-http-test-'));proc=spawn(process.execPath,['src/server.mjs'],{env:{...process.env,PORT:String(port),MOTTO_GEMINI_PRIVATE_DIR:privateDir,GEMINI_API_KEY:'',GOOGLE_API_KEY:'',RURI_PRELOAD:'0'},stdio:['ignore','pipe','pipe']});await new Promise((resolve,reject)=>{proc.stdout.once('data',resolve);proc.once('error',reject);proc.once('exit',c=>{if(c)reject(Error('server exited'))})});});test.after(async()=>{proc?.kill();await rm(privateDir,{recursive:true,force:true});});
 const endpoint=`http://127.0.0.1:${port}`;
 test('page and assets return successfully',async()=>{for(const path of ['/','/app.js','/input.js','/style.css','/api/catalog']){const r=await fetch(endpoint+path);assert.equal(r.status,200);assert.ok(r.headers.get('content-security-policy'));}});

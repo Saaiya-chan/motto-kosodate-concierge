@@ -1,0 +1,89 @@
+Cloud Run相談画面のスマホ試用版（公開済み）
+公開確認：2026-10-28 JST
+
+公開URL
+https://motto-concierge-web-try-84762847191.asia-northeast1.run.app/
+相談画面・検索ともCloud Run、回答はGemini。Mac上のサーバーやCLIに依存しない。
+同日、Macの4318番ポートにサーバーが存在しない状態で公開URLから会話できることを確認。
+
+ユーザー依頼
+相談画面もCloud Runに置き、Macが停止していてもスマホから使う。
+既存のCloud Run月500円Spend capを維持する。
+
+配備計画
+project: motto-concierge-eval-1027 / 東京
+web: motto-concierge-web-try（新規、公開HTTPS）
+search: motto-concierge-search-eval（既存、IAM認証必須を維持）
+web resources: 1 vCPU / 512MiB / 最小0・最大1 / 同時実行1。
+Cloud Run月500円は画面と検索の合算。Gemini、保管、Secret Manager等は対象外。
+既存motto・Railway・メール・DNSは変更しない。まずrun.app URLで試用する。
+
+秘密値と権限
+既存Gemini APIキーと既存検索キーの2つを、このプロジェクトのGoogle Secret Managerに保存。
+専用secret名：concierge-trial-gemini / concierge-trial-search。
+webの実行アカウント：concierge-web-run@このプロジェクト。
+権限は既存searchサービスのrun.invokerと、上記2secretのsecretAccessorのみ。
+MacのOAuth認証情報や、保存済み相談ログはコンテナに含めない。
+Geminiキーと検索キーはSecret Managerのバージョンを固定してサーバー側で参照する。
+ブラウザーのHTML/JavaScript/レスポンスにはキーを渡さない。
+利用者がGoogleログインなしでURLを開ける公開試用版。APIキーの取り扱いはサーバーのみ。
+
+会話保存
+CHAT_LOG_DISABLED=1で試用版のログ保存を無効にする。
+保存同意の発行もサーバーで拒否。任意のtokenを送られても保存しない。
+画面は「会話は保存しません」と明記し、保存同意欄と30日の保存案内を表示しない。
+回答に必要な会話と資料をGoogleへ送信することは画面に明記する。
+永続DBを追加しない。会話継続は同じ実行中インスタンス内の状態を利用。
+インスタンス再起動時は「最初から」で再開が必要。永続会話の実装ではない。
+
+準備したコード
+src/cloud-run-fetch.mjs：Cloud RunサービスアカウントのID tokenで非公開検索を呼ぶ。
+src/server.mjs / public/logging.js：試用時の保存無効化。
+evaluation/cloud-run/deploy-web.py：計画表示がデフォルト。--deployで初めて外部変更。
+  python3 evaluation/cloud-run/deploy-web.py
+  python3 evaluation/cloud-run/deploy-web.py --deploy
+
+完了したローカル検証
+- 関連テスト40件成功。
+- 全テスト149件成功（HTTP_TEST_PORT=4328で、稼働中の4318に干渉しない）。
+- 認証ヘッダーが検索先以外（Gemini等）へ漏れないことを確認。
+- 保存無効時に同意を発行せず、偽のtokenでも保存されないことをHTTPで確認。
+- 公開画面用linux/amd64イメージをローカルでビルド済み。
+- イメージに.privateやAPIキーを含めていない。
+
+承認と配備の履歴
+最初の配備要求は、Gemini APIキーと検索キーのGoogle Cloudへの保存について
+ユーザーの明示承認が不足するとして自動承認レビューに拒否された。配備は実行されていない。
+その後、環境変数ファイルへの秘密値のコピーをやめ、Secret Manager参照の準備へ変更した。
+2026-10-28、ユーザーから「OK, それでお願いします」と明示承認を得て配備を完了。
+Secret Managerに専用2secretを作成。web実行アカウントへ2secretの読み取り権限だけを付与。
+searchサービスへのrun.invokerを付与。プロジェクト全体のEditor等は付与していない。
+秘密値を通常の環境変数ファイルやイメージへ含めず、Secret Managerのバージョンを固定して参照。
+現在のwebは2回目の配備でsecretバージョン2を参照。バージョン1はロールバック用に残した。
+
+実機で見つけて修正した点
+新しいIAM権限の反映前に検索の403が発生。設定とURLが一致することを確認し、反映後は接続成功。
+searchの初回起動で19.0秒（プロセス準備15.4秒）かかり、15秒のstatus確認では誤って受付不可になった。
+Cloud Run構成に限りstatus確認を45秒まで待つよう修正して再配備。通常のローカル構成は2.5秒のまま。
+
+公開HTTPSでの確認
+- /api/health：200 / ok=true
+- /api/docsgpt/status：200 / ready=true / 公式12資料
+- /api/log-consent GET：200 / enabled=false
+- /api/log-consent POSTで同意発行：403
+- /api/admin/logs：401
+- 別Originから/api/chat：403
+- searchをIAMなしで直接呼ぶ：403
+- HTML・公開JS・上記JSONレスポンスに既存キーが含まれないことを、値を表示せず照合。
+- /api/gemini/statusは未使用のFile Search準備についてready=falseとなるが、標準の検索＋Gemini回答は成功。
+
+実ブラウザー検証
+390×844pxで、日中に休みたい→未就園→電話の問い合わせ文、の架空相談を3往復。
+一時預かりとこども誰でも通園の説明に、該当する公式基礎資料・手引・公式サイトへの本文リンクを確認。
+3往復目まで話題を引き継いで回答。既知の会話品質・出典の意味検証の課題が全て解消したという判定ではない。
+横方向のはみ出しなし、保存同意欄は非表示、保存しない旨の表示を確認。
+実際のスマホ端末でのタップ・日本語IMEは未確認。今回のGUI確認はスマホ幅のデスクトップブラウザー。
+人工相談の詳細とHTTP確認結果は.private内のみ。ユーザーの実際の相談を取得していない。
+月500円Spend capを最後に再取得し、CONFIGUREDであることを確認。
+Cloud Runサービス・レジストリ・専用secret・サービスアカウントは試用用に維持する。
+既存motto・Railway・メール・DNS・元のMac内の保存ログは変更していない。

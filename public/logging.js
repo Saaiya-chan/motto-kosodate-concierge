@@ -6,7 +6,7 @@ export function bindLogConsent(){
  async function request(body){const r=await fetch('/api/log-consent',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const d=await r.json();if(!r.ok)throw Error(d.error);return d;}
  async function revoke(){token=null;checkbox.checked=false;remember({token:revocationToken,state:'revoke'});try{await request({action:'revoke',token:revocationToken});revocationToken=null;remember({state:'off'});retry.hidden=true;display('保存を停止し、このタブで保存した会話を削除しました。');}catch(e){retry.hidden=false;display('新しい会話の保存は停止しました。保存済みログの削除は完了していません。「削除を再試行」を押してください。',true);throw e;}}
  const ready=(async()=>{checkbox.disabled=true;try{
-  const r=await fetch('/api/log-consent');if(!r.ok)throw Error('保存設定を読み込めません。');const policy=await r.json();checkbox.dataset.version=policy.version;
+  const r=await fetch('/api/log-consent');if(!r.ok)throw Error('保存設定を読み込めません。');const policy=await r.json();if(policy.enabled===false){checkbox.checked=false;delete checkbox.dataset.version;return;}checkbox.dataset.version=policy.version;
   let saved;try{saved=JSON.parse(sessionStorage.getItem(storageKey)||'null');}catch{remember(null);}
   if(saved?.state==='off')checkbox.checked=false;
   else if(saved?.state==='revoke'){revocationToken=saved.token;await revoke();}

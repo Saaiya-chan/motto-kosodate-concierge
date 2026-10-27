@@ -1,9 +1,14 @@
 別セッションへの引き継ぎ：Google Cloud / Cloud Run
 確認日：2026-10-27（JST）
 
+最新追記（2026-10-28）：相談画面もCloud Runへ公開済み。
+https://motto-concierge-web-try-84762847191.asia-northeast1.run.app/
+Mac不要で利用可能。画面＋検索で同じ月500円Spend capを共有する。
+現状・秘密値・IAM・検証・制約は deployment/CLOUD-RUN-MOBILE-TRIAL.txt を最優先に参照。
+
 追記：比較実験後、ユーザーが自分でも試したいと依頼したため、検索用サービスと
 専用レジストリを再作成。相談画面はMacの4318番ポートで試用する。
-この後の稼働状態は deployment/CLOUD-RUN-PREVIEW.txt を優先する。
+Mac版の試用状態は deployment/CLOUD-RUN-PREVIEW.txt を参照。現在は上記の公開試用版が最新。
 以下の「0件・削除済み」は、再配備前に確認した比較実験完了時点の記録。
 
 目的

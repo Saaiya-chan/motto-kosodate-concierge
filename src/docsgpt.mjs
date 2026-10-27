@@ -5,6 +5,7 @@ import {manifest} from './rag.mjs';
 import {namedPrograms} from './dialogue.mjs';
 import {discoveryCandidates} from './consultation-intent.mjs';
 import {createCitationReviewer} from './docsgpt-citations.mjs';
+import {createCloudRunFetch} from './cloud-run-fetch.mjs';
 const fingerprint=m=>createHash('sha256').update(JSON.stringify(m)).digest('hex');
 export function retrievalQuestion(messages){
  const latest=messages.at(-1).content.replaceAll('誰通','こども誰でも通園');
@@ -15,11 +16,11 @@ export function retrievalQuestion(messages){
  const programmes=context?names(context.content).map(p=>p.name).join('・'):'';
  return [programmes,latest,prior[0]?.content].filter(Boolean).join('\n').slice(0,6000);
 }
-export function createDocsGPT({pipeline=process.env.DOCSGPT_PIPELINE||'search',base=process.env.DOCSGPT_URL||'http://127.0.0.1:7093',fetcher=fetch,loadAgent=async()=>process.env.DOCSGPT_API_KEY?{key:process.env.DOCSGPT_API_KEY}:JSON.parse(await readFile(process.env.MOTTO_GEMINI_PRIVATE_DIR?join(process.env.MOTTO_GEMINI_PRIVATE_DIR,'docsgpt-agent.json'):new URL('../.private/docsgpt-agent.json',import.meta.url),'utf8')),library=manifest.sources,reviewer=createCitationReviewer()}={}){
+export function createDocsGPT({pipeline=process.env.DOCSGPT_PIPELINE||'search',base=process.env.DOCSGPT_URL||'http://127.0.0.1:7093',fetcher=createCloudRunFetch(),loadAgent=async()=>process.env.DOCSGPT_API_KEY?{key:process.env.DOCSGPT_API_KEY}:JSON.parse(await readFile(process.env.MOTTO_GEMINI_PRIVATE_DIR?join(process.env.MOTTO_GEMINI_PRIVATE_DIR,'docsgpt-agent.json'):new URL('../.private/docsgpt-agent.json',import.meta.url),'utf8')),library=manifest.sources,reviewer=createCitationReviewer()}={}){
  const sessions=new Map();
  async function request(path,body,timeout=40000){const r=await fetcher(base+path,{...(body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{}),signal:AbortSignal.timeout(timeout)});if(!r.ok)throw Error('upstream');return r.json();}
  return {
- async status(){try{const a=await loadAgent();if(!a.key)throw Error();await request('/api/health',null,2500);return{ready:true,message:`DocsGPT＋Geminiで、登録した${library.length}件の資料から回答します。`};}catch{return{ready:false,message:'DocsGPTに接続できません。ローカルのDocsGPTを起動してから再確認してください。'};}},
+ async status(){try{const a=await loadAgent();if(!a.key)throw Error();await request('/api/health',null,process.env.DOCSGPT_IAM_AUDIENCE?45000:2500);return{ready:true,message:`DocsGPT＋Geminiで、登録した${library.length}件の資料から回答します。`};}catch{return{ready:false,message:process.env.DOCSGPT_IAM_AUDIENCE?'資料検索を起動しています。少し待って画面を再読み込みしてください。':'DocsGPTに接続できません。ローカルのDocsGPTを起動してから再確認してください。'};}},
  async respond(messages,sessionId){
   if(messages.some((m,i)=>m.role!==(i%2?'assistant':'user')))throw Error('会話の順序を確認してください。');
   const started=performance.now();const previous=messages.slice(0,-1);let session=sessionId?sessions.get(sessionId):null;

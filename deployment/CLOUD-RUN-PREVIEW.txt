@@ -1,5 +1,8 @@
 Cloud Run検索のユーザー試用（2026-10-27）
 
+2026-10-28追記：相談画面もCloud Runへ公開済み。Mac不要のURLと最新の稼働状態は
+deployment/CLOUD-RUN-MOBILE-TRIAL.txtを参照。このファイルはMac試用時点の手順記録。
+
 構成
 ブラウザー http://127.0.0.1:4318/
   → このMacで動く相談画面・会話処理

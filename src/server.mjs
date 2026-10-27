@@ -14,6 +14,7 @@ import {fallbackReply,conversationalAssessment,replyContext} from './dialogue.mj
 function guidedReply(m){const a=conversationalAssessment(m);const c=replyContext(m);const reply=fallbackReply(m,a);return {...a,reply,summary:reply,question:c.topic?null:a.question,showRecommendations:!c.topic,replySources:c.topic?c.programs.map(p=>({programId:p.id,...p.sources[0]})):[],mode:'guided',model:null,warning:null};}
 import {manifest} from './rag.mjs';
 const runtime=runtimeConfig();const {port}=runtime;let busy=false;
+const noLogTrial=process.env.CHAT_LOG_DISABLED==='1';
 const logDir=process.env.CHAT_LOG_DIR||join(process.env.MOTTO_GEMINI_PRIVATE_DIR||fileURLToPath(new URL('../.private/',import.meta.url)),'conversation-logs');
 const logs=createConversationLogs({dir:logDir});logs.ready.catch(()=>{});logs.cleanup().catch(()=>{});const cleanupLogs=setInterval(()=>logs.cleanup().catch(()=>{}),3600000);cleanupLogs.unref();
 const loggingHTTP=createLoggingHTTP({logs,port,send,origins:runtime.origins,secureCookies:runtime.secureCookies});
@@ -26,6 +27,11 @@ const healthProbe=req.method==='GET'&&req.url==='/api/health';
 if(!healthProbe&&!runtime.hosts.has(req.headers.host))return send(res,403,{error:'アクセス先を確認してください。'});
 const url=new URL(req.url,'http://127.0.0.1');
 if(healthProbe){try{await logs.ready;return send(res,200,{ok:true});}catch{return send(res,503,{ok:false});}}
+if(noLogTrial&&(url.pathname.startsWith('/api/log-consent')||url.pathname.startsWith('/api/admin/'))){
+ if(req.headers.origin&&!runtime.origins.has(req.headers.origin))return send(res,403,{error:'同じ画面から操作してください。'});
+ if(url.pathname==='/api/log-consent'&&req.method==='GET')return send(res,200,{enabled:false,retentionDays:0});
+ return send(res,url.pathname.startsWith('/api/admin/')?401:403,{error:'この試用版では会話を保存しません。'});
+}
 if(await loggingHTTP(req,res,url))return;
 if(req.method==='GET'&&url.pathname==='/api/docsgpt/status')return send(res,200,await docsgpt.status());
 if(req.method==='GET'&&url.pathname==='/api/ruri/status')return send(res,200,ruriStatus());
@@ -55,7 +61,7 @@ if(req.method==='POST'&&url.pathname==='/api/chat'){
  // Conversation history is transient; only separately consented new turns are persisted by the logging service.
  if(data.sessionId!==undefined&&(typeof data.sessionId!=='string'||!/^[-a-f0-9]{36}$/.test(data.sessionId)))return send(res,400,{error:'会話の接続情報を確認してください。'});
  if(data.logConsentToken!==undefined&&(typeof data.logConsentToken!=='string'||!/^[a-f0-9]{64}$/.test(data.logConsentToken)))return send(res,400,{error:'保存の同意情報を確認してください。'});
- const record=async(answer,outcome)=>{try{return await logs.append({token:data.logConsentToken,conversationId:data.logConversationId,question:m.at(-1).content,answer,provider:data.provider||'local',outcome});}catch{return false;}};
+ const record=async(answer,outcome)=>{if(noLogTrial)return false;try{return await logs.append({token:data.logConsentToken,conversationId:data.logConversationId,question:m.at(-1).content,answer,provider:data.provider||'local',outcome});}catch{return false;}};
  busy=true;try{
  const result=data.provider==='docsgpt'?await docsgpt.respond(m,data.sessionId):data.provider==='ruri'?await gemini.respondRuri(m):data.provider==='gemini'?await gemini.respond(m):data.guided===true?guidedReply(m):await respond(m);
  const saved=await record(result.reply||result.summary||result.question?.text||null,'answered');
@@ -63,7 +69,7 @@ if(req.method==='POST'&&url.pathname==='/api/chat'){
  }catch(e){const saved=await record(null,'answer-unavailable');return send(res,502,{error:['gemini','ruri','docsgpt'].includes(data.provider)?e.message:'回答を取得できませんでした。',logging:{saved,requested:!!data.logConsentToken},...(['gemini','ruri','docsgpt'].includes(data.provider)&&e.quota?{quota:e.quota}:{})});}finally{busy=false;}
 
 }
-if(req.method==='GET'&&files[url.pathname]){const [name,type]=files[url.pathname];res.writeHead(200,{'Content-Type':type,'Cache-Control':'no-store'});return res.end(await readFile(new URL('../public/'+name,import.meta.url)));}
+if(req.method==='GET'&&files[url.pathname]){const [name,type]=files[url.pathname];res.writeHead(200,{'Content-Type':type,'Cache-Control':'no-store'});let content=await readFile(new URL('../public/'+name,import.meta.url));if(noLogTrial&&name==='index.html')content=content.toString().replace('<main>','<main><p class="privacy">Cloud Run試用版：会話は保存しません。回答のため会話と関連資料をGoogleに送信します。</p>').replace('<section class="log-consent">','<section class="log-consent" hidden>').replace('画面を閉じると画面内の会話は消えます。保存に同意した場合、同意後の相談と返答は運営者が確認できる形で保存されます。保存期限は同意から30日です。','この試用版では相談と返答を運営者のログとして保存しません。画面を閉じると画面内の会話は消えます。');return res.end(content);}
 return send(res,404,{error:'ページが見つかりません。'});
 }catch{if(!res.headersSent)send(res,500,{error:'処理に失敗しました。もう一度お試しください。'});else res.end();}});
 server.listen(port,runtime.bindHost,()=>console.log(`motto 子育て支援ナビ: http://127.0.0.1:${port}`));
