@@ -1,0 +1,90 @@
+検索専用コンテナ検証結果（2026-10-27、途中結果）
+
+範囲
+ローカルDockerで実行済み。Cloudflare Containers実機は未配備・未測定。
+Wrangler認可は完了したが、公式CLIがWorkers Paid未契約による利用不可を返した。
+Paid契約や本番の変更は行っていない。検証名はmotto-concierge-search-probe。
+Railway・既存motto・DNSは変更していない。
+
+構成
+登録済み公式12資料、79チャンク、既存FAISS索引をそのまま使用。
+Granite embedding 311M multilingual r2、既存モデルキャッシュ、同じDocsGPTの埋め込み実装。
+検索APIだけを実行し、Postgres/Redis/Celery/回答生成は含めない。
+API形式を/api/search互換にし、既存createDocsGPTと引用検証を変更せず接続。
+Dockerイメージは既存DocsGPTのdigestを固定して再利用。小さい専用ベースイメージへの最適化は未実施。
+
+起動・メモリ（Mac / ARM64のDocker、CPU上限0.25、メモリ上限1GiB）
+最初の試行はモデル初回推論を含む準備時間14.606秒。
+独立した3回のDocker起動からHTTP health成功まで：13.409秒、14.528秒、12.023秒。
+中央値13.409秒。対応するアプリ内準備時間は12.902秒、14.212秒、11.611秒。
+イメージはローカルに取得済み。Cloudflareでのイメージ配布・起動待ち・通信時間は含まない。
+通常質問の後、約3,000文字の長文質問（既存の512トークン切り詰めあり）でも測定。
+cgroup memory.peakは最大1,027,297,280 bytes（約980MiB）。1GiBの余裕は少ない。
+256MiB制限は起動時OOM、終了137。
+768MiB制限は起動したがmemory.peakが上限まで到達。安全な運用容量と判断しない。
+Cloudflareのamd64環境でのメモリ・CPU・復帰時間はまだ不明。
+
+検索比較
+同じ12質問で、元のローカルDocsGPTと検索専用APIを順番に呼び、
+取得されたtitleとtextの順序付きSHA-256を比較。12/12一致。
+検索専用APIのwarm時間は48〜261ms、中央値172ms。
+これはローカル、短い質問、1回ずつの測定。Cloudflareの応答速度を表すものではない。
+話題補完・追加候補の検索はアプリ既存処理を使用。全文一致の12質問比較とは測定対象が異なる。
+
+会話比較
+子育てショートステイ6往復、昼間の預け先6往復を、各構成で実行：合計24回答。
+同じGeminiモデル、プロンプト、引用validator。実在の相談や保存同意APIは使用していない。
+24回答とも既存validatorの再検証は通過。
+途中でGemini 429が1回発生。成功済み回答の再生成はせず、間隔を空けて再開。
+再開版のこの測定では新規回答に5秒の意図的な待ち時間が含まれるため、
+保存された会話elapsedMsをそのまま速度比較に使わない。検索APIの時間は別計測。
+今後のcompare.mjsは待ち時間をタイマー開始前へ移動済み。
+
+意味と自然さの確認：品質合格とは判断していない
+・料金→全国一律か→減免→明日1泊2日→電話文という希望は継続した。
+・昼間の預け先で一時預かりとこども誰でも通園を提示し、在園状況も質問した。
+・普通の言葉「保育を受ける」の説明は、不要な回答不能や別制度リンクにならなかった。
+・「ありがとう」に電話文を繰り返す不自然な回答が両系統で見られた。
+・検索専用側の減免説明では、引用はひとり親等の減免を記しているのに
+  「所得に応じた減免」に一般化した。引用文字列の存在だけでは防げない意味の飛躍。
+・一時預かり料金の制度説明をlimitation扱いで返し、出典が付かない回答が両系統であった。
+・翌日利用について、出典なしの「事前調整が必要」等がconversationに紛れた。
+・制度比較で一方の説明だけ残る部分回答もあった。
+これらは検索移植の成功と区別して、回答/意味検証側の改善課題とする。
+検索結果は一致しているが、生成の揺れもあるため、単一試行で悪化なしとは断定しない。
+
+確認
+既存関連テスト35件成功。Python構文検証成功。
+検索APIの不正トークン401、未定義パス404、未認証メトリクス非公開を実HTTPで確認。
+Workerとlinux/amd64イメージのwrangler deploy --dry-run成功。
+dry-runはCloudflare上での実動作確認ではない。
+
+費用の試算（30日、専用1インスタンス、含まれる利用枠が未使用という前提）
+                  1GiB/4GB disk      4GiB/8GB disk
+1日1時間起動         $5.05/月            $5.87/月
+1日2時間起動         $5.33/月            $7.01/月
+1日8時間起動         $7.13/月           $13.85/月
+常時起動            $11.93/月           $32.10/月
+月額$5、25GiB-hours、200GB-hoursの割当を反映。CPU375vCPU-min超過、
+Workers/Durable Objects超過、R2/D1、Gemini、税を除く下限試算。
+同一アカウントの他サービスが含有枠を消費していれば増える。
+すでにWorkers Paidを別用途で払っている場合、$5は重複して加算しない。
+1GiBは余裕が少なく実機未確認。低い表の値だけで採用しない。
+sleepAfter=60秒。質問の処理時間に加え、最後のアクセスから停止までの待機時間も起動時間。
+公式料金：https://developers.cloudflare.com/containers/platform/pricing/
+
+次に必要な確認
+・Paid利用が可能になったら、実機のcold/warm・長文・メモリ・停止復帰を確認。
+・basicで余裕がなければ容量を増やし再計算。実機の数値で運用容量を決める。
+・会話と意味の検証の残課題を解決してから公開採用を判断。
+・並行してAI Searchを調査。検索をマネージドへ移すことで常駐モデルを不要にできるが、
+  Graniteとは別モデル・別チャンクになるため、同じ相談と根拠で精度比較が必要。
+
+詳細データ（Git対象外、人工的な相談のみ）
+.private/search-probe-local.json
+.private/search-container-cold-local.json
+.private/search-container-local-metrics.json
+.private/search-container-memory-limits.json
+.private/search-container-corpus.json
+.private/search-container-cost-basic.json
+.private/search-container-cost-standard.json

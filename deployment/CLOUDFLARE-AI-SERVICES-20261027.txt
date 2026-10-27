@@ -1,0 +1,78 @@
+Cloudflare AI関連サービス調査（2026-10-27）
+
+優先候補
+1. AI Search：固定公式資料の取り込み、解析、索引、検索のマネージド化。
+   search()で根拠チャンクだけ取得し、現在のGemini回答と引用検証へ渡せる。
+   Vectorizeや埋め込みの常駐サーバーを自前管理する必要がない構成を取れる。
+   独自UIやGeminiを捨てる必要はない。chatCompletionsへ丸ごと切り替えることは初期案ではしない。
+   Hybridはベクトル検索とBM25を融合。日本語ではkeyword_tokenizer=trigramを使用。
+   デフォルトporterは日本語に向かず、trigramは3文字未満の単語単体を拾えない。
+   リランキングは設定可能だが日本語品質と時間を比較してから有効にする。
+   元文書と原文照合、制度ID/公式URL対応は既存処理を保持。
+   原文の解析結果/チャンク境界/埋め込みモデルがGraniteから変わるため、精度同等とは未確認。
+
+2. Workers AI：埋め込みやリランキングをAPI/Workers bindingで実行。
+   自前モデルコンテナを持たずに使える。AI SearchでのWorkers AI埋め込み/再順位付けは
+   AI Search料金に含まれ、単独で使う場合はWorkers AIの料金体系。
+   AI Searchの対応埋め込みにはqwen3-embedding-0.6b、bge-m3、EmbeddingGemma等がある。
+   Gemini embeddingも外部プロバイダーとして対応。外部モデルの費用は別。
+   Graniteと同一モデルの提供は確認できず、切替時は資料と質問の両方を再ベクトル化する。
+
+3. AI Gateway：Geminiの料金・所要時間・失敗の観測、レート制限、キャッシュ等。
+   Google AI Studioに対応。検索サービスではなく、Geminiの代わりでもない。
+   基本的な分析・キャッシュ・レート制限は無料。モデルとログ等は別の料金体系がある。
+   現在は相談ログを任意同意で保存する設計なので、導入時はGateway/Workers Logsの
+   本文保存、保持期限、アクセスを別途確認。自動で会話を追加保存する設計にはしない。
+   キャッシュ・モデルfallbackは会話や制度の条件を混ぜないよう、初期は使用しない。
+
+4. Vectorize：検索索引をより細かく制御したい場合の別案。
+   チャンク作成・埋め込み・更新は自分で実装する。AI Searchの裏側と重複して用意しない。
+   小規模で無料枠がある。通常のDBや会話ログ保存先とは用途が異なる。
+
+補助サービス
+・R2：公式PDF、抽出本文、版ごとの保存。AI Searchはbuilt-in storageも持つので
+  最初からR2を必須にしない。公式原本の保管や更新比較が必要なら追加する。
+・D1：同意情報・期限・暗号化した保存対象・集計の管理候補。Postgres互換ではない。
+・Durable Objects：会話ごとの一時状態、順序、排他制御。分析用ログの同意と混同しない。
+・Workflows：資料更新の検出→取得→索引→検証という複数ステップを再試行可能にする。
+  12資料の初回試験では後回しにできる。
+・Browser Run：通常のHTTP取得では本文を取れないページの収集候補。PDF/静的資料には不要。
+・Agents SDK：将来のツール実行や複雑な対話制御に使える。資料検索チャットだけなら必須ではない。
+・Sandboxes/Dynamic Workers：生成コードを実行する用途。今回の固定資料検索には不要。
+・AI Crawl Control：外部AIクローラーのアクセス管理。相談への資料検索とは別用途。
+
+費用と時期
+AI Search公式案内では2026-11-01から課金開始。
+全アカウントに月5M取り込みトークン、10GB-month保存、semantic検索1000件、
+full-text検索1000件の含有枠。超過semantic/vector/hybridは1000検索あたり$0.75。
+外部モデル、回答生成、query rewriting、利用するWorker等の費用は別途。
+検索だけに使いquery rewriting等を無効化する案なら、現在のGemini生成経路を保ちやすい。
+1質問で複数制度を個別検索すると検索回数も増える。1000件は1000会話ではない。
+例：月300質問×3検索=900検索なら検索回数は含有枠内。
+    月1000質問×3検索=3000検索なら検索超過分2000件=$1.50（他の費用を除く）。
+12資料の取り込み量・OCR・モデル使用量・保存量は実測前なので総額無料とは断定しない。
+FreeプランでもAI Searchの枠はある。Containers利用に必要なPaidとは条件が異なる。
+
+候補構成（未実装）
+日本語画面 → Worker → AI Search.search() → 現在のGemini生成と引用検証 → 回答
+必要に応じてD1/DOで同意ログ/一時会話を管理し、原本保管にR2を追加。
+最初の比較ではGeminiモデル・指示・validatorを変更せず、検索部分だけ替える。
+日本語tokenizer、制度別metadata filter、根拠本文の返却、公式URL対応を確認する。
+自動クローリングで資料範囲が広がらないよう、まず登録済み12資料だけに限定。
+
+公式参照
+https://developers.cloudflare.com/ai/
+https://developers.cloudflare.com/ai-search/api/search/workers-binding/
+https://developers.cloudflare.com/ai-search/platform/limits-pricing/
+https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/
+https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/
+https://developers.cloudflare.com/ai-search/configuration/models/supported-models/
+https://developers.cloudflare.com/ai-search/how-to/chunk-citations/
+https://developers.cloudflare.com/ai-gateway/usage/providers/google-ai-studio/
+https://developers.cloudflare.com/ai-gateway/reference/pricing/
+https://developers.cloudflare.com/ai-gateway/observability/logging/
+https://developers.cloudflare.com/workers-ai/platform/pricing/
+https://developers.cloudflare.com/vectorize/platform/pricing/
+https://developers.cloudflare.com/d1/
+https://developers.cloudflare.com/r2/
+https://developers.cloudflare.com/workflows/

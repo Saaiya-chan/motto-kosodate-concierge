@@ -1,0 +1,10 @@
+{
+  "name": "motto-concierge-search-probe",
+  "main": "worker.ts",
+  "compatibility_date": "2026-10-27",
+  "account_id": "44574b6f591973f3bef7e73cc34826fa",
+  "containers": [{"class_name":"SearchContainer","image":"../../.private/search-container-context/Dockerfile","instance_type":"basic","max_instances":1}],
+  "durable_objects": {"bindings":[{"name":"SEARCH","class_name":"SearchContainer"}]},
+  "migrations": [{"tag":"v1","new_sqlite_classes":["SearchContainer"]}],
+  "observability": {"enabled":false}
+}

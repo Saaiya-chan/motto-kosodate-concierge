@@ -1,0 +1,158 @@
+motto 子育てコンシェルジュ：DocsGPT / Cloudflare Workers 移植調査
+調査日：2026-10-27
+
+結論
+通常のWorkersへDocsGPT全体を無変更で移す案は採用しない。
+現在使用している検索機能を切り出し、アプリ独自の会話・引用検証を保って移植する案は実現性がある。
+最大の未解決点は、現在のGranite埋め込みモデルをどこで動かすか。
+検索モデルを変更すれば完全なサーバーレス構成に近づくが、検索・回答品質が同等かは未検証。
+今回はソース調査と既存テストのみ。移植実装、実API比較、配備、Railway再起動、DNS変更は行っていない。
+
+調査対象と証拠の範囲
+・公開DocsGPTタグ1.0.0、commit 71ff06cb93baf34a1499e26a2875ee1d76bd0520。
+  https://github.com/arc53/DocsGPT/tree/71ff06cb93baf34a1499e26a2875ee1d76bd0520
+・取得先：/private/tmp/concierge-docsgpt-1.0.0-audit （調査用、永続保存を前提としない）
+・アプリのdeployment/docsgpt/Dockerfileはarc53/docsgpt:1.0.0を指定。
+  本調査では停止中の配備イメージのdigestと公開Gitタグの一致までは再検証していない。
+・src/docsgpt.mjs、src/docsgpt-citations.mjs、src/consultation-intent.mjs、
+  deployment/docsgpt/start.py、deployment/docsgpt/seed.py、既存評価記録を確認。
+・APIキー、実在の会話ログ、DB内容は取得・表示していない。
+
+現在の標準経路：DocsGPTは最終回答を作っていない
+1. 日本語画面から、履歴とサーバー発行sessionIdを送る。
+2. src/docsgpt.mjsのretrievalQuestionで、直近の制度名と追加質問を検索文へ反映。
+3. discoveryCandidatesで日中の預け先候補を追加検索。
+4. DocsGPT /api/searchで主検索6件、追加候補ごと3件を取得。
+5. source-manifestの公式ファイル名からURL・制度IDを確定。検索結果中の任意URLは信用しない。
+6. 直前までの根拠資料を統合し、最大18件をGeminiへ渡す。
+7. アプリのreviewPrompt/reviewSchemaで、回答と根拠引用を同時に作成。
+8. validateCitationReviewで原文の存在・制度の対応・出典番号を検証。
+9. 検証済み本文と出典、履歴のhashをセッションへ格納。
+
+標準exportはcreateDocsGPT({pipeline:'search'})。
+legacyの/api/answer経路もコードに残るが、現在の公開標準経路ではない。
+したがってDocsGPTのClassicAgent全体や上流の会話DBを移植する必要はない。
+Geminiのモデル・プロンプト・再試行・安全な部分回答処理はアプリ側の維持対象。
+上流の回答生成を追加すると、速度・文体・課金・出典が再び変わるため初期移植では行わない。
+
+DocsGPT内の検索経路
+・docsgpt/api/answer/routes/search.py → services/search_service.py:search。
+・AgentsRepository.find_by_keyでPostgresからエージェントを取得。
+・_authorized_source_idsで検索可能な資料だけに制限（アクセス制御は省略不可）。
+・_search_sources → retriever/fanout.py → VectorCreator → FaissStore。
+・複数sourceがある場合、順序付きfanoutとsourceごとの配分がある。
+  全sourceのスコアを横断して単純sortする実装とは同一ではない。
+・_search_sourcesは先頭200文字による重複排除と、全体chunks上限を使う。
+・FaissStoreはIndexFlatL2、Float32のクエリを使う全件の距離検索。
+・/api/searchの返却値はtext/title/source。ClassicRAGの付与するchunk_key等と異なる。
+  現アプリではsearch経路の本文を直接検証し、キーが返る場合だけ追加本文取得する。
+・seed.pyは12資料を一括uploadし、source_idをエージェントへ設定する構成。
+
+埋め込みモデル：最大の移植障害
+・現在のDockerfile指定はibm-granite/granite-embedding-311m-multilingual-r2。
+・タグ1.0.0のmodel_registry.pyでは768次元、CLS pooling、L2正規化、
+  onnx/model_quint8_avx2.onnxを指定。ソースコメントではグラフ約313MB。
+・embeddings_local.pyはFastEmbed / ONNX Runtimeを使用。
+・ベクトル化をCeleryへ委譲する経路があり、embeddings_tasks.pyがタスクを定義。
+・通常のWorkersメモリ上限は128MB。現在のモデルとランタイムをそのまま収める設計にはできない。
+・Python Workers対応は純PythonとPyEmscripten/Pyodideの対応パッケージであり、
+  Linux用FAISS・ONNX Runtime・Gunicorn・Celeryをそのまま持ち込めることを意味しない。
+・公開Workers AIモデル一覧で同じGranite embeddingの提供は確認できなかった。
+  利用可能な同一モデル・同一量子化・同一前処理のAPIがあるとは現時点では言えない。
+・文書側だけ事前計算しても、新しい相談文のクエリ埋め込みはオンラインで必要。
+・同じ768次元というだけで別モデルのクエリを既存索引へ混ぜてはいけない。
+・同名モデルでも量子化・tokenizer・切り詰め・pooling・正規化・revisionが異なれば順位が変わり得る。
+
+切り出す場合の置換表
+残す：日本語画面、IME対策、検索文の文脈補完、候補制度の個別検索。
+残す：Geminiモデル/指示/schema、事実と助言の区別、制度別の原文照合、本文中リンク。
+残す：会話hash照合、サーバー発行ID、セッション期限、上限、他セッションへの混入防止。
+置換：Node HTTP server → Worker fetch handler。
+置換：ローカルreadFile設定 → Worker Secrets / binding /静的データ。
+置換：プロセス内Map → 会話ごとのDurable Objectなど、期限付きセッション。
+  isolateのグローバルMapだけでは再起動・分散配置時の継続を保証できない。
+置換：FAISSの永続索引 → 同じFloat32ベクトルのL2全件比較、またはVectorize。
+置換：資料・本文 → Worker Assets / R2。IDと公式URLの対応を固定し、更新版のhashを持つ。
+置換：同意済みログの暗号化ファイル → D1/R2などへ、アプリ側暗号化・期限削除付きで実装。
+  相談継続の一時状態と改善用のログ保存は区別し、未同意ログは永続化しない。
+  管理者認証・同意取消による削除・30日保存期限・Origin拒否も維持する。
+不要にできる：固定公開資料専用の最小構成ならDocsGPTのエージェント管理Postgres、
+  Redis/Celery常駐、汎用管理画面。これは全DocsGPTの代替ではなく本アプリ向け機能の切り出し。
+・Pythonロジックを移植・翻案して配布する場合は元のMIT著作権/ライセンス表示を保持。
+
+検索索引の移し方：モデル変更と検索方式変更を同時に行わない
+A. 精度差を切り分ける最初の案
+  旧DocsGPTの実際のchunk本文・メタデータ・Float32ベクトルをexport。
+  クエリも同じ埋め込み実装で計算し、WorkersでL2全件比較する。
+  FAISSの距離・上位集合・順序を許容誤差内で照合。同点の扱いも決める。
+  クエリモデルは別の実行場所が必要で、これだけでは常駐モデル費を必ずしもなくせない。
+  Macを開発時の基準に使うことはできるが、公開サービスの常時依存先にはしない。
+B. 常駐費削減を優先する次の比較案
+  GeminiまたはWorkers AIで提供される埋め込みモデル候補を選び、文書とクエリを両方再計算。
+  Geminiの回答モデルや引用検証は変更しない。
+  検索精度が基準以上の候補だけ採用する。APIごとの費用・入力制限・日本語性能は別途実測。
+C. Vectorizeは後段の選択肢
+  euclideanを指定できるが、近似スコア等の設定で順位が変わる可能性がある。
+  まず小規模な全件比較で検索同等性を確かめ、増量時に候補取得＋厳密再順位付けを検討。
+  再順位付けでも、候補取得で落ちた根拠を復活できない点に注意。
+
+資料の件数だけでは同等性を確認できない
+・ローカル保存のDocsGPT評価用chunks.jsonには79件の本文（UTF-8合計416,037 bytes）。
+  768次元Float32ベクトル79件は242,688 bytesの計算量上のデータサイズ。
+  本文と索引自体は小さいが、この見積りはクエリモデルのメモリを含まない。
+・別経路data/source-chunks.jsonは296件。これへ無条件に置換するとchunk境界も変わる。
+・79件の評価スナップショットは停止中の本番索引そのものと再照合していない。
+  本番資源を削除する前に、その時点の索引・chunk・モデル版を退避するか、
+  保持済み12資料からの再生成を許容するかを決める。
+・今回の調査ではVolume削除・本番再起動は行っていない。
+
+精度を保つための比較計画（未実施）
+Phase 0：基準固定
+  12資料のhash、投入テキスト、chunk本文/ID/制度/ページ、埋め込み版・設定、
+  Geminiモデル・指示・生成設定、上位件数、候補追加、前ターン根拠の持越しを固定。
+  過去の回答は正解とは見なさず、各質問の必要な根拠箇所を人が公式資料から定義する。
+Phase 1：モデル呼出しなしの移植検証
+  同一クエリベクトルで旧検索と新検索を比較。上位根拠、重複排除、本文/URL/IDの同一性を確認。
+  引用検証テストと会話継続テストをWorkers環境でも実行。
+Phase 2：検索モデル候補の比較
+  主要質問30件以上、6往復×5シナリオ以上（重複可）。
+  子育てショートステイの料金→全国同じか→減免→明日の利用→電話の相談文。
+  2歳の昼間の預け先→誰でも通園も紹介→在園確認→一時預かりとの違い。
+  家事支援→回数→資料にない地域の料金→次に確認する項目。
+  産後ケアのショートステイ→子育て短期支援への明示的な話題変更。
+  お礼・普通の用語の意味・短い省略質問・訂正・資料にない質問。
+  検索の根拠到達率、関連制度の取りこぼし、別制度の混入を根拠一覧で比較。
+Phase 3：同条件の最終回答比較
+  同じ質問順・同じ資料・同じGemini条件で旧版と候補を複数回実行。
+  自然さを確認する自走会話と、履歴を固定した比較の両方を行う。
+  合格条件：重要制度の取り違え/料金の根拠流用0、全factの原文引用あり、
+  全公式リンクが主張と対応、未確認範囲を断定しない、普通の会話で不要な回答不能が増えない、
+  資料不足時に有用な次の行動がある、話題変更/訂正を尊重、必要根拠の到達率が基準以上。
+  引用文字列が存在するだけでは意味の裏付けにならないため、公式原文との人の意味照合を残す。
+  時間：埋め込み、検索、Gemini生成、検証再試行を分け、cold/warm、中央値/p95を測定。
+  速度向上だけで採用しない。モデルの再試行/安全な部分回答の発生率も併記。
+Phase 4：同意・管理・配備
+  未同意非保存、取消・期限削除、管理認証、Origin拒否、別セッション分離を実HTTPで検証。
+  候補のみの検証URLでブラウザーを使い、合格後に独自ドメインを切り替える。
+
+今回の確認結果
+・node --test test/docsgpt.test.mjs test/docsgpt-citations.test.mjs test/consultation-intent.test.mjs
+  35 passed / 0 failed（ローカル・モックAPIを含む既存回帰テスト）。
+・既存の評価記録に12質問の比較データがあるが、2026-10-21の過去測定。
+  今回のWorkers測定結果ではなく、現在の精度保証にも使わない。
+・Workersでのビルド/実行、実モデル/API比較、公開配備は未実施。
+
+判断
+まずDocsGPTの固定資料検索だけを抽出し、会話・引用のアプリ処理は維持する。
+最初から汎用DocsGPT管理基盤をWorkersへ丸ごと移植するより、変更範囲と品質差を限定できる。
+ただし完全Workers化と同一埋め込みモデルの維持は、現状そのまま両立できると確認していない。
+精度が採用条件なので、モデル変更の比較に合格するまでは同等と表現しない。
+
+公式参照（2026-10-27確認）
+https://github.com/arc53/DocsGPT/blob/71ff06cb93baf34a1499e26a2875ee1d76bd0520/docsgpt/services/search_service.py
+https://github.com/arc53/DocsGPT/blob/71ff06cb93baf34a1499e26a2875ee1d76bd0520/docsgpt/vectorstore/faiss.py
+https://github.com/arc53/DocsGPT/blob/71ff06cb93baf34a1499e26a2875ee1d76bd0520/docsgpt/vectorstore/model_registry.py
+https://developers.cloudflare.com/workers/platform/limits/
+https://developers.cloudflare.com/workers/languages/python/packages/
+https://developers.cloudflare.com/workers-ai/models/
+https://developers.cloudflare.com/vectorize/best-practices/query-vectors/
