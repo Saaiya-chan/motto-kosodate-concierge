@@ -1,0 +1,37 @@
+Cloud Run検証の現状（2026-10-27）
+
+完了
+- Google公式CLIの認証成功。
+- Docker Engine 29.8.2を確認。
+- 既存検索索引が公式12資料 / 79チャンクであることを確認。
+- 専用プロジェクト motto-concierge-eval-1027 を作成。
+- 配備スクリプトの計画表示とPython構文確認。
+
+最初の停止条件（解消済み）
+認証アカウントから参照できた既存3プロジェクトはすべてbillingEnabled=false。
+gcloud billing accounts list --filter=open=true の結果も0件。
+当初はアクセス可能な請求先がなく、Cloud Run / Artifact Registryは未作成だった。
+その後、ユーザーが請求先を登録し、検証プロジェクトへの関連付けを完了した。
+支払情報はチャットやリポジトリに入力しない。
+
+追加完了
+- Cloud Runのみ月500円のSpend capを作成し、CONFIGUREDを読み戻して確認。
+- 既存の100円の予算アラートは変更していない。
+- 東京 / 1 vCPU / 2GiB / 最小0・最大1 / 同時実行1で配備。
+- 停止復帰3回、検索12問、各6往復を2シナリオ・2方式（24回答）で実測。
+- 引用原文27件と公式URL5種類を照合。
+- Cloud Runサービスと専用Artifact Registryを削除。
+
+未確認・限界
+実際の請求確定額、自然なアイドルscale-to-zero後の復帰、長期負荷時の品質やp95。
+月額は実測トークン等を使った有料単価換算で、請求書ではない。
+詳しい結果はRESULTS-20261027.txtを参照。
+
+再現
+1. motto-concierge-eval-1027 のbillingEnabledを再確認。
+2. python3 evaluation/cloud-run/budget.py で月500円のSpend capが有効か確認。
+3. python3 evaluation/cloud-run/deploy.py --project motto-concierge-eval-1027 --deploy
+4. README.txtの認証・cold/warm・会話・出典監査・費用比較を実施。
+5. 検証用クラウド資源を片付ける。
+
+既存のRailway、DNS、公開相談画面は変更していない。
