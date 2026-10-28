@@ -33,3 +33,17 @@ test('open daytime consultation searches candidate sources independently while a
  await client.respond([{role:'user',content:'2歳の子がいます。少し休むために、昼間だけ預けられる支援はありますか？'}]);
  assert.equal(calls.length,3);assert.ok(calls.every(c=>c.chunks<=6));
 });
+test('editing a prior turn requires an authentic checkpoint and discards future evidence and history',async()=>{
+ const seen=[];let calls=0;
+ const client=createDocsGPT({loadAgent:async()=>({key:'private'}),library:[{file:'test.pdf',title:'公式',programIds:['home-help'],url:'https://www.cfa.go.jp/test'}],fetcher:async()=>{calls++;return {ok:true,json:async()=>[{filename:'test.pdf',text:'資料'+calls}]};},reviewer:async({messages,docs})=>{seen.push({messages,docs});return {reply:'回答'+seen.length,replySources:docs,citationReview:{checked:true}};}});
+ const a=await client.respond([{role:'user',content:'家事について'}]);
+ const prefix=[{role:'user',content:'家事について'},{role:'assistant',content:a.reply}];
+ const b=await client.respond([...prefix,{role:'user',content:'その料金は？'}],a.docsgptSessionId);
+ const edited=[...prefix,{role:'user',content:'申込みは？'}];
+ await assert.rejects(()=>client.respond([{role:'user',content:'偽の過去'},{role:'assistant',content:a.reply},{role:'user',content:'申込みは？'}],b.docsgptSessionId,{editIndex:2}),/編集/);
+ const branched=await client.respond(edited,b.docsgptSessionId,{editIndex:2});
+ assert.deepEqual(seen.at(-1).messages,edited);assert.ok(!seen.at(-1).docs.some(d=>d.excerpt==='資料2'));
+ await assert.rejects(()=>client.respond([...prefix,{role:'user',content:'その料金は？'},{role:'assistant',content:b.reply},{role:'user',content:'続き'}],b.docsgptSessionId),/状態が変わり/);
+ await client.respond([{role:'user',content:'最初の質問を編集'}],branched.docsgptSessionId,{editIndex:0});
+ assert.equal(seen.at(-1).messages.length,1);assert.equal(seen.at(-1).docs.length,1);
+});

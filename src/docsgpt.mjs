@@ -21,11 +21,17 @@ export function createDocsGPT({pipeline=process.env.DOCSGPT_PIPELINE||'search',b
  async function request(path,body,timeout=40000){const r=await fetcher(base+path,{...(body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{}),signal:AbortSignal.timeout(timeout)});if(!r.ok)throw Error('upstream');return r.json();}
  return {
  async status(){try{const a=await loadAgent();if(!a.key)throw Error();await request('/api/health',null,process.env.DOCSGPT_IAM_AUDIENCE?45000:2500);return{ready:true,message:`DocsGPT＋Geminiで、登録した${library.length}件の資料から回答します。`};}catch{return{ready:false,message:process.env.DOCSGPT_IAM_AUDIENCE?'資料検索を起動しています。少し待って画面を再読み込みしてください。':'DocsGPTに接続できません。ローカルのDocsGPTを起動してから再確認してください。'};}},
- async respond(messages,sessionId){
+ async respond(messages,sessionId,{editIndex}={}){
   if(messages.some((m,i)=>m.role!==(i%2?'assistant':'user')))throw Error('会話の順序を確認してください。');
   const started=performance.now();const previous=messages.slice(0,-1);let session=sessionId?sessions.get(sessionId):null;
   if(sessionId&&(!session||session.expires<Date.now()))throw Error('会話の接続が切れました。「最初から」で新しい相談を始めてください。');
   if(!session&&previous.length)throw Error('会話の接続が切れました。「最初から」で新しい相談を始めてください。');
+  let checkpoints=session?.checkpoints||[{hash:fingerprint([]),docs:[]}];
+  if(editIndex!==undefined){
+   if(!session||!Number.isInteger(editIndex)||editIndex<0||editIndex%2||editIndex!==previous.length||!checkpoints[editIndex/2]||checkpoints[editIndex/2].hash!==fingerprint(previous))throw Error('編集する会話の接続情報を確認できません。');
+   session={...session,docs:checkpoints[editIndex/2].docs,hash:fingerprint(previous)};
+   checkpoints=checkpoints.slice(0,editIndex/2+1);
+  }
   if(session&&session.hash!==fingerprint(previous))throw Error('会話の状態が変わりました。「最初から」で新しい相談を始めてください。');
   let agent;try{agent=await loadAgent();if(!agent.key)throw Error();}catch{throw Error('DocsGPTの接続設定を確認できません。');}let data;const candidates=discoveryCandidates(messages);const upstreamStarted=performance.now();
   if(pipeline==='legacy'){
@@ -52,7 +58,9 @@ export function createDocsGPT({pipeline=process.env.DOCSGPT_PIPELINE||'search',b
   const verified=await reviewer({messages,draft:data.answer,docs,candidatePrograms:candidates.map(c=>c.id)});
   const reviewMs=Math.round(performance.now()-reviewStarted);
   const token=sessionId||randomUUID();for(const [k,s]of sessions)if(s.expires<Date.now())sessions.delete(k);if(sessions.size>=200&&!sessionId)sessions.delete(sessions.keys().next().value);
-  sessions.set(token,{docs:[...new Map([...verified.replySources,...docs].map(d=>[d.id,d])).values()].slice(0,18),hash:fingerprint([...messages,{role:'assistant',content:verified.reply}]),expires:Date.now()+6*60*60*1000});
+  const nextDocs=[...new Map([...verified.replySources,...docs].map(d=>[d.id,d])).values()].slice(0,18);
+  const nextHash=fingerprint([...messages,{role:'assistant',content:verified.reply}]);
+  sessions.set(token,{docs:nextDocs,hash:nextHash,checkpoints:[...checkpoints,{hash:nextHash,docs:nextDocs}],expires:Date.now()+6*60*60*1000});
   return {...verified,docsgptSessionId:token,mode:'docsgpt-gemini',model:'gemini-3.5-flash-lite',showRecommendations:false,replyOptions:[],timings:{pipeline,upstreamMs,passagesMs,reviewMs},elapsedMs:Math.round(performance.now()-started)};
  }
  };

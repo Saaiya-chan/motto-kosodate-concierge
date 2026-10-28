@@ -60,10 +60,11 @@ if(req.method==='POST'&&url.pathname==='/api/chat'){
  if(['gemini','ruri','docsgpt'].includes(data.provider)&&data.guided===true)return send(res,400,{error:'Geminiと選択式の案内を同時には選べません。'});
  // Conversation history is transient; only separately consented new turns are persisted by the logging service.
  if(data.sessionId!==undefined&&(typeof data.sessionId!=='string'||!/^[-a-f0-9]{36}$/.test(data.sessionId)))return send(res,400,{error:'会話の接続情報を確認してください。'});
+ if(data.editIndex!==undefined&&(!Number.isInteger(data.editIndex)||data.editIndex<0||data.editIndex%2||data.editIndex!==m.length-1||!data.sessionId||data.provider!=='docsgpt'))return send(res,400,{error:'編集するメッセージを確認してください。'});
  if(data.logConsentToken!==undefined&&(typeof data.logConsentToken!=='string'||!/^[a-f0-9]{64}$/.test(data.logConsentToken)))return send(res,400,{error:'保存の同意情報を確認してください。'});
  const record=async(answer,outcome)=>{if(noLogTrial)return false;try{return await logs.append({token:data.logConsentToken,conversationId:data.logConversationId,question:m.at(-1).content,answer,provider:data.provider||'local',outcome});}catch{return false;}};
  busy=true;try{
- const result=data.provider==='docsgpt'?await docsgpt.respond(m,data.sessionId):data.provider==='ruri'?await gemini.respondRuri(m):data.provider==='gemini'?await gemini.respond(m):data.guided===true?guidedReply(m):await respond(m);
+ const result=data.provider==='docsgpt'?await docsgpt.respond(m,data.sessionId,{editIndex:data.editIndex}):data.provider==='ruri'?await gemini.respondRuri(m):data.provider==='gemini'?await gemini.respond(m):data.guided===true?guidedReply(m):await respond(m);
  const saved=await record(result.reply||result.summary||result.question?.text||null,'answered');
  return send(res,200,{...result,logging:{saved,requested:!!data.logConsentToken}});
  }catch(e){const saved=await record(null,'answer-unavailable');return send(res,502,{error:['gemini','ruri','docsgpt'].includes(data.provider)?e.message:'回答を取得できませんでした。',logging:{saved,requested:!!data.logConsentToken},...(['gemini','ruri','docsgpt'].includes(data.provider)&&e.quota?{quota:e.quota}:{})});}finally{busy=false;}

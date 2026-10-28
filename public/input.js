@@ -4,8 +4,9 @@ export function bindChatInput(form,input,onSubmit,{clock=()=>performance.now()}=
  input.addEventListener('compositionend',()=>{composing=false;endedAt=clock();});
  const blocked=e=>composing||e.isComposing||e.keyCode===229||clock()-endedAt<100;
  input.addEventListener('keydown',e=>{
-  // Plain Enter is left to the textarea, including Japanese IME confirmation.
-  if(e.key==='Enter'&&(e.ctrlKey||e.metaKey)&&!blocked(e)){e.preventDefault();onSubmit(input.value);}
+  if(e.key!=='Enter'||e.shiftKey)return;
+  if(blocked(e))return;
+  e.preventDefault();if(!e.repeat)onSubmit(input.value);
  });
  form.addEventListener('submit',e=>{e.preventDefault();if(!blocked(e))onSubmit(input.value);});
 }
