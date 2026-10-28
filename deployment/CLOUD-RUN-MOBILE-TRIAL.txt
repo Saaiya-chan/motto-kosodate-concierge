@@ -14,7 +14,7 @@ https://motto-concierge-web-try-84762847191.asia-northeast1.run.app/
 project: motto-concierge-eval-1027 / 東京
 web: motto-concierge-web-try（新規、公開HTTPS）
 search: motto-concierge-search-eval（既存、IAM認証必須を維持）
-web resources: 1 vCPU / 512MiB / 最小0・最大1 / 同時実行1。
+web resources: 1 vCPU / 512MiB / 最小0・最大1 / HTTP同時受付16（AI生成はアプリ側で1件）。
 Cloud Run月500円は画面と検索の合算。Gemini、保管、Secret Manager等は対象外。
 既存motto・Railway・メール・DNSは変更しない。まずrun.app URLで試用する。
 
@@ -87,3 +87,19 @@ Cloud Run構成に限りstatus確認を45秒まで待つよう修正して再配
 月500円Spend capを最後に再取得し、CONFIGUREDであることを確認。
 Cloud Runサービス・レジストリ・専用secret・サービスアカウントは試用用に維持する。
 既存motto・Railway・メール・DNS・元のMac内の保存ログは変更していない。
+
+2026-10-28 13時台 Rate exceeded の修正
+13:34:48 JSTのGET /でHTTP429を確認。ログ理由は処理可能なインスタンスなし。
+直前13:34:36開始の/api/chatが22.27秒かかり、同時HTTP受付1・最大1台の枠を占有していた。
+月500円Spend capはCONFIGUREDで、予算到達の停止ではなかった。
+webだけ同時HTTP受付を1→16へ変更。最大1台・最小0・CPU・RAM・secret参照は維持。
+searchの同時実行1と、アプリ側のAI生成1件制御も維持。
+反映済みrevision: motto-concierge-web-try-00003-f7s。
+再配備スクリプトの--concurrencyも16に更新し、次回配備で戻らないようにした。
+evaluation/cloud-run/check-concurrency.mjsで架空の相談1件の生成中に画面・資産等9要求を並行取得。
+9/9がHTTP200、約155〜176msで、すべてAI生成の完了前に返った。
+最初の相談もHTTP200、2.705秒、保存なし。
+生成中に追加した相談はアプリ側の日本語JSONによる429で制限され、余分な生成は行わなかった。
+この修正は画面全体がCloud RunのRate exceededになる問題への対処。
+あらゆる負荷や起動遅延に対する無制限の同時相談を保証するものではない。
+利用者にはページの再読み込みを案内する。再配備により古い会話接続は最初からの再開が必要な場合がある。

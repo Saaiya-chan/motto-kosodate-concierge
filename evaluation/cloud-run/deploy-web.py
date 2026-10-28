@@ -21,7 +21,7 @@ def main():
                           'secretsToStore': ['existing Gemini API key', 'existing search application key'],
                           'secretStorage': 'Google Secret Manager, two dedicated secrets, pinned versions',
                           'runtimeIdentity': SA, 'permissions': ['search service run.invoker', 'two secrets secretAccessor'],
-                          'cloudRunBudgetJPY': 500, 'logging': 'disabled', 'cpu': 1, 'memory': '512Mi', 'min': 0, 'max': 1}, indent=2))
+                          'cloudRunBudgetJPY': 500, 'logging': 'disabled', 'cpu': 1, 'memory': '512Mi', 'min': 0, 'max': 1, 'concurrency': 16}, indent=2))
         return
     ensure_budget()
     gcloud('services', 'enable', 'secretmanager.googleapis.com', '--project', PROJECT, '--quiet')
@@ -79,12 +79,12 @@ def main():
     env_file.write_text(json.dumps(variables))
     env_file.chmod(0o600)
     gcloud('run', 'deploy', SERVICE, '--project', PROJECT, '--region', REGION, '--image', image,
-           '--service-account', SA, '--cpu=1', '--memory=512Mi', '--min=0', '--max=1', '--concurrency=1',
+           '--service-account', SA, '--cpu=1', '--memory=512Mi', '--min=0', '--max=1', '--concurrency=16',
            '--timeout=120', '--cpu-throttling', '--no-cpu-boost', '--allow-unauthenticated',
            '--env-vars-file', str(env_file), '--set-secrets=' + ','.join(bindings), '--quiet')
     # Only publish the canonical URL accepted by the existing host/origin validation.
     proof = {'project': PROJECT, 'service': SERVICE, 'region': REGION, 'url': origin, 'searchURL': search['url'],
-             'logging': 'disabled', 'min': 0, 'max': 1, 'cpu': 1, 'memory': '512Mi', 'runtimeServiceAccount': SA}
+             'logging': 'disabled', 'min': 0, 'max': 1, 'cpu': 1, 'memory': '512Mi', 'concurrency': 16, 'runtimeServiceAccount': SA}
     (ROOT / '.private/cloud-run-web-deployment.json').write_text(json.dumps(proof, indent=2))
     print(json.dumps(proof, ensure_ascii=False, indent=2))
 
