@@ -26,3 +26,15 @@ test('detailed follow-up retrieves eligibility and process while a fee question 
  assert.deepEqual(detailSearches([...h,{role:'user',content:'料金は？'}]),[]);
  assert.ok(detailSearches([...h,{role:'user',content:'一時預かりを詳しく教えて'}]).every(x=>x.query.startsWith('一時預かり')));
 });
+test('fee/application followups and comparisons retrieve the requested dimensions',async()=>{
+ const {focusedSearches}=await import('../src/consultation-intent.mjs');
+ const h=[{role:'user',content:'子育て世帯訪問支援事業を知りたい'},{role:'assistant',content:'説明'}];
+ assert.equal(focusedSearches([...h,{role:'user',content:'料金と申込みを電話で聞く文を作って'}]).length,2);
+ const comparisons=focusedSearches([{role:'user',content:'こども誰でも通園制度と一時預かりはどう違いますか？'}]);assert.equal(comparisons.length,2);assert.ok(comparisons.every(s=>/対象年齢.*就園条件.*利用時間/.test(s.query)));
+ assert.equal(focusedSearches([...h,{role:'user',content:'一時預かりの料金は？'}])[0].query.startsWith('一時預かり'),true);
+});
+test('enrollment clarification retrieves the newly relevant time and usage information',async()=>{
+ const {focusedSearches}=await import('../src/consultation-intent.mjs');
+ const m=[{role:'user',content:'2歳です。日中預けられる支援はありますか？'},{role:'assistant',content:'候補があります'},{role:'user',content:'保育園には通っていません'}];
+ assert.ok(focusedSearches(m).some(s=>/誰でも通園.*時間単位/.test(s.query)));
+});

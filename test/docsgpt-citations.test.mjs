@@ -1,5 +1,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {validateCitationReview,createCitationReviewer} from '../src/docsgpt-citations.mjs';
+import {validateCitationReview,createCitationReviewer as realReviewer} from '../src/docsgpt-citations.mjs';
+// These structural/retry tests isolate generation; semantic integration has its own tests.
+const createCitationReviewer=options=>realReviewer({audit:async()=>({checked:true,verdicts:[]}),...options});
 const docs=[{id:'shortstay-faq',title:'子育て短期支援事業FAQ',programIds:['shortstay','twilight'],url:'https://www.cfa.go.jp/shortstay.pdf',fullText:true,excerpt:'利用料については、市町村において、地域の実情等を踏まえて設定してください。'},{id:'postpartum',title:'産後ケア',programIds:['postpartum'],url:'https://www.cfa.go.jp/postpartum.pdf',fullText:true,excerpt:'産後ケアの実施場所は病院、診療所、助産所等とする。'}];
 const value={segments:[{kind:'fact',text:'子育てショートステイの利用料は、市町村が地域の実情を踏まえて設定します。',evidence:[{sourceId:'shortstay-faq',quote:docs[0].excerpt}]},{kind:'advice',text:'問い合わせる際は、食費を含む総額と減免があるかを尋ねてみてください。',evidence:[]}],corrections:['産後ケアの引用を短期支援FAQに訂正']};
 test('corrected claim gets only its supporting link; process advice has no forced citation',()=>{const d=validateCitationReview(value,docs);assert.equal(d.replySources.length,1);assert.equal(d.replySources[0].url,docs[0].url);assert.match(d.reply,/設定します。\[1\]/);assert.equal((d.reply.match(/\[1\]/g)||[]).length,1);assert.equal(d.citationReview.repaired,true);});
@@ -99,4 +101,15 @@ test('a follow-up on the selected programme cannot silently reintroduce earlier 
  const b={...a,id:'post',programIds:['postpartum'],url:'https://www.cfa.go.jp/post.pdf'};
  const proposal={segments:[{kind:'fact',text:'子育て世帯訪問支援事業と産後ケアの利用料は市町村が定めます。',evidence:[{sourceId:'home',quote:a.excerpt},{sourceId:'post',quote:b.excerpt}]}],corrections:[]};
  assert.throws(()=>validateCitationReview(proposal,[a,b],[{role:'user',content:'子育て世帯訪問支援事業を詳しく'},{role:'assistant',content:'説明'},{role:'user',content:'お金はいくら？'}]),/別の制度/);
+});
+test('polite enrollment question is not duplicated by the app',async()=>{
+ const d={id:'day',programIds:['daredemo'],url:'https://www.cfa.go.jp/day',fullText:true,excerpt:'保育所等に通っていないこどもが対象です。'};
+ const proposal={segments:[{kind:'fact',text:'こども誰でも通園制度：保育所等に通っていないこどもが対象です。',evidence:[{sourceId:'day',quote:d.excerpt}]},{kind:'conversation',text:'現在、保育園や幼稚園などに通われていますか？',evidence:[]}],corrections:[]};
+ const reviewer=createCitationReviewer({loadConfig:async()=>({apiKey:'test'}),fetcher:async()=>({ok:true,json:async()=>({candidates:[{finishReason:'STOP',content:{parts:[{text:JSON.stringify(proposal)}]}}]})})});
+ const r=await reviewer({messages:[{role:'user',content:'2歳の子を日中預ける支援はありますか？'}],docs:[d],candidatePrograms:['daredemo']});assert.equal((r.reply.match(/か？/g)||[]).length,1);
+});
+test('repeated omission of application question is repaired in the final phone template',async()=>{
+ const proposal={segments:[{kind:'advice',text:'「子育て世帯訪問支援事業の利用料金はいくらかかるか、所得に応じた減免があるか教えてください」',evidence:[]}],corrections:[]};
+ const reviewer=createCitationReviewer({loadConfig:async()=>({apiKey:'private'}),fetcher:async()=>({ok:true,json:async()=>({candidates:[{finishReason:'STOP',content:{parts:[{text:JSON.stringify(proposal)}]}}]})})});
+ const result=await reviewer({messages:[{role:'user',content:'料金と申込みについて電話で聞く文を作ってください。'}],docs:[],draft:''});assert.match(result.reply,/申し込み方/);assert.match(result.reply,/料金/);assert.ok(!result.reply.includes('出典を照合した説明を十分に作れません'));assert.ok(result.citationReview.partial);
 });

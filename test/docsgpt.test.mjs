@@ -47,3 +47,13 @@ test('editing a prior turn requires an authentic checkpoint and discards future 
  await client.respond([{role:'user',content:'最初の質問を編集'}],branched.docsgptSessionId,{editIndex:0});
  assert.equal(seen.at(-1).messages.length,1);assert.equal(seen.at(-1).docs.length,1);
 });
+test('a new discovery topic clears the old named programme for subsequent retrieval',async()=>{
+ const {retrievalQuestion}=await import('../src/docsgpt.mjs');
+ const h=[{role:'user',content:'子育て世帯訪問支援事業を詳しく'},{role:'assistant',content:'説明'},{role:'user',content:'2歳の子を昼間預ける支援はありますか？'},{role:'assistant',content:'説明'},{role:'user',content:'通っていません。料金は？'}];
+ assert.ok(!retrievalQuestion(h).includes('子育て世帯訪問支援'));assert.match(retrievalQuestion(h),/誰でも通園/);
+});
+test('fresh related options remain available during discovery instead of being discarded by topic filtering',async()=>{
+ const library=[{file:'documents/home.pdf',title:'訪問支援',programIds:['home-help'],url:'https://www.cfa.go.jp/home.pdf'},{file:'documents/post.pdf',title:'産後ケア',programIds:['postpartum'],url:'https://www.cfa.go.jp/post.pdf'}];
+ const client=createDocsGPT({library,loadAgent:async()=>({key:'private'}),fetcher:async()=>({ok:true,json:async()=>[{title:'home.pdf',text:'家事を支援します。'},{title:'post.pdf',text:'産後の母子をケアします。'}]}),reviewer:async({docs})=>{assert.equal(docs.length,2);return{reply:'条件付きの候補を確認します。',replySources:[],citationReview:{checked:true}};}});
+ await client.respond([{role:'user',content:'家事と育児で手いっぱいです。自宅で手伝ってもらえる支援はありますか？'}]);
+});

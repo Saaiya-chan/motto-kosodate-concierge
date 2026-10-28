@@ -1,9 +1,10 @@
+import {catalog} from './engine.mjs';
 import {readFile} from 'node:fs/promises';
 import {join} from 'node:path';
 import {randomUUID,createHash} from 'node:crypto';
 import {manifest} from './rag.mjs';
 import {namedPrograms} from './dialogue.mjs';
-import {discoveryCandidates,detailSearches} from './consultation-intent.mjs';
+import {discoveryCandidates,detailSearches,focusedSearches,consultationPrograms} from './consultation-intent.mjs';
 import {createCitationReviewer} from './docsgpt-citations.mjs';
 import {createCloudRunFetch} from './cloud-run-fetch.mjs';
 const fingerprint=m=>createHash('sha256').update(JSON.stringify(m)).digest('hex');
@@ -12,8 +13,8 @@ export function retrievalQuestion(messages){
  const names=text=>namedPrograms(text).filter(p=>p.id!=='shortstay'||/子育てショートステイ|子育て短期支援/.test(text));
  if(names(latest).length)return latest;
  const prior=[...messages.slice(0,-1)].reverse().filter(m=>m.role==='user');
- const context=prior.find(m=>names(m.content).length);
- const programmes=context?names(context.content).map(p=>p.name).join('・'):'';
+ const scope=consultationPrograms(messages.slice(0,-1));
+ const programmes=catalog.programs.filter(p=>scope.includes(p.id)).map(p=>p.name).join('・');
  return [programmes,latest,prior[0]?.content].filter(Boolean).join('\n').slice(0,6000);
 }
 export function createDocsGPT({pipeline=process.env.DOCSGPT_PIPELINE||'search',base=process.env.DOCSGPT_URL||'http://127.0.0.1:7093',fetcher=createCloudRunFetch(),loadAgent=async()=>process.env.DOCSGPT_API_KEY?{key:process.env.DOCSGPT_API_KEY}:JSON.parse(await readFile(process.env.MOTTO_GEMINI_PRIVATE_DIR?join(process.env.MOTTO_GEMINI_PRIVATE_DIR,'docsgpt-agent.json'):new URL('../.private/docsgpt-agent.json',import.meta.url),'utf8')),library=manifest.sources,reviewer=createCitationReviewer()}={}){
@@ -38,7 +39,7 @@ export function createDocsGPT({pipeline=process.env.DOCSGPT_PIPELINE||'search',b
   try{data=await request('/api/answer',{question:messages.at(-1).content,api_key:agent.key,model_id:'gemini-3.5-flash-lite',history:JSON.stringify(previous.filter(m=>m.role==='user').map((m,i)=>({prompt:m.content,response:previous[i*2+1].content}))),visibility:'hidden'});}catch{throw Error('DocsGPTの回答を取得できませんでした。接続やGeminiの利用上限を確認し、少し待ってから再送してください。');}
   if(typeof data.answer!=='string'||!data.answer.trim()||!data.conversation_id||data.error)throw Error('DocsGPTから回答を受け取れませんでした。少し待ってから再送してください。');
   }else{
-   try{const searches=[{query:retrievalQuestion(messages),chunks:6},...candidates.map(c=>({...c,chunks:3})),...detailSearches(messages)];const groups=await Promise.all(searches.map(async s=>{const hits=await request('/api/search',{question:s.query,api_key:agent.key,chunks:s.chunks});if(!Array.isArray(hits))throw Error();return hits;}));data={answer:'',sources:[...new Map([...groups.slice(1).flat(),...groups[0]].map(h=>[JSON.stringify([h.filename||h.title||h.source,h.chunk_key,h.text]),h])).values()]};}catch{throw Error('DocsGPTの資料検索に接続できませんでした。少し待って再送してください。');}
+   try{const searches=[{query:retrievalQuestion(messages),chunks:6},...candidates.map(c=>({...c,chunks:3})),...detailSearches(messages),...focusedSearches(messages)];const groups=await Promise.all(searches.map(async s=>{const hits=await request('/api/search',{question:s.query,api_key:agent.key,chunks:s.chunks});if(!Array.isArray(hits))throw Error();return hits;}));data={answer:'',sources:[...new Map([...groups.slice(1).flat(),...groups[0]].map(h=>[JSON.stringify([h.filename||h.title||h.source,h.chunk_key,h.text]),h])).values()]};}catch{throw Error('DocsGPTの資料検索に接続できませんでした。少し待って再送してください。');}
   }
   const upstreamMs=Math.round(performance.now()-upstreamStarted);const passagesStarted=performance.now();
   // Review all retrieved passages and previously verified evidence; do not trust draft citation numbers.
@@ -53,7 +54,10 @@ export function createDocsGPT({pipeline=process.env.DOCSGPT_PIPELINE||'search',b
    return {id:filename+':'+(raw.chunk_key||createHash('sha256').update(excerpt).digest('hex')),citationNumber:number,title:known?.title||filename||'資料名不明',url:known?.url,programIds:known?.programIds||[],excerpt,fullText,unavailable:!known||!fullText};
   }));
   const retrieved=refs.filter(r=>r.status==='fulfilled').map(r=>r.value).filter(d=>d.fullText&&d.url);
-  const docs=[...new Map([...retrieved,...(session?.docs||[])].map(d=>[d.id,d])).values()].slice(0,18);
+  const scope=consultationPrograms(messages);
+  // Preserve newly retrieved related options; restrict only stale evidence from earlier topics.
+  const priorDocs=(session?.docs||[]).filter(d=>!scope.length||!d.programIds?.length||d.programIds?.some(id=>scope.includes(id))||namedPrograms(d.excerpt).some(p=>scope.includes(p.id)));
+  const docs=[...new Map([...retrieved,...priorDocs].map(d=>[d.id,d])).values()].slice(0,18);
   const passagesMs=Math.round(performance.now()-passagesStarted);const reviewStarted=performance.now();
   const verified=await reviewer({messages,draft:data.answer,docs,candidatePrograms:candidates.map(c=>c.id)});
   const reviewMs=Math.round(performance.now()-reviewStarted);
