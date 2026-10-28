@@ -14,3 +14,15 @@ test('focused questions and night stays do not fan out to an unrelated programme
  for(const text of ['一時預かりの料金は？','子育てショートステイで明日泊まれますか？','こども誰でも通園とは？','家事を手伝ってほしい'])assert.equal(isDaytimeDiscovery(text),false);
  assert.equal(namedPrograms('誰通の条件は？')[0].id,'daredemo');
 });
+test('home support discovery retrieves its own programme, without hijacking focused questions',()=>{
+ assert.deepEqual(discoveryCandidates(ask('家事と育児で手いっぱいです。自宅で手伝ってもらえる支援はありますか？')).map(x=>x.id),['home-help']);
+ assert.deepEqual(discoveryCandidates(ask('子育てショートステイについて詳しく教えて')),[]);
+});
+test('detailed follow-up retrieves eligibility and process while a fee question stays focused',async()=>{
+ const {detailSearches}=await import('../src/consultation-intent.mjs');
+ const h=[{role:'user',content:'家事を手伝ってほしい'},{role:'assistant',content:'子育て世帯訪問支援事業が候補です。'}];
+ assert.equal(detailSearches([...h,{role:'user',content:'もっと詳しく教えて'}]).length,2);
+ assert.ok(detailSearches([...h,{role:'user',content:'もっと詳しく教えて'}]).every(x=>x.query.includes('子育て世帯訪問支援事業')));
+ assert.deepEqual(detailSearches([...h,{role:'user',content:'料金は？'}]),[]);
+ assert.ok(detailSearches([...h,{role:'user',content:'一時預かりを詳しく教えて'}]).every(x=>x.query.startsWith('一時預かり')));
+});

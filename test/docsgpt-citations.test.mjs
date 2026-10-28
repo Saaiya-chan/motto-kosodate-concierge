@@ -70,3 +70,33 @@ test('cloud citation review uses environment API key without requiring a local c
   for(const [name,old]of [['GEMINI_API_KEY',saved.key],['MOTTO_GEMINI_PRIVATE_DIR',saved.dir]])if(old===undefined)delete process.env[name];else process.env[name]=old;
  }
 });
+test('PDF footer between a split word does not reject its matching fee quote, but a changed fee is rejected',()=>{
+ const d={id:'home',title:'訪問支援',programIds:['home-help'],url:'https://www.cfa.go.jp/test.pdf',fullText:true,excerpt:'市町村は利用料等をあらかじめ定めること。利用者の所 1||\n\n得状況に応じて減免するなど考慮することが望ましい。'};
+ const proposal={segments:[{kind:'fact',layout:'bullet',text:'利用料の設定では所得状況に応じた減免などへの配慮が望ましいとされています。',evidence:[{sourceId:'home',quote:'利用者の所得状況に応じて減免するなど考慮することが望ましい。'}]}],corrections:[]};
+ assert.equal(validateCitationReview(proposal,[d]).replySources.length,1);
+ assert.throws(()=>validateCitationReview({...proposal,segments:[{...proposal.segments[0],evidence:[{sourceId:'home',quote:'利用料は100円です。'}]}]},[d]),/原文/);
+});
+test('a detailed follow-up repairs an overview that omits available fees and the support plan',async()=>{
+ const d={id:'home',programIds:['home-help'],url:'https://www.cfa.go.jp/test.pdf',fullText:true,excerpt:'訪問支援員が家事を支援します。サポートプランにより支援を決定します。利用料は市町村が定めます。'};
+ const fact=(text,quote)=>({kind:'fact',layout:'bullet',text,evidence:[{sourceId:'home',quote}]});
+ let n=0;
+ const reviewer=createCitationReviewer({loadConfig:async()=>({apiKey:'test'}),fetcher:async()=>({ok:true,json:async()=>({candidates:[{finishReason:'STOP',content:{parts:[{text:JSON.stringify({segments:++n===1?[fact('家事を支援します。','訪問支援員が家事を支援します。')]:[fact('家事を支援します。','訪問支援員が家事を支援します。'),fact('利用までの流れ：サポートプランにより支援を決定します。','サポートプランにより支援を決定します。'),fact('利用料は市町村が定めます。','利用料は市町村が定めます。')],corrections:[]})}]}}]})})});
+ const r=await reviewer({messages:[{role:'user',content:'子育て世帯訪問支援事業について詳しく教えて'}],draft:'',docs:[d]});
+ assert.equal(n,2);assert.match(r.reply,/サポートプラン/);assert.match(r.reply,/利用料/);assert.ok(!r.citationReview.partial);
+});
+test('selected passage IDs resolve to exact source text and invented IDs are rejected',async()=>{
+ const d={id:'home',programIds:['home-help'],url:'https://www.cfa.go.jp/test.pdf',fullText:true,excerpt:'訪問支援員が家事を支援します。利用料は市町村が定めます。'};
+ let calls=0;
+ const reviewer=createCitationReviewer({loadConfig:async()=>({apiKey:'test'}),fetcher:async(_url,opts)=>{
+  const input=JSON.parse(JSON.parse(opts.body).contents[0].parts[0].text);assert.equal(input.sources[0].passages[0].text,'訪問支援員が家事を支援します。');
+  return {ok:true,json:async()=>({candidates:[{finishReason:'STOP',content:{parts:[{text:JSON.stringify({segments:[{kind:'fact',layout:'bullet',text:'子育て世帯訪問支援事業：家事の支援を行います。',evidence:[{sourceId:'home',quoteId:++calls===1?'invented':'p0'}]}],corrections:[]})}]}}]})};
+ }});
+ const r=await reviewer({messages:[{role:'user',content:'子育て世帯訪問支援事業とは？'}],draft:'',docs:[d]});
+ assert.equal(calls,2);assert.equal(r.citationReview.statements[0].evidence[0].quote,d.excerpt.split('。')[0]+'。');
+});
+test('a follow-up on the selected programme cannot silently reintroduce earlier candidates',()=>{
+ const a={id:'home',programIds:['home-help'],url:'https://www.cfa.go.jp/home.pdf',fullText:true,excerpt:'利用料は市町村が定めます。'};
+ const b={...a,id:'post',programIds:['postpartum'],url:'https://www.cfa.go.jp/post.pdf'};
+ const proposal={segments:[{kind:'fact',text:'子育て世帯訪問支援事業と産後ケアの利用料は市町村が定めます。',evidence:[{sourceId:'home',quote:a.excerpt},{sourceId:'post',quote:b.excerpt}]}],corrections:[]};
+ assert.throws(()=>validateCitationReview(proposal,[a,b],[{role:'user',content:'子育て世帯訪問支援事業を詳しく'},{role:'assistant',content:'説明'},{role:'user',content:'お金はいくら？'}]),/別の制度/);
+});

@@ -3,7 +3,7 @@ import {join} from 'node:path';
 import {randomUUID,createHash} from 'node:crypto';
 import {manifest} from './rag.mjs';
 import {namedPrograms} from './dialogue.mjs';
-import {discoveryCandidates} from './consultation-intent.mjs';
+import {discoveryCandidates,detailSearches} from './consultation-intent.mjs';
 import {createCitationReviewer} from './docsgpt-citations.mjs';
 import {createCloudRunFetch} from './cloud-run-fetch.mjs';
 const fingerprint=m=>createHash('sha256').update(JSON.stringify(m)).digest('hex');
@@ -32,7 +32,7 @@ export function createDocsGPT({pipeline=process.env.DOCSGPT_PIPELINE||'search',b
   try{data=await request('/api/answer',{question:messages.at(-1).content,api_key:agent.key,model_id:'gemini-3.5-flash-lite',history:JSON.stringify(previous.filter(m=>m.role==='user').map((m,i)=>({prompt:m.content,response:previous[i*2+1].content}))),visibility:'hidden'});}catch{throw Error('DocsGPTの回答を取得できませんでした。接続やGeminiの利用上限を確認し、少し待ってから再送してください。');}
   if(typeof data.answer!=='string'||!data.answer.trim()||!data.conversation_id||data.error)throw Error('DocsGPTから回答を受け取れませんでした。少し待ってから再送してください。');
   }else{
-   try{const searches=[{query:retrievalQuestion(messages),chunks:6},...candidates.map(c=>({...c,chunks:3}))];const groups=await Promise.all(searches.map(async s=>{const hits=await request('/api/search',{question:s.query,api_key:agent.key,chunks:s.chunks});if(!Array.isArray(hits))throw Error();return hits;}));data={answer:'',sources:[...groups.slice(1).flat(),...groups[0]]};}catch{throw Error('DocsGPTの資料検索に接続できませんでした。少し待って再送してください。');}
+   try{const searches=[{query:retrievalQuestion(messages),chunks:6},...candidates.map(c=>({...c,chunks:3})),...detailSearches(messages)];const groups=await Promise.all(searches.map(async s=>{const hits=await request('/api/search',{question:s.query,api_key:agent.key,chunks:s.chunks});if(!Array.isArray(hits))throw Error();return hits;}));data={answer:'',sources:[...new Map([...groups.slice(1).flat(),...groups[0]].map(h=>[JSON.stringify([h.filename||h.title||h.source,h.chunk_key,h.text]),h])).values()]};}catch{throw Error('DocsGPTの資料検索に接続できませんでした。少し待って再送してください。');}
   }
   const upstreamMs=Math.round(performance.now()-upstreamStarted);const passagesStarted=performance.now();
   // Review all retrieved passages and previously verified evidence; do not trust draft citation numbers.
