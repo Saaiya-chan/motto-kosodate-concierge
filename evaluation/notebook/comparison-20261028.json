@@ -1,0 +1,996 @@
+{
+  "metadata": {
+    "date": "2026-10-28",
+    "notebookURL": "https://notebook.google.com/notebook/96460ee7-ed4c-45e1-9113-60868e92d36e",
+    "notebookTitle": "motto 回答比較・公式12資料 2026-10-28",
+    "mottoRevision": "motto-concierge-web-try-00005-wck",
+    "syntheticOnly": true,
+    "loggingConsent": false,
+    "sources": [
+      {
+        "id": "temporary",
+        "title": "一時預かり・国の制度説明",
+        "url": "https://kokasen.cfa.go.jp/support-programs",
+        "sha256": "6fa13c89b10e38ba4b5d9834c998f94d4ae788b1d24a03e0843a6f18e87eb78e"
+      },
+      {
+        "id": "daredemo",
+        "title": "こども誰でも通園・公式利用案内",
+        "url": "https://www.daretsu.cfa.go.jp/",
+        "sha256": "0c25d49f8a7e0d2115693aa537cc621000ab00d622f998e875a1e6b1e5b69a19"
+      },
+      {
+        "id": "famisapo",
+        "title": "ファミリー・サポート・センター概要（令和8年度）",
+        "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/e18b0699-53bd-4d02-bd42-f7ebb30c362b/68cb826c/20260612_policies_kosodateshien_family-support_12.pdf",
+        "sha256": "0e2ea514a63199f3294296f06f3be2dc7284ecd8817f5d8cdfa16a729f736f5c"
+      },
+      {
+        "id": "shortstay",
+        "title": "子育て短期支援事業実施要綱（令和8年4月）",
+        "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/8a43806e-f35e-4d12-b712-d3f9f6344c9f/5a002224/20260423_policies_kosodateshien_jido-short_29.pdf",
+        "sha256": "bcdf5d906a28fb227c976558a1fa1e377540cdf2c5243816d331bcf866b3dcb3"
+      },
+      {
+        "id": "home-help",
+        "title": "子育て世帯訪問支援事業ガイドライン",
+        "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/91f57176-a420-4d1d-8973-1828437e0aa8/d9bc9e4f/20240904_policies_kosodateshien_jido-homon_03.pdf",
+        "sha256": "116cce67a0d166c89f727f1913fc3069119fc8cc5406fc42a597faa51239f415"
+      },
+      {
+        "id": "postpartum",
+        "title": "産後ケア事業ガイドライン（令和8年3月）",
+        "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/ff38becb-bbd1-41f3-a95e-3a22ddac09d8/317bd576/20260331_policies_boshihoken_173.pdf",
+        "sha256": "2f12634a145a6a65af9ea1db149268f95ea654cd1b860920837e1e4f50f630f7"
+      },
+      {
+        "id": "sickcare",
+        "title": "病児保育等の基礎資料（令和8年4月）",
+        "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/e4b817c9-5282-4ccc-b0d5-ce15d7b5018c/07b4e1a1/20260401_policies_hoiku_209.pdf",
+        "sha256": "09f9fe1d35a771a4b37b1557a034249d754887fd4be47bfb18ebf3d74e3e05f3"
+      },
+      {
+        "id": "singleparent",
+        "title": "ひとり親家庭等日常生活支援事業",
+        "url": "https://www.cfa.go.jp/policies/hitori-oya/hitorioya-seikatsu-shien",
+        "sha256": "06b0c1eb6bd99740c3c0a7be351b89239bc68908728875d44ed484f57514c935"
+      },
+      {
+        "id": "visit-advice",
+        "title": "家庭支援事業・養育支援訪問",
+        "url": "https://www.cfa.go.jp/policies/katei_shien",
+        "sha256": "e9d5ad3801c43d385f27fdb639191d946c1dd4a9163c790c396639766341d321"
+      },
+      {
+        "id": "hiroba",
+        "title": "地域子育て支援拠点事業概要",
+        "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/321a8144-83b8-4467-b70e-89aa4a5e6735/d36734ea/20250714_policies_kosodateshien_shien-kyoten_36.pdf",
+        "sha256": "fad0a878e0c94caf54657488b40b228e88470e3352f69eb635f73300869e9d09"
+      },
+      {
+        "id": "daredemo-handbook",
+        "title": "こども誰でも通園制度の実施に関する手引",
+        "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0afde15f-8760-4477-806a-ed72b6916696/60fe9485/20260330_policies_hoiku_daredemo-tsuen_67.pdf",
+        "sha256": "9f270e57302a6d3eb9d79637a687c761c438ded88da53a509f2cd0a63d02abf4"
+      },
+      {
+        "id": "shortstay-faq",
+        "title": "子育て短期支援事業FAQ（第3版・令和7年9月更新）",
+        "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/8a43806e-f35e-4d12-b712-d3f9f6344c9f/a71715ca/20250911_policies_kosodateshien_jido-short_17.pdf",
+        "sha256": "c377ab28e5dfe2632d37920df3f45419d20516925a8eea460df53c2ee2562831"
+      }
+    ]
+  },
+  "motto": [
+    {
+      "id": "home-discovery",
+      "question": "家事と育児で手いっぱいです。自宅で手伝ってもらえる支援はありますか？",
+      "check": "訪問支援を制度名と具体的な支援内容で紹介。本人の利用資格は断定しない。",
+      "reply": "家事や育児が重なっておつらいときは、ご自宅で具体的なサポートを受けられる制度があります。\n\n- 子育て世帯訪問支援事業：訪問支援員がご自宅を訪れ、食事準備や洗濯、掃除などの家事や、育児のサポート、不安の傾聴などを行ってくれます。[1]\n\n- 子育て世帯訪問支援事業の対象：児童や保護者等からの相談や関係機関からの情報提供により、家事・子育て等に対して不安や負担を抱え、日常生活を営むことに支障が生じているなど、市町村が必要と認めた方が対象となります。[2]\n\n- 産後ケア事業（居宅訪問型）：助産師などの専門職がご自宅を訪問し、母親の身体的ケアや心理的ケア、育児手技の指導などを行ってくれます。[3][4]\n\n- 産後ケア事業の対象：出産後1年以内の母親で、身体的・心理的負担を抱え、産後ケアを必要とする方が対象となります。[4]\n\n「家事や育児の負担が大きく、自宅で手伝ってもらえる支援や訪問の制度について、利用できるか相談したいのですが、どのような手続きが必要ですか？」と窓口でお尋ねになるとスムーズです。",
+      "elapsedMs": 4241,
+      "sources": [
+        {
+          "id": "home-help.pdf:917bb991c5726b40e28ce11e510d267ec3eec169d02a2f098ed453b0245b3c2d",
+          "title": "子育て世帯訪問支援事業ガイドライン",
+          "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/91f57176-a420-4d1d-8973-1828437e0aa8/d9bc9e4f/20240904_policies_kosodateshien_jido-homon_03.pdf",
+          "citationNumber": 1
+        },
+        {
+          "id": "home-help.pdf:9e39855193b023bb7bdb0b9dc42d06953a0cfb2bfdf4aed924009a33046df02f",
+          "title": "子育て世帯訪問支援事業ガイドライン",
+          "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/91f57176-a420-4d1d-8973-1828437e0aa8/d9bc9e4f/20240904_policies_kosodateshien_jido-homon_03.pdf",
+          "citationNumber": 2
+        },
+        {
+          "id": "postpartum.pdf:1b3ac5abbab5473040dac208b7cb1aa5d894688fef274fb4c51e591d5cf6a7f0",
+          "title": "産後ケア事業ガイドライン（令和8年3月）",
+          "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/ff38becb-bbd1-41f3-a95e-3a22ddac09d8/317bd576/20260331_policies_boshihoken_173.pdf",
+          "citationNumber": 3
+        },
+        {
+          "id": "postpartum.pdf:5a644358514ab28352aead1b536d2e1427556c51208a3a360c258b24b917a94e",
+          "title": "産後ケア事業ガイドライン（令和8年3月）",
+          "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/ff38becb-bbd1-41f3-a95e-3a22ddac09d8/317bd576/20260331_policies_boshihoken_173.pdf",
+          "citationNumber": 4
+        }
+      ],
+      "review": {
+        "checked": true,
+        "repaired": false,
+        "corrections": [],
+        "statements": [
+          {
+            "kind": "conversation",
+            "layout": "paragraph",
+            "text": "家事や育児が重なっておつらいときは、ご自宅で具体的なサポートを受けられる制度があります。",
+            "evidence": []
+          },
+          {
+            "kind": "fact",
+            "layout": "bullet",
+            "text": "子育て世帯訪問支援事業：訪問支援員がご自宅を訪れ、食事準備や洗濯、掃除などの家事や、育児のサポート、不安の傾聴などを行ってくれます。",
+            "evidence": [
+              {
+                "sourceId": "home-help.pdf:917bb991c5726b40e28ce11e510d267ec3eec169d02a2f098ed453b0245b3c2d",
+                "quote": "\n\n別添\n\n# 子育て世帯訪問支援事業ガイドライン\n\n# 令和６年３月\n\n|||目 次|\n|---|---|---|\n||① ②|１．事業の目的.................................................................................. 1 ２．支援内容 ..................................................................................... 1 ３．支援対象者.................................................................................. 4 ４．実施方法 ..................................................................................... 5 本毎問支援員の要件................................................................. 5 本毎問支援員の研修................................................................. 6 研修の提供体制..................................................................... 6 研修の内容............................................................................ 6 本毎援の流れ ........................................................................... 9 ５．個人情報の保護及び守秘義務................................................... 17 ６．職場倫理及び事業内容の向上................................................... 19 本毎場倫理と法令順守........................................................... 19 本毎望及び苦情への対応....................................................... 19 （３）事業内容向上への取組....................................................... 20 ７．届出等....................................................................................... 20|\n\n||１．事業の目的||\n|---|---|---|\n||家事・子育て等に対して不安や負担を抱える子育て家庭、妊産婦、ヤングケアラー等が いる家庭の居宅を、訪問支援員が訪問し、家庭が抱える不安や悩みを傾聴するとともに、 家事・子育て等の支援を実施することにより、家庭や養育環境を整え、虐待リスク等の高 まりを未然に防ぐことを目的とする。"
+              },
+              {
+                "sourceId": "home-help.pdf:917bb991c5726b40e28ce11e510d267ec3eec169d02a2f098ed453b0245b3c2d",
+                "quote": " ① 家事支援（食事準備、洗濯、掃除、買い物の代行やサポート等） ② 育児・養育支援（育児のサポート、保育所等の送迎、宿題の見守り、外出時の補助 等） ③ 子育て等に関する不安や悩みの傾聴、相談・助言（※） ※保護者に寄り添い、エンパワメントするための助言等。"
+              }
+            ]
+          },
+          {
+            "kind": "fact",
+            "layout": "bullet",
+            "text": "子育て世帯訪問支援事業の対象：児童や保護者等からの相談や関係機関からの情報提供により、家事・子育て等に対して不安や負担を抱え、日常生活を営むことに支障が生じているなど、市町村が必要と認めた方が対象となります。",
+            "evidence": [
+              {
+                "sourceId": "home-help.pdf:9e39855193b023bb7bdb0b9dc42d06953a0cfb2bfdf4aed924009a33046df02f",
+                "quote": " Ø 保育所等の送迎や外出時の補助を実施する際の、移動手段やそれに伴う交通費等につ いて\n\n３．支援対象者\n\n本事業の支援対象は、児童や保護者又は妊婦からの相談や、庁内の関係部署及び関係機 関からの情報提供・相談等により把握され、本事業による支援が必要であると市町村が認 めた、次に掲げるような状態にある者を対象とする。"
+              },
+              {
+                "sourceId": "home-help.pdf:9e39855193b023bb7bdb0b9dc42d06953a0cfb2bfdf4aed924009a33046df02f",
+                "quote": "）\n\n本事業の対象者は、児童や保護者等からの相談や、こども家庭センターをはじめとした庁 内の関係部署及び関係機関からの情報提供・相談等から、支援につながることが考えられ、 要保護児童や要支援児童の保護者、特定妊婦に加え、要支援児童等には当てはまらないもの の、心身の不調がある保護者や妊婦、妊娠・出産・子育てに対する不安や負担を抱え、日常 生活を営むことに支障が生じている者など、支援を行わなかった場合に要支援児童等に該 当するおそれのある児童の保護者や妊婦も含まれる。"
+              }
+            ]
+          },
+          {
+            "kind": "fact",
+            "layout": "bullet",
+            "text": "産後ケア事業（居宅訪問型）：助産師などの専門職がご自宅を訪問し、母親の身体的ケアや心理的ケア、育児手技の指導などを行ってくれます。",
+            "evidence": [
+              {
+                "sourceId": "postpartum.pdf:1b3ac5abbab5473040dac208b7cb1aa5d894688fef274fb4c51e591d5cf6a7f0",
+                "quote": "\n\n(4) 居宅訪問（アウトリーチ）型 ア 事業内容 利用者と日時を調整し、利用者の居宅を訪問して保健指導、ケアを行う。"
+              },
+              {
+                "sourceId": "postpartum.pdf:5a644358514ab28352aead1b536d2e1427556c51208a3a360c258b24b917a94e",
+                "quote": "）等又は対 象者の居宅において、助産師等の看護職が中心となり、母子に対して、母親の身体的 回復と心理的な安定を促進するとともに、母親自身がセルフケア能力を育み、母子の 愛着形成を促し、母子とその家族が健やかな育児ができるよう支援することを目的と する。"
+              }
+            ]
+          },
+          {
+            "kind": "fact",
+            "layout": "bullet",
+            "text": "産後ケア事業の対象：出産後1年以内の母親で、身体的・心理的負担を抱え、産後ケアを必要とする方が対象となります。",
+            "evidence": [
+              {
+                "sourceId": "postpartum.pdf:5a644358514ab28352aead1b536d2e1427556c51208a3a360c258b24b917a94e",
+                "quote": "\n\n(1) 母親 出産後 1 年以内の女子であって、産後ケアを必要とする者 なお、初産婦の場合は、初めての育児等に不安を抱えていること等があり、ま た経産婦の場合は、上のこどもの育児等の負担が大きいこと等があり、いずれも それぞれに身体的・心理的負担を抱えているため、初産・経産についても問わな い。"
+              }
+            ]
+          },
+          {
+            "kind": "advice",
+            "layout": "paragraph",
+            "text": "「家事や育児の負担が大きく、自宅で手伝ってもらえる支援や訪問の制度について、利用できるか相談したいのですが、どのような手続きが必要ですか？」と窓口でお尋ねになるとスムーズです。",
+            "evidence": []
+          }
+        ],
+        "attempts": [
+          {
+            "elapsedMs": 3575,
+            "inputChars": 18991,
+            "usage": {
+              "promptTokenCount": 11491,
+              "candidatesTokenCount": 1100,
+              "totalTokenCount": 12591,
+              "promptTokensDetails": [
+                {
+                  "modality": "TEXT",
+                  "tokenCount": 11491
+                }
+              ],
+              "serviceTier": "standard"
+            }
+          }
+        ]
+      },
+      "saved": false
+    },
+    {
+      "id": "home-detail",
+      "question": "子育て世帯訪問支援事業について詳しく教えてください。",
+      "check": "概要の反復だけでなく対象・内容・流れ・費用を掘り下げる。",
+      "reply": "子育て世帯訪問支援事業では、訪問支援員が自宅を訪れ、食事準備や洗濯、掃除などの家事や、育児のサポート、不安の傾聴などを行ってくれます。[1]\n\n- 支援内容：食事準備、洗濯、掃除などの家事支援や、育児のサポート、不安の傾聴などが包括的に実施されます。[1]\n\n- 対象者：家事や育児に対して不安や負担を抱え、日常生活を営むことに支障が生じているなど、市町村が必要と認めた方が対象となります。[2]\n\n- 利用までの流れ：児童や保護者等からの相談や関係機関からの情報提供などを踏まえ、市町村が必要性を判断して利用につなげます。[2]\n\n- 費用の考え方：利用料の設定にあたっては、利用者の所得状況に応じて減免するなど考慮することが望ましいとされています。[2]\n\n「家事や育児の負担が大きく、子育て世帯訪問支援事業を利用したいのですが、お住まいの自治体での具体的な手続きや利用料の減免について教えてください」と窓口でお尋ねになるとスムーズです。",
+      "elapsedMs": 7553,
+      "sources": [
+        {
+          "id": "home-help.pdf:917bb991c5726b40e28ce11e510d267ec3eec169d02a2f098ed453b0245b3c2d",
+          "title": "子育て世帯訪問支援事業ガイドライン",
+          "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/91f57176-a420-4d1d-8973-1828437e0aa8/d9bc9e4f/20240904_policies_kosodateshien_jido-homon_03.pdf",
+          "citationNumber": 1
+        },
+        {
+          "id": "home-help.pdf:9e39855193b023bb7bdb0b9dc42d06953a0cfb2bfdf4aed924009a33046df02f",
+          "title": "子育て世帯訪問支援事業ガイドライン",
+          "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/91f57176-a420-4d1d-8973-1828437e0aa8/d9bc9e4f/20240904_policies_kosodateshien_jido-homon_03.pdf",
+          "citationNumber": 2
+        }
+      ],
+      "review": {
+        "checked": true,
+        "repaired": false,
+        "corrections": [],
+        "statements": [
+          {
+            "kind": "fact",
+            "layout": "paragraph",
+            "text": "子育て世帯訪問支援事業では、訪問支援員が自宅を訪れ、食事準備や洗濯、掃除などの家事や、育児のサポート、不安の傾聴などを行ってくれます。",
+            "evidence": [
+              {
+                "sourceId": "home-help.pdf:917bb991c5726b40e28ce11e510d267ec3eec169d02a2f098ed453b0245b3c2d",
+                "quote": "\n\n別添\n\n# 子育て世帯訪問支援事業ガイドライン\n\n# 令和６年３月\n\n|||目 次|\n|---|---|---|\n||① ②|１．事業の目的.................................................................................. 1 ２．支援内容 ..................................................................................... 1 ３．支援対象者.................................................................................. 4 ４．実施方法 ..................................................................................... 5 本毎問支援員の要件................................................................. 5 本毎問支援員の研修................................................................. 6 研修の提供体制..................................................................... 6 研修の内容............................................................................ 6 本毎援の流れ ........................................................................... 9 ５．個人情報の保護及び守秘義務................................................... 17 ６．職場倫理及び事業内容の向上................................................... 19 本毎場倫理と法令順守........................................................... 19 本毎望及び苦情への対応....................................................... 19 （３）事業内容向上への取組....................................................... 20 ７．届出等....................................................................................... 20|\n\n||１．事業の目的||\n|---|---|---|\n||家事・子育て等に対して不安や負担を抱える子育て家庭、妊産婦、ヤングケアラー等が いる家庭の居宅を、訪問支援員が訪問し、家庭が抱える不安や悩みを傾聴するとともに、 家事・子育て等の支援を実施することにより、家庭や養育環境を整え、虐待リスク等の高 まりを未然に防ぐことを目的とする。"
+              }
+            ]
+          },
+          {
+            "kind": "fact",
+            "layout": "bullet",
+            "text": "支援内容：食事準備、洗濯、掃除などの家事支援や、育児のサポート、不安の傾聴などが包括的に実施されます。",
+            "evidence": [
+              {
+                "sourceId": "home-help.pdf:917bb991c5726b40e28ce11e510d267ec3eec169d02a2f098ed453b0245b3c2d",
+                "quote": " ① 家事支援（食事準備、洗濯、掃除、買い物の代行やサポート等） ② 育児・養育支援（育児のサポート、保育所等の送迎、宿題の見守り、外出時の補助 等） ③ 子育て等に関する不安や悩みの傾聴、相談・助言（※） ※保護者に寄り添い、エンパワメントするための助言等。"
+              }
+            ]
+          },
+          {
+            "kind": "fact",
+            "layout": "bullet",
+            "text": "対象者：家事や育児に対して不安や負担を抱え、日常生活を営むことに支障が生じているなど、市町村が必要と認めた方が対象となります。",
+            "evidence": [
+              {
+                "sourceId": "home-help.pdf:9e39855193b023bb7bdb0b9dc42d06953a0cfb2bfdf4aed924009a33046df02f",
+                "quote": "）\n\n本事業の対象者は、児童や保護者等からの相談や、こども家庭センターをはじめとした庁 内の関係部署及び関係機関からの情報提供・相談等から、支援につながることが考えられ、 要保護児童や要支援児童の保護者、特定妊婦に加え、要支援児童等には当てはまらないもの の、心身の不調がある保護者や妊婦、妊娠・出産・子育てに対する不安や負担を抱え、日常 生活を営むことに支障が生じている者など、支援を行わなかった場合に要支援児童等に該 当するおそれのある児童の保護者や妊婦も含まれる。"
+              }
+            ]
+          },
+          {
+            "kind": "fact",
+            "layout": "bullet",
+            "text": "利用までの流れ：児童や保護者等からの相談や関係機関からの情報提供などを踏まえ、市町村が必要性を判断して利用につなげます。",
+            "evidence": [
+              {
+                "sourceId": "home-help.pdf:9e39855193b023bb7bdb0b9dc42d06953a0cfb2bfdf4aed924009a33046df02f",
+                "quote": "）\n\n本事業の対象者は、児童や保護者等からの相談や、こども家庭センターをはじめとした庁 内の関係部署及び関係機関からの情報提供・相談等から、支援につながることが考えられ、 要保護児童や要支援児童の保護者、特定妊婦に加え、要支援児童等には当てはまらないもの の、心身の不調がある保護者や妊婦、妊娠・出産・子育てに対する不安や負担を抱え、日常 生活を営むことに支障が生じている者など、支援を行わなかった場合に要支援児童等に該 当するおそれのある児童の保護者や妊婦も含まれる。"
+              }
+            ]
+          },
+          {
+            "kind": "fact",
+            "layout": "bullet",
+            "text": "費用の考え方：利用料の設定にあたっては、利用者の所得状況に応じて減免するなど考慮することが望ましいとされています。",
+            "evidence": [
+              {
+                "sourceId": "home-help.pdf:9e39855193b023bb7bdb0b9dc42d06953a0cfb2bfdf4aed924009a33046df02f",
+                "quote": "利用料の設定に当たっては、利用者の所 1||\n\n得状況に応じて減免するなど考慮することが望ましい。"
+              }
+            ]
+          },
+          {
+            "kind": "advice",
+            "layout": "paragraph",
+            "text": "「家事や育児の負担が大きく、子育て世帯訪問支援事業を利用したいのですが、お住まいの自治体での具体的な手続きや利用料の減免について教えてください」と窓口でお尋ねになるとスムーズです。",
+            "evidence": []
+          }
+        ],
+        "attempts": [
+          {
+            "elapsedMs": 3642,
+            "inputChars": 26486,
+            "usage": {
+              "promptTokenCount": 15612,
+              "candidatesTokenCount": 981,
+              "totalTokenCount": 16593,
+              "promptTokensDetails": [
+                {
+                  "modality": "TEXT",
+                  "tokenCount": 15612
+                }
+              ],
+              "serviceTier": "standard"
+            },
+            "rejection": "別制度の出典です：家庭支援事業・養育支援訪問は、この説明の制度(home-help)の根拠にできません。該当制度の資料へ直すか、その制度を明記した連続原文を引用してください。根拠がなければ断定を取り除き、確認の提案にしてください。"
+          },
+          {
+            "elapsedMs": 3514,
+            "inputChars": 26486,
+            "usage": {
+              "promptTokenCount": 15699,
+              "candidatesTokenCount": 894,
+              "totalTokenCount": 16593,
+              "promptTokensDetails": [
+                {
+                  "modality": "TEXT",
+                  "tokenCount": 15699
+                }
+              ],
+              "serviceTier": "standard"
+            }
+          }
+        ]
+      },
+      "saved": false
+    },
+    {
+      "id": "home-fee",
+      "question": "お金はいくらかかりますか？所得に応じた減免もありますか？",
+      "check": "訪問支援の文脈を保つ。自治体の具体額を創作しない。減免配慮の指針と実施保証を区別。",
+      "reply": "子育て世帯訪問支援事業の利用料については、市町村があらかじめ定めることとされており、利用者の所得状況に応じて減免するなどの配慮を行うことが望ましいとされています。[1]\n\n「子育て世帯訪問支援事業を利用したいのですが、お住まいの自治体での具体的な利用料や所得に応じた減免制度について教えてください」と窓口でお尋ねになるとスムーズです。",
+      "elapsedMs": 5051,
+      "sources": [
+        {
+          "id": "home-help.pdf:9e39855193b023bb7bdb0b9dc42d06953a0cfb2bfdf4aed924009a33046df02f",
+          "title": "子育て世帯訪問支援事業ガイドライン",
+          "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/91f57176-a420-4d1d-8973-1828437e0aa8/d9bc9e4f/20240904_policies_kosodateshien_jido-homon_03.pdf",
+          "citationNumber": 1
+        }
+      ],
+      "review": {
+        "checked": true,
+        "repaired": false,
+        "corrections": [],
+        "statements": [
+          {
+            "kind": "fact",
+            "layout": "paragraph",
+            "text": "子育て世帯訪問支援事業の利用料については、市町村があらかじめ定めることとされており、利用者の所得状況に応じて減免するなどの配慮を行うことが望ましいとされています。",
+            "evidence": [
+              {
+                "sourceId": "home-help.pdf:9e39855193b023bb7bdb0b9dc42d06953a0cfb2bfdf4aed924009a33046df02f",
+                "quote": " 市町村は、本事業の目的や地域の実情を踏まえ、家事、育児・養育支援の具体的な内容や 範囲、ルール、利用料等をあらかじめ定めること。"
+              },
+              {
+                "sourceId": "home-help.pdf:9e39855193b023bb7bdb0b9dc42d06953a0cfb2bfdf4aed924009a33046df02f",
+                "quote": "利用料の設定に当たっては、利用者の所 1||\n\n得状況に応じて減免するなど考慮することが望ましい。"
+              }
+            ]
+          },
+          {
+            "kind": "advice",
+            "layout": "paragraph",
+            "text": "「子育て世帯訪問支援事業を利用したいのですが、お住まいの自治体での具体的な利用料や所得に応じた減免制度について教えてください」と窓口でお尋ねになるとスムーズです。",
+            "evidence": []
+          }
+        ],
+        "attempts": [
+          {
+            "elapsedMs": 4744,
+            "inputChars": 30036,
+            "usage": {
+              "promptTokenCount": 17454,
+              "candidatesTokenCount": 342,
+              "totalTokenCount": 17796,
+              "promptTokensDetails": [
+                {
+                  "modality": "TEXT",
+                  "tokenCount": 17454
+                }
+              ],
+              "serviceTier": "standard"
+            }
+          }
+        ]
+      },
+      "saved": false
+    },
+    {
+      "id": "home-phone",
+      "question": "料金と申込みについて、電話で聞く文を作ってください。",
+      "check": "そのまま話せる文に料金と申込みの両方を含める。",
+      "reply": "子育て世帯訪問支援事業の利用料は市町村があらかじめ定めることとされており、所得状況に応じた減免などの配慮を行うことが望ましいとされています。[1]\n\n「子育て世帯訪問支援事業を利用したいのですが、お住まいの自治体での具体的な利用料や、所得に応じた減免制度の手続きについて教えてください」と窓口でお尋ねになるとスムーズです。",
+      "elapsedMs": 2309,
+      "sources": [
+        {
+          "id": "home-help.pdf:9e39855193b023bb7bdb0b9dc42d06953a0cfb2bfdf4aed924009a33046df02f",
+          "title": "子育て世帯訪問支援事業ガイドライン",
+          "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/91f57176-a420-4d1d-8973-1828437e0aa8/d9bc9e4f/20240904_policies_kosodateshien_jido-homon_03.pdf",
+          "citationNumber": 1
+        }
+      ],
+      "review": {
+        "checked": true,
+        "repaired": false,
+        "corrections": [],
+        "statements": [
+          {
+            "kind": "fact",
+            "layout": "paragraph",
+            "text": "子育て世帯訪問支援事業の利用料は市町村があらかじめ定めることとされており、所得状況に応じた減免などの配慮を行うことが望ましいとされています。",
+            "evidence": [
+              {
+                "sourceId": "home-help.pdf:9e39855193b023bb7bdb0b9dc42d06953a0cfb2bfdf4aed924009a33046df02f",
+                "quote": " 市町村は、本事業の目的や地域の実情を踏まえ、家事、育児・養育支援の具体的な内容や 範囲、ルール、利用料等をあらかじめ定めること。"
+              },
+              {
+                "sourceId": "home-help.pdf:9e39855193b023bb7bdb0b9dc42d06953a0cfb2bfdf4aed924009a33046df02f",
+                "quote": "利用料の設定に当たっては、利用者の所 1||\n\n得状況に応じて減免するなど考慮することが望ましい。"
+              }
+            ]
+          },
+          {
+            "kind": "advice",
+            "layout": "paragraph",
+            "text": "「子育て世帯訪問支援事業を利用したいのですが、お住まいの自治体での具体的な利用料や、所得に応じた減免制度の手続きについて教えてください」と窓口でお尋ねになるとスムーズです。",
+            "evidence": []
+          }
+        ],
+        "attempts": [
+          {
+            "elapsedMs": 2102,
+            "inputChars": 30294,
+            "usage": {
+              "promptTokenCount": 17569,
+              "candidatesTokenCount": 342,
+              "totalTokenCount": 17911,
+              "promptTokensDetails": [
+                {
+                  "modality": "TEXT",
+                  "tokenCount": 17569
+                }
+              ],
+              "serviceTier": "standard"
+            }
+          }
+        ]
+      },
+      "saved": false
+    },
+    {
+      "id": "daytime-discovery",
+      "question": "2歳の子がいます。少し休むために、昼間だけ預けられる支援はありますか？",
+      "check": "一時預かりと誰でも通園を目的・対象条件を区別して紹介。就園状況は未確認。",
+      "reply": "2歳のお子様を昼間に預け、少し休むための支援として、一時預かり事業や子育て短期支援事業、こども誰でも通園制度などがあります。\n\n- 一時預かり事業：家庭において保育を受けることが一時的に困難となった場合や保護者の育児負担の軽減が必要な場合に、主として昼間に認定こども園、幼稚園、保育所などで乳幼児を一時的に預かります。[1][2]\n\n- 子育て短期支援事業（ショートステイ）：保護者の疾病、疲労その他の身体上若しくは精神上又は環境上の理由により家庭において児童を養育することが一時的に困難となった場合や子育てに係る保護者の負担の軽減が必要な場合に施設等で養育・保護を行います。[3]\n\n- こども誰でも通園制度：保育所や認定こども園等に通っていない0歳6か月から満3歳未満のお子さまを対象に、こどもの育ちを応援することを主な目的として、月一定時間の範囲内で時間単位の利用が可能です。[4][5]\n\nお子さんはいま、保育園や幼稚園などに通っていますか？",
+      "elapsedMs": 3931,
+      "sources": [
+        {
+          "id": "temporary.txt:60300de4fb039562ce75816e44267a11aa94fb06cd109bf1e41d6c05c05a1e0d",
+          "title": "一時預かり・国の制度説明",
+          "url": "https://kokasen.cfa.go.jp/support-programs",
+          "citationNumber": 1
+        },
+        {
+          "id": "sickcare.pdf:3ab1f3c0ac35c14a4400bc097b8a18d473fef10af6c698ffe9b10b2cebc9b7e2",
+          "title": "病児保育等の基礎資料（令和8年4月）",
+          "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/e4b817c9-5282-4ccc-b0d5-ce15d7b5018c/07b4e1a1/20260401_policies_hoiku_209.pdf",
+          "citationNumber": 2
+        },
+        {
+          "id": "shortstay.pdf:4d5159078d50ff65052715320d9aad3ce0615b53aa2e5637893a353d073ef637",
+          "title": "子育て短期支援事業実施要綱（令和8年4月）",
+          "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/8a43806e-f35e-4d12-b712-d3f9f6344c9f/5a002224/20260423_policies_kosodateshien_jido-short_29.pdf",
+          "citationNumber": 3
+        },
+        {
+          "id": "daredemo-handbook.pdf:764d3c3cf1890d1d923252d7897d38ece57a9e7e4a81b476f6b29b101d034a11",
+          "title": "こども誰でも通園制度の実施に関する手引",
+          "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0afde15f-8760-4477-806a-ed72b6916696/60fe9485/20260330_policies_hoiku_daredemo-tsuen_67.pdf",
+          "citationNumber": 4
+        },
+        {
+          "id": "daredemo.txt:d4a6fb6e23c3d033acc66c097dd665c6cda8d21409e2c9de885f84d7930ba739",
+          "title": "こども誰でも通園・公式利用案内",
+          "url": "https://www.daretsu.cfa.go.jp/",
+          "citationNumber": 5
+        }
+      ],
+      "review": {
+        "checked": true,
+        "repaired": true,
+        "corrections": [
+          "制度の設定や利用条件の断定を、出典のない提案や補足に混ぜることはできません。事実として原文を付けるか、断定を取り除いてください。"
+        ],
+        "statements": [
+          {
+            "kind": "conversation",
+            "layout": "paragraph",
+            "text": "2歳のお子様を昼間に預け、少し休むための支援として、一時預かり事業や子育て短期支援事業、こども誰でも通園制度などがあります。",
+            "evidence": []
+          },
+          {
+            "kind": "fact",
+            "layout": "bullet",
+            "text": "一時預かり事業：家庭において保育を受けることが一時的に困難となった場合や保護者の育児負担の軽減が必要な場合に、主として昼間に認定こども園、幼稚園、保育所などで乳幼児を一時的に預かります。",
+            "evidence": [
+              {
+                "sourceId": "temporary.txt:60300de4fb039562ce75816e44267a11aa94fb06cd109bf1e41d6c05c05a1e0d",
+                "quote": "\n\n支援タイプ別「使える補助金」サイトマップ\n\n家庭支援事業\n\n家庭支援事業とは、児童福祉法第21条の18に規定された6つの事業（子育て短期支援事業、養育支援訪問事業、一時預かり事業、子育て世帯訪問支援事業、児童育成支援拠点事業、親子関係形成支援事業）を指します。"
+              },
+              {
+                "sourceId": "sickcare.pdf:3ab1f3c0ac35c14a4400bc097b8a18d473fef10af6c698ffe9b10b2cebc9b7e2",
+                "quote": "） 国１／３（都道府県１／３、市町村１／３） １時間延長： ２時間延長： ３時間延長： ３０分延長： １時間延長： 1,909,000円（2,137,000円） ３０分延長： １時間延長： ３０分延長： １時間延長：|23,300円 46,600円 69,900円 600,000円 150,000円 300,000円 750,000円 150,000円 300,000円 750,000円|11時 延長時間 延長保育 ※括弧は夜間保育所（夜間延長分に限る）の補助基準額 ４～５時間延長： 1,350,000円 ６時間以上延長： 1,950,000円 ４～５時間延長： 1,350,000円 ６時間以上延長： 1,950,000円|開所時間 公定価格 ※平均対象障害児数が１人以上の施設のみ|＜子ども・子育て支援交付金＞|※延長保育事業、放課後児童健全育成事業、病児保育事業の費用の一部について、事業主拠出金を充当（1,288億円）|開所時間 公定価格|18時 【実績】 ＜実施か所数＞ 令和３年度：29,277か所（公立6,575か所、私立22,702か所） 令和４年度：29,535か所（公立6,427か所、私立23,108か所） 令和５年度：29,755か所（公立6,256か所、私立23,499か所） ＜年間実利用児童数＞ 令和３年度： 令和４年度： 令和５年度： ※ ※|令和８年度予算案 公立施設については、平成17年度に一般財源化 こども家庭庁保育政策課調べ|延長時間 延長保育 893,990人（公立201,262人、私立692,728人） 915,022人（公立195,215人、私立719,807人） 948,778人（公立198,712人、私立750,066人）|22時 22時|2,163億円の内数（2,013億円の内数）|延長時間 延長保育|\n\n## ２６０３２４ 差し替え\n\n2時\n\n## 一時預かり事業拡充 見直し 文部科学省 幼児教育課\n\n#### ＜子ども・子育て支援交付金＞令和８年度予算案 2,163億円の内数（2,013億円の内数） 事業の目的\n\nl 日常生活上の突発的な事情や社会参加などにより、一時的に家庭での保育が困難となった場合や、保護者の心理的・身体的負担を軽減するため に支援が必要な場合に、保育所等で乳幼児を一時的に預かり、安心して子育てができる環境を整備する。"
+              }
+            ]
+          },
+          {
+            "kind": "fact",
+            "layout": "bullet",
+            "text": "子育て短期支援事業（ショートステイ）：保護者の疾病、疲労その他の身体上若しくは精神上又は環境上の理由により家庭において児童を養育することが一時的に困難となった場合や子育てに係る保護者の負担の軽減が必要な場合に施設等で養育・保護を行います。",
+            "evidence": [
+              {
+                "sourceId": "shortstay.pdf:4d5159078d50ff65052715320d9aad3ce0615b53aa2e5637893a353d073ef637",
+                "quote": "\n\n３ 事業の種類及び内容 （１）短期入所生活援助（ショートステイ）事業 ① 事業内容 市町村は、保護者が疾病、疲労その他の身体上若しくは精神上又は環境上 の理由により家庭において児童を養育することが一時的に困難になった場合 や子育てに係る保護者の負担の軽減が必要な場合、保護者の育児不安や過干 渉等により、児童自身が一時的に保護者と離れることを希望する場合、経済 的な理由により緊急一時的に親子を保護することが必要な場合等に実施施設 等において養育・保護を行うものとする。"
+              }
+            ]
+          },
+          {
+            "kind": "fact",
+            "layout": "bullet",
+            "text": "こども誰でも通園制度：保育所や認定こども園等に通っていない0歳6か月から満3歳未満のお子さまを対象に、こどもの育ちを応援することを主な目的として、月一定時間の範囲内で時間単位の利用が可能です。",
+            "evidence": [
+              {
+                "sourceId": "daredemo-handbook.pdf:764d3c3cf1890d1d923252d7897d38ece57a9e7e4a81b476f6b29b101d034a11",
+                "quote": " \n① 一時預かり事業が、 「保護者の立場からの必要性」に対応するものであるのに対して、こ\nども誰でも通園制度はこどもの育ちを応援することが主な目的。"
+              },
+              {
+                "sourceId": "daredemo.txt:d4a6fb6e23c3d033acc66c097dd665c6cda8d21409e2c9de885f84d7930ba739",
+                "quote": "\n\n選択してください\n\n            確認する\n\n            POINT\n            制度の概要をご紹介\n\n                            月一定時間の範囲内で\n利用が可能\n\n 10時間の範囲で時間単位で利用が可能です。"
+              },
+              {
+                "sourceId": "daredemo.txt:d4a6fb6e23c3d033acc66c097dd665c6cda8d21409e2c9de885f84d7930ba739",
+                "quote": "\n\n選択してください\n\n                確認する\n\n            FAQ\n            よくあるご質問\n\n                            利用対象について教えてください\n\n                            保育所、認定こども園、幼稚園等に通っていない0歳6か月から満3歳未満のお子さまがご利用できます。"
+              }
+            ]
+          },
+          {
+            "kind": "conversation",
+            "text": "お子さんはいま、保育園や幼稚園などに通っていますか？",
+            "evidence": []
+          }
+        ],
+        "attempts": [
+          {
+            "elapsedMs": 3338,
+            "inputChars": 49987,
+            "usage": {
+              "promptTokenCount": 28961,
+              "candidatesTokenCount": 985,
+              "totalTokenCount": 29946,
+              "promptTokensDetails": [
+                {
+                  "modality": "TEXT",
+                  "tokenCount": 28961
+                }
+              ],
+              "serviceTier": "standard"
+            },
+            "rejection": "制度の設定や利用条件の断定を、出典のない提案や補足に混ぜることはできません。事実として原文を付けるか、断定を取り除いてください。"
+          }
+        ],
+        "partial": true,
+        "localRepair": true
+      },
+      "saved": false
+    },
+    {
+      "id": "daytime-followup",
+      "question": "保育園や幼稚園には通っていません。",
+      "check": "2歳・未就園の条件を引き継ぎ、実際の利用可否や地域の空きを保証しない。",
+      "reply": "- 一時預かり事業：家庭において保育を受けることが一時的に困難となった場合や保護者の負担軽減が必要な場合に、主として昼間に保育所や幼稚園などで乳幼児を預かります。[1]\n\n- 子育て短期支援事業（ショートステイ）：保護者の疲労などの理由により家庭での養育が一時的に困難になった場合などに、施設等で一定期間の養育・保護を行います。[2]\n\n- こども誰でも通園制度：保育所等に通っていない0歳6か月から満3歳未満のお子さまを対象に、月一定時間の範囲内で時間単位の利用が可能です。[3]\n\n「2歳の子どもを昼間に預かって少し休みたいのですが、一時預かり事業や子育て短期支援事業、こども誰でも通園制度を利用できますか。手続き方法や料金について教えてください」と窓口でお尋ねになるとスムーズです。",
+      "elapsedMs": 7039,
+      "sources": [
+        {
+          "id": "temporary.txt:60300de4fb039562ce75816e44267a11aa94fb06cd109bf1e41d6c05c05a1e0d",
+          "title": "一時預かり・国の制度説明",
+          "url": "https://kokasen.cfa.go.jp/support-programs",
+          "citationNumber": 1
+        },
+        {
+          "id": "shortstay.pdf:4d5159078d50ff65052715320d9aad3ce0615b53aa2e5637893a353d073ef637",
+          "title": "子育て短期支援事業実施要綱（令和8年4月）",
+          "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/8a43806e-f35e-4d12-b712-d3f9f6344c9f/5a002224/20260423_policies_kosodateshien_jido-short_29.pdf",
+          "citationNumber": 2
+        },
+        {
+          "id": "daredemo.txt:d4a6fb6e23c3d033acc66c097dd665c6cda8d21409e2c9de885f84d7930ba739",
+          "title": "こども誰でも通園・公式利用案内",
+          "url": "https://www.daretsu.cfa.go.jp/",
+          "citationNumber": 3
+        }
+      ],
+      "review": {
+        "checked": true,
+        "repaired": false,
+        "corrections": [],
+        "statements": [
+          {
+            "kind": "fact",
+            "layout": "bullet",
+            "text": "一時預かり事業：家庭において保育を受けることが一時的に困難となった場合や保護者の負担軽減が必要な場合に、主として昼間に保育所や幼稚園などで乳幼児を預かります。",
+            "evidence": [
+              {
+                "sourceId": "temporary.txt:60300de4fb039562ce75816e44267a11aa94fb06cd109bf1e41d6c05c05a1e0d",
+                "quote": "\n\n支援タイプ別「使える補助金」サイトマップ\n\n家庭支援事業\n\n家庭支援事業とは、児童福祉法第21条の18に規定された6つの事業（子育て短期支援事業、養育支援訪問事業、一時預かり事業、子育て世帯訪問支援事業、児童育成支援拠点事業、親子関係形成支援事業）を指します。"
+              }
+            ]
+          },
+          {
+            "kind": "fact",
+            "layout": "bullet",
+            "text": "子育て短期支援事業（ショートステイ）：保護者の疲労などの理由により家庭での養育が一時的に困難になった場合などに、施設等で一定期間の養育・保護を行います。",
+            "evidence": [
+              {
+                "sourceId": "shortstay.pdf:4d5159078d50ff65052715320d9aad3ce0615b53aa2e5637893a353d073ef637",
+                "quote": "\n\n３ 事業の種類及び内容 （１）短期入所生活援助（ショートステイ）事業 ① 事業内容 市町村は、保護者が疾病、疲労その他の身体上若しくは精神上又は環境上 の理由により家庭において児童を養育することが一時的に困難になった場合 や子育てに係る保護者の負担の軽減が必要な場合、保護者の育児不安や過干 渉等により、児童自身が一時的に保護者と離れることを希望する場合、経済 的な理由により緊急一時的に親子を保護することが必要な場合等に実施施設 等において養育・保護を行うものとする。"
+              }
+            ]
+          },
+          {
+            "kind": "fact",
+            "layout": "bullet",
+            "text": "こども誰でも通園制度：保育所等に通っていない0歳6か月から満3歳未満のお子さまを対象に、月一定時間の範囲内で時間単位の利用が可能です。",
+            "evidence": [
+              {
+                "sourceId": "daredemo.txt:d4a6fb6e23c3d033acc66c097dd665c6cda8d21409e2c9de885f84d7930ba739",
+                "quote": "\n\n選択してください\n\n                確認する\n\n            FAQ\n            よくあるご質問\n\n                            利用対象について教えてください\n\n                            保育所、認定こども園、幼稚園等に通っていない0歳6か月から満3歳未満のお子さまがご利用できます。"
+              }
+            ]
+          },
+          {
+            "kind": "advice",
+            "layout": "paragraph",
+            "text": "「2歳の子どもを昼間に預かって少し休みたいのですが、一時預かり事業や子育て短期支援事業、こども誰でも通園制度を利用できますか。手続き方法や料金について教えてください」と窓口でお尋ねになるとスムーズです。",
+            "evidence": []
+          }
+        ],
+        "attempts": [
+          {
+            "elapsedMs": 6805,
+            "inputChars": 50810,
+            "usage": {
+              "promptTokenCount": 29194,
+              "candidatesTokenCount": 601,
+              "totalTokenCount": 29795,
+              "promptTokensDetails": [
+                {
+                  "modality": "TEXT",
+                  "tokenCount": 29194
+                }
+              ],
+              "serviceTier": "standard"
+            }
+          }
+        ]
+      },
+      "saved": false
+    },
+    {
+      "id": "daytime-compare",
+      "question": "こども誰でも通園制度と一時預かりは、どう違いますか？",
+      "check": "目的・利用対象・時間枠・使い方を資料範囲で比較し制度ごとに正しい出典を付ける。",
+      "reply": "こども誰でも通園制度は全てのこどもの育ちを応援する給付制度であり、一時預かり事業は保護者の立場からの必要性に対応する事業という違いがあります。\n\n- こども誰でも通園制度：こどもの育ちを応援することが主な目的であり給付制度として実施されます[1]\n\n- 一時預かり事業：保護者の立場からの必要性に対応するものとして乳幼児を一時的に預かります[1][2]\n\n「こども誰でも通園制度と一時預かり事業のどちらを利用できるか、それぞれの違いや手続きについて教えてください」と窓口でお尋ねになるとスムーズです。",
+      "elapsedMs": 2758,
+      "sources": [
+        {
+          "id": "daredemo-handbook.pdf:764d3c3cf1890d1d923252d7897d38ece57a9e7e4a81b476f6b29b101d034a11",
+          "title": "こども誰でも通園制度の実施に関する手引",
+          "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0afde15f-8760-4477-806a-ed72b6916696/60fe9485/20260330_policies_hoiku_daredemo-tsuen_67.pdf",
+          "citationNumber": 1
+        },
+        {
+          "id": "temporary.txt:60300de4fb039562ce75816e44267a11aa94fb06cd109bf1e41d6c05c05a1e0d",
+          "title": "一時預かり・国の制度説明",
+          "url": "https://kokasen.cfa.go.jp/support-programs",
+          "citationNumber": 2
+        }
+      ],
+      "review": {
+        "checked": true,
+        "repaired": false,
+        "corrections": [],
+        "statements": [
+          {
+            "kind": "conversation",
+            "layout": "paragraph",
+            "text": "こども誰でも通園制度は全てのこどもの育ちを応援する給付制度であり、一時預かり事業は保護者の立場からの必要性に対応する事業という違いがあります。",
+            "evidence": []
+          },
+          {
+            "kind": "fact",
+            "layout": "bullet",
+            "text": "こども誰でも通園制度：こどもの育ちを応援することが主な目的であり給付制度として実施されます",
+            "evidence": [
+              {
+                "sourceId": "daredemo-handbook.pdf:764d3c3cf1890d1d923252d7897d38ece57a9e7e4a81b476f6b29b101d034a11",
+                "quote": "こどもの育ちを応援することが主な目的\nです。"
+              },
+              {
+                "sourceId": "daredemo-handbook.pdf:764d3c3cf1890d1d923252d7897d38ece57a9e7e4a81b476f6b29b101d034a11",
+                "quote": " \n② 一時預かり事業は「事業」である一方で、こども誰でも通園制度は「給付制度」として実施\nされます。"
+              }
+            ]
+          },
+          {
+            "kind": "fact",
+            "layout": "bullet",
+            "text": "一時預かり事業：保護者の立場からの必要性に対応するものとして乳幼児を一時的に預かります",
+            "evidence": [
+              {
+                "sourceId": "daredemo-handbook.pdf:764d3c3cf1890d1d923252d7897d38ece57a9e7e4a81b476f6b29b101d034a11",
+                "quote": " \n① 一時預かり事業が、 「保護者の立場からの必要性」に対応するものであるのに対して、こ\nども誰でも通園制度はこどもの育ちを応援することが主な目的。"
+              },
+              {
+                "sourceId": "temporary.txt:60300de4fb039562ce75816e44267a11aa94fb06cd109bf1e41d6c05c05a1e0d",
+                "quote": "\n\n支援タイプ別「使える補助金」サイトマップ\n\n家庭支援事業\n\n家庭支援事業とは、児童福祉法第21条の18に規定された6つの事業（子育て短期支援事業、養育支援訪問事業、一時預かり事業、子育て世帯訪問支援事業、児童育成支援拠点事業、親子関係形成支援事業）を指します。"
+              }
+            ]
+          },
+          {
+            "kind": "advice",
+            "layout": "paragraph",
+            "text": "「こども誰でも通園制度と一時預かり事業のどちらを利用できるか、それぞれの違いや手続きについて教えてください」と窓口でお尋ねになるとスムーズです。",
+            "evidence": []
+          }
+        ],
+        "attempts": [
+          {
+            "elapsedMs": 2561,
+            "inputChars": 52693,
+            "usage": {
+              "promptTokenCount": 29373,
+              "candidatesTokenCount": 500,
+              "totalTokenCount": 29873,
+              "promptTokensDetails": [
+                {
+                  "modality": "TEXT",
+                  "tokenCount": 29373
+                }
+              ],
+              "serviceTier": "standard"
+            }
+          }
+        ]
+      },
+      "saved": false
+    },
+    {
+      "id": "local-boundary",
+      "question": "新宿区で子育てショートステイを明日から1泊2日利用したいです。空きと支払う金額を教えてください。",
+      "check": "未収録の当日の空き・個別料金を創作せず、確認事項と次の行動を案内。",
+      "reply": "子育て短期支援事業（ショートステイ）は、保護者の疲労や疾病などの理由により家庭において児童を養育することが一時的に困難となった場合などに、児童養護施設等の実施施設において一定期間の養育・保護を行う事業です。[1]\n\n明日からの利用や空き状況、具体的な利用料金については市町村や実施施設等の状況によって異なるため、お住まいの自治体窓口へ直接お問い合わせください。\n\n「新宿区で子育て短期支援事業のショートステイを明日から1泊2日利用したいのですが、空き状況や料金、手続きについて教えてください」と窓口でお尋ねになるとスムーズです。",
+      "elapsedMs": 10403,
+      "sources": [
+        {
+          "id": "shortstay.pdf:4d5159078d50ff65052715320d9aad3ce0615b53aa2e5637893a353d073ef637",
+          "title": "子育て短期支援事業実施要綱（令和8年4月）",
+          "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/8a43806e-f35e-4d12-b712-d3f9f6344c9f/5a002224/20260423_policies_kosodateshien_jido-short_29.pdf",
+          "citationNumber": 1
+        }
+      ],
+      "review": {
+        "checked": true,
+        "repaired": false,
+        "corrections": [],
+        "statements": [
+          {
+            "kind": "fact",
+            "layout": "paragraph",
+            "text": "子育て短期支援事業（ショートステイ）は、保護者の疲労や疾病などの理由により家庭において児童を養育することが一時的に困難となった場合などに、児童養護施設等の実施施設において一定期間の養育・保護を行う事業です。",
+            "evidence": [
+              {
+                "sourceId": "shortstay.pdf:4d5159078d50ff65052715320d9aad3ce0615b53aa2e5637893a353d073ef637",
+                "quote": "\n\n３ 事業の種類及び内容 （１）短期入所生活援助（ショートステイ）事業 ① 事業内容 市町村は、保護者が疾病、疲労その他の身体上若しくは精神上又は環境上 の理由により家庭において児童を養育することが一時的に困難になった場合 や子育てに係る保護者の負担の軽減が必要な場合、保護者の育児不安や過干 渉等により、児童自身が一時的に保護者と離れることを希望する場合、経済 的な理由により緊急一時的に親子を保護することが必要な場合等に実施施設 等において養育・保護を行うものとする。"
+              }
+            ]
+          },
+          {
+            "kind": "limitation",
+            "layout": "paragraph",
+            "text": "明日からの利用や空き状況、具体的な利用料金については市町村や実施施設等の状況によって異なるため、お住まいの自治体窓口へ直接お問い合わせください。",
+            "evidence": []
+          },
+          {
+            "kind": "advice",
+            "layout": "paragraph",
+            "text": "「新宿区で子育て短期支援事業のショートステイを明日から1泊2日利用したいのですが、空き状況や料金、手続きについて教えてください」と窓口でお尋ねになるとスムーズです。",
+            "evidence": []
+          }
+        ],
+        "attempts": [
+          {
+            "elapsedMs": 10180,
+            "inputChars": 52852,
+            "usage": {
+              "promptTokenCount": 29287,
+              "candidatesTokenCount": 348,
+              "totalTokenCount": 29635,
+              "promptTokensDetails": [
+                {
+                  "modality": "TEXT",
+                  "tokenCount": 29287
+                }
+              ],
+              "serviceTier": "standard"
+            }
+          }
+        ]
+      },
+      "saved": false
+    }
+  ],
+  "notebook": [
+    {
+      "id": "home-discovery",
+      "question": "家事と育児で手いっぱいです。自宅で手伝ってもらえる支援はありますか？",
+      "check": "訪問支援を制度名と具体的な支援内容で紹介。本人の利用資格は断定しない。",
+      "reply": "日々の家事と育児が重なると、心身ともに大変な負担になりますよね。自治体（市区町村）では、ご自宅に訪問して家事や育児を直接サポートしてくれる制度が用意されています\n1\n2\n。\nご家庭の状況に応じて、主に以下のような支援事業を利用できます。\n1. 家事と育児の両方を手伝ってほしい場合\n子育て世帯訪問支援事業 訪問支援員がご自宅を訪問し、**食事の準備・掃除・洗濯・買い物代行などの「家事支援」**や、**授乳・おむつ交換・保育所等の送迎・見守りなどの「育児支援」**を直接行います\n2\n3\n。あわせて、子育ての不安や悩みを傾聴し、相談に乗るサポートも行われます\n2\n。家事や育児に負担・不安を感じている子育て世帯や妊産婦などが対象です\n2\n4\n。\nひとり親家庭等日常生活支援事業（ひとり親家庭等の場合） 家庭生活支援員がご自宅等を訪問し、住居の掃除や身の回りの世話、生活必需品の買い物、乳幼児の保育や食事の世話などの支援を行います\n5\n。\n2. 専門職による育児サポートや相談を受けたい場合\n産後ケア事業（居宅訪問／アウトリーチ型） 出産後1年以内の母子を対象に、助産師などの専門職がご自宅を訪問します\n6\n7\n。お母さんの身体のケアや授乳指導、育児の手技指導、心身の相談を受けることができます\n7\n8\n（※家事の代行は含まれません\n9\n）。\n養育支援訪問事業 / 産前・産後サポート事業（アウトリーチ型） 保健師や専門職、地域のサポーターなどが自宅を訪問し、育児についての具体的な指導やアドバイス、不安や悩みの傾聴を行います\n1\nmore_horiz\n。\n乳児家庭全戸訪問事業（こんにちは赤ちゃん事業） 生後4か月までの乳児がいるすべての家庭を対象に訪問を行い、子育てに関する情報提供や相談・助言を行います\n11\n。\n相談・申請の進め方\nお住まいの市区町村にある**「こども家庭センター」や子育て相談窓口**にご連絡いただくことで、ご家庭の状態に合った具体的な事業の案内や利用手続きを受けることができます\n4\n12\n。\nご利用にあたっては所得に応じた減免制度などが設けられている場合も多いため、まずは無理をなさらず、お近くの窓口へご相談してみてください\n13\n14\n。\n💡 お子さまの月齢やご家庭の詳しいご事情（例：出産直後、ひとり親家庭、病気や体調不良など）に合わせて、より適した支援策を詳しくお伝えすることもできます。気になる制度があればお気軽にお知らせくださいね。",
+      "timing": "not measured; UI inspection intervened",
+      "replyHtml": "<p>日々の家事と育児が重なると、心身ともに大変な負担になりますよね。自治体（市区町村）では、ご自宅に訪問して家事や育児を直接サポートしてくれる制度が用意されています<sup>[1]</sup><sup>[2]</sup>。</p><p>ご家庭の状況に応じて、主に以下のような支援事業を利用できます。</p><h4>1. 家事と育児の両方を手伝ってほしい場合</h4><ul><p><strong>子育て世帯訪問支援事業</strong> 訪問支援員がご自宅を訪問し、**食事の準備・掃除・洗濯・買い物代行などの「家事支援」**や、**授乳・おむつ交換・保育所等の送迎・見守りなどの「育児支援」**を直接行います<sup>[2]</sup><sup>[3]</sup>。あわせて、子育ての不安や悩みを傾聴し、相談に乗るサポートも行われます<sup>[2]</sup>。家事や育児に負担・不安を感じている子育て世帯や妊産婦などが対象です<sup>[2]</sup><sup>[4]</sup>。</p><p><strong>ひとり親家庭等日常生活支援事業</strong>（ひとり親家庭等の場合） 家庭生活支援員がご自宅等を訪問し、<strong>住居の掃除や身の回りの世話、生活必需品の買い物、乳幼児の保育や食事の世話</strong>などの支援を行います<sup>[5]</sup>。</p></ul><h4>2. 専門職による育児サポートや相談を受けたい場合</h4><ul><p><strong>産後ケア事業（居宅訪問／アウトリーチ型）</strong> 出産後1年以内の母子を対象に、助産師などの専門職がご自宅を訪問します<sup>[6]</sup><sup>[7]</sup>。<strong>お母さんの身体のケアや授乳指導、育児の手技指導、心身の相談</strong>を受けることができます<sup>[7]</sup><sup>[8]</sup>（※家事の代行は含まれません<sup>[9]</sup>）。</p><p><strong>養育支援訪問事業 / 産前・産後サポート事業（アウトリーチ型）</strong> 保健師や専門職、地域のサポーターなどが自宅を訪問し、育児についての具体的な指導やアドバイス、不安や悩みの傾聴を行います<sup>[1]</sup>。</p><p><strong>乳児家庭全戸訪問事業（こんにちは赤ちゃん事業）</strong> 生後4か月までの乳児がいるすべての家庭を対象に訪問を行い、子育てに関する情報提供や相談・助言を行います<sup>[11]</sup>。</p></ul><h4>相談・申請の進め方</h4><p>お住まいの市区町村にある**「こども家庭センター」<strong>や</strong>子育て相談窓口**にご連絡いただくことで、ご家庭の状態に合った具体的な事業の案内や利用手続きを受けることができます<sup>[4]</sup><sup>[12]</sup>。</p><p>ご利用にあたっては所得に応じた減免制度などが設けられている場合も多いため、まずは無理をなさらず、お近くの窓口へご相談してみてください<sup>[13]</sup><sup>[14]</sup>。</p><p>💡 お子さまの月齢やご家庭の詳しいご事情（例：出産直後、ひとり親家庭、病気や体調不良など）に合わせて、より適した支援策を詳しくお伝えすることもできます。気になる制度があればお気軽にお知らせくださいね。</p>",
+      "sourceRefs": {
+        "1": "家庭支援事業・養育支援訪問",
+        "2": "子育て世帯訪問支援事業ガイドライン",
+        "3": "子育て世帯訪問支援事業ガイドライン",
+        "4": "子育て世帯訪問支援事業ガイドライン",
+        "5": "ひとり親家庭等日常生活支援事業",
+        "6": "産後ケア事業ガイドライン（令和8年3月）",
+        "7": "産後ケア事業ガイドライン（令和8年3月）",
+        "8": "産後ケア事業ガイドライン（令和8年3月）",
+        "9": "産後ケア事業ガイドライン（令和8年3月）",
+        "11": "一時預かり・国の制度説明",
+        "12": "産後ケア事業ガイドライン（令和8年3月）",
+        "13": "子育て世帯訪問支援事業ガイドライン",
+        "14": "産後ケア事業ガイドライン（令和8年3月）"
+      }
+    },
+    {
+      "id": "home-detail",
+      "question": "子育て世帯訪問支援事業について詳しく教えてください。",
+      "check": "概要の反復だけでなく対象・内容・流れ・費用を掘り下げる。",
+      "reply": "子育て世帯訪問支援事業は、家事や育児に不安や負担を抱えるご家庭に訪問支援員が訪れ、直接的な家事・育児のサポートや傾聴を行う事業です\n1\n。一時的な負担軽減だけでなく、ご家庭が自立して生活を営める環境を整えることを目指しています\n2\n。\n1. 主な支援内容\nご家庭の状況に応じて、以下のような支援が包括的に提供されます\n1\n。\n家事支援\n1\n食事の準備（一般的な家庭料理・後片付けなど）\n3\n洗濯（洗濯機での洗濯、干す・畳む・アイロン掛けなど）\n3\n掃除（リビング、浴室、トイレ、玄関などの掃除機掛け・雑巾掛けなど）\n3\n買い物の代行・サポート\n3\n育児・養育支援\n1\n育児のサポート（授乳・食事の補助、おむつ交換・着替え、沐浴・入浴の補助など）\n4\n保育所・幼稚園等の送迎\n4\nお子さまの見守り（遊び相手、宿題の見守りなど）\n4\n外出時の補助（通院や行政手続きの同行・見守りなど）\n4\n傾聴・相談・助言\n1\n子育てに関する不安や悩みを丁寧に聞き、保護者に寄り添った助言や助け合いを行います（専門的な医療・保健指導は除く）\n1\n2\n。\n情報提供・状況の把握\n1\n地域の母子保健や子育て支援施策の情報案内を行うとともに、ご家庭の様子を把握して適切な行政支援につなげます\n1\n。\n2. 対象となるご家庭\n以下のような状況にあり、自治体（市区町村）が必要と認めた世帯が対象となります\n5\n。\n家事や子育てに対して強い不安や負担感、孤立感を抱えているご家庭・妊産婦\n1\n5\n心身の不調により日常生活を営むことに支障が生じている保護者や妊婦\n5\n若年妊婦や、サポートを必要とするヤングケアラーがいる家庭\n1\n5\n食事や生活習慣など養育環境の調整が必要なご家庭\n5\n3. どんな人が自宅に来るの？（訪問支援員）\n保健師、看護師、保育士などの有資格者に限らず、子育て経験者やヘルパーなど多様な担い手が従事します\n6\n。\n傾聴スキル、個人情報保護、救急救命講習や事故防止講習などの必要な研修を修了した支援員が訪問します\n6\n7\n。\n訪問時には身分証明書を携行・提示して対応します\n6\n。\n4. 利用の手続きと費用\n申請・相談窓口: お住まいの市区町村の**「こども家庭センター」**や子育て支援担当窓口で申請を受け付けます\n8\n9\n。ご家庭の状況を伺い、必要な支援内容・頻度・期間を決める「サポートプラン（支援計画）」を立てた上で利用が決定します\n9\n10\n。\n利用料（費用）: 各自治体により定められていますが、利用者の所得状況に応じた減免制度（課税状況等による減額・免除）が考慮されています\n2\n3\n。\n💡 申請方法やサポートプランの相談方法について、より具体的な流れや他制度との組み合わせについてお知りになりたい点があれば、いつでもお尋ねください。",
+      "timing": "not measured; UI inspection intervened",
+      "replyHtml": "<p><strong>子育て世帯訪問支援事業</strong>は、家事や育児に不安や負担を抱えるご家庭に<strong>訪問支援員</strong>が訪れ、直接的な家事・育児のサポートや傾聴を行う事業です<sup>[1]</sup>。一時的な負担軽減だけでなく、ご家庭が自立して生活を営める環境を整えることを目指しています<sup>[2]</sup>。</p><h4>1. 主な支援内容</h4><p>ご家庭の状況に応じて、以下のような支援が包括的に提供されます<sup>[1]</sup>。</p><ul><p><strong>家事支援</strong><sup>[1]</sup><ul><p><strong>食事の準備</strong>（一般的な家庭料理・後片付けなど）<sup>[3]</sup></p><p><strong>洗濯</strong>（洗濯機での洗濯、干す・畳む・アイロン掛けなど）<sup>[3]</sup></p><p><strong>掃除</strong>（リビング、浴室、トイレ、玄関などの掃除機掛け・雑巾掛けなど）<sup>[3]</sup></p><p><strong>買い物の代行・サポート</strong><sup>[3]</sup></p></ul></p><p><strong>育児・養育支援</strong><sup>[1]</sup><ul><p><strong>育児のサポート</strong>（授乳・食事の補助、おむつ交換・着替え、沐浴・入浴の補助など）<sup>[4]</sup></p><p><strong>保育所・幼稚園等の送迎</strong><sup>[4]</sup></p><p><strong>お子さまの見守り</strong>（遊び相手、宿題の見守りなど）<sup>[4]</sup></p><p><strong>外出時の補助</strong>（通院や行政手続きの同行・見守りなど）<sup>[4]</sup></p></ul></p><p><strong>傾聴・相談・助言</strong><sup>[1]</sup><ul><p>子育てに関する不安や悩みを丁寧に聞き、保護者に寄り添った助言や助け合いを行います（専門的な医療・保健指導は除く）<sup>[1]</sup><sup>[2]</sup>。</p></ul></p><p><strong>情報提供・状況の把握</strong><sup>[1]</sup><ul><p>地域の母子保健や子育て支援施策の情報案内を行うとともに、ご家庭の様子を把握して適切な行政支援につなげます<sup>[1]</sup>。</p></ul></p></ul><h4>2. 対象となるご家庭</h4><p>以下のような状況にあり、自治体（市区町村）が必要と認めた世帯が対象となります<sup>[5]</sup>。</p><ul><p>家事や子育てに対して強い不安や負担感、孤立感を抱えているご家庭・妊産婦<sup>[1]</sup><sup>[5]</sup></p><p>心身の不調により日常生活を営むことに支障が生じている保護者や妊婦<sup>[5]</sup></p><p>若年妊婦や、サポートを必要とするヤングケアラーがいる家庭<sup>[1]</sup><sup>[5]</sup></p><p>食事や生活習慣など養育環境の調整が必要なご家庭<sup>[5]</sup></p></ul><h4>3. どんな人が自宅に来るの？（訪問支援員）</h4><ul><p>保健師、看護師、保育士などの有資格者に限らず、子育て経験者やヘルパーなど多様な担い手が従事します<sup>[6]</sup>。</p><p>傾聴スキル、個人情報保護、救急救命講習や事故防止講習などの必要な研修を修了した支援員が訪問します<sup>[6]</sup><sup>[7]</sup>。</p><p>訪問時には身分証明書を携行・提示して対応します<sup>[6]</sup>。</p></ul><h4>4. 利用の手続きと費用</h4><ul><p><strong>申請・相談窓口</strong>: お住まいの市区町村の**「こども家庭センター」**や子育て支援担当窓口で申請を受け付けます<sup>[8]</sup><sup>[9]</sup>。ご家庭の状況を伺い、必要な支援内容・頻度・期間を決める「サポートプラン（支援計画）」を立てた上で利用が決定します<sup>[9]</sup><sup>[10]</sup>。</p><p><strong>利用料（費用）</strong>: 各自治体により定められていますが、利用者の所得状況に応じた減免制度（課税状況等による減額・免除）が考慮されています<sup>[2]</sup><sup>[3]</sup>。</p></ul><p>💡 申請方法やサポートプランの相談方法について、より具体的な流れや他制度との組み合わせについてお知りになりたい点があれば、いつでもお尋ねください。</p>",
+      "sourceRefs": {
+        "1": "子育て世帯訪問支援事業ガイドライン",
+        "2": "子育て世帯訪問支援事業ガイドライン",
+        "3": "子育て世帯訪問支援事業ガイドライン",
+        "4": "子育て世帯訪問支援事業ガイドライン",
+        "5": "子育て世帯訪問支援事業ガイドライン",
+        "6": "子育て世帯訪問支援事業ガイドライン",
+        "7": "子育て世帯訪問支援事業ガイドライン",
+        "8": "子育て世帯訪問支援事業ガイドライン",
+        "9": "子育て世帯訪問支援事業ガイドライン",
+        "10": "子育て世帯訪問支援事業ガイドライン"
+      }
+    },
+    {
+      "id": "home-fee",
+      "question": "お金はいくらかかりますか？所得に応じた減免もありますか？",
+      "check": "訪問支援の文脈を保つ。自治体の具体額を創作しない。減免配慮の指針と実施保証を区別。",
+      "reply": "子育て世帯訪問支援事業の費用および所得に応じた減免についてご説明します。\n1. 利用費用について\n利用料の金額やルールは、お住まいの市区町村が地域の実情を踏まえて定めています\n1\n。\n具体的な費用は自治体によって異なりますが、ご家庭の負担を軽減できるよう、1時間あたり数百円程度など比較的利用しやすい金額に設定されているケースが多く見られます。\n2. 所得に応じた減免について\n所得状況に応じた減免（減額・免除）があります\n1\n。\n国のガイドラインにおいて、利用料を設定する際には利用者の所得状況に応じて減免するなど配慮することが求められています\n1\n。\nそのため、多くの自治体では以下のような区分に応じて自己負担額が軽減される仕組みが整えられています：\n生活保護世帯・市町村民税非課税世帯など：利用料の免除（無料）または大幅な減額\n課税世帯：所得に応じた段階的な利用料設定\n確認・手続き方法\n具体的な自己負担額や必要な減免申請の手続きについては、お住まいの市区町村にある**「こども家庭センター」や子育て支援窓口**にて確認できます。サポートプランを作成する面談の際にあわせて相談することができます。\n💡 ご自宅への訪問サポートのほかに、お子さまを施設等で預けてリフレッシュするサービス（一時預かりなど）の費用や減免制度についても知りたい場合は、お気軽にお尋ねくださいね。",
+      "timing": "not measured; UI inspection intervened",
+      "replyHtml": "<p><strong>子育て世帯訪問支援事業</strong>の費用および所得に応じた減免についてご説明します。</p><h4>1. 利用費用について</h4><p>利用料の金額やルールは、お住まいの<strong>市区町村が地域の実情を踏まえて定めています</strong><sup>[1]</sup>。</p><p>具体的な費用は自治体によって異なりますが、ご家庭の負担を軽減できるよう、1時間あたり数百円程度など比較的利用しやすい金額に設定されているケースが多く見られます。</p><h4>2. 所得に応じた減免について</h4><p><strong>所得状況に応じた減免（減額・免除）があります</strong><sup>[1]</sup>。</p><p>国のガイドラインにおいて、利用料を設定する際には<strong>利用者の所得状況に応じて減免するなど配慮すること</strong>が求められています<sup>[1]</sup>。</p><p>そのため、多くの自治体では以下のような区分に応じて自己負担額が軽減される仕組みが整えられています：</p><ul><p><strong>生活保護世帯・市町村民税非課税世帯など</strong>：利用料の免除（無料）または大幅な減額</p><p><strong>課税世帯</strong>：所得に応じた段階的な利用料設定</p></ul><h4>確認・手続き方法</h4><p>具体的な自己負担額や必要な減免申請の手続きについては、お住まいの市区町村にある**「こども家庭センター」<strong>や</strong>子育て支援窓口**にて確認できます。サポートプランを作成する面談の際にあわせて相談することができます。</p><p>💡 ご自宅への訪問サポートのほかに、お子さまを施設等で預けてリフレッシュするサービス（一時預かりなど）の費用や減免制度についても知りたい場合は、お気軽にお尋ねくださいね。</p>",
+      "sourceRefs": {
+        "1": "子育て世帯訪問支援事業ガイドライン"
+      }
+    },
+    {
+      "id": "home-phone",
+      "question": "料金と申込みについて、電話で聞く文を作ってください。",
+      "check": "そのまま話せる文に料金と申込みの両方を含める。",
+      "reply": "自治体の窓口（こども家庭センターや子育て支援担当課）へ電話をする際に、そのまま使える問い合わせ例文を作成しました\n1\n。\n電話での問い合わせ例文\n【担当部署につながった後の切り出し】\n「お忙しいところ恐れ入ります。〇〇市（区/町/村）に住んでいる〇〇（お名前）と申します。 現在、家事や育児の負担が大きく手がいっぱいになっており、自宅に来てサポートしてもらえる**『子育て世帯訪問支援事業』**についてお聞きしたくお電話いたしました。」\n【質問事項（そのまま使えるフレーズ）】\n1. 申込みの手続きと流れについて\n「利用を検討したいのですが、申込みにはどのような手続きや面談が必要ですか？」\n2. 利用料金と減免制度について\n「1時間あたりの利用料金はいくらになりますか？ また、所得に応じた減免や自己負担が軽くなる仕組みについても教えていただけますか？」\n2\n3. 希望する支援内容の確認\n「具体的に〇〇（例：食事の準備・掃除、抱っこや見守り、保育所の送迎 など）を手伝ってほしいと考えているのですが、対象になりますでしょうか？」\n4. 訪問開始までの期間\n「申込みをしてから、実際に訪問支援が始まるまでにどのくらいの期間がかかりますか？」\n電話をかける際のワンポイント\n手元にメモを用意しておく お子さまの年齢・月齢や、「具体的に何に一番困っているか（例：育児疲れで体を休めたい、買い出しや掃除が追いつかない等）」をメモしておくと、担当者へ状況が伝わりやすくなります。\n連絡先窓口の名称 自治体によって**「こども家庭センター」や「子育て支援課」、「地域子育て相談窓口」**など名称が異なる場合があります\n1\n。役所の代表電話にかければ「子育て世帯訪問支援事業について聞きたい」と伝えることで適切な窓口に繋いでもらえます。\n💡 面談の際の伝え方や、申込みの前に確認しておきたい点などがあれば、引き続きサポートいたしますのでお申し付けくださいね。",
+      "timing": "not measured; UI inspection intervened",
+      "replyHtml": "<p>自治体の窓口（こども家庭センターや子育て支援担当課）へ電話をする際に、そのまま使える問い合わせ例文を作成しました<sup>[1]</sup>。</p><h4>電話での問い合わせ例文</h4><p><strong>【担当部署につながった後の切り出し】</strong></p><p>「お忙しいところ恐れ入ります。〇〇市（区/町/村）に住んでいる〇〇（お名前）と申します。 現在、家事や育児の負担が大きく手がいっぱいになっており、自宅に来てサポートしてもらえる**『子育て世帯訪問支援事業』**についてお聞きしたくお電話いたしました。」</p><p><strong>【質問事項（そのまま使えるフレーズ）】</strong></p><ul><p><strong>1. 申込みの手続きと流れについて</strong></p></ul><p>「利用を検討したいのですが、申込みにはどのような手続きや面談が必要ですか？」</p><ul><p><strong>2. 利用料金と減免制度について</strong></p></ul><p>「1時間あたりの利用料金はいくらになりますか？ また、所得に応じた減免や自己負担が軽くなる仕組みについても教えていただけますか？」<sup>[2]</sup></p><ul><p><strong>3. 希望する支援内容の確認</strong></p></ul><p>「具体的に〇〇（例：食事の準備・掃除、抱っこや見守り、保育所の送迎 など）を手伝ってほしいと考えているのですが、対象になりますでしょうか？」</p><ul><p><strong>4. 訪問開始までの期間</strong></p></ul><p>「申込みをしてから、実際に訪問支援が始まるまでにどのくらいの期間がかかりますか？」</p><h4>電話をかける際のワンポイント</h4><ul><p><strong>手元にメモを用意しておく</strong> お子さまの年齢・月齢や、「具体的に何に一番困っているか（例：育児疲れで体を休めたい、買い出しや掃除が追いつかない等）」をメモしておくと、担当者へ状況が伝わりやすくなります。</p><p><strong>連絡先窓口の名称</strong> 自治体によって**「こども家庭センター」<strong>や</strong>「子育て支援課」<strong>、</strong>「地域子育て相談窓口」**など名称が異なる場合があります<sup>[1]</sup>。役所の代表電話にかければ「子育て世帯訪問支援事業について聞きたい」と伝えることで適切な窓口に繋いでもらえます。</p></ul><p>💡 面談の際の伝え方や、申込みの前に確認しておきたい点などがあれば、引き続きサポートいたしますのでお申し付けくださいね。</p>",
+      "sourceRefs": {
+        "1": "子育て世帯訪問支援事業ガイドライン",
+        "2": "子育て世帯訪問支援事業ガイドライン"
+      }
+    },
+    {
+      "id": "daytime-discovery",
+      "question": "2歳の子がいます。少し休むために、昼間だけ預けられる支援はありますか？",
+      "check": "一時預かりと誰でも通園を目的・対象条件を区別して紹介。就園状況は未確認。",
+      "reply": "2歳のお子さまを昼間の時間帯に預けて、保護者の方がリフレッシュしたり少し休息を取ったりするために利用できる主な制度があります。\n1. 一時預かり事業\n制度概要: 保護者の育児負担（心理的・身体的負担）の軽減や突発的な用事などの際、主として昼間に保育所、認定こども園、地域子育て支援拠点等でお子さまを一時的に預かる事業です\n1\nmore_horiz\n。\n特徴: 就労していなくても、リフレッシュや休息目的で利用することができます\n3\n4\n。\n2. こども誰でも通園制度（乳児等通園支援事業）\n制度概要: 保育所等に通っていない0歳6か月から満3歳未満のお子さまを対象に、保護者の就労要件を問わず、月一定時間（月10時間など）の利用枠の中で時間単位で柔軟に利用できる制度です\n5\nmore_horiz\n。\n特徴: 2歳のお子さまも対象であり、子ども同士の触れ合いや集団経験が得られるとともに、保護者も自分の時間を作って育児負担を軽減することができます\n5\nmore_horiz\n。\n3. ファミリー・サポート・センター事業\n制度概要: 地域で「子育ての援助を受けたい人（依頼会員）」と「援助を行いたい人（提供会員）」が会員となり、子どもを預け合う相互援助組織です\n9\n。\n特徴: 冠婚葬祭や買い物などの外出時、保護者のリフレッシュなどの際に、提供会員の自宅などで昼間にお子さまを預かってもらうことができます\n9\n。\n4. 子育て短期支援事業（ショートステイ / トワイライトステイ）\n制度概要: 保護者の病気、育児疲れや身体的・精神的な負担感などの理由により一時的に家庭での養育が困難になった場合に、児童養護施設、乳児院、里親等でお子さまを保護・支援する事業です\n10\nmore_horiz\n。\n特徴: 宿泊を伴うショートステイのほか、休日や平日の時間帯に預けるトワイライトステイもあります\n11\n12\n。\n相談・申請窓口\nお住まいの市区町村にある**「こども家庭センター」や子育て支援窓口**で、各制度の実施状況や利用申請・予約方法について相談できます\n13\nmore_horiz\n。\n💡 気になる制度の利用料金や、申請・予約の具体的な手順について詳しくお知りになりたいものはございますか？",
+      "timing": "not measured; UI inspection intervened",
+      "replyHtml": "<p>2歳のお子さまを昼間の時間帯に預けて、保護者の方がリフレッシュしたり少し休息を取ったりするために利用できる主な制度があります。</p><h4>1. 一時預かり事業</h4><ul><p><strong>制度概要</strong>: 保護者の育児負担（心理的・身体的負担）の軽減や突発的な用事などの際、主として昼間に保育所、認定こども園、地域子育て支援拠点等でお子さまを一時的に預かる事業です<sup>[1]</sup>。</p><p><strong>特徴</strong>: 就労していなくても、リフレッシュや休息目的で利用することができます<sup>[3]</sup><sup>[4]</sup>。</p></ul><h4>2. こども誰でも通園制度（乳児等通園支援事業）</h4><ul><p><strong>制度概要</strong>: 保育所等に通っていない0歳6か月から満3歳未満のお子さまを対象に、保護者の就労要件を問わず、月一定時間（月10時間など）の利用枠の中で時間単位で柔軟に利用できる制度です<sup>[5]</sup>。</p><p><strong>特徴</strong>: 2歳のお子さまも対象であり、子ども同士の触れ合いや集団経験が得られるとともに、保護者も自分の時間を作って育児負担を軽減することができます<sup>[5]</sup>。</p></ul><h4>3. ファミリー・サポート・センター事業</h4><ul><p><strong>制度概要</strong>: 地域で「子育ての援助を受けたい人（依頼会員）」と「援助を行いたい人（提供会員）」が会員となり、子どもを預け合う相互援助組織です<sup>[9]</sup>。</p><p><strong>特徴</strong>: 冠婚葬祭や買い物などの外出時、保護者のリフレッシュなどの際に、提供会員の自宅などで昼間にお子さまを預かってもらうことができます<sup>[9]</sup>。</p></ul><h4>4. 子育て短期支援事業（ショートステイ / トワイライトステイ）</h4><ul><p><strong>制度概要</strong>: 保護者の病気、育児疲れや身体的・精神的な負担感などの理由により一時的に家庭での養育が困難になった場合に、児童養護施設、乳児院、里親等でお子さまを保護・支援する事業です<sup>[10]</sup>。</p><p><strong>特徴</strong>: 宿泊を伴うショートステイのほか、休日や平日の時間帯に預けるトワイライトステイもあります<sup>[11]</sup><sup>[12]</sup>。</p></ul><h4>相談・申請窓口</h4><p>お住まいの市区町村にある**「こども家庭センター」<strong>や</strong>子育て支援窓口**で、各制度の実施状況や利用申請・予約方法について相談できます<sup>[13]</sup>。</p><p>💡 気になる制度の利用料金や、申請・予約の具体的な手順について詳しくお知りになりたいものはございますか？</p>",
+      "sourceRefs": {
+        "1": "一時預かり・国の制度説明",
+        "3": "病児保育等の基礎資料（令和8年4月）",
+        "4": "病児保育等の基礎資料（令和8年4月）",
+        "5": "こども誰でも通園・公式利用案内",
+        "9": "ファミリー・サポート・センター概要（令和8年度）",
+        "10": "子育て短期支援事業実施要綱（令和8年4月）",
+        "11": "子育て短期支援事業実施要綱（令和8年4月）",
+        "12": "子育て短期支援事業実施要綱（令和8年4月）",
+        "13": "こども誰でも通園・公式利用案内"
+      }
+    },
+    {
+      "id": "daytime-followup",
+      "question": "保育園や幼稚園には通っていません。",
+      "check": "2歳・未就園の条件を引き継ぎ、実際の利用可否や地域の空きを保証しない。",
+      "reply": "保育園や幼稚園に通っていらっしゃらないのですね。\n実はご紹介した支援のうち、特に**「こども誰でも通園制度」と「一時預かり事業」**は、まさに保育園や幼稚園に通っていない未就園のお子さまを対象とした制度です\n1\nmore_horiz\n。\n2歳のお子さまのご状況に合わせたそれぞれのポイントは以下の通りです。\n1. こども誰でも通園制度（乳児等通園支援事業）\n対象: 保育所、認定こども園、幼稚園等に通っていない0歳6か月から満3歳未満のお子さまが対象です\n1\n3\n。\n特徴: 保護者の就労要件を問わず、月10時間などの利用枠の中で、時間単位で柔軟に利用できます\n3\nmore_horiz\n。\nメリット: お母さん・お父さんの休息や自分時間の確保はもちろん、お子さまにとっても同年代の子ども同士の触れ合いや専門の保育者と過ごす良い経験になります\n7\nmore_horiz\n。\n2. 一時預かり事業（一般型など）\n対象: 家庭で保育を受けている（保育園等に通っていない）乳幼児が対象です\n2\n10\n。\n特徴: 保護者の心理的・身体的負担の軽減（リフレッシュや休息）、通院や用事などの際に、保育所や認定こども園などで一時的に預かってもらえます\n2\nmore_horiz\n。\nメリット: 必要なタイミングに合わせて、半日〜1日単位などでスポット利用ができます。\n3. ファミリー・サポート・センター事業\n対象: 保育園に通っていないお子さまも利用できます\n11\n。\n特徴: 地域で登録している提供会員（サポーター）の自宅などで、個別にお子さまを預かってもらえます\n11\n。\nメリット: 保育施設での集団生活にまだ慣れていない場合でも、アットホームな環境で利用しやすいのが特徴です。\n4. 子育て短期支援事業（ショートステイ / トワイライトステイ）\n対象: 育児疲れや身体的負担感が大きい場合、急な事情がある場合に利用できます\n12\n13\n。\n特徴: 児童養護施設や乳児院、里親等でお子さまを保護・支援します\n12\n14\n。\nはじめてご利用いただく際のアドバイス\n保育園等に通っていないお子さまの場合は、事前に施設の見学や事前面談（お子さまの様子やアレルギー等の確認）を行ってから利用を開始する流れが一般的です\n15\n16\n。\nまずは少時間の利用から試してみることもできますので、お近くの保育所や自治体の**「こども家庭センター」**等へ相談してみるのがおすすめです\n1\nmore_horiz\n。\n💡 「こども誰でも通園制度」や「一時預かり」について、申込みに必要な準備や事前面談の流れなど、詳しく知りたい点はありますか？",
+      "timing": "not measured; UI inspection intervened",
+      "replyHtml": "<p>保育園や幼稚園に通っていらっしゃらないのですね。</p><p>実はご紹介した支援のうち、特に**「こども誰でも通園制度」<strong>と</strong>「一時預かり事業」**は、<strong>まさに保育園や幼稚園に通っていない未就園のお子さまを対象とした制度</strong>です<sup>[1]</sup>。</p><p>2歳のお子さまのご状況に合わせたそれぞれのポイントは以下の通りです。</p><h4>1. こども誰でも通園制度（乳児等通園支援事業）</h4><ul><p><strong>対象</strong>: 保育所、認定こども園、幼稚園等に通っていない0歳6か月から満3歳未満のお子さまが対象です<sup>[1]</sup><sup>[3]</sup>。</p><p><strong>特徴</strong>: 保護者の就労要件を問わず、月10時間などの利用枠の中で、時間単位で柔軟に利用できます<sup>[3]</sup>。</p><p><strong>メリット</strong>: お母さん・お父さんの休息や自分時間の確保はもちろん、お子さまにとっても同年代の子ども同士の触れ合いや専門の保育者と過ごす良い経験になります<sup>[7]</sup>。</p></ul><h4>2. 一時預かり事業（一般型など）</h4><ul><p><strong>対象</strong>: 家庭で保育を受けている（保育園等に通っていない）乳幼児が対象です<sup>[2]</sup><sup>[10]</sup>。</p><p><strong>特徴</strong>: 保護者の心理的・身体的負担の軽減（リフレッシュや休息）、通院や用事などの際に、保育所や認定こども園などで一時的に預かってもらえます<sup>[2]</sup>。</p><p><strong>メリット</strong>: 必要なタイミングに合わせて、半日〜1日単位などでスポット利用ができます。</p></ul><h4>3. ファミリー・サポート・センター事業</h4><ul><p><strong>対象</strong>: 保育園に通っていないお子さまも利用できます<sup>[11]</sup>。</p><p><strong>特徴</strong>: 地域で登録している提供会員（サポーター）の自宅などで、個別にお子さまを預かってもらえます<sup>[11]</sup>。</p><p><strong>メリット</strong>: 保育施設での集団生活にまだ慣れていない場合でも、アットホームな環境で利用しやすいのが特徴です。</p></ul><h4>4. 子育て短期支援事業（ショートステイ / トワイライトステイ）</h4><ul><p><strong>対象</strong>: 育児疲れや身体的負担感が大きい場合、急な事情がある場合に利用できます<sup>[12]</sup><sup>[13]</sup>。</p><p><strong>特徴</strong>: 児童養護施設や乳児院、里親等でお子さまを保護・支援します<sup>[12]</sup><sup>[14]</sup>。</p></ul><h4>はじめてご利用いただく際のアドバイス</h4><p>保育園等に通っていないお子さまの場合は、事前に施設の見学や事前面談（お子さまの様子やアレルギー等の確認）を行ってから利用を開始する流れが一般的です<sup>[15]</sup><sup>[16]</sup>。</p><p>まずは少時間の利用から試してみることもできますので、お近くの保育所や自治体の**「こども家庭センター」**等へ相談してみるのがおすすめです<sup>[1]</sup>。</p><p>💡 「こども誰でも通園制度」や「一時預かり」について、申込みに必要な準備や事前面談の流れなど、詳しく知りたい点はありますか？</p>",
+      "sourceRefs": {
+        "1": "こども誰でも通園・公式利用案内",
+        "2": "一時預かり・国の制度説明",
+        "3": "こども誰でも通園制度の実施に関する手引",
+        "7": "こども誰でも通園・公式利用案内",
+        "10": "病児保育等の基礎資料（令和8年4月）",
+        "11": "ファミリー・サポート・センター概要（令和8年度）",
+        "12": "子育て短期支援事業実施要綱（令和8年4月）",
+        "13": "子育て短期支援事業実施要綱（令和8年4月）",
+        "14": "子育て短期支援事業実施要綱（令和8年4月）",
+        "15": "こども誰でも通園制度の実施に関する手引",
+        "16": "こども誰でも通園制度の実施に関する手引"
+      }
+    },
+    {
+      "id": "daytime-compare",
+      "question": "こども誰でも通園制度と一時預かりは、どう違いますか？",
+      "check": "目的・利用対象・時間枠・使い方を資料範囲で比較し制度ごとに正しい出典を付ける。",
+      "reply": "こども誰でも通園制度と一時預かり事業は、どちらも未就園のお子さまを預けられる制度ですが、**「制度の目的」と「利用のルール」**に大きな違いがあります\n1\n。\n主な違いの比較\n項目\n\t\nこども誰でも通園制度\n\t\n一時預かり事業\n\n\n主な目的\n\t\n「こどもの成長・育ち」を応援するため\n1\n2\n\n家族以外の人や同年代の子と触れ合い、集団生活や経験を広げる\n1\n2\n。\n\t\n「保護者の都合や負担軽減」に対応するため\n1\n3\n\n用事、通院、就労、リフレッシュなどで一時的に保育が難しい場合に応える\n3\n4\n。\n\n\n制度の枠組み\n\t\n全国共通の**「給付制度」**\n1\nmore_horiz\n\nどの自治体でも共通の権利・仕組みとして実施される\n1\n5\n。\n\t\n自治体ごとの**「事業」**\n1\n\n自治体や施設によって利用ルールや実施条件が異なる\n1\n4\n。\n\n\n利用時間の枠\n\t\n月一定時間（基本は月10時間まで）\n7\n8\n\n1時間単位（以降30分単位など）で柔軟に利用可能\n7\n9\n。\n\t\n半日単位や1日単位など\n1\n4\n\n施設や自治体の定める枠（スポット利用等）で利用する\n1\n3\n。\n\n\n対象のお子さま\n\t\n0歳6か月〜満3歳未満の未就園児\n6\n10\n\t\n主に乳幼児全般（0歳〜未就学児）\n3\n11\n\n\n利用スタイル\n\t\nお子さまが環境や先生に慣れ親しめるよう、**定期的な通園（定期利用）**や柔軟な通園を推奨\n12\n13\n。\n\t\n急な用事やリフレッシュが必要な際に、一時的に預けるスポット利用が中心\n1\n3\n。\nどちらを選ぶかの目安\n「定期的に少しずつ通わせて、同世代の子と遊ばせたり慣れさせたりしたい」 👉 こども誰でも通園制度が向いています。毎月10時間などの枠の中で、決まった曜日や時間に通うことでお子さまの経験値を広げられます\n2\n13\n。\n「急な用事や体調不良、半日〜1日しっかりまとまった時間を作ってリフレッシュしたい」 👉 一時預かり事業が向いています。スポットで半日や1日単位の預かりを利用できます\n1\n3\n。\n※なお、同じ保育施設で両方の制度を一体的に実施している場合もあり、利用目的に応じて使い分けることができます\n1\n。\n💡 「まずは月10時間の枠で少しずつ慣らしてみたい」「来週半日だけ預けたい」など、ご希望のペースに合わせて具体的な利用登録や手続き手順をご案内できますので、気になった方をお知らせくださいね。",
+      "timing": "not measured; UI inspection intervened",
+      "replyHtml": "<p><strong>こども誰でも通園制度</strong>と<strong>一時預かり事業</strong>は、どちらも未就園のお子さまを預けられる制度ですが、**「制度の目的」<strong>と</strong>「利用のルール」**に大きな違いがあります<sup>[1]</sup>。</p><h4>主な違いの比較</h4><table><tr><th><p>項目</p></th><th><p>こども誰でも通園制度</p></th><th><p>一時預かり事業</p></th></tr><tr><td><p><strong>主な目的</strong></p></td><td><p><strong>「こどもの成長・育ち」を応援するため</strong><sup>[1]</sup><sup>[2]</sup>\n家族以外の人や同年代の子と触れ合い、集団生活や経験を広げる<sup>[1]</sup><sup>[2]</sup>。</p></td><td><p><strong>「保護者の都合や負担軽減」に対応するため</strong><sup>[1]</sup><sup>[3]</sup>\n用事、通院、就労、リフレッシュなどで一時的に保育が難しい場合に応える<sup>[3]</sup><sup>[4]</sup>。</p></td></tr><tr><td><p><strong>制度の枠組み</strong></p></td><td><p>全国共通の**「給付制度」**<sup>[1]</sup>\nどの自治体でも共通の権利・仕組みとして実施される<sup>[1]</sup><sup>[5]</sup>。</p></td><td><p>自治体ごとの**「事業」**<sup>[1]</sup>\n自治体や施設によって利用ルールや実施条件が異なる<sup>[1]</sup><sup>[4]</sup>。</p></td></tr><tr><td><p><strong>利用時間の枠</strong></p></td><td><p><strong>月一定時間（基本は月10時間まで）</strong><sup>[7]</sup><sup>[8]</sup>\n1時間単位（以降30分単位など）で柔軟に利用可能<sup>[7]</sup><sup>[9]</sup>。</p></td><td><p><strong>半日単位や1日単位</strong>など<sup>[1]</sup><sup>[4]</sup>\n施設や自治体の定める枠（スポット利用等）で利用する<sup>[1]</sup><sup>[3]</sup>。</p></td></tr><tr><td><p><strong>対象のお子さま</strong></p></td><td><p><strong>0歳6か月〜満3歳未満</strong>の未就園児<sup>[6]</sup><sup>[10]</sup></p></td><td><p>主に<strong>乳幼児全般（0歳〜未就学児）</strong><sup>[3]</sup><sup>[11]</sup></p></td></tr><tr><td><p><strong>利用スタイル</strong></p></td><td><p>お子さまが環境や先生に慣れ親しめるよう、**定期的な通園（定期利用）**や柔軟な通園を推奨<sup>[12]</sup><sup>[13]</sup>。</p></td><td><p>急な用事やリフレッシュが必要な際に、<strong>一時的に預けるスポット利用</strong>が中心<sup>[1]</sup><sup>[3]</sup>。</p></td></tr></table><h4>どちらを選ぶかの目安</h4><ul><p><strong>「定期的に少しずつ通わせて、同世代の子と遊ばせたり慣れさせたりしたい」</strong> 👉 <strong>こども誰でも通園制度</strong>が向いています。毎月10時間などの枠の中で、決まった曜日や時間に通うことでお子さまの経験値を広げられます<sup>[2]</sup><sup>[13]</sup>。</p><p><strong>「急な用事や体調不良、半日〜1日しっかりまとまった時間を作ってリフレッシュしたい」</strong> 👉 <strong>一時預かり事業</strong>が向いています。スポットで半日や1日単位の預かりを利用できます<sup>[1]</sup><sup>[3]</sup>。</p></ul><p>※なお、同じ保育施設で両方の制度を一体的に実施している場合もあり、利用目的に応じて使い分けることができます<sup>[1]</sup>。</p><p>💡 「まずは月10時間の枠で少しずつ慣らしてみたい」「来週半日だけ預けたい」など、ご希望のペースに合わせて具体的な利用登録や手続き手順をご案内できますので、気になった方をお知らせくださいね。</p>",
+      "sourceRefs": {
+        "1": "こども誰でも通園制度の実施に関する手引",
+        "2": "こども誰でも通園制度の実施に関する手引",
+        "3": "病児保育等の基礎資料（令和8年4月）",
+        "4": "病児保育等の基礎資料（令和8年4月）",
+        "5": "こども誰でも通園制度の実施に関する手引",
+        "6": "こども誰でも通園制度の実施に関する手引",
+        "7": "こども誰でも通園・公式利用案内",
+        "8": "こども誰でも通園制度の実施に関する手引",
+        "9": "こども誰でも通園制度の実施に関する手引",
+        "10": "こども誰でも通園・公式利用案内",
+        "11": "一時預かり・国の制度説明",
+        "12": "こども誰でも通園制度の実施に関する手引",
+        "13": "こども誰でも通園制度の実施に関する手引"
+      }
+    },
+    {
+      "id": "local-boundary",
+      "question": "新宿区で子育てショートステイを明日から1泊2日利用したいです。空きと支払う金額を教えてください。",
+      "check": "未収録の当日の空き・個別料金を創作せず、確認事項と次の行動を案内。",
+      "reply": "**子育て短期支援事業（ショートステイ）**の仕組みや手続きについて、お手元の資料から確認できる内容をお伝えします。\n資料から確認できるルール\n利用料金（支払う金額）: ショートステイの自己負担額は、実施主体である自治体（市区町村）が独自に定めています\n1\n。また、所得状況（生活保護世帯・非課税世帯など）に応じた利用料の減免（無料または減額）制度が設けられています\n1\n2\n。\n急な利用（明日からの利用）: 原則として事前申請と施設側の受入れ調整が必要ですが、保護者の体調不良や緊急を要する場合には、申請手続きを事後とするなど弾力的に対応することが認められています\n2\n。\nお手元の資料に含まれていない点\nお手元の資料（国のガイドラインや実施要綱等）には、新宿区独自の具体的な利用料金表や、明日のリアルタイムな施設の空き状況までは記載されていません。\nもしよろしければ、新宿区のショートステイの料金体系や緊急時の相談窓口について**ウェブでお調べしましょうか？**ご希望でしたらお気軽にお知らせください。",
+      "timing": "not measured; UI inspection intervened",
+      "replyHtml": "<p>**子育て短期支援事業（ショートステイ）**の仕組みや手続きについて、お手元の資料から確認できる内容をお伝えします。</p><h4>資料から確認できるルール</h4><ul><p><strong>利用料金（支払う金額）</strong>: ショートステイの自己負担額は、実施主体である自治体（市区町村）が独自に定めています<sup>[1]</sup>。また、所得状況（生活保護世帯・非課税世帯など）に応じた利用料の減免（無料または減額）制度が設けられています<sup>[1]</sup><sup>[2]</sup>。</p><p><strong>急な利用（明日からの利用）</strong>: 原則として事前申請と施設側の受入れ調整が必要ですが、保護者の体調不良や緊急を要する場合には、申請手続きを事後とするなど弾力的に対応することが認められています<sup>[2]</sup>。</p></ul><h4>お手元の資料に含まれていない点</h4><p>お手元の資料（国のガイドラインや実施要綱等）には、<strong>新宿区独自の具体的な利用料金表</strong>や、<strong>明日のリアルタイムな施設の空き状況</strong>までは記載されていません。</p><p>もしよろしければ、新宿区のショートステイの料金体系や緊急時の相談窓口について**ウェブでお調べしましょうか？**ご希望でしたらお気軽にお知らせください。</p>",
+      "sourceRefs": {
+        "1": "子育て短期支援事業FAQ（第3版・令和7年9月更新）",
+        "2": "子育て短期支援事業実施要綱（令和8年4月）"
+      }
+    }
+  ],
+  "analysis": {
+    "conclusion": "今回の8問では、説明の具体性と深掘りはGemini Notebookが優位でした。一方、料金では資料にない相場や減免の具体例を補っており、詳しさと正確さは別に評価する必要があります。mottoには、引用の照合を保ちつつ説明を厚くする余地があります。",
+    "findings": [
+      "同じ公式12資料を登録。PDF8件の同一性をSHA-256で確認し、Web由来4件は保存済み本文を登録しました。過去の11資料ノートとは別の新規ノートです。",
+      "Notebookは家事の具体例、訪問支援員の研修・身分証、電話での申込みの聞き方、制度の比較表まで展開しました。mottoは概要の繰り返しと窓口案内が多く、電話文では利用申込み方法への言及が抜けました。",
+      "料金の答えはmottoのほうが資料に忠実でした。Notebookは「1時間あたり数百円程度」「非課税世帯などは無料または大幅な減額」など、引用した訪問支援ガイドラインで裏付けられない説明を加えました。実際の地域でそうした例があるかは、この比較では調べていません。",
+      "mottoの20個の事実説明・30件の引用について、返された資料本文との機械的な原文一致と制度の対応検証を再実行し8回答すべて再現しました。ただしこれは、意味の正確さや説明の十分さの保証ではありません。",
+      "資料がない地域の明日の空き・個別料金を具体値で答えなかった点は両者とも良好。mottoは窓口への相談文、Notebookは追加のWeb調査の提案を返しました。追加Web調査は実行していません。"
+    ],
+    "cases": {
+      "home-discovery": "どちらも子育て世帯訪問支援事業と産後ケアを紹介しました。Notebookはひとり親家庭向け、育児相談、乳児の訪問など、条件別の候補も示しました。情報の幅はNotebook、短く絞った初回案内はmottoです。",
+      "home-detail": "Notebookのほうが具体的です。掃除する場所や買い物支援、育児の例、支援員の要件・研修・身分証まで説明しました。mottoは支援・対象・利用の流れ・費用の4項目ですが、冒頭と支援内容が重複しています。Notebookの費用に関する断定は次のQ3の注意も参照してください。",
+      "home-fee": "ここはmottoが資料の範囲を保ちました。ガイドラインの記載は、自治体が利用料等を定め、所得状況に応じた減免などを考慮することが「望ましい」という内容です。Notebookの「1時間あたり数百円程度」「非課税世帯などは無料または大幅な減額」「多くの自治体」という具体例・頻度は、この引用元では確認できません。",
+      "home-phone": "Notebookはそのまま話せる切り出し、申込みの手続き、料金・減免、希望する支援内容、開始までの期間まで揃えています。mottoの電話文は料金と減免手続きに寄り、依頼した「利用の申込み方法」が抜けています。「お住まいの自治体での」と自分の電話で言う文も不自然です。",
+      "daytime-discovery": "両方とも一時預かりと誰でも通園を紹介しました。mottoは未確認の就園状況を最後に質問しています。Notebookはファミサポも含めた4候補を説明しますが、最後に就園状況を尋ねてはいません。Notebookも未就園などの条件は本文に示しています。",
+      "daytime-followup": "両方とも2歳・未就園という条件を引き継ぎました。Notebookは利用時間や利用スタイル、次の準備まで説明しています。mottoは前の制度紹介の繰り返しが中心です。ただしNotebookの「半日〜1日」「アットホームで利用しやすい」などの一般化も、地域・施設の実際の条件とは分けて読む必要があります。",
+      "daytime-compare": "説明の分かりやすさはNotebookが優位です。目的、制度の枠組み、利用時間、対象、利用スタイルの比較表と選び方を示しました。mottoは「こどもの育ち／保護者の必要性」「給付制度／事業」という抽象的な違いにとどまっています。Notebookの表の各細目を全件検証したわけではありません。",
+      "local-boundary": "両者とも、新宿区の具体的な料金や明日の空きは登録資料にないと説明し、値を創作しませんでした。mottoは希望する1泊2日を含む問い合わせ文を返しました。Notebookは国の緊急時手続きの説明と追加のWeb調査の提案を返しました。"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+// Synthetic questions only; no consent token, no access to stored user logs.
+import fs from 'node:fs/promises';
+const questions=JSON.parse(await fs.readFile(new URL('questions-20261028.json',import.meta.url),'utf8'));
+const base='https://motto-concierge-web-try-84762847191.asia-northeast1.run.app';
+const messages=[],results=[];let sessionId;
+for(const row of questions){messages.push({role:'user',content:row.question});const start=performance.now();const r=await fetch(base+'/api/chat',{method:'POST',headers:{Origin:base,'content-type':'application/json'},body:JSON.stringify({provider:'docsgpt',messages,sessionId}),signal:AbortSignal.timeout(120000)});const data=await r.json();if(!r.ok)throw Error(JSON.stringify({id:row.id,status:r.status,error:data.error}));sessionId=data.docsgptSessionId;messages.push({role:'assistant',content:data.reply});results.push({...row,reply:data.reply,elapsedMs:Math.round(performance.now()-start),sources:data.replySources,review:data.citationReview,saved:data.logging?.saved});await fs.writeFile(new URL('../../.private/notebook-compare-20261028/motto.json',import.meta.url),JSON.stringify(results,null,2),{mode:0o600});console.log(row.id,results.at(-1).elapsedMs,'partial='+!!data.citationReview?.partial);if(data.logging?.saved)throw Error('Synthetic trial must not save a chat log');}
