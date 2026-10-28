@@ -1,0 +1,47 @@
+2026-10-28 Controlled model comparison
+
+Production unchanged. No deployment, model switch, budget, DNS or consent changes.
+8 synthetic questions; same retrieved passages, baseline history, prompt and schema.
+First-request SHA-256 matches for all 8 pairs. Search is run once; histories use
+previous baseline responses so one model's answer cannot alter the next input.
+This compares responses at 8 conversation points, not 2 autonomous conversations.
+Models: gemini-3.5-flash-lite vs gemini-3.6-flash.
+3.8 Flash failed connectivity/short probe; Pro returned 429, excluded.
+3.6 Flash had 3 HTTP503 failures before completing 8 successful answers.
+
+Generation+validation completion time, successful trial per question:
+Lite median3.391s (2.323–5.136), Flash median6.6475s (5.106–26.402).
+Search, Cloud Run cold start and failed service attempts excluded from medians.
+Same temperature1/thinking low/maxOutput4000; harness-only timeout120s vs public20s.
+Flash's 26.4s answer would exceed the public user wait expectation; not deployment-ready.
+Lite8 successful API calls, Flash9 (one validation repair). One partial response each.
+Uncached Standard token estimates: Lite $0.0673173/8, Flash $0.19608/8.
+Includes thinking and validation retries; not invoice totals or infrastructure costs.
+Prices checked https://ai.google.dev/gemini-api/docs/pricing (2026-10-28).
+Flash price changes after2026-12-31; no future price guarantee.
+
+Findings:
+- Flash adds useful home-help examples and a conditional single-parent option.
+- Flash phone wording includes both fees and application; Lite omits application.
+- Home-help detailed answer remains 4 short dimensions, similar in both models.
+- Both preserve normative wording for fee remission and invent no national flat rate.
+- Flash turns normative support-plan wording into a firm process statement.
+- Flash Q7 gives monthly hours, but its selected evidence omits the numeric hours.
+- Flash Q8 misuses a subsidy-calculation FAQ as the user's fee structure.
+  FAQ No7 question explicitly concerns the subsidy standard calculation.
+  Correct source URL/exact quotation alone does not guarantee semantic grounding.
+- Flash Q5 duplicate enrollment question comes from wording plus app regex handling.
+- Both still give a shallow comparison and need retrieval/answer/validation improvements.
+Conclusion: Some model contribution, but upgrading alone is insufficient and slower.
+
+Artifacts:
+MODEL-COMPARISON-20261028.html side-by-side report with linked sources/quotes.
+model-comparison-20261028.json synthetic answers/metrics/hashes/rejections.
+compare-models.mjs uses the existing pipeline/reviewer without production edits.
+build-model-report.py regenerates HTML and portable JSON from private evidence.
+Private inputs, request bodies, all attempts: .private/model-compare-20261028/.
+Private API keys and IAM tokens are neither logged nor exported.
+
+Validation: Node syntax check; 8 paired request-body hashes equal; all16 final answers
+replayed through the existing citation validator; manual review found semantic errors
+as noted above. Not an independent expert evaluation or statistical model ranking.
