@@ -1,0 +1,248 @@
+{
+  "date": "2026-10-29",
+  "revision": "motto-concierge-web-try-00024-llk",
+  "method": "agent-browserで公開HTTPSのフォームを操作。Enterで送信し、DOMの箇条書きと段落、出典リンクとAPI応答を確認。架空の相談のみ。",
+  "changes": [
+    "事実の説明を一律に箇条書きにせず、単独説明は話題に依存せず段落へ",
+    "複数候補・比較できる具体例だけリストを使う",
+    "補完した候補を締めの前に配置し、最後の質問を一つにする",
+    "申請先の断定を出典なしの会話として通さない"
+  ],
+  "browserTurns": {
+    "beforeGuard": 5,
+    "beforeOrderingFix": 1,
+    "final": 4
+  },
+  "tests": 192,
+  "quoteCount": 7,
+  "finalCases": [
+    {
+      "question": "子育て世帯訪問支援事業は、どこに申し込めばいいですか？",
+      "reply": "子育て世帯訪問支援事業の利用申請や相談は、お住まいの市町村の窓口（こども家庭センターなど）で受け付けており、市町村が必要性を認めた場合に利用の決定が行われます。[1]\n\n「子育て世帯訪問支援事業の利用について相談したいのですが、お住まいの市町村やこども家庭センターの窓口を教えてください」と問い合わせてみてください。",
+      "listItems": 0,
+      "httpStatus": 200,
+      "elapsedMs": 4213,
+      "partial": false,
+      "meaningChecked": true,
+      "statements": [
+        {
+          "evidence": [
+            {
+              "quote": "\n\n## 図表２ 支援の流れ（一例）\n\nア 保護者・関係機関等からの相談受付、利用申請・利用決定 市町村は、児童、保護者及び妊婦からの相談等やこども家庭センターをはじめとした関係 部署や関係機関からの相談・情報提供等により、本事業の支援が必要と認められる場合には、 利用対象者からの申請を受付け、利用を決定する。",
+              "sourceId": "home-help.pdf:95dd3353d93968f9033882fe6f0337b2a3aa525ff02342eb69a7c9c4fab61e1f"
+            }
+          ],
+          "kind": "fact",
+          "layout": "paragraph",
+          "text": "子育て世帯訪問支援事業の利用申請や相談は、お住まいの市町村の窓口（こども家庭センターなど）で受け付けており、市町村が必要性を認めた場合に利用の決定が行われます。"
+        },
+        {
+          "evidence": [],
+          "kind": "advice",
+          "layout": "paragraph",
+          "text": "「子育て世帯訪問支援事業の利用について相談したいのですが、お住まいの市町村やこども家庭センターの窓口を教えてください」と問い合わせてみてください。"
+        }
+      ],
+      "sources": [
+        {
+          "id": "home-help.pdf:95dd3353d93968f9033882fe6f0337b2a3aa525ff02342eb69a7c9c4fab61e1f",
+          "title": "子育て世帯訪問支援事業ガイドライン",
+          "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/91f57176-a420-4d1d-8973-1828437e0aa8/d9bc9e4f/20240904_policies_kosodateshien_jido-homon_03.pdf",
+          "programIds": [
+            "home-help"
+          ]
+        }
+      ],
+      "saved": false
+    },
+    {
+      "question": "料金は？",
+      "reply": "利用料は市町村があらかじめ定めます。所得に応じた減免などを考慮することが望ましいとされています。[1]\n\n具体的な金額や、ご自身の世帯が減免の対象になるかまでは、この回答だけでは確定できません。\n\n窓口では「子育て世帯訪問支援事業を利用したいのですが、利用料金はいくらですか。所得に応じた減免があるか、手続きとあわせて教えてください」と聞いてみてください。",
+      "listItems": 0,
+      "httpStatus": 200,
+      "elapsedMs": 1496,
+      "partial": false,
+      "meaningChecked": true,
+      "statements": [
+        {
+          "evidence": [
+            {
+              "quote": "問支援員自身の価値観のおしつけ、児童や保護者又は妊婦（以下「保護者等」とい う。）の価値観の否定をするのではなく、保護者等の立場に寄り添い、保護者等の状況や心 情を理解し、支援を行うよう努めること。 市町村は、本事業の目的や地域の実情を踏まえ、家事、育児・養育支援の具体的な内容や 範囲、ルール、利用料等をあらかじめ定めること。利用料の設定に当たっては、利用者の所 1||\n\n得状況に応じて減免するなど考慮することが望ましい。また、複数の事業者に委託等する場 合には、以下の項目を参考に、各事業者と具体的な支援の内容や範囲、ルール等を検討し、 定めることが望ましい。\n\n【家事、育児・養育支援の内容や範囲、",
+              "sourceId": "home-help.pdf:9e39855193b023bb7bdb0b9dc42d06953a0cfb2bfdf4aed924009a33046df02f"
+            },
+            {
+              "quote": "ること。 市町村は、本事業の目的や地域の実情を踏まえ、家事、育児・養育支援の具体的な内容や 範囲、ルール、利用料等をあらかじめ定めること。利用料の設定に当たっては、利用者の所 1||\n\n得状況に応じて減免するなど考慮することが望ましい。また、複数の事業者に委託等する場 合には、以下の項目を参考に、各事業者と具体的な支援の内容や範囲、ルール等を検討し、 定めることが望ましい。\n\n【家事、育児・養育支援の内容や範囲、ルール等を定める項目の参考例】 <家事、育児・養育支援共通> Ø 家族（保護者）が不在時の支援内容",
+              "sourceId": "home-help.pdf:9e39855193b023bb7bdb0b9dc42d06953a0cfb2bfdf4aed924009a33046df02f"
+            }
+          ],
+          "kind": "fact",
+          "layout": "paragraph",
+          "text": "利用料は市町村があらかじめ定めます。所得に応じた減免などを考慮することが望ましいとされています。"
+        },
+        {
+          "evidence": [],
+          "kind": "limitation",
+          "layout": "paragraph",
+          "text": "具体的な金額や、ご自身の世帯が減免の対象になるかまでは、この回答だけでは確定できません。"
+        },
+        {
+          "evidence": [],
+          "kind": "advice",
+          "layout": "paragraph",
+          "text": "窓口では「子育て世帯訪問支援事業を利用したいのですが、利用料金はいくらですか。所得に応じた減免があるか、手続きとあわせて教えてください」と聞いてみてください。"
+        }
+      ],
+      "sources": [
+        {
+          "id": "home-help.pdf:9e39855193b023bb7bdb0b9dc42d06953a0cfb2bfdf4aed924009a33046df02f",
+          "title": "子育て世帯訪問支援事業ガイドライン",
+          "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/91f57176-a420-4d1d-8973-1828437e0aa8/d9bc9e4f/20240904_policies_kosodateshien_jido-homon_03.pdf",
+          "programIds": [
+            "home-help"
+          ]
+        }
+      ],
+      "saved": false
+    },
+    {
+      "question": "2歳の子がいます。少し休むために、昼間だけ預けられる支援はありますか？",
+      "reply": "- 一時預かり事業：保護者の育児負担を軽減するため、乳幼児を一時的に預かる事業です。[1]\n\n- こども誰でも通園制度：保育所等に通っていない0歳6か月から満3歳未満の子どもが対象です。[2][3]\n\nお子さんはいま、保育園や幼稚園などに通っていますか？",
+      "listItems": 2,
+      "httpStatus": 200,
+      "elapsedMs": 1551,
+      "partial": false,
+      "meaningChecked": true,
+      "statements": [
+        {
+          "evidence": [
+            {
+              "quote": "より実施する事業\n\n事業の概要\n\n実施要綱（令和６年３月28日）\n\nガイドライン\n\n交付要綱（令和８年４月８日）\n\n令和８年度予算（p31）\n\n家庭において保育を受けることが一時的に困難となった場合や保護者の育児負担の軽減が必要な場合に、主として昼間に、認定こども園、幼稚園、保育所、地域子育て支援拠点その他の場所において、乳幼児を一時的に預かり、必要な保護を行う事業\n\n実施要綱（令和７年３月31日）\n\n交付要綱（令和８年４月８日）\n\n家事・育児等に対して不安を抱えた子育て家庭等を訪問し、家庭が抱え",
+              "sourceId": "temporary.txt:60300de4fb039562ce75816e44267a11aa94fb06cd109bf1e41d6c05c05a1e0d"
+            },
+            {
+              "quote": "度予算（p31）\n\n家庭において保育を受けることが一時的に困難となった場合や保護者の育児負担の軽減が必要な場合に、主として昼間に、認定こども園、幼稚園、保育所、地域子育て支援拠点その他の場所において、乳幼児を一時的に預かり、必要な保護を行う事業\n\n実施要綱（令和７年３月31日）\n\n交付要綱（令和８年４月８日）\n\n家事・育児等に対して不安を抱えた子育て家庭等を訪問し、家庭が抱える不安や悩みを傾聴するとともに、家事・育児等の支援を行う事業\n\n事業内容・実施要綱・ガイドライン・FAQ・自治体実施事例 ",
+              "sourceId": "temporary.txt:60300de4fb039562ce75816e44267a11aa94fb06cd109bf1e41d6c05c05a1e0d"
+            }
+          ],
+          "kind": "fact",
+          "layout": "bullet",
+          "text": "一時預かり事業：保護者の育児負担を軽減するため、乳幼児を一時的に預かる事業です。"
+        },
+        {
+          "evidence": [
+            {
+              "quote": "利用可能枠の中で利用が可能となります。 \n※１ 認可外保育施設に通っている０歳６か月から満３歳未満のこどもは対象となり、企業主導\n型保育施設に通っている０歳６か月から満３歳未満のこどもは対象外となります。 \n※２ 障害のあるこども、医療的ケアを必要とするこども、若しくは要支援家庭のこども（要支\n援家庭のこどもとは、 例えば、 こども家庭センターによるサポートプランが作成されて",
+              "sourceId": "daredemo-handbook.pdf:78a7bdc8483dfe488e725c645183993ff0895f695b8f1796f3af519463ad6ad7"
+            },
+            {
+              "quote": "  よくあるご質問\n\n                            利用対象について教えてください\n\n                            保育所、認定こども園、幼稚園等に通っていない0歳6か月から満3歳未満のお子さまがご利用できます。詳しくはお住まいの市町村窓口までお問い合わせください。\n\n                            生後6か月未満でも予約はできますか？\n\n                            利用申請と事前面談",
+              "sourceId": "daredemo.txt:d4a6fb6e23c3d033acc66c097dd665c6cda8d21409e2c9de885f84d7930ba739"
+            }
+          ],
+          "kind": "fact",
+          "layout": "bullet",
+          "text": "こども誰でも通園制度：保育所等に通っていない0歳6か月から満3歳未満の子どもが対象です。"
+        },
+        {
+          "evidence": [],
+          "kind": "conversation",
+          "layout": "paragraph",
+          "text": "お子さんはいま、保育園や幼稚園などに通っていますか？"
+        }
+      ],
+      "sources": [
+        {
+          "id": "temporary.txt:60300de4fb039562ce75816e44267a11aa94fb06cd109bf1e41d6c05c05a1e0d",
+          "title": "一時預かり・国の制度説明",
+          "url": "https://kokasen.cfa.go.jp/support-programs",
+          "programIds": [
+            "temporary"
+          ]
+        },
+        {
+          "id": "daredemo-handbook.pdf:78a7bdc8483dfe488e725c645183993ff0895f695b8f1796f3af519463ad6ad7",
+          "title": "こども誰でも通園制度の実施に関する手引",
+          "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0afde15f-8760-4477-806a-ed72b6916696/60fe9485/20260330_policies_hoiku_daredemo-tsuen_67.pdf",
+          "programIds": [
+            "daredemo"
+          ]
+        },
+        {
+          "id": "daredemo.txt:d4a6fb6e23c3d033acc66c097dd665c6cda8d21409e2c9de885f84d7930ba739",
+          "title": "こども誰でも通園・公式利用案内",
+          "url": "https://www.daretsu.cfa.go.jp/",
+          "programIds": [
+            "daredemo"
+          ]
+        }
+      ],
+      "saved": false
+    },
+    {
+      "question": "保育を受けるってどういう意味？",
+      "reply": "子どもを保育所などで預かってもらい、お世話をしてもらうことです。",
+      "listItems": 0,
+      "httpStatus": 200,
+      "elapsedMs": 2491,
+      "partial": false,
+      "meaningChecked": true,
+      "statements": [
+        {
+          "evidence": [],
+          "kind": "conversation",
+          "layout": "paragraph",
+          "text": "子どもを保育所などで預かってもらい、お世話をしてもらうことです。"
+        }
+      ],
+      "sources": [],
+      "saved": false
+    }
+  ],
+  "httpChecks": [
+    {
+      "path": "/api/health",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "path": "/api/docsgpt/status",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "path": "/api/log-consent",
+      "status": 200,
+      "passed": true,
+      "loggingEnabled": false
+    },
+    {
+      "path": "/api/admin/logs",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "path": "/api/chat",
+      "status": 403,
+      "passed": true
+    }
+  ],
+  "links": [
+    {
+      "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/91f57176-a420-4d1d-8973-1828437e0aa8/d9bc9e4f/20240904_policies_kosodateshien_jido-homon_03.pdf",
+      "status": 200
+    },
+    {
+      "url": "https://kokasen.cfa.go.jp/support-programs",
+      "status": 200
+    },
+    {
+      "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/0afde15f-8760-4477-806a-ed72b6916696/60fe9485/20260330_policies_hoiku_daredemo-tsuen_67.pdf",
+      "status": 200
+    },
+    {
+      "url": "https://www.daretsu.cfa.go.jp/",
+      "status": 200
+    }
+  ],
+  "limits": "モデルと12資料、Cloud Run月500円制限は維持。スマホ実機・IME変換操作は今回未確認。任意の質問すべての品質を保証する評価ではない。"
+}

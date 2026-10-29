@@ -49,7 +49,7 @@ test('an unsupported opening does not discard either already verified candidate 
  const proposal={segments:[{kind:'conversation',text:'状況に合わせて利用できる制度があります。',evidence:[]},...evidenceDocs.map(d=>({kind:'fact',text:'- '+d.excerpt,evidence:[{sourceId:d.id,quote:d.excerpt}]}))],corrections:[]};let calls=0;
  const reviewer=createCitationReviewer({loadConfig:async()=>({apiKey:'private'}),fetcher:async()=>{calls++;return{ok:true,json:async()=>({candidates:[{finishReason:'STOP',content:{parts:[{text:JSON.stringify(proposal)}]}}]})};}});
  const result=await reviewer({messages:[{role:'user',content:'2歳の子がいます。昼間預けられる支援はありますか？'}],draft:'',docs:evidenceDocs,candidatePrograms:['temporary','daredemo']});
- assert.equal(calls,1);assert.equal(result.replySources.length,2);assert.match(result.reply,/一時預かり/);assert.match(result.reply,/誰でも通園/);assert.ok(!result.reply.includes('状況に合わせて利用できる'));assert.equal(result.citationReview.localRepair,true);
+ assert.equal(calls,1);assert.equal(result.replySources.length,2);assert.match(result.reply,/一時預かり/);assert.match(result.reply,/誰でも通園/);assert.ok(!result.reply.includes('状況に合わせて利用できる'));assert.equal(result.citationReview.statements.filter(s=>s.kind==='fact').length,2);
 });
 
 test('bullet layout preserves each fact citation and can be replayed without changing its answer',()=>{
@@ -112,4 +112,16 @@ test('repeated omission of application question is repaired in the final phone t
  const proposal={segments:[{kind:'advice',text:'「子育て世帯訪問支援事業の利用料金はいくらかかるか、所得に応じた減免があるか教えてください」',evidence:[]}],corrections:[]};
  const reviewer=createCitationReviewer({loadConfig:async()=>({apiKey:'private'}),fetcher:async()=>({ok:true,json:async()=>({candidates:[{finishReason:'STOP',content:{parts:[{text:JSON.stringify(proposal)}]}}]})})});
  const result=await reviewer({messages:[{role:'user',content:'料金と申込みについて電話で聞く文を作ってください。'}],docs:[],draft:''});assert.match(result.reply,/申し込み方/);assert.match(result.reply,/料金/);assert.ok(!result.reply.includes('出典を照合した説明を十分に作れません'));assert.ok(result.citationReview.partial);
+});
+test('a solitary non-candidate explanation is prose regardless of its topic, while real lists remain lists',()=>{
+ for(const topic of ['料金','対象条件','相談の流れ','申し込み先']){
+  const v={segments:[{kind:'advice',layout:'bullet',text:topic+'：窓口で確認してみてください。',evidence:[]}],corrections:[]};
+  const r=validateCitationReview(v,[],[{role:'user',content:topic+'を教えて'}]);assert.ok(!r.reply.startsWith('- '));assert.equal(r.reply,'窓口で確認してみてください。');assert.equal(r.citationReview.statements[0].layout,'paragraph');
+ }
+ const list={segments:['利用時間','必要な書類'].map(text=>({kind:'advice',layout:'bullet',text:text+'：窓口で確認してみてください。',evidence:[]})),corrections:[]};assert.equal(validateCitationReview(list,[]).reply.split('\n\n').filter(p=>p.startsWith('- ')).length,2);
+});
+test('recovered discovery candidates precede the closing advice and leave only one next question',()=>{
+ const doc={id:'home',programIds:['home-help'],title:'訪問支援',fullText:true,url:'https://www.cfa.go.jp/home.pdf',excerpt:'訪問支援員が家事や育児の支援を行います。'};
+ const segments=[{kind:'conversation',layout:'paragraph',text:'お疲れさまです。',evidence:[]},{kind:'advice',layout:'paragraph',text:'窓口へ相談してみてください。',evidence:[]},{kind:'conversation',layout:'paragraph',text:'希望時間はありますか？',evidence:[]},{kind:'fact',layout:'bullet',text:'子育て世帯訪問支援事業：家事や育児の支援を行います。',evidence:[{sourceId:'home',quote:doc.excerpt}]},{kind:'conversation',layout:'paragraph',text:'特に手伝ってほしいことはありますか？',evidence:[]}];
+ const r=validateCitationReview({segments,corrections:[]},[doc],[{role:'user',content:'家事と育児で手いっぱいです。自宅で手伝ってもらえる支援はありますか？'}]);assert.match(r.reply,/^- 子育て世帯/);assert.equal(r.citationReview.statements.filter(s=>s.kind==='conversation').length,1);assert.match(r.reply,/特に手伝ってほしいことはありますか？$/);
 });

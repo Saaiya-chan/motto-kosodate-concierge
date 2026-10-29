@@ -85,3 +85,7 @@ test('operator and municipal fee assertions cannot hide in uncited supplemental 
  for(const text of ['実施主体は市区町村となり、窓口へお問い合わせください。','具体的な利用料金は自治体によって異なります。','利用料金の金額は施設の空き状況により異なります。','具体的な空き状況や料金の決定は市町村や施設が行うため、直接ご確認ください。'])assert.throws(()=>checkEvidenceMeaning({kind:'limitation',text,evidence:[]},[]),/制度の事実|料金や条件/);
  assert.doesNotThrow(()=>checkEvidenceMeaning({kind:'advice',text:'利用料金や減免の有無、申込み方法を自治体に確認してみてください。',evidence:[]},[]));
 });
+test('an application destination cannot be presented as uncited conversation, but asking where to apply is advice',()=>{
+ assert.throws(()=>checkEvidenceMeaning({kind:'conversation',text:'子育て世帯訪問支援事業の利用申請は、お住まいの市町村の窓口で行います。',evidence:[]},[]),/申請先/);
+ assert.doesNotThrow(()=>checkEvidenceMeaning({kind:'advice',text:'窓口では「申請はどこで行えばよいですか」と聞いてみてください。',evidence:[]},[]));
+});

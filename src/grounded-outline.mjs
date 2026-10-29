@@ -7,9 +7,9 @@ export function groundedOutline({messages,docs,detail=false}){
  const latest=messages.at(-1)?.content||'',scope=consultationPrograms(messages);
  const asksScript=/文を作|問い合わせる文|伝える文/.test(latest);
  const e=(id,pattern)=>findEvidence(docs,id,pattern);
- const card=(text,...refs)=>refs.every(Boolean)?{kind:'fact',layout:'bullet',text,evidence:[...new Map(refs.map(r=>[r.sourceId+'\n'+r.quote,r])).values()]}:null;
+ const card=(text,...refs)=>refs.every(Boolean)?{kind:'fact',layout:'paragraph',text,evidence:[...new Map(refs.map(r=>[r.sourceId+'\n'+r.quote,r])).values()]}:null;
  const facts=ruleFacts(messages),homeScope=scope.length===1&&scope[0]==='home-help';
- const feeCard=()=>card('費用の考え方：利用料は市町村があらかじめ定めます。所得に応じた減免などを考慮することが望ましいとされています。',e('home-help',/市町村は.{0,150}利用料等をあらかじめ定めること/),e('home-help',/減免するなど考慮することが望ましい/));
+ const feeCard=()=>card('利用料は市町村があらかじめ定めます。所得に応じた減免などを考慮することが望ましいとされています。',e('home-help',/市町村は.{0,150}利用料等をあらかじめ定めること/),e('home-help',/減免するなど考慮することが望ましい/));
  const usageCard=()=>card('こども誰でも通園の使い方：就労要件を問わず、月一定時間の利用枠の中で、時間単位で利用できます。',e('daredemo',/月一定時間/),e('daredemo',/就労.{0,12}(?:問わず|かかわらず)/),e('daredemo',/時間単位/));
  // In a discovery answer one bullet is one service, including its own conditions.
  if(isHomeHelpDiscovery(latest)){
@@ -17,6 +17,7 @@ export function groundedOutline({messages,docs,detail=false}){
   const target=e('home-help',/市町村が(?:本事業による支援が必要と)?認めた/);
   const burden=e('home-help',/家事・子育て等に対して不安や負担/);
   if(support){
+   support.layout='bullet';
    if(target&&burden){support.text+=' 家事や子育ての不安・負担を抱える家庭等で、市町村が支援の必要性を認めた方が対象です。';support.evidence.push(target,burden);}
    return [support,{kind:'conversation',layout:'paragraph',text:'いま、特に手伝ってほしい家事や育児はありますか？',evidence:[]}];
   }
@@ -27,7 +28,7 @@ export function groundedOutline({messages,docs,detail=false}){
    card('不安や負担で日常生活が難しいとき：妊娠・出産・子育てへの不安や負担で、日常生活に支障が生じている方なども対象に含まれます。',e('home-help',/妊娠・出産・子育てに対する不安や負担を抱え、日常生活を営むことに支障/)),
    card('利用の判断：相談などを受けて、市町村が支援の必要性を認めた方が対象です。',e('home-help',/市町村が(?:本事業による支援が必要と)?認めた/))
   ].filter(Boolean);
-  if(cards.length)return [...cards,{kind:'advice',layout:'paragraph',text:'「家事と育児が重なって、生活を回すのが大変です」といった今の困りごとを伝え、子育て世帯訪問支援事業の対象になるか相談してみてください。',evidence:[]}];
+  if(cards.length){const examples=cards.filter(s=>/^心身の|^不安や/.test(s.text));if(examples.length>1)examples.forEach(s=>s.layout='bullet');return [...cards,{kind:'advice',layout:'paragraph',text:'「家事と育児が重なって、生活を回すのが大変です」といった今の困りごとを伝え、子育て世帯訪問支援事業の対象になるか相談してみてください。',evidence:[]}];}
  }
  if(homeScope&&/料金|費用|お金|減免/.test(latest)&&/文を作|問い合わせる文|伝える文/.test(latest))return [{kind:'advice',layout:'paragraph',text:'「子育て世帯訪問支援事業の利用を考えています。利用料金、所得に応じた減免の有無、申込みの手順を教えていただけますか。」',evidence:[]}];
  if(homeScope&&!detail&&/料金|費用|お金|減免/.test(latest)){
