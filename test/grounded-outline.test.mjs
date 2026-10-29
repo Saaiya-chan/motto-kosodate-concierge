@@ -52,3 +52,21 @@ test('a phone-script request is not mistaken for a new enrollment answer',()=>{
  assert.equal(groundedOutline({messages:m,docs:[]}),null);
  const script=groundedOutline({messages:[{role:'user',content:'子育てショートステイを明日から1泊2日利用したいです。空きと料金を問い合わせる文を作って'}],docs:[]});assert.equal(script.length,1);assert.equal(script[0].kind,'advice');assert.ok(!script[0].text.includes('確定できません'));
 });
+test('home discovery groups conditions with the service, not as a second service candidate',()=>{
+ const result=groundedOutline({messages:[{role:'user',content:'家事と育児で手いっぱいです。自宅で手伝ってもらえる支援はありますか？'}],docs:[home]});
+ assert.ok(result);assert.equal(result.filter(s=>s.layout==='bullet').length,1);assert.match(result.find(s=>s.layout==='bullet').text,/^子育て世帯訪問支援事業：/);assert.ok(!result.some(s=>/^対象者の考え方/.test(s.text)));
+ validateCitationReview({segments:result,corrections:[]},[home]);
+});
+test('eligibility followup answers from retrieved situations and preserves other facts when a situation is absent',()=>{
+ const target={...home,excerpt:'本事業による支援が必要であると市町村が認めた者が対象です。心身の不調がある保護者や妊婦、妊娠・出産・子育てに対する不安や負担を抱え、日常生活を営むことに支障が生じている者も含まれます。'};
+ const messages=[{role:'user',content:'家事と育児で手いっぱいです。自宅で手伝ってもらえる支援はありますか？'},{role:'assistant',content:'子育て世帯訪問支援事業が候補です。'},{role:'user',content:'自宅で受けられる支援は、どんなときに利用できますか？'}];
+ const result=groundedOutline({messages,docs:[target]});assert.ok(result);assert.ok(result.filter(s=>s.kind==='fact').length>=3);assert.ok(result.some(s=>/心身の不調/.test(s.text)));assert.ok(result.some(s=>/日常生活/.test(s.text)));assert.ok(!result.some(s=>/作れません|確認できません/.test(s.text)));validateCitationReview({segments:result,corrections:[]},[target],messages);
+ const partial=groundedOutline({messages,docs:[home]});assert.ok(partial.some(s=>s.kind==='fact'&&/市町村/.test(s.text)));assert.ok(!partial.some(s=>/心身の不調/.test(s.text)));
+});
+test('one rejected example does not throw away other independently verified conditions',async()=>{
+ const {EvidenceMeaningError}=await import('../src/evidence-meaning.mjs');let audits=0;
+ const target={...home,excerpt:'本事業による支援が必要であると市町村が認めた者が対象です。心身の不調がある保護者や妊婦、妊娠・出産・子育てに対する不安や負担を抱え、日常生活を営むことに支障が生じている者も含まれます。'};
+ const reviewer=createCitationReviewer({loadConfig:async()=>({apiKey:'private'}),fetcher:async()=>{throw Error('free generation should not be needed');},audit:async({statements})=>{if(++audits===1)throw new EvidenceMeaningError('one unsupported example',[0]);return{checked:true,verdicts:statements.map((_,index)=>({index,supported:true,reason:'supported'}))};}});
+ const messages=[{role:'user',content:'子育て世帯訪問支援事業はどんなときに利用できますか？'}];
+ const result=await reviewer({messages,docs:[target],draft:''});assert.equal(audits,2);assert.equal(result.citationReview.statements.filter(s=>s.kind==='fact').length,2);assert.ok(!result.reply.includes('作れません'));assert.ok(result.citationReview.meaning.checked);
+});

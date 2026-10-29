@@ -38,3 +38,8 @@ test('enrollment clarification retrieves the newly relevant time and usage infor
  const m=[{role:'user',content:'2歳です。日中預けられる支援はありますか？'},{role:'assistant',content:'候補があります'},{role:'user',content:'保育園には通っていません'}];
  assert.ok(focusedSearches(m).some(s=>/誰でも通園.*時間単位/.test(s.query)));
 });
+test('plain-language eligibility followups retrieve target situations for the active programme',async()=>{
+ const {focusedSearches}=await import('../src/consultation-intent.mjs');
+ const history=[{role:'user',content:'家事と育児で手いっぱいです。自宅で手伝ってもらえる支援はありますか？'},{role:'assistant',content:'子育て世帯訪問支援事業が候補です。'}];
+ for(const question of ['自宅で受けられる支援は、どんなときに利用できますか？','私も対象になりますか？','利用条件を教えて'])assert.ok(focusedSearches([...history,{role:'user',content:question}]).some(s=>/子育て世帯訪問支援事業.*対象.*心身/.test(s.query)),question);
+});

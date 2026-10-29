@@ -29,6 +29,10 @@ export function discoveryCandidates(messages){
  return candidates;
 }
 
+export function isEligibilityQuestion(text){
+ return /対象|利用条件|どんなとき|どんな時|どういう(?:とき|時|場合)|どのような(?:とき|時|場合)|利用できる(?:人|家庭)|私も.*(?:使え|利用)/.test(text);
+}
+
 // Focus each retrieval on the dimensions actually requested; don't bury fee or
 // application facts under general overview hits from earlier turns.
 export function focusedSearches(messages){
@@ -39,6 +43,7 @@ export function focusedSearches(messages){
  if(/通ってい|未就園|未在園/.test(latest)&&context.some(p=>p.id==='daredemo'))return [{query:'こども誰でも通園制度 利用時間 月の利用枠 時間単位 就労要件',chunks:3}];
  if(context.length!==1)return [];
  const name=context[0].name,queries=[];
+ if(isEligibilityQuestion(latest))queries.push({query:name+' 支援対象者 対象となる状況 心身の不調 不安 負担 日常生活 支障 市町村が必要と認める',chunks:3});
  if(/料金|費用|お金|減免/.test(latest))queries.push({query:name+' 利用者が支払う利用料 自己負担 所得 減免',chunks:3});
  if(/申込|申し込|手続|電話|文を作/.test(latest))queries.push({query:name+' 利用申込み 相談窓口 アセスメント サポートプラン 利用までの流れ',chunks:3});
  return queries;

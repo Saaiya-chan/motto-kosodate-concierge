@@ -1,0 +1,17 @@
+// Real search + current Flash-Lite + independent meaning audit. Synthetic only.
+import fs from 'node:fs/promises';import {execFileSync} from 'node:child_process';import {fileURLToPath} from 'node:url';
+import {createDocsGPT} from '../../src/docsgpt.mjs';import {createCitationReviewer} from '../../src/docsgpt-citations.mjs';
+const root=new URL('../../',import.meta.url),out=new URL('.private/followup-20261029/',root);await fs.mkdir(out,{recursive:true,mode:0o700});
+const baseline=['家事と育児で手いっぱいです。自宅で手伝ってもらえる支援はありますか？','自宅で受けられる支援は、どんなときに利用できますか？','どんな家事や育児を頼めるのか、もっと詳しく教えてください。','料金と申込みについて電話で聞く文を作ってください。'].map((question,i)=>({id:'followup-'+(i+1),question}));
+const publicRun=process.argv.includes('--public');
+const token=publicRun?'':execFileSync(fileURLToPath(new URL('.private/google-cloud-sdk/bin/gcloud',root)),['auth','print-identity-token'],{env:{...process.env,CLOUDSDK_CONFIG:fileURLToPath(new URL('.private/gcloud-config',root))},encoding:'utf8'}).trim();
+const key=publicRun?'':(await fs.readFile(new URL('.private/search-container.env',root),'utf8')).match(/^SEARCH_TOKEN=(.+)$/m)[1].replace(/^['"]|['"]$/g,'');
+const inputs=[],results=[],rejected=[];let caseId;
+const reviewer=createCitationReviewer({onRejected:r=>rejected.push({id:caseId,...r}),fetcher:async(url,opts)=>{let r=await fetch(url,opts);if(r.status===429){console.log(caseId,'rate limit: retry once after 30s');await new Promise(resolve=>setTimeout(resolve,30000));r=await fetch(url,{...opts,signal:AbortSignal.timeout(20000)});}return r;}});
+const localService=publicRun?null:createDocsGPT({base:'https://motto-concierge-search-eval-woyfuswnla-an.a.run.app',loadAgent:async()=>({key}),fetcher:(url,options)=>fetch(url,{...options,headers:{...options.headers,'X-Serverless-Authorization':'Bearer '+token},signal:AbortSignal.timeout(90000)}),reviewer:async input=>{inputs.push(structuredClone(input));return reviewer(input);}});
+const base='https://motto-concierge-web-try-84762847191.asia-northeast1.run.app';
+const service=publicRun?{async respond(messages,sessionId){const r=await fetch(base+'/api/chat',{method:'POST',headers:{Origin:base,'content-type':'application/json'},body:JSON.stringify({provider:'docsgpt',messages,sessionId}),signal:AbortSignal.timeout(120000)});const d=await r.json();if(!r.ok)throw Error(d.error);if(d.logging?.saved||!d.citationReview?.meaning?.checked)throw Error('Logging or meaning check mismatch');return d;}}:localService;
+const history=[];let session;
+for(const q of baseline){caseId=q.id;history.push({role:'user',content:q.question});const start=performance.now();try{const r=await service.respond(history,session);session=r.docsgptSessionId;history.push({role:'assistant',content:r.reply});results.push({id:q.id,question:q.question,check:q.check,...r,totalMs:Math.round(performance.now()-start)});console.log(r.reply);console.log(q.id,r.elapsedMs,'partial='+!!r.citationReview?.partial,'meaning='+!!r.citationReview?.meaning?.checked);}
+catch(e){results.push({id:q.id,error:e.message});console.log(q.id,'ERROR',e.message);process.exitCode=1;await fs.writeFile(new URL(publicRun?'public.json':'results.json',out),JSON.stringify(results,null,2));break;}
+await fs.writeFile(new URL(publicRun?'public.json':'results.json',out),JSON.stringify(results,null,2),{mode:0o600});await fs.writeFile(new URL(publicRun?'public-inputs.json':'inputs.json',out),JSON.stringify(inputs,null,2),{mode:0o600});await fs.writeFile(new URL(publicRun?'public-rejections.json':'rejections.json',out),JSON.stringify(rejected,null,2),{mode:0o600});}

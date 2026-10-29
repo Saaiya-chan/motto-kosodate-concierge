@@ -1,6 +1,6 @@
 import {candidateEvidence,findEvidence} from './candidate-evidence.mjs';
 import {ruleFacts} from './engine.mjs';
-import {isDaytimeDiscovery,discoveryCandidates,consultationPrograms} from './consultation-intent.mjs';
+import {isDaytimeDiscovery,discoveryCandidates,consultationPrograms,isHomeHelpDiscovery,isEligibilityQuestion} from './consultation-intent.mjs';
 // Coverage-first answers for common detailed questions. Every card is conditional
 // on its actual supporting text being retrieved; no unmatched fact is rendered.
 export function groundedOutline({messages,docs,detail=false}){
@@ -11,6 +11,24 @@ export function groundedOutline({messages,docs,detail=false}){
  const facts=ruleFacts(messages),homeScope=scope.length===1&&scope[0]==='home-help';
  const feeCard=()=>card('費用の考え方：利用料は市町村があらかじめ定めます。所得に応じた減免などを考慮することが望ましいとされています。',e('home-help',/市町村は.{0,150}利用料等をあらかじめ定めること/),e('home-help',/減免するなど考慮することが望ましい/));
  const usageCard=()=>card('こども誰でも通園の使い方：就労要件を問わず、月一定時間の利用枠の中で、時間単位で利用できます。',e('daredemo',/月一定時間/),e('daredemo',/就労.{0,12}(?:問わず|かかわらず)/),e('daredemo',/時間単位/));
+ // In a discovery answer one bullet is one service, including its own conditions.
+ if(isHomeHelpDiscovery(latest)){
+  const support=card('子育て世帯訪問支援事業：食事の準備、洗濯、掃除などの家事や、育児の手助けが支援内容の例です。',e('home-help',/食事(?:の)?準備/),e('home-help',/洗濯/),e('home-help',/掃除/),e('home-help',/育児/));
+  const target=e('home-help',/市町村が(?:本事業による支援が必要と)?認めた/);
+  const burden=e('home-help',/家事・子育て等に対して不安や負担/);
+  if(support){
+   if(target&&burden){support.text+=' 家事や子育ての不安・負担を抱える家庭等で、市町村が支援の必要性を認めた方が対象です。';support.evidence.push(target,burden);}
+   return [support,{kind:'conversation',layout:'paragraph',text:'いま、特に手伝ってほしい家事や育児はありますか？',evidence:[]}];
+  }
+ }
+ if(homeScope&&!asksScript&&isEligibilityQuestion(latest)){
+  const cards=[
+   card('心身の不調があるとき：心身の不調がある保護者や妊婦も、対象に含まれます。',e('home-help',/心身の不調がある保護者や妊婦/)),
+   card('不安や負担で日常生活が難しいとき：妊娠・出産・子育てへの不安や負担で、日常生活に支障が生じている方なども対象に含まれます。',e('home-help',/妊娠・出産・子育てに対する不安や負担を抱え、日常生活を営むことに支障/)),
+   card('利用の判断：相談などを受けて、市町村が支援の必要性を認めた方が対象です。',e('home-help',/市町村が(?:本事業による支援が必要と)?認めた/))
+  ].filter(Boolean);
+  if(cards.length)return [...cards,{kind:'advice',layout:'paragraph',text:'「家事と育児が重なって、生活を回すのが大変です」といった今の困りごとを伝え、子育て世帯訪問支援事業の対象になるか相談してみてください。',evidence:[]}];
+ }
  if(homeScope&&/料金|費用|お金|減免/.test(latest)&&/文を作|問い合わせる文|伝える文/.test(latest))return [{kind:'advice',layout:'paragraph',text:'「子育て世帯訪問支援事業の利用を考えています。利用料金、所得に応じた減免の有無、申込みの手順を教えていただけますか。」',evidence:[]}];
  if(homeScope&&!detail&&/料金|費用|お金|減免/.test(latest)){
   const fee=feeCard();if(fee)return[fee,{kind:'limitation',layout:'paragraph',text:'具体的な金額や、ご自身の世帯が減免の対象になるかまでは、この回答だけでは確定できません。',evidence:[]},{kind:'advice',layout:'paragraph',text:'窓口では「子育て世帯訪問支援事業を利用したいのですが、利用料金はいくらですか。所得に応じた減免があるか、手続きとあわせて教えてください」と聞いてみてください。',evidence:[]}];
